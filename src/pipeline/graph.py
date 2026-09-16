@@ -26,7 +26,7 @@ from langgraph.graph import StateGraph, END
 
 from src.pipeline.state import PipelineState
 
-# Person 2's modules
+# LLM preprocessing/postprocessing + scoring + persistence
 from src.llm.query_understanding import parse_preferences
 from src.db.database import load_candidates
 from src.db.memory import load_memory, save_memory, merge_preferences
@@ -36,7 +36,7 @@ from src.scoring.verifier import verify_jobs
 from src.llm.answer_generation import generate_answer
 from src.classification.classifier import JobClassifier
 
-# Person 1's modules (real)
+# Retrieval + query expansion
 from src.ir.query_expansion import QueryExpander
 from src.ir.tfidf import JobIRSystem
 from src.ir.bm25 import JobBM25System

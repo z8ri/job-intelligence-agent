@@ -1,6 +1,6 @@
 """Unit tests for src/scoring/engine.py — covers 4 atomic scoring functions
 (salary, location, tags, remote). Composite compute_final_score is verified
-by §7.7 ablation, not here.
+by the ablation configs in src/eval/ablation.py, not here.
 """
 import math
 import pytest

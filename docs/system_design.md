@@ -4,7 +4,7 @@ A multi-source job-search system: it ingests data from English-language job sour
 
 **Core selling point (original design)**: a domain-specific multi-field weighted scoring suite —
 - Structured fields (salary, location, remote preference, etc.) → each gets its own **decay / proximity scoring function** (not hard filtering); e.g. with target salary $100k, $99k still scores high while $101k and $200k differ.
-- Free-text job description → a **constrained Planner** picks the retrieval strategy per query (TF-IDF / BM25 / Dense embeddings / RRF fusion of BM25+Dense, see §3.4.1a–c) to provide the textual signal.
+- Free-text job description → a **constrained Planner** picks the retrieval strategy per query (TF-IDF / BM25 / Dense embeddings / RRF fusion of BM25+Dense, see §3.4.1–3.4.1c) to provide the textual signal.
 - All field scores are weight-combined into one composite relevance score: `S(job) = Σ wᵢ · scoreᵢ(job)`.
 - Query-adaptive dynamic weight normalization: only the fields actually mentioned by the user are activated; the remaining weight is automatically renormalized.
 - Hard filtering is reserved for absolute constraints only (e.g., a degree-requirement mismatch). The vast majority of matching is done through weighted ranking.
@@ -326,7 +326,7 @@ def score_salary(job, target_salary):
     # Sentinel mode (target=999999): 200k→0.4, 400k→0.8, 500k+→1.0, n/a→0.0
 ```
 
-**Why the sentinel threshold is 500000**: it sits well above ordinary query targets (typically 100k–200k), so it cannot be triggered accidentally; §7.5 unit tests cover 8 normal-mode regression cases; the §6.5 / §6.6 evaluation sets all use `target_salary` between 100k and 200k, so **the evaluation numbers are unaffected by the sentinel branch** — it only kicks in when a demo user explicitly asks for "highest paying".
+**Why the sentinel threshold is 500000**: it sits well above ordinary query targets (typically 100k–200k), so it cannot be triggered accidentally; `tests/test_scoring.py` covers 8 normal-mode regression cases; the evaluation sets all use `target_salary` between 100k and 200k, so **the evaluation numbers are unaffected by the sentinel branch** — it only kicks in when a demo user explicitly asks for "highest paying".
 
 **Location scoring — tiered proximity**:
 
@@ -348,7 +348,7 @@ METRO_AREAS = {
     # ... more metros
 }
 
-# 50 states full-name → state-code table (added in final-review fix D3 to handle
+# 50 states full-name → state-code table (added to handle
 # users typing "Texas" / "California" etc. meaning "any city in that state";
 # deliberately does not include bare "new york" / "washington" to avoid colliding
 # with NYC metro / DC metro city names).
@@ -404,7 +404,7 @@ def score_location(job_location, preferred_location):
 - Same-metro match raised from 0.8 → 1.0 (equivalent to "exact match"; this assumes `metro_areas.json` already has aliases such as 'NYC' / 'SF').
 - Remote is split into 4 tiers: pure Remote / US-remote / same-metro+remote / foreign-remote.
 - Foreign-remote (e.g. 'Brazil - Remote') drops from 0.9 → 0.4 to stop these jobs from crowding out genuinely local roles in the top results.
-- **50-state full-name fallback** (final-review fix D3): when the user types "jobs in Texas", the LLM emits `preferred_location="Texas"`; the original city-level branch fell through to the 0.1 fallback. The new branch recognizes the full state name and scores all in-state metro cities at 1.0, neighboring-state cities at 0.5. Multi-word cities ("new orleans" / "san francisco") get a substring fallback so split-token comparisons don't miss.
+- **50-state full-name fallback**: when the user types "jobs in Texas", the LLM emits `preferred_location="Texas"`; the original city-level branch fell through to the 0.1 fallback. The new branch recognizes the full state name and scores all in-state metro cities at 1.0, neighboring-state cities at 0.5. Multi-word cities ("new orleans" / "san francisco") get a substring fallback so split-token comparisons don't miss.
 
 **Remote-preference scoring — categorical match matrix**:
 
@@ -575,11 +575,11 @@ Q: "Junior dev positions, no PhD required"
 { "description_keywords": ["junior", "entry level"],
   "hard_filters": [{"field": "degree_req", "exclude": ["phd"]}] ... }
 
-# Positive 9 (final-review B2): single tech token → still a job query, into desired_tags
+# Positive 9: single tech token → still a job query, into desired_tags
 Q: "python"
 { "is_job_query": True, "desired_tags": ["Python"] ... }
 
-# Positive 10 (final-review B3): "highest paying" sentinel → target=999999 triggers score_salary sentinel branch
+# Positive 10: "highest paying" sentinel → target=999999 triggers score_salary sentinel branch
 Q: "Highest paying Go developer positions"
 { "description_keywords": ["Go developer"], "target_salary": 999999,
   "desired_tags": ["Go"], "weight_adjustments": {"salary": "high"} ... }
@@ -767,7 +767,7 @@ def score_category(job, preferred_category):
     return 1.0 if job.get("category") == preferred_category else 0.0
 ```
 
-> **Design tradeoff note**: pure cosine soft scoring (returning `cat_scores[target]` directly) measurably dropped §7.7 with_category P@5 from 0.465 to 0.375 (-0.09) — the cosine for non-gold entries (1578/2311) sits in the 0.1–0.4 range, the "hard reward" for correct predictions gets diluted, and incorrect predictions also get small credit, washing out the description / salary signal. The argmax-aware compromise gives 1.0 to correct predictions (equivalent to hard match) and partial credit to wrong predictions whose target-class cosine is high (where hard match would give 0). With this, §7.7 with_category nDCG@10 goes 0.639 → 0.641 (slight improvement), P@5 stays at 0.465 — preserving the anti-hard-filter stance without letting classifier noise drag the numbers down.
+> **Design tradeoff note**: pure cosine soft scoring (returning `cat_scores[target]` directly) measurably dropped the `with_category` ablation config's P@5 from 0.465 to 0.375 (-0.09) — the cosine for non-gold entries (1578/2311) sits in the 0.1–0.4 range, the "hard reward" for correct predictions gets diluted, and incorrect predictions also get small credit, washing out the description / salary signal. The argmax-aware compromise gives 1.0 to correct predictions (equivalent to hard match) and partial credit to wrong predictions whose target-class cosine is high (where hard match would give 0). With this, the `with_category` config's nDCG@10 goes 0.639 → 0.641 (slight improvement), P@5 stays at 0.465 — preserving the anti-hard-filter stance without letting classifier noise drag the numbers down.
 
 The scoring engine adds a `category` field with default weight 0.10. `DEFAULT_WEIGHTS` becomes:
 
@@ -818,12 +818,12 @@ Hard filtering is applied at candidate-load time via SQL `WHERE`, **only when pa
 | Flag | Default | Behaviour | When to enable |
 |------|------|------|---------|
 | `normalize=False` | ✓ | Sort by `final_score` desc and take top-K | **Current production config** (pool_eval / demo both use the default) |
-| `normalize=True` | | Min-max normalize within each source group, then sort by `normalized_score` | Kept only as a §6.5 ablation comparison |
-| `dedupe=True` | | Deduplicate by (company, title) so the same job posted under multiple `job_id`s does not flood the top-K | **Enabled on the demo path** (`graph.py:node_collection_fusion` passes `dedupe=True`); pool_eval uses its own evaluation code that bypasses this node, so §6.5 numbers are unaffected |
+| `normalize=True` | | Min-max normalize within each source group, then sort by `normalized_score` | Kept only as an ablation comparison |
+| `dedupe=True` | | Deduplicate by (company, title) so the same job posted under multiple `job_id`s does not flood the top-K | **Enabled on the demo path** (`graph.py:node_collection_fusion` passes `dedupe=True`); pool_eval uses its own evaluation code that bypasses this node, so the ablation numbers are unaffected |
 
 **Why `normalize` is bypassed by default**: empirically, min-max normalization forced both sources' "local maxima" to equal 1.0, which let the smaller source (Greenhouse, 178 entries — only 7.7% of the corpus) repeatedly push edge-case jobs (e.g. 'Brazil - Remote') into the top-10. We bypass it by default, while keeping `normalize_scores` as an optional tool and as the regression baseline.
 
-**Why the demo path enables `dedupe`**: HN "Who is Hiring" is a monthly thread — the same company / role gets posted across multiple monthly threads, producing different `job_id`s in IE. Without dedup, a demo user searching "senior python remote" sees companies like River / RINSE appearing 2–3 times in the top-5 (final-review F1.1 / F1.4 / F4.18 all hit this). `dedupe` defaults off and is explicitly enabled by the graph, so the pool_eval evaluation path keeps its original behaviour.
+**Why the demo path enables `dedupe`**: HN "Who is Hiring" is a monthly thread — the same company / role gets posted across multiple monthly threads, producing different `job_id`s in IE. Without dedup, a demo user searching "senior python remote" sees companies like River / RINSE appearing 2–3 times in the top-5 (observed repeatedly during manual testing). `dedupe` defaults off and is explicitly enabled by the graph, so the pool_eval evaluation path keeps its original behaviour.
 
 ### 3.9 LLM answer generation (post-processing stage)
 

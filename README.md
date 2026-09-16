@@ -1,60 +1,110 @@
 # Job Intelligence Agent
 
-Multi-source job-search system — natural-language queries + multi-field weighted scoring over English-language job postings, with a retrieval-strategy Planner, LLM reranking, result verification, and cross-turn preference memory (vNext).
+[English](README.md) | [简体中文](README.zh-CN.md)
+
+![python](https://img.shields.io/badge/python-3.11-3776AB) ![langgraph](https://img.shields.io/badge/orchestration-langgraph-1C3C3C) ![llm](https://img.shields.io/badge/llm-gpt--4o--mini-10A37F) ![mysql](https://img.shields.io/badge/storage-mysql%208-00758F) ![streamlit](https://img.shields.io/badge/demo-streamlit-FF4B4B) ![tests](https://github.com/z8ri/job-intelligence-agent/actions/workflows/tests.yml/badge.svg) [![license](https://img.shields.io/badge/license-MIT-3DA639)](LICENSE)
+
+Natural-language job search over 2,311 postings from HackerNews "Who is Hiring" and the public Greenhouse/Lever APIs. Most systems in this space pick one of two extremes: hard-filter on salary/location and throw away close matches, or hand everything to an LLM and lose control over ranking. This project takes a third path — a from-scratch multi-field scoring engine with continuous, decay-based fields, a retrieval Planner that adapts strategy per query, and an LLM used narrowly (query understanding, reranking, answer generation) rather than as the sole judge of relevance.
 
 ## Background
 
 This project started as coursework for **Information Retrieval and Web Agents** (EN.601.466/666) at Johns Hopkins University, taught by Prof. David Yarowsky, and has continued to evolve independently in this personal repository since.
 
-## Overview
+## How it works
 
-Ingests data from English-language job sources (HackerNews "Who is Hiring" crawler + the public Greenhouse / Lever JSON APIs), stores all fields in MySQL, and lets the user ask natural-language questions. A constrained Planner classifies each query (exact / semantic / exploratory) and picks a retrieval strategy — TF-IDF, BM25, Dense embeddings, or RRF fusion of BM25+Dense, optionally refined by an LLM reranker — then a multi-field weighted scoring engine computes a composite relevance score for every job. A rule-based Verifier filters out results that don't actually satisfy the user's constraints (and triggers one bounded retry if nothing survives), and preferences persist across turns within a session. See [docs/system_design.md](docs/system_design.md) for the full design, including what's original vs. library-based.
+```mermaid
+flowchart LR
+    Q[user query] --> QU["query_understanding<br/>+ retrieval_mode classification<br/>+ cross-turn memory merge"]
+    QU -- not a job query --> RJ[reject]
+    QU -- signal-free cold start --> CL[clarify]
+    QU -- else --> QE[query_expansion] --> CA[candidate_loading]
+    CA --> SC["unified_scoring<br/>Planner: BM25 / Dense / RRF (+ LLM reranker)<br/>+ multi-field weighted score"]
+    SC --> CF[collection_fusion]
+    CF --> V["verification<br/>valid / rejected / unknown"]
+    V -- 0 valid, retry < 1 --> SC
+    V --> CT[classification] --> AG[answer_generation]
+```
+
+Retrieval isn't fixed per deployment — it's chosen per query. `query_understanding` classifies intent into `exact` / `semantic` / `exploratory`, and a constrained Planner maps that to a concrete retrieval + reranking combination:
+
+| `retrieval_mode` | Meaning | Retrieval | LLM reranker |
+|---|---|---|---|
+| `exact` | precise tech terms, exact titles | BM25 | off |
+| `semantic` | clear intent, wording may not literally overlap | RRF fusion of BM25 + Dense embeddings | off |
+| `exploratory` | vague / underspecified | RRF fusion | on |
+
+So a precise query like "Python SRE roles" never pays for the dense retrieval or reranking that a vague one like "find me a job" needs — and if a query is *so* underspecified there's nothing to retrieve on (no memory from earlier turns, no fields extracted at all), the pipeline asks a clarifying question instead of guessing.
+
+After scoring, a rule-based **Verifier** re-checks each ranked result against constraints that a similarity score can't express — a highly-relevant posting can still be a part-time or internship role when the user wants full-time, or have no disclosed salary when the user specified a target. Verified-invalid results are dropped; if that leaves zero valid results, the pipeline retries once with the strongest retrieval combination before giving up. Preferences also persist within a chat session (MySQL-backed, not LangGraph's checkpointer), so "remote only" mentioned once doesn't need repeating on every follow-up.
+
+See [docs/system_design.md](docs/system_design.md) for the full design — including an explicit original-vs-library breakdown and an honest declaration of where the LLM is and isn't allowed to influence ranking.
+
+## Results
+
+Real pooled evaluation, 40 queries:
+
+| Config | P@5 | nDCG@10 |
+|---|---:|---:|
+| BM25 (best pre-vNext baseline) | 0.375 | 0.567 |
+| RRF fusion (BM25 + Dense) + LLM reranker | **0.620** | **0.743** |
+| Δ | **+24.5pp** | **+17.6pp** |
+
+Full methodology in `data/eval_results_vnext/`.
+
+## Highlights
+
+- **Constrained Planner** — adaptive retrieval-strategy selection per query, not a fixed pipeline (`src/pipeline/graph.py`, `_PLANNER_MODE_MAP`).
+- **Dense retrieval + RRF fusion** — OpenAI embeddings catch semantically-related postings that share no vocabulary with the query; Reciprocal Rank Fusion combines them with BM25 without one scale dominating the other (`src/ir/dense.py`, `src/ir/rrf.py`).
+- **LLM reranker, honestly scoped** — rescoring is real and does influence ranking; it's gated behind the Planner, bounded to the top 50 candidates, and degrades silently to the coarse ranking on any failure (`src/scoring/reranker.py`).
+- **Verifier + bounded retry** — rule-based, no extra LLM cost, catches what a relevance score can't (`src/scoring/verifier.py`).
+- **Cross-turn preference memory** — session-scoped MySQL merge, built without LangGraph's interrupt/checkpointer machinery (`src/db/memory.py`).
+- **Domain-original scoring** — asymmetric-decay salary scoring, tiered location proximity with a hand-built US-metro lookup table, and query-adaptive weight renormalization, all pre-dating the LLM/retrieval layer above (`src/scoring/engine.py`).
+
+## Demo
+
+![Streamlit demo — welcome screen](assets/demo_welcome.png)
+
+```bash
+conda activate jobir
+streamlit run app.py
+```
+
+The Planner picks retrieval strategy automatically; each browser chat session carries a `session_id` so preferences persist across turns.
+
+## Quick start
+
+1. **Conda env**: `conda activate jobir` (Python 3.11; dependencies in `requirements.txt`).
+2. **MySQL 8.0**: `mysql -u root -p < src/db/schema.sql` to create the database and tables, then `python -m src.db.ingest_adapter` to load `data/structured_jobs.json` (≈2,311 records).
+3. **Environment**: `cp .env.example .env` and fill in `OPENAI_API_KEY` (and `DB_*` if they differ from the defaults).
+
+```bash
+# CLI, one-shot
+python -m src.pipeline.graph "remote senior backend python in NYC around 150k"
+
+# Interactive demo
+streamlit run app.py
+
+# Tests (offline, no DB/API required)
+pytest tests/
+```
 
 ## Project layout
 
 ```
 ├── docs/                # System design, evaluation methodology, eval results, report draft
-├── src/                 # Source code
+├── src/
 │   ├── spider/          # Crawler + information extraction
-│   ├── db/              # MySQL storage layer + cross-turn preference memory (memory.py)
-│   ├── ir/              # TF-IDF / BM25 / Dense retrieval + RRF fusion + Query Expansion
-│   ├── scoring/         # Multi-field scoring functions + Collection Fusion + LLM reranker + Verifier
+│   ├── db/               # MySQL storage layer + cross-turn preference memory (memory.py)
+│   ├── ir/               # TF-IDF / BM25 / Dense retrieval + RRF fusion + Query Expansion
+│   ├── scoring/          # Multi-field scoring engine + Collection Fusion + LLM reranker + Verifier
 │   ├── classification/  # Vector centroid classifier
-│   ├── llm/             # LLM query understanding (incl. retrieval-mode classification) + answer generation
-│   └── pipeline/        # LangGraph pipeline orchestration (constrained Planner, verification retry, clarify/reject)
-├── data/                # Static data resources (synonyms, metro areas, etc.; `data/external/engineering_jobs.csv` is the public HuggingFace engineering-jobs dataset used to expand the v2 training set)
-├── tests/               # Tests
-└── eval/                # Evaluation experiments
+│   ├── llm/              # LLM query understanding (incl. retrieval-mode classification) + answer generation
+│   └── pipeline/         # LangGraph pipeline orchestration (Planner, verification retry, clarify/reject)
+├── data/                 # Static resources + eval outputs (data/eval_results/ is the historical, already-graded baseline; data/eval_results_vnext/ is the post-vNext measurement — kept separate on purpose)
+├── tests/                # Unit tests (offline — external calls are mocked)
+└── .github/workflows/    # CI
 ```
 
-## Quick start
+## License
 
-### Prerequisites
-
-1. **Conda env**: `conda activate jobir` (Python 3.11; dependencies in `requirements.txt`).
-2. **MySQL 8.0**: start a local `job_intelligence` database (account / port noted in your local config), and run the ingest script once (≈ 2,311 records across both sources).
-3. **`.env`**: at the project root, create `.env` with one line: `OPENAI_API_KEY=sk-...`.
-
-### Command-line end-to-end
-
-```bash
-python -m src.pipeline.graph "remote senior backend python in NYC around 150k"
-```
-
-Returns an LLM-generated natural-language summary of the top-5 matching jobs.
-
-### Interactive demo (recommended)
-
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-```
-
-The browser opens `http://localhost:8501`. The UI follows a modern conversational layout:
-
-- **Left sidebar (264 px, persistent)**: top-left logo + "Job Intelligence" title / `✚ New chat` button / Recent chat list (click to switch; the current chat is highlighted with `primary` style).
-- **Main area (max-width 760 px, centered)**: a welcome screen with 4 starter preset cards (Senior Python remote $150k+ / Frontend NYC hybrid / ML internship non-CS / Fullstack startup ~$130k) + a pill-shaped chat input at the bottom (Enter to submit, Shift+Enter for newline).
-- **Answer area**: assistant natural-language summary + a "Top Matches" card section (each card shows category label / title / company · location / score / a 6-dimension score breakdown bar).
-- **Pipeline live status**: each query expands an `st.status` block showing each node (query understanding → expansion → loading → scoring → fusion → verification → classification → answer generation) ticking off one by one. Non-job queries (e.g. "hi" / "weather today") short-circuit straight to the reject node; a genuinely underspecified query (e.g. "find me a job") short-circuits to a clarifying question instead of retrieving on no signal.
-- **Retrieval strategy**: not hardcoded — the Planner classifies each query (exact / semantic / exploratory) and picks TF-IDF/BM25/Dense/RRF + whether to rerank; `top_k=5`. Ablation switches (forcing a specific `ir_mode` / Top-K / `equal_weights` / `skip_expansion`) live in `src/eval/*.py` for evaluation reproducibility and are not exposed in the demo UI.
-- **Cross-turn memory**: each browser chat session carries a stable `session_id`, so preferences mentioned earlier in the same chat (e.g. "remote only") carry over to later turns that don't repeat them, without needing to re-state everything each message.
+[MIT](LICENSE)

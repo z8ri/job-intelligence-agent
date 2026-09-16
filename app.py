@@ -45,22 +45,28 @@ st.set_page_config(
 
 CUSTOM_CSS = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
 
+/* Catalog-card palette: cool paper (not cream), stamp-ink navy accent —
+   deliberately not the warm-cream/serif/terracotta combo this started as. */
 :root {
-    --bg: #faf9f5;
-    --bg-card: #ffffff;
-    --bg-soft: #f4f2ec;
-    --border: #ebe9e0;
-    --border-strong: #d9d6cc;
-    --text: #28272a;
-    --text-muted: #82817a;
-    --accent: #c15f3c;
-    --accent-soft: #f0e3da;
+    --bg: #f1f2ec;
+    --bg-card: #fffffe;
+    --bg-soft: #e8eae0;
+    --border: #dcdfd3;
+    --border-strong: #c1c6b4;
+    --text: #1a1f1a;
+    --text-muted: #5c6459;
+    --text-faint: #93998a;
+    --accent: #23415c;
+    --accent-soft: #dde4e9;
+    --good: #3d6b3d;
+    --mono: 'Courier Prime', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    --serif: 'Source Serif 4', Georgia, serif;
 }
 
 html, body, [data-testid="stAppViewContainer"] { background: var(--bg) !important; }
-.stApp { background: var(--bg); font-family: 'Inter', system-ui, sans-serif; color: var(--text); }
+.stApp { background: var(--bg); font-family: var(--serif); color: var(--text); }
 [data-testid="stHeader"], [data-testid="stToolbar"], footer { display: none !important; }
 
 .block-container {
@@ -88,83 +94,98 @@ html, body, [data-testid="stAppViewContainer"] { background: var(--bg) !importan
 }
 
 .sidebar-brand {
-    text-align: center;
-    padding: 0.4rem 0 1.3rem 0;
+    text-align: left;
+    padding: 0.2rem 0 1.1rem 0;
     margin-bottom: 0.8rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1.5px solid var(--text);
 }
 .sidebar-shield {
-    width: 38px;
+    width: 26px;
     height: auto;
-    margin: 0 auto 0.7rem auto;
     display: block;
+    margin-bottom: 8px;
 }
 .sidebar-title {
-    font-family: 'Newsreader', serif;
-    font-size: 1.05rem;
-    font-weight: 500;
+    font-family: var(--mono);
+    font-size: 0.98rem;
+    font-weight: 700;
     color: var(--text);
-    letter-spacing: -0.005em;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    white-space: nowrap;
 }
 .sidebar-subtitle {
-    font-size: 0.68rem;
+    font-family: var(--mono);
+    font-size: 0.66rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.07em;
-    margin-top: 4px;
-    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-top: 3px;
+    font-weight: 400;
+    white-space: nowrap;
 }
 
 .sidebar-section-label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    color: var(--text-faint);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     margin: 1.6rem 0 0.5rem 0.2rem;
 }
-.sidebar-recent-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 10px 12px;
-    font-size: 0.85rem;
-    color: var(--text);
-    line-height: 1.4;
-    margin-bottom: 6px;
+
+/* "+ New chat" is the one filled/primary action in the sidebar — stamp-ink
+   navy fill, so it reads as a different class of control from the outline
+   rows below it (recent chats), not an identical repeated shape. */
+[data-testid="stSidebar"] .stButton:first-of-type > button {
+    background: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+    border-radius: 3px !important;
+    color: var(--bg-card) !important;
+    font-family: var(--mono) !important;
+    font-weight: 700 !important;
+    font-size: 0.82rem !important;
+    padding: 9px 14px !important;
+    letter-spacing: 0.01em;
+}
+[data-testid="stSidebar"] .stButton:first-of-type > button:hover {
+    background: #1a3247 !important;
+    border-color: #1a3247 !important;
+    color: var(--bg-card) !important;
 }
 
-/* Sidebar buttons: scoped style overriding the main outline-card look */
+/* Recent-chat rows: outline, ledger-style */
 [data-testid="stSidebar"] .stButton > button {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 10px !important;
-    padding: 9px 14px !important;
-    font-size: 0.88rem !important;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    border-left: 2px solid var(--border) !important;
+    border-radius: 0 !important;
+    padding: 7px 10px !important;
+    font-size: 0.85rem !important;
+    font-family: var(--serif) !important;
     text-align: left !important;
-    color: var(--text) !important;
-    min-height: 38px !important;
-    font-weight: 500 !important;
+    color: var(--text-muted) !important;
+    min-height: 34px !important;
+    font-weight: 400 !important;
     line-height: 1.3 !important;
 }
 [data-testid="stSidebar"] .stButton > button:hover {
     background: var(--bg-soft) !important;
-    border-color: var(--border-strong) !important;
+    border-left-color: var(--border-strong) !important;
     color: var(--text) !important;
 }
 
-/* Active conversation uses type="primary": warm-gray background, slightly bolder weight. */
+/* Active conversation: solid left rule in ink, text promoted to full ink color. */
 [data-testid="stSidebar"] .stButton > button[kind="primary"] {
-    background: #e8e4d6 !important;
-    background-color: #e8e4d6 !important;
-    border: 1px solid #d4cfbe !important;
+    background: var(--bg-soft) !important;
+    border-left: 2px solid var(--accent) !important;
     color: var(--text) !important;
     font-weight: 600 !important;
 }
 [data-testid="stSidebar"] .stButton > button[kind="primary"]:hover {
-    background: #ddd9c8 !important;
-    background-color: #ddd9c8 !important;
-    border-color: #c8c2af !important;
+    background: var(--bg-soft) !important;
+    border-left-color: var(--accent) !important;
     color: var(--text) !important;
 }
 [data-testid="stSidebar"] .stButton > button[kind="primary"]:focus {
@@ -172,51 +193,76 @@ html, body, [data-testid="stAppViewContainer"] { background: var(--bg) !importan
     outline: none !important;
 }
 
-/* Hide the sidebar's collapse button; keep collapsedControl (re-open arrow) visible. */
-[data-testid="stSidebarCollapseButton"],
-[data-testid="stSidebar"] button[kind="header"],
-[data-testid="stSidebar"] button[kind="headerNoPadding"] {
-    display: none !important;
+/* Hide the sidebar's collapse button on desktop (persistent sidebar is the
+   intended layout there) — but NOT on narrow viewports: initial_sidebar_state
+   ="expanded" opens the sidebar on phone width too, and without this control
+   a mobile user would have no way to close it and see the main content at all. */
+@media (min-width: 641px) {
+    [data-testid="stSidebarCollapseButton"],
+    [data-testid="stSidebar"] button[kind="header"],
+    [data-testid="stSidebar"] button[kind="headerNoPadding"] {
+        display: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    [data-testid="stSidebar"] {
+        width: 85vw !important;
+        min-width: 0 !important;
+    }
 }
 
 /* --- Hero --- */
+.hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 4rem;
+}
 .hero-title {
-    font-family: 'Newsreader', serif;
-    font-size: 2.8rem;
-    font-weight: 400;
+    font-family: var(--mono);
+    font-size: 2.3rem;
+    font-weight: 700;
     color: var(--text);
-    margin-top: 4.5rem;
-    margin-bottom: 0.6rem;
-    line-height: 1.12;
-    letter-spacing: -0.015em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 .hero-sub {
+    font-family: var(--serif);
     color: var(--text-muted);
-    font-size: 1rem;
-    margin-bottom: 2.8rem;
-    line-height: 1.5;
+    font-size: 1.05rem;
+    max-width: 46ch;
+    margin-bottom: 2.6rem;
+    line-height: 1.55;
 }
 
-/* --- Suggested prompt buttons (outline cards) --- */
+/* --- Suggested prompts: ledger rows, not icon cards --- */
 .stButton > button {
     background: var(--bg-card) !important;
     border: 1px solid var(--border) !important;
-    border-radius: 12px !important;
-    padding: 14px 18px !important;
+    border-left: 3px solid var(--border-strong) !important;
+    border-radius: 2px !important;
+    padding: 12px 16px !important;
     text-align: left !important;
     color: var(--text) !important;
-    font-weight: 500 !important;
-    font-size: 0.92rem !important;
-    transition: all 0.15s ease !important;
+    font-family: var(--serif) !important;
+    font-weight: 600 !important;
+    font-size: 0.94rem !important;
+    transition: border-left-color 0.15s ease, background 0.15s ease !important;
     box-shadow: none !important;
-    min-height: 64px;
-    line-height: 1.45;
+    min-height: 60px;
+    line-height: 1.4;
     white-space: normal !important;
     justify-content: flex-start !important;
 }
 .stButton > button:hover {
-    border-color: var(--border-strong) !important;
-    background: #fdfcf8 !important;
+    border-left-color: var(--accent) !important;
+    background: var(--bg-soft) !important;
     color: var(--text) !important;
 }
 .stButton > button:focus { outline: none !important; box-shadow: 0 0 0 3px var(--accent-soft) !important; }
@@ -241,21 +287,21 @@ html, body, [data-testid="stAppViewContainer"] { background: var(--bg) !importan
     padding: 1.5rem 1rem 1.8rem 1rem !important;
 }
 
-/* 2. Pill outer shell (the white rounded rectangle) */
+/* 2. Input shell: a query line, not a chat-bubble pill — rectangular with a
+   thicker bottom rule, closer to a command/search field than a messenger. */
 [data-testid="stChatInput"] > div {
     background: var(--bg-card) !important;
     background-color: var(--bg-card) !important;
     border: 1px solid var(--border-strong) !important;
-    border-radius: 24px !important;
-    box-shadow: 0 4px 16px rgba(40, 39, 42, 0.05),
-                0 1px 2px rgba(40, 39, 42, 0.04) !important;
-    transition: border-color 0.18s ease, box-shadow 0.18s ease !important;
+    border-bottom: 2px solid var(--text) !important;
+    border-radius: 3px !important;
+    box-shadow: none !important;
+    transition: border-color 0.15s ease !important;
     overflow: hidden !important;
 }
 [data-testid="stChatInput"] > div:focus-within {
-    border-color: #b4afa1 !important;
-    box-shadow: 0 6px 22px rgba(40, 39, 42, 0.08),
-                0 1px 2px rgba(40, 39, 42, 0.04) !important;
+    border-color: var(--accent) !important;
+    border-bottom-color: var(--accent) !important;
 }
 
 /* 3. Kill BaseWeb's gray inner wrappers (the gray rectangle inside the pill) */
@@ -276,19 +322,19 @@ html, body, [data-testid="stAppViewContainer"] { background: var(--bg) !importan
     background-color: transparent !important;
     border: none !important;
     color: var(--text) !important;
-    font-family: 'Inter', system-ui, sans-serif !important;
+    font-family: var(--serif) !important;
     font-size: 1rem !important;
     line-height: 1.55 !important;
-    padding: 18px 22px !important;
-    min-height: 56px !important;
+    padding: 16px 20px !important;
+    min-height: 52px !important;
     caret-color: var(--accent) !important;
     resize: none !important;
 }
 [data-testid="stChatInput"] textarea::placeholder {
-    color: var(--text-muted) !important;
-    opacity: 0.62 !important;
-    font-size: 1rem !important;
-    font-family: 'Inter', system-ui, sans-serif !important;
+    color: var(--text-faint) !important;
+    opacity: 1 !important;
+    font-size: 0.95rem !important;
+    font-family: var(--mono) !important;
 }
 [data-testid="stChatInput"] textarea:focus {
     box-shadow: none !important;
@@ -313,15 +359,16 @@ html, body, [data-testid="stAppViewContainer"] { background: var(--bg) !importan
     width: 100%;
 }
 .msg-user-bubble {
-    background: #efece2;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 11px 17px;
+    background: var(--bg-soft);
+    border: none;
+    border-right: 3px solid var(--accent);
+    border-radius: 2px;
+    padding: 10px 16px;
     max-width: 78%;
     color: var(--text);
     line-height: 1.5;
-    font-size: 1rem;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.95rem;
+    font-family: var(--mono);
     word-wrap: break-word;
     white-space: pre-wrap;
 }
@@ -354,59 +401,115 @@ html, body, [data-testid="stAppViewContainer"] { background: var(--bg) !importan
     margin: 0 !important;
 }
 
-/* --- Job result cards --- */
+/* --- Job result cards: ranked ledger entries, not chat-app cards --- */
 .jobs-heading {
-    margin-top: 1.4rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: 0.06em;
+    margin-top: 1.6rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-faint);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
 }
 [data-testid="stContainer"] > [data-testid="stVerticalBlockBorderWrapper"],
 div[data-testid="stVerticalBlock"] [data-testid="stVerticalBlockBorderWrapper"] {
     background: var(--bg-card) !important;
     border: 1px solid var(--border) !important;
-    border-radius: 14px !important;
+    border-radius: 2px !important;
     padding: 4px !important;
+}
+.job-rank {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-faint);
+    letter-spacing: 0.04em;
 }
 .job-cat {
     color: var(--accent);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     margin-bottom: 4px;
 }
-.job-title { font-size: 1rem; font-weight: 600; color: var(--text); margin: 0 0 2px 0; }
-.job-meta { font-size: 0.85rem; color: var(--text-muted); }
+.job-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 0 0 2px 0; }
+.job-meta { font-family: var(--serif); font-size: 0.85rem; color: var(--text-muted); }
+.job-score {
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+.job-score-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: right;
+    margin-bottom: 2px;
+}
 
 /* --- Status block (pipeline progress) --- */
 [data-testid="stStatusWidget"], details[data-testid="stExpander"] {
     background: var(--bg-soft) !important;
     border: 1px solid var(--border) !important;
-    border-radius: 10px !important;
+    border-radius: 2px !important;
+    font-family: var(--mono) !important;
+    font-size: 0.85rem !important;
 }
 
-/* --- Progress bars --- */
-.stProgress > div > div > div > div { background: var(--accent) !important; }
-
-/* --- Metric --- */
-[data-testid="stMetric"] { background: transparent !important; }
-[data-testid="stMetricValue"] {
-    font-family: 'Newsreader', serif !important;
-    font-weight: 500 !important;
-    color: var(--text) !important;
-}
-[data-testid="stMetricLabel"] {
-    color: var(--text-muted) !important;
-    font-size: 0.75rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
+/* --- Progress bars: semantic "match strength" green, not the brand accent --- */
+.stProgress > div > div > div > div { background: var(--good) !important; }
+.stProgress > div > div > div { background: var(--bg-soft) !important; }
+[data-testid="stCaptionContainer"] {
+    font-family: var(--mono) !important;
+    font-size: 0.66rem !important;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-faint) !important;
 }
 
 /* --- Divider --- */
 hr { border-color: var(--border) !important; opacity: 0.6; }
+
+/* --- Assistant answer text: Streamlit's own markdown styles otherwise
+   override .stApp's font-family, and its default inline-code chip is a
+   dark VS-Code-style pill that clashes with this palette. */
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] li,
+[data-testid="stMarkdownContainer"] strong {
+    font-family: var(--serif) !important;
+    color: var(--text) !important;
+}
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3 {
+    font-family: var(--mono) !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-faint) !important;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 5px;
+    margin: 1.4rem 0 0.8rem !important;
+}
+[data-testid="stMarkdownContainer"] code {
+    background: var(--bg-soft) !important;
+    color: var(--accent) !important;
+    font-family: var(--mono) !important;
+    border: 1px solid var(--border) !important;
+    padding: 1px 6px !important;
+    border-radius: 2px !important;
+}
 </style>
 """
 
@@ -418,13 +521,13 @@ st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 # ---------------------------------------------------------------------------
 
 PRESET_QUERIES = [
-    {"emoji": "💵", "title": "Senior Python · remote · $150k+",
+    {"title": "Senior Python · remote · $150k+",
      "query": "senior python engineer remote $150k+"},
-    {"emoji": "🏙️", "title": "Frontend role in NYC, hybrid welcomed",
+    {"title": "Frontend role in NYC, hybrid welcomed",
      "query": "frontend job in NYC hybrid"},
-    {"emoji": "🧪", "title": "ML internship open to non-CS majors",
+    {"title": "ML internship open to non-CS majors",
      "query": "ML internship that accepts non-CS major"},
-    {"emoji": "🌐", "title": "Fullstack at a startup, ~$130k",
+    {"title": "Fullstack at a startup, ~$130k",
      "query": "fullstack engineer at startup hybrid 130k"},
 ]
 
@@ -526,17 +629,19 @@ def render_sidebar():
 
 
 def render_welcome():
+    st.markdown('<div class="hero-eyebrow">2,311 positions indexed</div>', unsafe_allow_html=True)
     st.markdown('<div class="hero-title">What kind of role are you looking for?</div>', unsafe_allow_html=True)
     st.markdown(
         '<div class="hero-sub">Ask in plain English — salary, location, tech stack, '
-        'remote vs. hybrid. We search 2,311 tech positions and rank by multi-field fit.</div>',
+        'remote vs. hybrid. A retrieval Planner picks the search strategy and '
+        'ranks results by multi-field fit.</div>',
         unsafe_allow_html=True,
     )
 
     cols = st.columns(2)
     for i, p in enumerate(PRESET_QUERIES):
         with cols[i % 2]:
-            if st.button(f"{p['emoji']}  {p['title']}", key=f"preset_{i}", use_container_width=True):
+            if st.button(p["title"], key=f"preset_{i}", use_container_width=True):
                 st.session_state.messages.append({"role": "user", "content": p["query"]})
                 st.rerun()
 
@@ -546,7 +651,7 @@ def render_job_results(result):
     if not jobs:
         return
 
-    st.markdown('<div class="jobs-heading">Top Matches</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="jobs-heading">Top {len(jobs)} Matches — Ranked</div>', unsafe_allow_html=True)
     for idx, job in enumerate(jobs):
         with st.container(border=True):
             cat = (job.get("predicted_category") or "").upper()
@@ -557,12 +662,18 @@ def render_job_results(result):
 
             cols = st.columns([4, 1])
             with cols[0]:
+                rank_cat = f'<span class="job-rank">{idx + 1:02d}</span>'
                 if cat:
-                    st.markdown(f'<div class="job-cat">{cat}</div>', unsafe_allow_html=True)
+                    rank_cat += f'&nbsp;&nbsp;<span class="job-cat">{cat}</span>'
+                st.markdown(f'<div>{rank_cat}</div>', unsafe_allow_html=True)
                 st.markdown(f'<div class="job-title">{title}</div>', unsafe_allow_html=True)
                 st.markdown(f'<div class="job-meta">{company} · {location}</div>', unsafe_allow_html=True)
             with cols[1]:
-                st.metric("Score", f"{score:.2f}")
+                st.markdown(
+                    f'<div class="job-score-label">Score</div>'
+                    f'<div class="job-score">{score:.2f}</div>',
+                    unsafe_allow_html=True,
+                )
 
             bd = job.get("score_breakdown") or {}
             if bd:

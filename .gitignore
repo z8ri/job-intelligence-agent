@@ -16,6 +16,7 @@ build/
 # 环境与密钥
 .env
 .env.*
+!.env.example
 *.key
 docs/环境配置.md
 
