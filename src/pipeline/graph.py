@@ -5,16 +5,16 @@ Flow:
   query_understanding ──[is_job_query=True]──> query_expansion → candidate_loading
                                               → unified_scoring → collection_fusion
                                               → verification ──[valid_count>0 or retried]──> classification → answer_generation → END
-                                                             ──[valid_count==0 and retry_count<1]──> unified_scoring (retry, ≤1 次)
+                                                             ──[valid_count==0 and retry_count<1]──> unified_scoring (retry, at most once)
                        ──[is_job_query=False]─> reject → END
 
 Nodes:
   1. query_understanding  — LLM extracts structured preferences AND classifies intent
   2. query_expansion      — expand keywords/tags via QueryExpander
   3. candidate_loading    — load jobs from MySQL with hard filters
-  4. unified_scoring      — TF-IDF/BM25/Dense/RRF 检索 + 可选 LLM 精排 + ScoringEngine 多字段打分
+  4. unified_scoring      — TF-IDF/BM25/Dense/RRF retrieval + optional LLM reranking + multi-field ScoringEngine
   5. collection_fusion    — normalize scores across sources, top-K
-  6. verification         — 标 valid/rejected/unknown；0 个 valid 时触发一次重试（换检索策略，不放宽硬条件）
+  6. verification         — mark valid/rejected/unknown; if 0 valid, retry once (switch retrieval strategy, never relax hard filters)
   7. classification       — predict job category (fallback if model absent)
   8. answer_generation    — LLM generates natural language answer
   R. reject               — produce a polite refusal for non-job queries
@@ -46,16 +46,19 @@ from src.scoring.engine import ScoringEngine
 
 
 # ---------------------------------------------------------------------------
-# 受约束 Planner：query_understanding 输出的 retrieval_mode → 具体检索配置
+# Constrained planner: retrieval_mode from query_understanding -> concrete retrieval config
 # ---------------------------------------------------------------------------
 
 _PLANNER_MODE_MAP = {
-    # 精确技术词/明确技能 → 纯 BM25 词面匹配，不需要 dense 的模糊语义，也不
-    # 需要精排（避免 dense 把概念相近、实际职责不同的职位召回进来）。
+    # Precise tech terms / explicit skills -> pure BM25 lexical matching. No need for
+    # dense fuzzy semantics or reranking (avoids dense pulling in jobs that are
+    # conceptually similar but have different actual responsibilities).
     "exact": {"ir_mode": "bm25", "use_reranker": False},
-    # 职责性描述、关键词不一定和职位原文重合 → BM25+Dense 按 RRF 融合。
+    # Responsibility-style descriptions whose keywords may not literally appear in
+    # the job text -> BM25 + Dense fused via RRF.
     "semantic": {"ir_mode": "hybrid_rrf", "use_reranker": False},
-    # 查询本身信息量很少 → 在 semantic 基础上加精排，多一层判断弥补检索信号不足。
+    # Query carries very little information -> semantic plus reranking, adding one
+    # more layer of judgment to compensate for the weak retrieval signal.
     "exploratory": {"ir_mode": "hybrid_rrf", "use_reranker": True},
 }
 
@@ -86,9 +89,10 @@ def _get_scoring_engine() -> ScoringEngine:
 
 
 def _get_ir_system() -> JobIRSystem:
-    """tfidf_model.pkl 是 python -m src.ir.tfidf 训练的，pickle 里 tokenizer 引用
-    __main__.JobIRSystem。任何非 src.ir.tfidf 入口加载都会报 AttributeError，
-    临时把类注入当前 __main__ 兜住。
+    """tfidf_model.pkl was trained via `python -m src.ir.tfidf`, so the pickled
+    tokenizer references __main__.JobIRSystem. Loading it from any entry point
+    other than src.ir.tfidf raises AttributeError; inject the class into the
+    current __main__ as a workaround.
     """
     global _ir_system
     if _ir_system is None:
@@ -132,10 +136,12 @@ _EMPTY_SIGNAL_FIELDS = [
 def node_query_understanding(state: PipelineState) -> dict:
     """Extract structured preferences AND classify intent (is_job_query) via LLM.
 
-    有 session_id 时和历史记忆合并（本轮明确提到的字段覆盖记忆，本轮没提的
-    字段回退记忆）。只有"真正冷启动+合并后仍然完全没有可用信号"才反问——
-    exploratory 模式（步骤④）本身就是为了应付模糊查询设计的，不能一模糊就
-    反问，否则前面步骤白做。
+    When a session_id is given, merge with stored memory (fields explicitly
+    mentioned this turn override memory; unmentioned fields fall back to it).
+    Only ask a clarifying question on a true cold start where the merged
+    preferences still carry no usable signal at all. The exploratory mode is
+    designed to handle vague queries, so vagueness alone must not trigger
+    clarification, or the upstream work is wasted.
     """
     result = parse_preferences(state["user_query"], state.get("api_key"))
     prefs = result["preferences"]
@@ -147,7 +153,7 @@ def node_query_understanding(state: PipelineState) -> dict:
         memory = load_memory(session_id)
         had_memory = bool(memory)
         prefs = merge_preferences(prefs, memory)
-        save_memory(session_id, prefs)  # 存合并后最新的完整画像
+        save_memory(session_id, prefs)  # persist the merged, up-to-date full profile
 
     needs_clarification = (
         is_job_query
@@ -177,7 +183,8 @@ def node_reject(state: PipelineState) -> dict:
 
 
 def node_clarify(state: PipelineState) -> dict:
-    """信息完全不足时反问，而不是瞎猜——只在真正冷启动+全空时触发。"""
+    """Ask a clarifying question instead of guessing when there is no usable
+    signal; only triggered on a true cold start with all fields empty."""
     msg = (
         "I'd like to help, but I need a bit more to go on — "
         "what kind of role, tech stack, location, or salary range are you looking for?\n\n"
@@ -219,10 +226,11 @@ def node_unified_scoring(state: PipelineState) -> dict:
     expanded_kw = state.get("expanded_keywords") or []
     text_query = " ".join(expanded_kw) if expanded_kw else state["user_query"]
 
-    # 受约束 Planner：query_understanding 已经判断过这条查询该用哪种检索
-    # 策略（exact/semantic/exploratory），这里映射成具体的 ir_mode/reranker
-    # 组合。显式传入的 config 优先于 Planner 的自动选择（CLI 调试、
-    # src/eval/* 的 ablation 配置都不受影响，行为和之前完全一致）。
+    # Constrained planner: query_understanding has already decided which retrieval
+    # strategy this query needs (exact/semantic/exploratory); map it to a concrete
+    # ir_mode/reranker combination here. An explicitly passed config takes
+    # precedence over the planner's choice, so CLI debugging and the ablation
+    # configs in src/eval/* keep behaving exactly as before.
     plan = _PLANNER_MODE_MAP.get(prefs.get("retrieval_mode"), {})
     ir_mode = (config.get("ir_mode") or plan.get("ir_mode") or "tfidf").lower()
     use_reranker = config["use_reranker"] if "use_reranker" in config else plan.get("use_reranker", False)
@@ -239,15 +247,17 @@ def node_unified_scoring(state: PipelineState) -> dict:
             for jid in all_ids
         }
     elif ir_mode == "hybrid_rrf":
-        # BM25（词面）+ Dense（语义）按名次做 RRF，而非原始分数加权平均——
-        # 两路分数尺度不同，直接平均会被尺度大的一路主导。
+        # BM25 (lexical) + Dense (semantic) fused by rank via RRF rather than a
+        # weighted average of raw scores: the two score scales differ, and a
+        # direct average would be dominated by the larger-scale source.
         bm25_s = _get_bm25_system().get_similarities(text_query)
         dense_s = _get_dense_system().get_similarities(text_query)
         fused = reciprocal_rank_fusion([bm25_s, dense_s])
-        # RRF 原始值量级很小（两路时最大约 2/(k+1)），必须重新 min-max 到 [0,1]
-        # 才能和 ScoringEngine 里其他字段（薪资/地点/标签…）的量级对齐；否则
-        # description 权重（默认最大，0.35）会被其他字段完全淹没，hybrid_rrf
-        # 等于没在按文本相关性排序。
+        # Raw RRF values are tiny (max about 2/(k+1) with two sources), so they must
+        # be min-max rescaled to [0,1] to match the magnitude of the other
+        # ScoringEngine fields (salary/location/tags/...). Otherwise the description
+        # weight (largest by default, 0.35) is completely drowned out and hybrid_rrf
+        # effectively stops ranking by text relevance.
         if fused:
             f_min, f_max = min(fused.values()), max(fused.values())
             if f_max > f_min:
@@ -260,14 +270,15 @@ def node_unified_scoring(state: PipelineState) -> dict:
         text_scores = _get_ir_system().get_similarities(text_query)
 
     if use_reranker:
-        # 对粗分 Top-N 做更细致的 query-职位相关性判断，重新打分覆盖粗分；
-        # 用原始 user_query 而非可能被 query_expansion 展开过的 text_query，
-        # 因为要判断的是"是否满足用户原话意图"，不是关键词匹配。
+        # Make a finer-grained query-job relevance judgment on the first-stage
+        # Top-N and overwrite their coarse scores. Use the original user_query,
+        # not text_query (which query_expansion may have expanded), because the
+        # question is "does this satisfy the user's stated intent", not keyword overlap.
         ranked_candidates = sorted(
             state["candidates"], key=lambda j: text_scores.get(j["job_id"], 0.0), reverse=True
         )
         reranked = rerank(state["user_query"], ranked_candidates, api_key=state.get("api_key"))
-        text_scores.update(reranked)  # 只覆盖被精排到的 Top-N，其余保留原粗分
+        text_scores.update(reranked)  # only the reranked Top-N are overwritten; the rest keep their coarse scores
 
     weight_adjustments = prefs.get("weight_adjustments") or {}
     engine = _get_scoring_engine()
@@ -291,8 +302,9 @@ def node_unified_scoring(state: PipelineState) -> dict:
 def node_collection_fusion(state: PipelineState) -> dict:
     """Normalize scores across data sources and select top-K.
 
-    dedupe=True: HN 月度帖会让同一岗位以多 job_id 入库，按 (company, title) 去重。
-    pool_eval 不调用此节点（自己平铺评估 12 配置），评估数字不受影响。
+    dedupe=True: the monthly HN threads cause the same posting to be stored under
+    multiple job_ids, so dedupe by (company, title). pool_eval does not call this
+    node (it evaluates its 12 configs flat on its own), so eval numbers are unaffected.
     """
     top_k = state.get("top_k") or 10
     ranked = fuse_and_rank(state["scored_jobs"], top_k=top_k, dedupe=True)
@@ -300,8 +312,10 @@ def node_collection_fusion(state: PipelineState) -> dict:
 
 
 def node_verification(state: PipelineState) -> dict:
-    """校验 ranked_jobs，标 valid/rejected/unknown；valid 数为 0 且还没重试过
-    时触发一次重试（换更强的检索策略，不碰 hard_filters，不放宽硬条件）。
+    """Verify ranked_jobs and mark each valid/rejected/unknown. If there are zero
+    valid results and no retry has happened yet, trigger a single retry with a
+    stronger retrieval strategy (hard_filters are left untouched; hard
+    constraints are never relaxed).
     """
     jobs = verify_jobs(state["ranked_jobs"], state["preferences"], state["user_query"])
     valid_count = sum(1 for j in jobs if j["verification_status"] == "valid")
@@ -309,9 +323,10 @@ def node_verification(state: PipelineState) -> dict:
     verified = [j for j in jobs if j["verification_status"] != "rejected"]
 
     if valid_count == 0 and retry_count < 1:
-        # 广播式加强：换成目前能力最强的检索组合。如果这一轮本来就已经是
-        # hybrid_rrf+rerank，这次重试不会有实质变化——这是已知的局限，
-        # vNext 只要求"最多重试一次"，不保证重试一定有效。
+        # Escalate to the strongest retrieval combination currently available. If
+        # this round was already hybrid_rrf + rerank, the retry changes nothing in
+        # practice; this is a known limitation. The spec only requires "retry at
+        # most once", not that the retry is guaranteed to help.
         config = dict(state.get("config") or {})
         config["ir_mode"] = "hybrid_rrf"
         config["use_reranker"] = True
@@ -435,7 +450,7 @@ def run_pipeline(
         api_key: OpenAI API key (default: from env)
         top_k: number of results to return
         config: ablation experiment flags (e.g., {"skip_expansion": True})
-        session_id: 跨轮偏好记忆用的会话标识；None 时行为等同单轮无状态
+        session_id: session identifier for cross-turn preference memory; None means single-turn, stateless
 
     Returns:
         Final PipelineState dict with all intermediate + final results
@@ -461,22 +476,22 @@ if __name__ == "__main__":
         sys.stdout.reconfigure(encoding="utf-8")
 
     parser = argparse.ArgumentParser(
-        description="跑一次完整 pipeline（冒烟测试用）"
+        description="Run the full pipeline once (smoke test)"
     )
-    parser.add_argument("query", nargs="+", help="自然语言查询")
+    parser.add_argument("query", nargs="+", help="natural language query")
     parser.add_argument(
         "--ir-mode",
         choices=["tfidf", "bm25", "dense", "hybrid", "hybrid_rrf"],
         default=None,
-        help="检索模式，不传则用默认（tfidf）",
+        help="retrieval mode; defaults to tfidf if omitted",
     )
     parser.add_argument(
         "--rerank", action="store_true",
-        help="对 Top-N 粗分候选做 LLM 精排",
+        help="LLM-rerank the Top-N first-stage candidates",
     )
     parser.add_argument(
         "--session", default=None,
-        help="会话ID，跨次调用共享偏好记忆（多次用同一个 id 模拟多轮对话）",
+        help="session ID for sharing preference memory across calls (reuse the same id to simulate a multi-turn conversation)",
     )
     args = parser.parse_args()
 
@@ -487,6 +502,6 @@ if __name__ == "__main__":
     if args.rerank:
         config["use_reranker"] = True
 
-    print(f"查询: {query}\n")
+    print(f"Query: {query}\n")
     result = run_pipeline(query, config=config, session_id=args.session)
-    print(f"回答:\n{result.get('answer', '无回答')}")
+    print(f"Answer:\n{result.get('answer', 'No answer')}")

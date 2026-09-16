@@ -1,14 +1,15 @@
 """
-§7.2 偏好提取准确率 — 缓存我们系统（gpt-4o-mini）的偏好提取输出
+Section 7.2 preference-extraction accuracy: cache our system's (gpt-4o-mini)
+preference-extraction output.
 
-对 data/test_queries.json 的 40 条查询依次调 parse_preferences，
-结果缓存到 data/eval_results/pref_system_output.json。
+Runs parse_preferences on each of the 40 queries in data/test_queries.json
+and caches the results to data/eval_results/pref_system_output.json.
 
-用法:
+Usage:
     python -m src.eval.cache_pref_system_output
 
-成本:
-    40 次 gpt-4o-mini 调用，约 $0.005
+Cost:
+    40 gpt-4o-mini calls, roughly $0.005
 """
 
 import json
@@ -31,7 +32,7 @@ def main() -> int:
     with TEST_QUERIES_PATH.open("r", encoding="utf-8") as f:
         queries = json.load(f)
 
-    # 断点续跑：若已有缓存则合并（方便中断后继续）
+    # Resumable: merge with any existing cache so an interrupted run can continue
     existing: dict = {}
     if OUT_PATH.exists():
         with OUT_PATH.open("r", encoding="utf-8") as f:
@@ -43,7 +44,7 @@ def main() -> int:
         qid = q["id"]
         if qid in existing:
             results.append(existing[qid])
-            print(f"[{i+1}/{len(queries)}] {qid} 已缓存")
+            print(f"[{i+1}/{len(queries)}] {qid} cached")
             continue
         try:
             start = time.time()
@@ -56,7 +57,7 @@ def main() -> int:
                 "preferences": out["preferences"],
                 "weights": out["weights"],
             })
-            # 增量落盘，防中断
+            # Write incrementally so nothing is lost on interruption
             OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
             OUT_PATH.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
         except Exception as e:
@@ -65,7 +66,7 @@ def main() -> int:
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n已缓存 {len(results)} 条到 {OUT_PATH}")
+    print(f"\nCached {len(results)} entries to {OUT_PATH}")
     return 0
 
 

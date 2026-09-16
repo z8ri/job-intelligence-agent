@@ -11,8 +11,9 @@ _client: OpenAI | None = None
 
 
 def _load_dotenv_once() -> None:
-    """启动时把项目根 .env 里的 KEY=VALUE 注入 os.environ（已在 env 的不覆盖）。
-    .env 已 gitignore；用户写一行 OPENAI_API_KEY=sk-... 即可。"""
+    """At startup, load KEY=VALUE pairs from the project-root .env into os.environ
+    (existing env vars are not overridden). .env is gitignored; a single line
+    OPENAI_API_KEY=sk-... is enough."""
     env_path = Path(__file__).resolve().parent.parent.parent / ".env"
     if not env_path.exists():
         return

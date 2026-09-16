@@ -1,22 +1,22 @@
 """
-§7.2 偏好提取准确率 — 指标计算
+Section 7.2 preference-extraction accuracy: metric computation.
 
-读取 data/eval_results/pref_extraction_gold.json（三家多数投票的 gold）
-和 data/eval_results/pref_system_output.json（我们系统 gpt-4o-mini 的输出），
-按字段算准确率。
+Reads data/eval_results/pref_extraction_gold.json (majority-vote gold from the
+three LLMs) and data/eval_results/pref_system_output.json (our system's
+gpt-4o-mini output) and computes per-field accuracy.
 
-字段匹配规则：
-- target_salary：误差 ≤ $10k 算 match（None 对 None 也算 match）
-- preferred_location：小写后字符串相等
-- remote_preference / preferred_category：精确相等
-- desired_tags / description_keywords：Jaccard ≥ 0.6 算 match（None 对 None match）
-- weight_adjustments：dict 精确相等（键和值都相等）
-- hard_filters：忽略（大多数为空）
+Field matching rules:
+- target_salary: match if within $10k (None vs None also matches)
+- preferred_location: case-insensitive string equality
+- remote_preference / preferred_category: exact equality
+- desired_tags / description_keywords: match if Jaccard >= 0.6 (None vs None matches)
+- weight_adjustments: exact dict equality (keys and values)
+- hard_filters: ignored (almost always empty)
 
-用法:
+Usage:
     python -m src.eval.pref_metrics
 
-输出:
+Outputs:
     data/eval_results/pref_extraction_metrics.json
     data/eval_results/pref_extraction_report.md
 """
@@ -111,7 +111,7 @@ def main() -> int:
     shared_ids = sorted(set(gold_records) & set(system_records))
     n = len(shared_ids)
     if n == 0:
-        print("[error] gold 与 system 无共同 query_id", file=sys.stderr)
+        print("[error] gold and system share no query_id", file=sys.stderr)
         return 1
 
     per_field_correct: dict[str, int] = {f: 0 for f in EVAL_FIELDS}
@@ -151,25 +151,25 @@ def main() -> int:
     METRICS_PATH.write_text(json.dumps(metrics, ensure_ascii=False, indent=2), encoding="utf-8")
 
     lines = [
-        "# 偏好提取准确率评估报告 (§7.2)",
+        "# Preference Extraction Accuracy Report (Section 7.2)",
         "",
-        f"- 测试查询：**{n}** 条（data/test_queries.json 全集）",
-        f"- Gold 来源：Claude / ChatGPT / Gemini 三家独立提取 + 字段粒度多数投票",
-        f"- 系统：gpt-4o-mini（src/llm/query_understanding.py）",
+        f"- Test queries: **{n}** (all of data/test_queries.json)",
+        f"- Gold source: independent extraction by Claude / ChatGPT / Gemini + field-level majority vote",
+        f"- System: gpt-4o-mini (src/llm/query_understanding.py)",
         "",
-        "## 字段级准确率",
+        "## Per-field accuracy",
         "",
-        "| 字段 | 匹配规则 | accuracy |",
+        "| Field | Match rule | accuracy |",
         "|---|---|---|",
     ]
     rules = {
-        "target_salary": f"误差 ≤ ${SALARY_TOL:,}",
-        "preferred_location": "小写字符串相等",
-        "remote_preference": "精确相等",
-        "preferred_category": "精确相等",
+        "target_salary": f"within ${SALARY_TOL:,}",
+        "preferred_location": "case-insensitive string equality",
+        "remote_preference": "exact equality",
+        "preferred_category": "exact equality",
         "desired_tags": f"Jaccard ≥ {JACCARD_MIN}",
         "description_keywords": f"Jaccard ≥ {JACCARD_MIN}",
-        "weight_adjustments": "dict 精确相等",
+        "weight_adjustments": "exact dict equality",
     }
     for f in EVAL_FIELDS:
         lines.append(f"| {f} | {rules[f]} | {field_acc[f]:.3f} |")
@@ -177,9 +177,9 @@ def main() -> int:
     lines.extend([
         "",
         f"- **Macro-field accuracy: {macro:.3f}**",
-        f"- 全字段同时正确：{all_correct}/{n} ({all_correct/n:.3f})",
+        f"- All fields correct at once: {all_correct}/{n} ({all_correct/n:.3f})",
         "",
-        "## 失败案例（前 10 条）",
+        "## Failure cases (first 10)",
         "",
     ])
 
@@ -195,7 +195,7 @@ def main() -> int:
     print(f"Macro-field accuracy: {macro:.3f}")
     for f in EVAL_FIELDS:
         print(f"  {f:<22} {field_acc[f]:.3f}")
-    print(f"已写入:")
+    print(f"Written:")
     print(f"  - {METRICS_PATH}")
     print(f"  - {REPORT_PATH}")
     return 0

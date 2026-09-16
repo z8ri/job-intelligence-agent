@@ -45,7 +45,7 @@ class GreenhouseSpider:
 
         for slug in self.company_slugs:
             api_url = f"https://boards-api.greenhouse.io/v1/boards/{slug}/jobs?content=true"
-            print(f"正在从 Greenhouse 获取 {slug.upper()} 的职位...")
+            print(f"Fetching {slug.upper()} jobs from Greenhouse...")
 
             response = self._get_with_retry(api_url)
             if response is None:
@@ -78,7 +78,7 @@ class GreenhouseSpider:
                     all_new_jobs.append(structured_job)
 
             except (ValueError, KeyError) as e:
-                print(f"解析 {slug} 响应时出错: {e}")
+                print(f"Error parsing {slug} response: {e}")
 
             time.sleep(1.5)
 
@@ -92,16 +92,16 @@ class GreenhouseSpider:
                     return resp
                 if resp.status_code in (429, 500, 502, 503, 504):
                     backoff = 2 ** attempt
-                    print(f"  HTTP {resp.status_code}，{backoff}s 后重试 ({attempt+1}/{max_retries})")
+                    print(f"  HTTP {resp.status_code}, retrying in {backoff}s ({attempt+1}/{max_retries})")
                     time.sleep(backoff)
                     continue
-                print(f"  HTTP {resp.status_code}，跳过 {url}")
+                print(f"  HTTP {resp.status_code}, skipping {url}")
                 return None
             except requests.RequestException as e:
                 backoff = 2 ** attempt
-                print(f"  网络错误: {e}，{backoff}s 后重试 ({attempt+1}/{max_retries})")
+                print(f"  Network error: {e}, retrying in {backoff}s ({attempt+1}/{max_retries})")
                 time.sleep(backoff)
-        print(f"  {max_retries} 次重试后仍失败")
+        print(f"  Still failing after {max_retries} retries")
         return None
 
     def _append_to_json(self, new_jobs):
@@ -118,7 +118,7 @@ class GreenhouseSpider:
         with open(self.output_file, "w", encoding="utf-8") as f:
             json.dump(combined_data, f, indent=4, ensure_ascii=False)
         
-        print(f"成功获取 {len(new_jobs)} 条通用科技公司职位，已追加至 {self.output_file}。")
+        print(f"Fetched {len(new_jobs)} jobs from general tech companies and appended them to {self.output_file}.")
 
 if __name__ == "__main__":
     spider = GreenhouseSpider()

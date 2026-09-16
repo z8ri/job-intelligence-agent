@@ -1,20 +1,23 @@
 """
-§7.6 端到端回答质量 — gpt-4o-mini 单评分员自动评分（选项 B）
+Section 7.6 end-to-end answer quality: single-rater automatic scoring with
+gpt-4o-mini (option B).
 
-2026-04-23 双源切换后，§7.6 需要在新数据下重跑。原方案 3 家 LLM 人工贴 prompt
-成本是时间；这里退一步用 gpt-4o-mini 一家自动打分，数字对齐本报告数据集，
-代价是没有跨评分员一致性 (ICC / Cronbach α)。
+After the 2026-04-23 switch to two data sources, Section 7.6 had to be re-run on
+the new data. The original approach (manually pasting prompts into 3 LLMs) costs
+time, so this falls back to automatic scoring by gpt-4o-mini alone. The numbers
+then line up with this report's dataset, at the cost of having no inter-rater
+agreement (ICC / Cronbach's alpha).
 
-读取:  data/eval_results/e2e_queries.json   (prepare_e2e_queries 产出)
-产出:  data/reviews_e2e/gpt4omini.json      (每条 {query_id, relevance:{c,s}, ...})
-       data/eval_results/e2e_metrics.json   (单评分员 macro mean + 维度分布)
-       data/eval_results/e2e_report.md
+Reads:   data/eval_results/e2e_queries.json   (produced by prepare_e2e_queries)
+Writes:  data/reviews_e2e/gpt4omini.json      (one {query_id, relevance:{c,s}, ...} per query)
+         data/eval_results/e2e_metrics.json   (single-rater macro mean + per-dimension distribution)
+         data/eval_results/e2e_report.md
 
-用法:
+Usage:
     python -m src.eval.e2e_auto_rate
 
-成本:
-    20 次 gpt-4o-mini 调用 ≈ $0.02
+Cost:
+    20 gpt-4o-mini calls, roughly $0.02
 """
 
 import json
@@ -27,8 +30,9 @@ from pathlib import Path
 from src.llm import MODEL, get_client
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-# 允许通过环境变量重定向输出（例如跑 vNext 新 pipeline 对比时不覆盖已交付
-# 报告引用的历史结果），默认行为不变。
+# Output can be redirected via environment variables (e.g. when running the vNext
+# pipeline for comparison, so historical results cited by the delivered report are
+# not overwritten). Default behavior is unchanged.
 E2E_RESULTS_DIR = Path(os.environ.get("E2E_EVAL_RESULTS_DIR") or (ROOT / "data" / "eval_results"))
 E2E_REVIEWS_DIR = Path(os.environ.get("E2E_REVIEWS_DIR") or (ROOT / "data" / "reviews_e2e"))
 E2E_PATH = E2E_RESULTS_DIR / "e2e_queries.json"
@@ -170,7 +174,7 @@ def _rate_one(client, rec: dict) -> dict | None:
 def run_rating() -> list[dict]:
     with E2E_PATH.open("r", encoding="utf-8") as f:
         records = json.load(f)
-    print(f"加载 {len(records)} 条 e2e_queries")
+    print(f"Loaded {len(records)} e2e_queries records")
 
     existing: dict[str, dict] = {}
     if REVIEW_OUT.exists():
@@ -184,7 +188,7 @@ def run_rating() -> list[dict]:
         qid = rec["query_id"]
         if qid in existing and all(d in existing[qid] for d in DIMENSIONS):
             out.append(existing[qid])
-            print(f"[{i}/{len(records)}] {qid} 已缓存")
+            print(f"[{i}/{len(records)}] {qid} cached")
             continue
         rating = _rate_one(client, rec)
         if rating is None:
@@ -200,7 +204,7 @@ def run_rating() -> list[dict]:
         REVIEW_OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
 
     REVIEW_OUT.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"打分完成 {len(out)}/{len(records)} → {REVIEW_OUT}")
+    print(f"Rating complete: {len(out)}/{len(records)} -> {REVIEW_OUT}")
     return out
 
 
@@ -236,16 +240,16 @@ def write_report(ratings: list[dict], metrics: dict) -> None:
     query_by_id = {r["query_id"]: r["query"] for r in records}
 
     lines = [
-        "# 端到端回答质量评估报告 (§7.6)",
+        "# End-to-End Answer Quality Report (Section 7.6)",
         "",
-        f"- 查询数：**{metrics['total_queries']}** 条（从 40 条 test_queries 中挑选，覆盖 7 类别 + 多字段组合 + 硬过滤）",
-        f"- 数据源：HN + Greenhouse 双源 2311 条 (2026-04-23)",
-        f"- 打分者：**{metrics['rater']}** 单评分员自动评分（选项 B，成本 $0.02）",
-        "- 三维定义：Relevance（职位是否匹配查询核心约束）/ Completeness（答案是否覆盖查询涉及字段且解释每个 pick）/ Readability（结构与可读性）",
+        f"- Queries: **{metrics['total_queries']}** (selected from the 40 test_queries, covering 7 categories + multi-field combinations + hard filters)",
+        f"- Data source: HN + Greenhouse, 2311 jobs (2026-04-23)",
+        f"- Rater: **{metrics['rater']}**, single-rater automatic scoring (option B, cost $0.02)",
+        "- Dimensions: Relevance (do the jobs match the query's core constraints) / Completeness (does the answer cover the fields in the query and justify each pick) / Readability (structure and readability)",
         "",
-        "## 三维总评（单评分员 macro mean）",
+        "## Overall scores (single-rater macro mean)",
         "",
-        "| 维度 | Macro mean (1-5) | 分布 |",
+        "| Dimension | Macro mean (1-5) | Distribution |",
         "|---|---|---|",
     ]
     for d in DIMENSIONS:
@@ -256,11 +260,11 @@ def write_report(ratings: list[dict], metrics: dict) -> None:
 
     lines.extend([
         "",
-        "> 本节采用单评分员（gpt-4o-mini）自动评分，不计算 ICC / Cronbach α。",
+        "> This section uses single-rater (gpt-4o-mini) automatic scoring; ICC / Cronbach's alpha are not computed.",
         "",
-        "## 每条 query 明细",
+        "## Per-query details",
         "",
-        "| query_id | query | relevance | completeness | readability | 平均 |",
+        "| query_id | query | relevance | completeness | readability | mean |",
         "|---|---|---|---|---|---|",
     ])
     for r in ratings:
@@ -279,10 +283,10 @@ def write_report(ratings: list[dict], metrics: dict) -> None:
 
 def main() -> int:
     if not E2E_PATH.exists():
-        print(f"[error] {E2E_PATH} not found，先跑 prepare_e2e_queries", file=sys.stderr)
+        print(f"[error] {E2E_PATH} not found; run prepare_e2e_queries first", file=sys.stderr)
         return 1
     if not os.environ.get("OPENAI_API_KEY"):
-        print("[error] OPENAI_API_KEY 未设置", file=sys.stderr)
+        print("[error] OPENAI_API_KEY is not set", file=sys.stderr)
         return 1
 
     ratings = run_rating()
@@ -293,7 +297,7 @@ def main() -> int:
     print("Macro mean:")
     for d in DIMENSIONS:
         print(f"  {d:<14} {metrics['macro_mean'].get(d, 'N/A')}")
-    print(f"已写入:")
+    print(f"Written:")
     print(f"  - {REVIEW_OUT}")
     print(f"  - {METRICS_PATH}")
     print(f"  - {REPORT_PATH}")

@@ -1,9 +1,11 @@
-"""LLM 精排：对粗分 Top-N 候选做更细致的 query-职位相关性判断。
+"""LLM reranking: a finer-grained query-job relevance judgment over the first-stage Top-N.
 
-BM25/TF-IDF 看词面重合、Dense 看整体语义相似度，都不是真正联合看"这条 query
-具体在问什么、这条职位具体是不是在满足它"。这里用 GPT-4o-mini 对 Top-N 候选
-的标题+摘要和 query 一起打分（LLM+Schema 风格，结构化输出，不是让 LLM 直接
-决定推荐结果），替换掉粗分里不够精细的部分。
+BM25/TF-IDF look at lexical overlap and Dense at overall semantic similarity;
+neither jointly considers "what exactly is this query asking, and does this job
+actually satisfy it". Here GPT-4o-mini scores each Top-N candidate's title +
+summary against the query (LLM + schema style with structured output; the LLM
+does not decide the recommendations directly), replacing the coarser part of the
+first-stage scores.
 """
 
 import json
@@ -11,10 +13,13 @@ import json
 from src.llm import MODEL, get_client
 
 RERANK_TOP_N = 50
-# 很多职位描述开头是公司介绍套话（"XX is growing our team of..."），真正的
-# 职责/技能要求经常要到几百字之后才出现；300 字符截断实测会把摘要截在套话
-# 里，LLM 看不到任何实质信息导致相关性打分失真。1200 字符能覆盖大多数职位
-# 的实质内容，API 成本仍可忽略（50 条候选约 15k tokens，一次调用几分之一美分）。
+# Many job descriptions open with company boilerplate ("XX is growing our team
+# of..."), and the real responsibilities/skills often only appear several hundred
+# characters in. A 300-char cutoff was observed to truncate the summary inside
+# that boilerplate, leaving the LLM no substantive information and distorting
+# relevance scores. 1200 chars covers the substance of most postings while the
+# API cost stays negligible (50 candidates is roughly 15k tokens, a fraction of a
+# cent per call).
 _MAX_DESC_CHARS = 1200
 
 SYSTEM_PROMPT = """You are a job search relevance judge. Given a user query and \
@@ -32,11 +37,13 @@ def rerank(
     top_n: int = RERANK_TOP_N,
     api_key: str | None = None,
 ) -> dict[str, float]:
-    """对 candidates 的前 top_n 条做 LLM 精排，返回 {job_id: score}。
+    """LLM-rerank the first top_n candidates and return {job_id: score}.
 
-    candidates 应已按粗分数降序排列（调用方负责排序）。任何失败（网络、JSON
-    解析、格式不对）整体降级返回 {}——调用方据此跳过覆盖，原有粗分排序原样
-    保留，不重试、不中断 pipeline（重排是锦上添花，不是关键路径）。
+    candidates must already be sorted by first-stage score descending (the caller
+    is responsible for that). On any failure (network, JSON parsing, malformed
+    output) degrade gracefully by returning {}: the caller then skips the
+    overwrite and the original first-stage ranking is kept as is. No retries, and
+    the pipeline is never interrupted (reranking is a nice-to-have, not critical path).
     """
     subset = candidates[:top_n]
     if not subset:
@@ -73,7 +80,7 @@ def rerank(
     scores: dict[str, float] = {}
     for jid, val in data.items():
         if jid not in valid_ids:
-            continue  # 忽略 LLM 编造的、不在候选里的 id
+            continue  # ignore ids the LLM made up that are not among the candidates
         try:
             scores[jid] = max(0.0, min(1.0, float(val)))
         except (TypeError, ValueError):

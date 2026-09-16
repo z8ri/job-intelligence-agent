@@ -1,8 +1,9 @@
 """
-LLM 结构化查询理解模块（预处理阶段）
+LLM structured query understanding (pre-processing stage).
 
-将用户自然语言查询转换为结构化偏好 JSON，供评分引擎使用。
-LLM 仅负责提取偏好，不参与检索或排序。
+Converts the user's natural-language query into a structured preference JSON
+for the scoring engine. The LLM only extracts preferences; it takes no part in
+retrieval or ranking.
 """
 
 import json
@@ -281,7 +282,7 @@ for _ex in FEW_SHOT_EXAMPLES:
 
 
 def _build_messages(user_query: str, error_feedback: str | None = None) -> list[dict]:
-    """构建发送给 LLM 的消息列表。"""
+    """Build the message list sent to the LLM."""
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     messages.extend(_CACHED_FEW_SHOT_MESSAGES)
     messages.append({"role": "user", "content": user_query})
@@ -296,7 +297,7 @@ def _build_messages(user_query: str, error_feedback: str | None = None) -> list[
 
 
 def _validate_preferences(data: dict) -> list[str]:
-    """校验偏好 JSON 的结构和类型，返回错误列表。"""
+    """Validate the structure and types of the preference JSON; return a list of errors."""
     errors = []
 
     for field, valid_types in VALID_FIELDS.items():
@@ -331,10 +332,11 @@ def _validate_preferences(data: dict) -> list[str]:
 
 def compute_weights(weight_adjustments: dict) -> dict[str, float]:
     """
-    根据 weight_adjustments 调整默认权重并归一化。
+    Apply weight_adjustments to the default weights and normalize.
 
-    仅对有目标值的字段（由调用方决定）调用此函数前先过滤。
-    此函数处理 importance → multiplier 映射和归一化。
+    The caller is responsible for filtering to fields that have a target value
+    before calling this. This function only handles the importance -> multiplier
+    mapping and normalization.
     """
     weights = dict(DEFAULT_WEIGHTS)
 
@@ -342,7 +344,7 @@ def compute_weights(weight_adjustments: dict) -> dict[str, float]:
         if field in weights and importance in IMPORTANCE_MULTIPLIER:
             weights[field] *= IMPORTANCE_MULTIPLIER[importance]
 
-    # 归一化
+    # Normalize
     total = sum(weights.values())
     if total > 0:
         weights = {k: v / total for k, v in weights.items()}
@@ -352,22 +354,22 @@ def compute_weights(weight_adjustments: dict) -> dict[str, float]:
 
 def parse_preferences(user_query: str, api_key: str | None = None) -> dict:
     """
-    核心接口：将用户自然语言查询转换为结构化偏好 JSON。
+    Main entry point: convert the user's natural-language query into a structured preference JSON.
 
     Args:
-        user_query: 用户的自然语言查询
-        api_key: OpenAI API key，若不传则从环境变量 OPENAI_API_KEY 读取
+        user_query: the user's natural-language query
+        api_key: OpenAI API key; falls back to the OPENAI_API_KEY env var if omitted
 
     Returns:
-        包含 preferences 和 weights 的字典:
+        A dict with preferences and weights:
         {
-            "preferences": { ... 偏好字段 ... },
-            "weights": { ... 归一化后的权重 ... },
-            "raw_response": "LLM 原始输出"
+            "preferences": { ... preference fields ... },
+            "weights": { ... normalized weights ... },
+            "raw_response": "raw LLM output"
         }
 
     Raises:
-        ValueError: 重试耗尽仍无法得到合法 JSON
+        ValueError: no valid JSON obtained after all retries
     """
     client = get_client(api_key)
 
@@ -387,7 +389,7 @@ def parse_preferences(user_query: str, api_key: str | None = None) -> dict:
         raw = response.choices[0].message.content.strip()
         last_raw = raw
 
-        # 尝试去除 markdown 代码块包裹
+        # Strip markdown code fences if present
         if raw.startswith("```"):
             lines = raw.split("\n")
             raw = "\n".join(lines[1:-1] if lines[-1].strip() == "```" else lines[1:])
@@ -403,7 +405,7 @@ def parse_preferences(user_query: str, api_key: str | None = None) -> dict:
             error_feedback = "\n".join(errors)
             continue
 
-        # 校验通过
+        # Validation passed
         weight_adj = data.get("weight_adjustments", {})
         weights = compute_weights(weight_adj)
 

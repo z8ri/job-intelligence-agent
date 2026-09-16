@@ -1,7 +1,7 @@
 """
-数据库模块：连接管理、建表、入库、查询接口。
+Database module: connection management, schema setup, ingestion, and query helpers.
 
-使用 pymysql 连接 MySQL。
+Connects to MySQL via pymysql.
 """
 
 import json
@@ -11,7 +11,7 @@ from pathlib import Path
 import pymysql
 from pymysql.cursors import DictCursor
 
-# 默认连接参数，可通过环境变量覆盖
+# Default connection parameters; can be overridden via environment variables
 DB_CONFIG = {
     "host": os.environ.get("DB_HOST", "127.0.0.1"),
     "port": int(os.environ.get("DB_PORT", 3306)),
@@ -26,14 +26,14 @@ FILTERABLE_FIELDS = frozenset({"degree_req", "remote", "category", "source"})
 
 
 def get_connection(**overrides):
-    """获取数据库连接。"""
+    """Open a database connection."""
     config = {**DB_CONFIG, **overrides}
     return pymysql.connect(**config, cursorclass=DictCursor)
 
 
 def init_db(**conn_overrides):
-    """执行 schema.sql 建库建表。"""
-    # 先连接不指定 database（因为库可能还不存在）
+    """Run schema.sql to create the database and tables."""
+    # Connect without a database first (it may not exist yet)
     config = {**DB_CONFIG, **conn_overrides}
     config.pop("database", None)
     conn = pymysql.connect(**config, cursorclass=DictCursor)
@@ -52,9 +52,9 @@ def init_db(**conn_overrides):
 
 def insert_job(conn, job: dict):
     """
-    插入单个职位记录。
+    Insert a single job record.
 
-    job 格式（spider 提取的结构化 dict）：
+    job format (structured dict produced by the spider):
     {
         "job_id": "hn_12345",
         "source": "hackernews",
@@ -113,9 +113,9 @@ def insert_job(conn, job: dict):
 
 def ingest_json(json_path: str, **conn_overrides):
     """
-    批量入库：读取 spider 产出的 JSON 文件，写入 MySQL。
+    Bulk ingest: read the JSON file produced by the spider and write it to MySQL.
 
-    JSON 文件格式：职位 dict 的列表 [{ ... }, { ... }, ...]
+    JSON file format: a list of job dicts [{ ... }, { ... }, ...]
     """
     with open(json_path, "r", encoding="utf-8") as f:
         jobs = json.load(f)
@@ -125,19 +125,19 @@ def ingest_json(json_path: str, **conn_overrides):
         for job in jobs:
             insert_job(conn, job)
         conn.commit()
-        print(f"入库完成：{len(jobs)} 条职位")
+        print(f"Ingested {len(jobs)} jobs")
     finally:
         conn.close()
 
 
 def load_candidates(hard_filters: list[dict] | None = None, **conn_overrides) -> list[dict]:
     """
-    加载候选职位，支持硬过滤。
+    Load candidate jobs, with optional hard filters.
 
-    hard_filters 格式（来自 LLM 查询理解的输出）：
+    hard_filters format (output of the LLM query-understanding step):
     [{"field": "degree_req", "exclude": ["phd", "master"]}]
 
-    返回职位 dict 列表，每个 dict 包含 jobs 表全部字段 + tags 列表。
+    Returns a list of job dicts, each with every column of the jobs table plus a tags list.
     """
     conn = get_connection(**conn_overrides)
     try:
@@ -185,16 +185,16 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 2:
-        print("用法:")
-        print("  python database.py init          # 建库建表")
-        print("  python database.py ingest <file>  # 导入 JSON 数据")
+        print("Usage:")
+        print("  python database.py init          # create database and tables")
+        print("  python database.py ingest <file>  # import JSON data")
         sys.exit(1)
 
     cmd = sys.argv[1]
     if cmd == "init":
         init_db()
-        print("数据库初始化完成")
+        print("Database initialized")
     elif cmd == "ingest" and len(sys.argv) >= 3:
         ingest_json(sys.argv[2])
     else:
-        print(f"未知命令: {cmd}")
+        print(f"Unknown command: {cmd}")

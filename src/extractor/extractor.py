@@ -104,7 +104,7 @@ class JobExtractor:
         output_path = self.data_dir / "structured_jobs.json"
         
         if not input_path.exists():
-            print(f"找不到文件: {input_path}")
+            print(f"File not found: {input_path}")
             return
 
         with open(input_path, 'r', encoding='utf-8') as f:
@@ -147,8 +147,8 @@ class JobExtractor:
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(processed_list, f, indent=2, ensure_ascii=False)
         
-        print(f"处理完成。共生成 {len(processed_list)} 条顺序编号的职位信息。")
-        print(f"输出路径: {output_path}")
+        print(f"Done. Generated {len(processed_list)} sequentially numbered job records.")
+        print(f"Output path: {output_path}")
 
 if __name__ == "__main__":
     extractor = JobExtractor()

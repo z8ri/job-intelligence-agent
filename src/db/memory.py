@@ -1,9 +1,11 @@
-"""跨轮偏好记忆：session_id -> 上次已知的完整偏好画像，持久化在 MySQL。
+"""Cross-turn preference memory: session_id -> last known full preference profile, persisted in MySQL.
 
-"当前查询覆盖历史记忆"：合并时以本轮明确提到的字段为准，本轮没提的字段才
-回退到记忆里的值。is_job_query / weight_adjustments / retrieval_mode /
-raw_response 这几个是"当场判断"，不是稳定偏好，不参与跨轮继承——尤其是
-weight_adjustments，是"这句话里临时强调"，不该在用户没再提的情况下一直生效。
+"The current query overrides memory": when merging, fields explicitly mentioned in
+this turn win, and only fields not mentioned fall back to the remembered values.
+is_job_query / weight_adjustments / retrieval_mode / raw_response are per-turn
+judgments, not stable preferences, so they are not inherited across turns. This
+matters most for weight_adjustments, which is a one-off emphasis in the current
+sentence and should not keep applying once the user stops mentioning it.
 """
 
 import json
@@ -24,7 +26,7 @@ _EMPTY_VALUES = (None, [], {}, "")
 
 
 def load_memory(session_id: str) -> dict:
-    """返回上次保存的偏好 dict；没有记录返回 {}。"""
+    """Return the last saved preference dict, or {} if there is no record."""
     conn = get_connection()
     try:
         with conn.cursor() as cur:
@@ -40,7 +42,7 @@ def load_memory(session_id: str) -> dict:
 
 
 def save_memory(session_id: str, preferences: dict) -> None:
-    """只挑 _MEMORY_FIELDS 里的字段落库（合并后的画像），覆盖写入。"""
+    """Persist only the _MEMORY_FIELDS of the (merged) profile, overwriting any existing row."""
     payload = {k: preferences.get(k) for k in _MEMORY_FIELDS}
     conn = get_connection()
     try:
@@ -59,10 +61,10 @@ def save_memory(session_id: str, preferences: dict) -> None:
 
 
 def merge_preferences(current: dict, memory: dict) -> dict:
-    """本轮明确提到的字段保留；本轮没提（值为空）的字段回退到记忆里的值。
+    """Keep fields explicitly set this turn; fields left empty fall back to the remembered values.
 
-    非 _MEMORY_FIELDS 字段（is_job_query/weight_adjustments/retrieval_mode/
-    raw_response 等）原样用 current 的，不做任何合并。
+    Fields outside _MEMORY_FIELDS (is_job_query/weight_adjustments/retrieval_mode/
+    raw_response, etc.) are taken from current as-is, with no merging.
     """
     merged = dict(current)
     for field in _MEMORY_FIELDS:

@@ -22,10 +22,10 @@ class JobBM25System:
         corpus = [preprocess(f"{j.get('title', '')} {j.get('description', '')}") for j in jobs]
         self.job_ids = [j["job_id"] for j in jobs]
 
-        print(f"对 {len(corpus)} 条职位构建 BM25 索引...")
+        print(f"Building BM25 index over {len(corpus)} jobs...")
         self.bm25 = BM25Okapi(corpus)
         self._save_model()
-        print(f"BM25 模型已序列化至: {self.model_path}")
+        print(f"BM25 model serialized to: {self.model_path}")
 
     def _save_model(self) -> None:
         with open(self.model_path, "wb") as f:
@@ -33,7 +33,7 @@ class JobBM25System:
 
     def load_model(self) -> bool:
         if not self.model_path.exists():
-            print("未发现 BM25 模型，请先运行 train_on_json()")
+            print("BM25 model not found; run train_from_db() first")
             return False
         with open(self.model_path, "rb") as f:
             data = pickle.load(f)
@@ -64,13 +64,13 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--train", action="store_true",
-        help="训练 BM25 索引（不传也会训练，flag 仅供脚本化使用）",
+        help="train the BM25 index (training runs regardless; the flag exists for scripting)",
     )
     parser.parse_args()
 
     bm25_system = JobBM25System()
     bm25_system.train_from_db()
-    print("\n测试查询: 'Python developer with machine learning experience'")
+    print("\nTest query: 'Python developer with machine learning experience'")
     scores = bm25_system.get_similarities("Python developer with machine learning experience")
     top = sorted(scores.items(), key=lambda x: -x[1])[:5]
     for jid, s in top:

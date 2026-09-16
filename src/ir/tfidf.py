@@ -14,13 +14,14 @@ nltk.download('punkt', quiet=True)
 nltk.download('stopwords', quiet=True)
 
 class _TextPreprocessor:
-    """独立于 JobIRSystem 的可序列化 tokenizer。
+    """Picklable tokenizer independent of JobIRSystem.
 
-    之前 tokenizer=self._preprocess_pipeline 是绑定方法，pickle 会连带把
-    JobIRSystem 实例（含 base_dir/data_dir/model_path 等 Path 属性）一起
-    序列化；在 Windows 上存的是 WindowsPath，换到 macOS/Linux 加载会
-    NotImplementedError。这里拆成只含 stemmer/stop_words 的独立对象，
-    避免 pickle 里混入平台相关的 Path。
+    Previously tokenizer=self._preprocess_pipeline was a bound method, so pickling
+    dragged the whole JobIRSystem instance along (including Path attributes such as
+    base_dir/data_dir/model_path). A model saved on Windows stored WindowsPath
+    objects, which raised NotImplementedError when loaded on macOS/Linux. This
+    standalone object holds only the stemmer/stop_words, keeping platform-specific
+    Paths out of the pickle.
     """
 
     def __init__(self):
@@ -58,7 +59,7 @@ class JobIRSystem:
     def train_on_json(self, input_filename="structured_jobs.json"):
         input_path = self.data_dir / input_filename
         if not input_path.exists():
-            print(f"找不到数据文件: {input_path}")
+            print(f"Data file not found: {input_path}")
             return
 
         with open(input_path, 'r', encoding='utf-8') as f:
@@ -67,11 +68,11 @@ class JobIRSystem:
         corpus = [f"{j['title']} {j['description']}" for j in jobs]
         self.job_ids = [j['job_id'] for j in jobs]
 
-        print(f"正在对 {len(corpus)} 条职位进行向量化训练...")
+        print(f"Vectorizing {len(corpus)} jobs...")
         self.tfidf_matrix = self.vectorizer.fit_transform(corpus)
 
         self._save_model()
-        print(f"模型与矩阵已序列化至: {self.model_path}")
+        print(f"Model and matrix serialized to: {self.model_path}")
 
     def _save_model(self):
         with open(self.model_path, 'wb') as f:
@@ -83,7 +84,7 @@ class JobIRSystem:
 
     def load_model(self):
         if not self.model_path.exists():
-            print("未发现已保存的模型，请先运行 train_on_json()")
+            print("No saved model found; run train_on_json() first")
             return False
             
         with open(self.model_path, 'rb') as f:
@@ -110,7 +111,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--train", action="store_true",
-        help="训练 TF-IDF 索引（不传也会训练，flag 仅供脚本化使用）",
+        help="train the TF-IDF index (training runs regardless; the flag exists for scripting)",
     )
     parser.parse_args()
 
@@ -118,11 +119,11 @@ if __name__ == "__main__":
     ir_system.train_on_json()
 
     test_query = "Python developer with machine learning experience"
-    print(f"\n测试查询: '{test_query}'")
+    print(f"\nTest query: '{test_query}'")
 
     scores = ir_system.get_similarities(test_query)
 
     top_jobs = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:5]
-    print("最相关的职位推荐:")
+    print("Top matching jobs:")
     for jid, score in top_jobs:
         print(f"  - Job ID: {jid} | Text Similarity Score: {score:.4f}")

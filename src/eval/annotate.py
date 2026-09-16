@@ -72,19 +72,19 @@ def main():
     queries = load_test_queries()
 
     # Load all candidates from DB
-    print("从数据库加载候选职位...")
+    print("Loading candidate jobs from the database...")
     try:
         all_candidates = load_candidates()
     except Exception as e:
-        print(f"无法连接数据库: {e}")
-        print("请确保 MySQL 正在运行且数据已入库。")
+        print(f"Could not connect to the database: {e}")
+        print("Make sure MySQL is running and the data has been ingested.")
         sys.exit(1)
 
     if not all_candidates:
-        print("数据库中没有职位数据。请先运行 database.py ingest 导入数据。")
+        print("No job data in the database. Run database.py ingest first.")
         sys.exit(1)
 
-    print(f"已加载 {len(all_candidates)} 个候选职位\n")
+    print(f"Loaded {len(all_candidates)} candidate jobs\n")
 
     annotated_count = 0
     for query in queries:
@@ -93,7 +93,7 @@ def main():
 
         # Skip already annotated
         if query.get("relevance_annotations"):
-            print(f"[{query['id']}] 已有标注，跳过")
+            print(f"[{query['id']}] already annotated, skipping")
             continue
 
         annotations = annotate_query(query, all_candidates, top_k=args.top_k)
@@ -101,9 +101,9 @@ def main():
             query["relevance_annotations"] = annotations
             annotated_count += 1
             save_test_queries(queries)
-            print(f"  → 已保存 {len(annotations)} 条标注")
+            print(f"  -> saved {len(annotations)} annotations")
 
-    print(f"\n标注完成: 本次标注 {annotated_count} 条查询")
+    print(f"\nAnnotation complete: {annotated_count} queries annotated this run")
 
 
 if __name__ == "__main__":

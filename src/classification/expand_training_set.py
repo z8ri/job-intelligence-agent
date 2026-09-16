@@ -1,22 +1,23 @@
 """
-扩展训练集：从外部 HuggingFace 数据集（yiqing111/Engineering_Jobs_Insight_Dataset，
-11185 条）扩到 ~800 条干净样本，与原 120 条 v1 合并写回 data/labeled_jobs.json。
+Expand the training set: grow from the external HuggingFace dataset
+(yiqing111/Engineering_Jobs_Insight_Dataset, 11185 rows) to ~800 clean samples,
+merge with the original 120-sample v1 set, and write back to data/labeled_jobs.json.
 
-流程：
-  1. 读 data/external/engineering_jobs.csv
-  2. **黑名单过滤** — 剔除非软件类岗位（PM, DBA, Embedded, Network Eng, 售前等）
-  3. **白名单关键词匹配** — title 命中关键词的高置信度样本直接打类别
-  4. **每类截断到 PER_CATEGORY_QUOTA**（默认 100），不足的从"模糊样本"补
-  5. **模糊样本** = 标题没匹配到任何白名单的（如纯 "Software Engineer"）→ 调 GPT-4o-mini 标
-  6. 合并 v1 (120 条) + v2 新增 (~700) → 写回 data/labeled_jobs.json
+Pipeline:
+  1. Read data/external/engineering_jobs.csv
+  2. **Blacklist filter** — drop non-software roles (PM, DBA, embedded, network eng, presales, etc.)
+  3. **Whitelist keyword match** — high-confidence samples whose title hits a keyword are labeled directly
+  4. **Truncate each category to PER_CATEGORY_QUOTA** (default 100); shortfalls are filled from "ambiguous samples"
+  5. **Ambiguous samples** = titles that match no whitelist rule (e.g. plain "Software Engineer") -> labeled by GPT-4o-mini
+  6. Merge v1 (120) + v2 additions (~700) -> write back to data/labeled_jobs.json
 
-外部样本的 job_id 前缀 = "ext_"，与 hn_/gh_ 区分。
-外部样本无 tags 字段（CSV 里没），prepare_text 会跳过 tags，仅用 title + description。
+External samples use the job_id prefix "ext_" to distinguish them from hn_/gh_.
+External samples have no tags field (not in the CSV); prepare_text skips tags and uses title + description only.
 
-用法：
-    python -m src.classification.expand_training_set                # 默认每类 100
+Usage:
+    python -m src.classification.expand_training_set                # default 100 per category
     python -m src.classification.expand_training_set --per-cat 120
-    python -m src.classification.expand_training_set --dry-run      # 不调 LLM
+    python -m src.classification.expand_training_set --dry-run      # no LLM calls
 """
 
 import argparse
@@ -37,11 +38,11 @@ INTERMEDIATE_DIR = ROOT / "data" / "external"
 CATEGORIES = ["backend", "frontend", "data", "devops", "fullstack", "mobile", "management"]
 
 # ---------------------------------------------------------------------------
-# 关键词规则（白名单 / 黑名单）
+# Keyword rules (whitelist / blacklist)
 # ---------------------------------------------------------------------------
 
-# 白名单：title 含这些词 → 高置信度直接打类别
-# 顺序敏感：fullstack 优先于 backend/frontend（避免 "full stack" 落到 backend）
+# Whitelist: a title containing these terms gets the category directly (high confidence).
+# Order matters: fullstack takes priority over backend/frontend (so "full stack" does not land in backend).
 WHITELIST_RULES = [
     ("fullstack", [
         r"\bfull[\s-]?stack\b",
@@ -69,7 +70,7 @@ WHITELIST_RULES = [
         r"\bdevops\b", r"\bsre\b", r"\bsite reliability\b",
         r"\bplatform engineer\b", r"\binfrastructure engineer\b",
         r"\bcloud engineer\b", r"\bcloud devops\b",
-        r"\bsystems engineer\b",  # 注意：systems engineer 在多数招聘里指 SRE/infra
+        r"\bsystems engineer\b",  # note: in most postings "systems engineer" means SRE/infra
     ]),
     ("frontend", [
         r"\bfront[\s-]?end (?:engineer|developer|software)\b",
@@ -88,7 +89,7 @@ WHITELIST_RULES = [
     ]),
 ]
 
-# 黑名单：title 命中任一 → 整条丢弃（非我们 7 类范畴）
+# Blacklist: a title matching any of these is dropped entirely (outside our 7 categories)
 BLACKLIST_PATTERNS = [
     r"\bproduct manager\b", r"\bproduct owner\b", r"\bscrum master\b",
     r"\bbusiness analyst\b", r"\bsystem(?:s)? analyst\b",
@@ -107,7 +108,7 @@ BLACKLIST_PATTERNS = [
     r"\bsupport engineer\b", r"\btechnical support\b",
     r"\bcustomer success\b",
     r"\bproject manager\b", r"\bprogram manager\b",
-    r"\binternship\b", r"\bintern\b",  # 实习岗信息密度低，丢弃
+    r"\binternship\b", r"\bintern\b",  # internship postings carry little signal; drop them
     r"\bmechanical engineer\b", r"\bcivil engineer\b",
     r"\bchemical engineer\b", r"\belectrical engineer\b",
     r"\bnuclear\b",
@@ -132,7 +133,7 @@ def is_blacklisted(title: str) -> bool:
 
 
 def keyword_classify(title: str) -> str | None:
-    """按白名单匹配 title。返回类别名或 None（None 表示模糊样本）"""
+    """Match the title against the whitelist. Returns a category name or None (None = ambiguous sample)."""
     if not title:
         return None
     for cat, patterns in WHITELIST_COMPILED:
@@ -143,24 +144,24 @@ def keyword_classify(title: str) -> str | None:
 
 
 # ---------------------------------------------------------------------------
-# 数据清洗
+# Data cleaning
 # ---------------------------------------------------------------------------
 
 def clean_text(s: str) -> str:
-    """处理 CSV 里的乱码（"��" 是 UTF-8 BOM 残留）+ 去多余空白"""
+    """Fix mojibake in the CSV ("��" is a leftover UTF-8 BOM) and collapse extra whitespace."""
     if not s:
         return ""
-    s = s.replace("�", "'")  # mojibake → 普通撇号
+    s = s.replace("�", "'")  # mojibake -> plain apostrophe
     s = re.sub(r"\s+", " ", s).strip()
     return s
 
 
 # ---------------------------------------------------------------------------
-# 主流程
+# Main pipeline
 # ---------------------------------------------------------------------------
 
 def load_external(path: Path) -> list[dict]:
-    """读外部 CSV，过滤掉 description 太短或为空的行。"""
+    """Read the external CSV, dropping rows whose description is empty or too short."""
     rows = []
     with path.open("r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -180,10 +181,10 @@ def load_external(path: Path) -> list[dict]:
 
 def assign_keyword_labels(rows: list[dict]) -> tuple[list[dict], list[dict], list[dict]]:
     """
-    返回 (labeled_by_keyword, ambiguous, blacklisted)
-      labeled_by_keyword: 命中白名单 → 直接打 category
-      ambiguous: title 没命中白名单也没黑名单 → 后面 LLM 处理
-      blacklisted: 命中黑名单 → 丢弃
+    Returns (labeled_by_keyword, ambiguous, blacklisted)
+      labeled_by_keyword: whitelist hit -> category assigned directly
+      ambiguous: title hits neither whitelist nor blacklist -> handled by the LLM later
+      blacklisted: blacklist hit -> dropped
     """
     labeled, ambiguous, blacklisted = [], [], []
     for row in rows:
@@ -199,7 +200,7 @@ def assign_keyword_labels(rows: list[dict]) -> tuple[list[dict], list[dict], lis
 
 
 def truncate_per_category(labeled: list[dict], quota: int, seed: int = 42) -> tuple[list[dict], dict[str, int]]:
-    """每类随机保留 quota 条；返回 (kept, per_category_kept_count)"""
+    """Randomly keep up to `quota` samples per category; returns (kept, per_category_kept_count)."""
     random.seed(seed)
     by_cat: dict[str, list[dict]] = {c: [] for c in CATEGORIES}
     for j in labeled:
@@ -221,10 +222,10 @@ def supplement_with_llm(
     max_calls: int,
 ) -> list[dict]:
     """
-    对模糊样本调 GPT-4o-mini，优先填补少数类。
+    Label ambiguous samples with GPT-4o-mini, prioritizing under-filled categories.
 
-    deficit_per_cat: {category: 还差多少条}
-    max_calls: 最多调多少次 LLM
+    deficit_per_cat: {category: how many samples are still missing}
+    max_calls: upper bound on LLM calls
     """
     from src.llm import MODEL, get_client
     from src.classification.auto_label import (
@@ -246,9 +247,9 @@ def supplement_with_llm(
         if calls >= max_calls:
             break
         if all(v <= 0 for v in deficit.values()):
-            break  # 所有类都满了
+            break  # every category is full
 
-        # 构造 prompt
+        # build the prompt
         title = row["title"]
         desc = row["description"][:600]
         user_text = f"Title: {title}\nTags: (none)\nDescription: {desc}"
@@ -274,7 +275,7 @@ def supplement_with_llm(
                         cat = c
                         break
         except Exception as e:
-            print(f"  ! LLM 失败: {e}", file=sys.stderr)
+            print(f"  ! LLM call failed: {e}", file=sys.stderr)
             cat = None
             time.sleep(1.0)
 
@@ -282,7 +283,7 @@ def supplement_with_llm(
 
         if not cat:
             continue
-        # 只保留还缺额的类
+        # only keep categories that still have a shortfall
         if deficit.get(cat, 0) <= 0:
             continue
 
@@ -290,20 +291,20 @@ def supplement_with_llm(
         deficit[cat] = deficit.get(cat, 0) - 1
 
         if calls % 20 == 0:
-            print(f"  LLM 已调 {calls} 次，已采纳 {len(results)} 条，缺额 {deficit}")
+            print(f"  LLM calls: {calls}, accepted: {len(results)}, remaining deficit: {deficit}")
 
-    print(f"  LLM 总共调用 {calls} 次，采纳 {len(results)} 条")
+    print(f"  LLM calls total: {calls}, accepted {len(results)} samples")
     return results
 
 
 def to_labeled_record(row: dict, ext_idx_to_jid: dict[int, str]) -> dict:
-    """转成 labeled_jobs.json 需要的格式（含 job_id 前缀 ext_）"""
+    """Convert to the labeled_jobs.json record format (job_id gets the ext_ prefix)."""
     jid = ext_idx_to_jid[row["ext_idx"]]
     return {
         "job_id": jid,
         "title": row["title"],
         "company": row.get("company", ""),
-        "tags": [],  # 外部数据集没有 tags
+        "tags": [],  # the external dataset has no tags
         "description": row["description"],
         "category": row["category"],
         "label_source": row.get("label_source", "keyword-rule"),
@@ -311,81 +312,81 @@ def to_labeled_record(row: dict, ext_idx_to_jid: dict[int, str]) -> dict:
 
 
 def main(per_category_quota: int = 100, dry_run: bool = False, max_llm: int = 400) -> int:
-    print(f"读取外部数据集 {EXTERNAL_CSV} ...")
+    print(f"Reading external dataset {EXTERNAL_CSV} ...")
     rows = load_external(EXTERNAL_CSV)
-    print(f"有效行数：{len(rows)}（已剔除 desc<80 字符的）")
+    print(f"Valid rows: {len(rows)} (rows with desc < 80 chars dropped)")
 
-    # 给每行分配 ext_idx → ext_xxxxx 形式的 job_id
+    # assign each row a job_id of the form ext_xxxxx from its ext_idx
     ext_idx_to_jid = {row["ext_idx"]: f"ext_{row['ext_idx']:05d}" for row in rows}
 
     labeled_kw, ambiguous, blacklisted = assign_keyword_labels(rows)
-    print(f"\n分配结果：")
-    print(f"  关键词命中：{len(labeled_kw)}")
-    print(f"  模糊样本（待 LLM）：{len(ambiguous)}")
-    print(f"  黑名单丢弃：{len(blacklisted)}")
+    print(f"\nAssignment:")
+    print(f"  keyword hits: {len(labeled_kw)}")
+    print(f"  ambiguous (pending LLM): {len(ambiguous)}")
+    print(f"  blacklisted (dropped): {len(blacklisted)}")
 
-    # 关键词命中的初始分布
+    # initial distribution of keyword hits
     kw_counts: dict[str, int] = {c: 0 for c in CATEGORIES}
     for j in labeled_kw:
         kw_counts[j["category"]] += 1
-    print(f"\n关键词命中各类分布：")
+    print(f"\nKeyword-hit distribution by category:")
     for c in CATEGORIES:
         print(f"  {c:12s} {kw_counts[c]:4d}")
 
-    # 每类截断到 quota
+    # truncate each category to the quota
     kw_kept, kept_counts = truncate_per_category(labeled_kw, per_category_quota)
-    print(f"\n每类截断到 {per_category_quota} 后：")
+    print(f"\nAfter truncating each category to {per_category_quota}:")
     for c in CATEGORIES:
         print(f"  {c:12s} {kept_counts[c]:4d}")
 
-    # 计算缺额（哪些类不够 quota，需要 LLM 从模糊样本里补）
+    # compute the deficit (categories below quota that the LLM must fill from ambiguous samples)
     deficit = {c: max(0, per_category_quota - kept_counts[c]) for c in CATEGORIES}
     total_deficit = sum(deficit.values())
-    print(f"\n总缺额：{total_deficit}")
+    print(f"\nTotal deficit: {total_deficit}")
 
     if dry_run:
-        print("\n[dry-run] 不调 LLM，直接落盘 keyword-only 部分")
+        print("\n[dry-run] skipping LLM; writing the keyword-only portion")
         llm_results = []
     elif total_deficit == 0:
-        print("\n所有类均已满，无需 LLM 补")
+        print("\nAll categories are full; no LLM supplement needed")
         llm_results = []
     else:
-        print(f"\n调 GPT-4o-mini 补 {total_deficit} 条（最多 {max_llm} 次调用）...")
+        print(f"\nCalling GPT-4o-mini to fill {total_deficit} samples (at most {max_llm} calls)...")
         llm_results = supplement_with_llm(ambiguous, deficit, max_calls=max_llm)
 
-    # 合并新数据
+    # merge the new data
     new_records = (
         [to_labeled_record(r, ext_idx_to_jid) for r in kw_kept]
         + [to_labeled_record(r, ext_idx_to_jid) for r in llm_results]
     )
 
-    # 加载 v1 备份（120 条）
+    # load the v1 backup (120 samples)
     with V1_BACKUP.open("r", encoding="utf-8") as f:
         v1 = json.load(f)
-    print(f"\nv1 备份：{len(v1)} 条")
-    print(f"v2 新增：{len(new_records)} 条")
+    print(f"\nv1 backup: {len(v1)} samples")
+    print(f"v2 additions: {len(new_records)} samples")
 
-    # 合并
+    # merge
     merged = v1 + new_records
-    print(f"合并总计：{len(merged)} 条")
+    print(f"Merged total: {len(merged)} samples")
 
-    # 各类总分布
+    # overall distribution by category
     final_counts: dict[str, int] = {c: 0 for c in CATEGORIES}
     for j in merged:
         final_counts[j["category"]] = final_counts.get(j["category"], 0) + 1
-    print(f"\n合并后各类总分布：")
+    print(f"\nMerged distribution by category:")
     for c in CATEGORIES:
         print(f"  {c:12s} {final_counts[c]:4d}")
 
-    # 写回（dry-run 不写）
+    # write back (skipped on dry-run)
     if dry_run:
-        print(f"\n[dry-run] 跳过写盘 {LABELED_PATH}")
+        print(f"\n[dry-run] skipping write to {LABELED_PATH}")
     else:
         with LABELED_PATH.open("w", encoding="utf-8") as f:
             json.dump(merged, f, ensure_ascii=False, indent=2)
-        print(f"\n已写入 {LABELED_PATH}（{len(merged)} 条）")
+        print(f"\nWrote {LABELED_PATH} ({len(merged)} samples)")
 
-    # 中间产物：模糊样本和黑名单也写一份，方便调试
+    # intermediate artifacts: also dump ambiguous and blacklisted samples for debugging
     INTERMEDIATE_DIR.mkdir(parents=True, exist_ok=True)
     with (INTERMEDIATE_DIR / "ambiguous_titles_sample.json").open("w", encoding="utf-8") as f:
         json.dump([{"ext_idx": r["ext_idx"], "title": r["title"]}
@@ -399,8 +400,8 @@ def main(per_category_quota: int = 100, dry_run: bool = False, max_llm: int = 40
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--per-cat", type=int, default=100, help="每类目标样本数（默认 100）")
-    ap.add_argument("--dry-run", action="store_true", help="不调 LLM 仅看分布")
-    ap.add_argument("--max-llm", type=int, default=400, help="LLM 最多调用次数")
+    ap.add_argument("--per-cat", type=int, default=100, help="target samples per category (default 100)")
+    ap.add_argument("--dry-run", action="store_true", help="skip LLM calls, only show the distribution")
+    ap.add_argument("--max-llm", type=int, default=400, help="maximum number of LLM calls")
     args = ap.parse_args()
     sys.exit(main(per_category_quota=args.per_cat, dry_run=args.dry_run, max_llm=args.max_llm))

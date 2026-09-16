@@ -1,20 +1,24 @@
 """
-§7.4 Query Expansion 单独评估：在 18 条缩写敏感查询上对比 with/without expansion。
+Section 7.4 standalone query-expansion evaluation: compare with/without
+expansion on 18 abbreviation-sensitive queries.
 
-与 pool_eval.py 的差别：
-  - 测试集独立（test_queries_expansion.json，18 条 vs 40 条）
-  - 只跑两档配置：with_expansion / no_expansion（其余 flag 沿用 §7.7 baseline）
-  - 缓存路径全部独立（expansion_*.json），禁止污染 §7.7 主数字
-  - 增加 expansion_hit_rate 指标（扩展词在 top-10 文档命中率）
+Differences from pool_eval.py:
+  - separate test set (test_queries_expansion.json, 18 queries vs 40)
+  - only two configs: with_expansion / no_expansion (all other flags follow the
+    Section 7.7 baseline)
+  - fully separate cache paths (expansion_*.json) so the Section 7.7 headline
+    numbers are never polluted
+  - an extra expansion_hit_rate metric (how often expansion terms appear in the
+    top-10 documents)
 
-复用 pool_eval 的：apply_config_to_prefs / score_one_job / build_pool / _rate_one /
-_job_snippet / POOL_SYSTEM_PROMPT / _load_or_init / _save_json。
+Reused from pool_eval: apply_config_to_prefs / score_one_job / build_pool /
+_rate_one / _job_snippet / POOL_SYSTEM_PROMPT / _load_or_init / _save_json.
 
 Usage:
-    python -m src.eval.expansion_eval phase_a       # 排序（无 LLM 成本）
-    python -m src.eval.expansion_eval phase_b       # 池标注（gpt-4o-mini，~$0.05）
-    python -m src.eval.expansion_eval phase_c       # 指标 + hit_rate + 报告
-    python -m src.eval.expansion_eval all           # A → B → C
+    python -m src.eval.expansion_eval phase_a       # ranking (no LLM cost)
+    python -m src.eval.expansion_eval phase_b       # pool annotation (gpt-4o-mini, ~$0.05)
+    python -m src.eval.expansion_eval phase_c       # metrics + hit_rate + report
+    python -m src.eval.expansion_eval all           # A -> B -> C
 """
 
 from __future__ import annotations
@@ -48,7 +52,7 @@ from src.llm import get_client
 
 
 # ---------------------------------------------------------------------------
-# 独立路径常量 — 严禁 import pool_eval 的同名常量
+# Separate path constants; never import the same-named constants from pool_eval
 # ---------------------------------------------------------------------------
 RESULTS_DIR = PROJECT_ROOT / "data" / "eval_results"
 QUERIES_PATH = PROJECT_ROOT / "data" / "test_queries_expansion.json"
@@ -58,7 +62,7 @@ POOL_PATH = RESULTS_DIR / "expansion_pool_annotations.json"
 METRICS_JSON_PATH = RESULTS_DIR / "expansion_metrics.json"
 METRICS_MD_PATH = RESULTS_DIR / "expansion_metrics_table.md"
 
-# 两档配置：除 skip_expansion 外其余 flag 与 §7.7 baseline 一致
+# Two configs: identical to the Section 7.7 baseline except for skip_expansion
 EXPANSION_CONFIGS = {
     "no_expansion": {
         "description": "Query expansion disabled (baseline)",
@@ -82,7 +86,7 @@ EXPANSION_CONFIGS = {
 
 
 # ---------------------------------------------------------------------------
-# 测试集加载
+# Test set loading
 # ---------------------------------------------------------------------------
 
 def load_expansion_queries() -> list[dict]:
@@ -91,17 +95,17 @@ def load_expansion_queries() -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Pref 缓存（本地路径）
+# Preference cache (local path)
 # ---------------------------------------------------------------------------
 
 def cache_preferences(queries: list[dict], force: bool = False) -> dict:
     cache = {} if force else _load_or_init(PREF_CACHE_PATH, {})
     missing = [q for q in queries if q["id"] not in cache]
     if not missing:
-        print(f"[pref-cache] {len(queries)}/{len(queries)} 命中，跳过 LLM 调用")
+        print(f"[pref-cache] {len(queries)}/{len(queries)} hits, skipping LLM calls")
         return cache
 
-    print(f"[pref-cache] 需要调用 LLM {len(missing)} 次（gpt-4o-mini）")
+    print(f"[pref-cache] {len(missing)} LLM calls needed (gpt-4o-mini)")
     for q in missing:
         try:
             result = parse_preferences(q["query"])
@@ -111,25 +115,25 @@ def cache_preferences(queries: list[dict], force: bool = False) -> dict:
             }
             print(f"  [{q['id']}] ok")
         except Exception as e:
-            print(f"  [{q['id']}] 失败: {e}")
+            print(f"  [{q['id']}] failed: {e}")
         _save_json(PREF_CACHE_PATH, cache)
     return cache
 
 
 # ---------------------------------------------------------------------------
-# Phase A — 两档排序
+# Phase A: ranking under both configs
 # ---------------------------------------------------------------------------
 
 def run_phase_a(queries: list[dict], force: bool = False) -> dict:
     if RANKINGS_PATH.exists() and not force:
-        print(f"[phase-a] 已有 {RANKINGS_PATH.name}，使用 --force-a 覆盖")
+        print(f"[phase-a] {RANKINGS_PATH.name} already exists; use --force-a to overwrite")
         return _load_or_init(RANKINGS_PATH, {})
 
     pref_cache = cache_preferences(queries)
 
-    print("[phase-a] 加载候选 + TF-IDF + ScoringEngine ...")
+    print("[phase-a] Loading candidates + TF-IDF + ScoringEngine ...")
     all_candidates = load_candidates()
-    print(f"  候选数: {len(all_candidates)}")
+    print(f"  Candidates: {len(all_candidates)}")
 
     ir = JobIRSystem()
     import __main__
@@ -145,7 +149,7 @@ def run_phase_a(queries: list[dict], force: bool = False) -> dict:
     for q in queries:
         qid = q["id"]
         if qid not in pref_cache:
-            print(f"  [{qid}] 缺 preferences，跳过")
+            print(f"  [{qid}] no preferences, skipping")
             continue
         prefs_base = pref_cache[qid]["preferences"]
         w_adj_base = prefs_base.get("weight_adjustments") or {}
@@ -175,39 +179,39 @@ def run_phase_a(queries: list[dict], force: bool = False) -> dict:
             ranked = fuse_and_rank(scored, top_k=TOP_K)
             rankings[cfg_name][qid] = [j["job_id"] for j in ranked]
 
-        # 自检：两档 top-10 不应完全一致
+        # Sanity check: the two configs' top-10 should not be identical
         a = rankings["no_expansion"].get(qid, [])
         b = rankings["with_expansion"].get(qid, [])
-        same = "(IDENTICAL — 警告)" if a == b else f"(diff={len(set(a) ^ set(b))})"
+        same = "(IDENTICAL -- warning)" if a == b else f"(diff={len(set(a) ^ set(b))})"
         print(f"  [{qid}] done {same}")
 
     _save_json(RANKINGS_PATH, rankings)
-    print(f"[phase-a] 已写入 {RANKINGS_PATH}")
+    print(f"[phase-a] Written to {RANKINGS_PATH}")
     return rankings
 
 
 # ---------------------------------------------------------------------------
-# Phase B — 池化 LLM 标注（本地路径）
+# Phase B: pooled LLM annotation (local path)
 # ---------------------------------------------------------------------------
 
 def run_phase_b(queries: list[dict], force: bool = False) -> dict:
     rankings = _load_or_init(RANKINGS_PATH, None)
     if rankings is None:
-        print("[phase-b] 缺 rankings，请先跑 phase_a")
+        print("[phase-b] rankings missing; run phase_a first")
         sys.exit(1)
 
     pool = build_pool(rankings)
     total = sum(len(ids) for ids in pool.values())
-    print(f"[phase-b] 池大小: {len(pool)} 查询 × 平均 {total / max(1,len(pool)):.1f} job = {total} 条待标注")
+    print(f"[phase-b] Pool size: {len(pool)} queries x avg {total / max(1,len(pool)):.1f} jobs = {total} to annotate")
 
     if total > 500:
-        print(f"[phase-b] 标注总数 {total} > 500，超出预算守门，停止。请先精简测试集或排查 phase_a 异常")
+        print(f"[phase-b] {total} annotations > 500 exceeds the budget guard; stopping. Trim the test set or check phase_a for anomalies")
         sys.exit(1)
 
     annotations = {} if force else _load_or_init(POOL_PATH, {})
     qtext = {q["id"]: q["query"] for q in queries}
 
-    print("[phase-b] 加载候选池（构造标注用 job 描述）...")
+    print("[phase-b] Loading candidates (to build job descriptions for annotation)...")
     all_candidates = load_candidates()
     job_by_id = {j["job_id"]: j for j in all_candidates}
 
@@ -218,7 +222,7 @@ def run_phase_b(queries: list[dict], force: bool = False) -> dict:
         for jid in ids
         if not (qid in annotations and jid in annotations[qid])
     )
-    print(f"[phase-b] 需要新增标注 {pending} 条（gpt-4o-mini）")
+    print(f"[phase-b] {pending} new annotations needed (gpt-4o-mini)")
     if pending == 0:
         return annotations
 
@@ -230,22 +234,22 @@ def run_phase_b(queries: list[dict], force: bool = False) -> dict:
                 continue
             job = job_by_id.get(jid)
             if job is None:
-                print(f"    [{qid}/{jid}] 库中找不到该 job，记 0")
+                print(f"    [{qid}/{jid}] job not found in DB, recording 0")
                 annotations[qid][jid] = 0
                 continue
             grade = _rate_one(client, qtext[qid], job)
             if grade is None:
-                print(f"    [{qid}/{jid}] 标注失败 → 记 0（保守）")
+                print(f"    [{qid}/{jid}] annotation failed -> recording 0 (conservative)")
                 grade = 0
             annotations[qid][jid] = grade
             done += 1
             if done % 20 == 0:
-                print(f"    进度 {done}/{pending}")
+                print(f"    progress {done}/{pending}")
                 _save_json(POOL_PATH, annotations)
         _save_json(POOL_PATH, annotations)
 
     _save_json(POOL_PATH, annotations)
-    print(f"[phase-b] 完成 {done} 条新标注 → {POOL_PATH}")
+    print(f"[phase-b] {done} new annotations done -> {POOL_PATH}")
     return annotations
 
 
@@ -255,15 +259,16 @@ def run_phase_b(queries: list[dict], force: bool = False) -> dict:
 
 def expansion_hit_rate(prefs: dict, top10_jobs: list[dict], expander: QueryExpander) -> dict:
     """
-    扩展命中率：扩展后新增的关键词/标签在 top-10 文档（description ∪ tags ∪ title）的覆盖比例。
+    Expansion hit rate: the fraction of keywords/tags newly added by expansion
+    that appear in the top-10 documents (description + tags + title).
 
     Returns:
         {
-          "kw_hit_rate":  float | None,   # 新增 keywords 中命中的比例（None 表示无新增词）
+          "kw_hit_rate":  float | None,   # fraction of new keywords that hit (None if no new keywords)
           "tag_hit_rate": float | None,
           "new_kw_count": int,
           "new_tag_count": int,
-          "new_kw_hit_list": [str],       # 命中的扩展 keyword
+          "new_kw_hit_list": [str],       # expansion keywords that hit
           "new_tag_hit_list": [str],
         }
     """
@@ -306,20 +311,20 @@ def _avg_optional(values: list) -> float | None:
 
 
 # ---------------------------------------------------------------------------
-# Phase C — 指标 + hit_rate + 表格
+# Phase C: metrics + hit_rate + table
 # ---------------------------------------------------------------------------
 
 def run_phase_c() -> dict:
     rankings = _load_or_init(RANKINGS_PATH, None)
     annotations = _load_or_init(POOL_PATH, None)
     if rankings is None or annotations is None:
-        print("[phase-c] 需要 rankings + pool_annotations 都就绪")
+        print("[phase-c] both rankings and pool_annotations must be ready")
         sys.exit(1)
 
     queries = load_expansion_queries()
     pref_cache = _load_or_init(PREF_CACHE_PATH, {})
 
-    print("[phase-c] 加载候选池构造 hit_rate ...")
+    print("[phase-c] Loading candidates to compute hit_rate ...")
     all_candidates = load_candidates()
     job_by_id = {j["job_id"]: j for j in all_candidates}
     expander = QueryExpander()
@@ -339,7 +344,7 @@ def run_phase_c() -> dict:
             m["query_id"] = qid
             per_query_metrics.append(m)
 
-            # hit_rate 仅 with_expansion 配置算（no_expansion 没有"扩展"行为）
+            # hit_rate only applies to with_expansion (no_expansion does no expansion)
             if cfg_name == "with_expansion" and qid in pref_cache:
                 top10 = [job_by_id[jid] for jid in job_ids[:10] if jid in job_by_id]
                 hit = expansion_hit_rate(pref_cache[qid]["preferences"], top10, expander)
@@ -363,7 +368,7 @@ def run_phase_c() -> dict:
 
     _save_json(METRICS_JSON_PATH, per_config)
 
-    # 主指标对比表
+    # Headline metric comparison table
     a_no = per_config["no_expansion"]["average"]
     a_yes = per_config["with_expansion"]["average"]
     delta_row = {
@@ -373,7 +378,7 @@ def run_phase_c() -> dict:
     }
 
     lines = [
-        "## §7.4 Expansion 主指标对比",
+        "## Section 7.4 Expansion headline metrics",
         "",
         "| Config | P@5 | P@10 | nDCG@5 | nDCG@10 |",
         "|--------|-----|------|--------|---------|",
@@ -381,7 +386,7 @@ def run_phase_c() -> dict:
         f"| with_expansion | {a_yes.get('P@5',0):.3f} | {a_yes.get('P@10',0):.3f} | {a_yes.get('nDCG@5',0):.3f} | {a_yes.get('nDCG@10',0):.3f} |",
         f"| **Δ**          | {delta_row['P@5']:+.3f} | {delta_row['P@10']:+.3f} | {delta_row['nDCG@5']:+.3f} | {delta_row['nDCG@10']:+.3f} |",
         "",
-        "## §7.4 扩展命中率（仅 with_expansion）",
+        "## Section 7.4 Expansion hit rate (with_expansion only)",
         "",
     ]
     hit = per_config["with_expansion"].get("hit_rate", {})
@@ -389,10 +394,10 @@ def run_phase_c() -> dict:
         kw_avg = hit.get("avg_kw_hit_rate")
         tag_avg = hit.get("avg_tag_hit_rate")
         lines += [
-            f"- avg_kw_hit_rate  = {kw_avg:.3f}" if kw_avg is not None else "- avg_kw_hit_rate  = (无新增 keyword 的查询)",
-            f"- avg_tag_hit_rate = {tag_avg:.3f}" if tag_avg is not None else "- avg_tag_hit_rate = (无新增 tag 的查询)",
-            f"- 含新增 keyword 的查询数: {hit['queries_with_new_kw']}",
-            f"- 含新增 tag 的查询数: {hit['queries_with_new_tag']}",
+            f"- avg_kw_hit_rate  = {kw_avg:.3f}" if kw_avg is not None else "- avg_kw_hit_rate  = (no query gained new keywords)",
+            f"- avg_tag_hit_rate = {tag_avg:.3f}" if tag_avg is not None else "- avg_tag_hit_rate = (no query gained new tags)",
+            f"- Queries with new keywords: {hit['queries_with_new_kw']}",
+            f"- Queries with new tags: {hit['queries_with_new_tag']}",
         ]
 
     table = "\n".join(lines)

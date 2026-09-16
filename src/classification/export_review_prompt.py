@@ -1,15 +1,16 @@
 """
-导出人工抽查用的 prompt 文件：把 24 条待抽查职位 + 分类规则组装成独立 markdown,
-用户可直接喂给多个外部 LLM 做交叉验证。
+Export a prompt file for manual spot-checking: bundle the 24 sampled jobs plus the
+classification rules into a standalone markdown file that can be fed directly to
+several external LLMs for cross-validation.
 
-用法:
-    python -m src.classification.export_review_prompt              # 默认 24 条,seed=42
+Usage:
+    python -m src.classification.export_review_prompt              # default 24 jobs, seed=42
     python -m src.classification.export_review_prompt --sample 30
     python -m src.classification.export_review_prompt --all
 
-输出:
-    data/review_prompt.md    给 LLM 看的完整 prompt(规则 + 数据 + 输出格式)
-    data/review_sample.json  本次抽样的 job_id 列表,供后续对比多 AI 答案用
+Outputs:
+    data/review_prompt.md    the full prompt for the LLM (rules + data + output format)
+    data/review_sample.json  job_id list of this sample, for comparing answers across LLMs later
 """
 
 import argparse
@@ -124,7 +125,7 @@ def main() -> int:
             out_path = PROMPT_OUT.with_name(f"review_prompt_batch{b + 1}.md")
             out_path.write_text(_build_md(chunk, len(chunk)), encoding="utf-8")
             print(f"  batch {b + 1}: {len(chunk)} jobs → {out_path}")
-        # 仍写一份总览的合并版（备用）
+        # also write a single merged version as a fallback
         PROMPT_OUT.write_text(_build_md(selected, len(selected)), encoding="utf-8")
     else:
         PROMPT_OUT.write_text(_build_md(selected, len(selected)), encoding="utf-8")

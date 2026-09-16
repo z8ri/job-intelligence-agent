@@ -1,21 +1,22 @@
 """
-合并多 LLM 标注结果到 data/labeled_jobs.json。
+Merge multi-LLM review labels into data/labeled_jobs.json.
 
-投票来源（4 个）：
-- GPT-4o-mini 初标（data/review_sample.json 的 llm_initial_labels）
-- Claude / ChatGPT / Gemini 重标（data/reviews/*.json）
+Vote sources (4):
+- GPT-4o-mini initial labels (llm_initial_labels in data/review_sample.json)
+- Claude / ChatGPT / Gemini re-labels (data/reviews/*.json)
 
-规则：
-- 绝对多数（3/4 或 4/4）→ 自动采纳
-- 平局 / 多个并列最高 → 需要人工裁决（通过 --resolve hn_XXX:category 传入）
+Rules:
+- Clear majority (3/4 or 4/4) -> adopted automatically
+- Tie / several categories sharing the top count -> needs a manual decision
+  (passed via --resolve hn_XXX:category)
 
-用法：
+Usage:
     python -m src.classification.merge_reviews
-        (dry run：报告冲突，不落盘)
+        (dry run: report conflicts, write nothing)
 
     python -m src.classification.merge_reviews --apply \\
         --resolve hn_1082:data --resolve hn_353:devops
-        (采纳多数票 + 人工裁决，写回 labeled_jobs.json)
+        (adopt majority votes + manual decisions, write back to labeled_jobs.json)
 """
 
 import argparse
@@ -34,7 +35,7 @@ HUMAN_FINAL_SOURCE = "llm-gpt-4o-mini + multi-llm-vote + human-final"
 
 
 def load_votes() -> dict[str, dict[str, str]]:
-    """返回 {job_id: {source_name: category}}"""
+    """Return {job_id: {source_name: category}}."""
     votes: dict[str, dict[str, str]] = {}
 
     with SAMPLE_PATH.open("r", encoding="utf-8") as f:
@@ -53,7 +54,7 @@ def load_votes() -> dict[str, dict[str, str]]:
 
 
 def tally(job_votes: dict[str, str]):
-    """返回 (winner|None, [(category, count), ...])。winner=None 表示并列。"""
+    """Return (winner|None, [(category, count), ...]). winner=None means a tie."""
     counter = Counter(job_votes.values())
     ranked = counter.most_common()
     if not ranked:
@@ -89,7 +90,7 @@ def main() -> int:
     conflicts: list[tuple[str, list]] = []
 
     n_sources = len(next(iter(votes.values())))
-    print(f"共 {len(votes)} 个样本，{n_sources} 个投票来源")
+    print(f"{len(votes)} samples, {n_sources} vote sources")
     print("=" * 78)
 
     unanimous = 0
@@ -105,28 +106,28 @@ def main() -> int:
                 unanimous += 1
             if winner != gpt_label:
                 changes += 1
-                print(f"[改]   {job_id:<10}  {gpt_label} -> {winner}  ({ranked_str})")
+                print(f"[changed]  {job_id:<10}  {gpt_label} -> {winner}  ({ranked_str})")
             decisions[job_id] = (winner, MULTI_LLM_SOURCE)
         else:
             if job_id in resolves:
                 decisions[job_id] = (resolves[job_id], HUMAN_FINAL_SOURCE)
-                print(f"[裁决] {job_id:<10}  人工 -> {resolves[job_id]}  ({ranked_str})")
+                print(f"[resolved] {job_id:<10}  manual -> {resolves[job_id]}  ({ranked_str})")
             else:
                 conflicts.append((job_id, ranked))
-                print(f"[冲突] {job_id:<10}  待人工裁决  ({ranked_str})")
+                print(f"[conflict] {job_id:<10}  needs manual decision  ({ranked_str})")
 
     print("=" * 78)
-    print(f"一致通过={unanimous}  多数票改动={changes}  待裁决={len(conflicts)}")
+    print(f"unanimous={unanimous}  changed by majority={changes}  unresolved={len(conflicts)}")
 
     if conflicts:
         print()
-        print("未裁决冲突。重跑时追加参数：")
+        print("Unresolved conflicts. Re-run with these extra arguments:")
         for jid, _ in conflicts:
             print(f"    --resolve {jid}:<category>")
         return 2
 
     if not args.apply:
-        print("(dry run，加 --apply 写回 labeled_jobs.json)")
+        print("(dry run; pass --apply to write back to labeled_jobs.json)")
         return 0
 
     with LABELED_PATH.open("r", encoding="utf-8") as f:
@@ -145,7 +146,7 @@ def main() -> int:
     with LABELED_PATH.open("w", encoding="utf-8") as f:
         json.dump(labeled, f, ensure_ascii=False, indent=2)
 
-    print(f"\n已写入 {LABELED_PATH}，更新 {updated} 条")
+    print(f"\nWrote {LABELED_PATH}, updated {updated} entries")
     return 0
 
 

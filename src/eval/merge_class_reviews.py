@@ -1,20 +1,20 @@
 """
-§7.3 分类准确率 — 合并三家 LLM 的独立标注为 gold
+Section 7.3 classification accuracy: merge the three LLMs' independent labels into gold.
 
-读取 data/reviews_class/{claude,chatgpt,gemini}.json，
-按 job_id 做多数投票，输出 gold。
+Reads data/reviews_class/{claude,chatgpt,gemini}.json, takes a majority vote
+per job_id and writes the gold set.
 
-规则：
-- 3/3 一致 → unanimous
-- 2/3 多数 → majority
-- 1-1-1 分歧 → disputed（需要 --resolve job_id:category 裁决）
+Rules:
+- 3/3 agree -> unanimous
+- 2/3 agree -> majority
+- 1-1-1 split -> disputed (needs a --resolve job_id:category decision)
 
-用法:
-    python -m src.eval.merge_class_reviews                  # dry run，报冲突
-    python -m src.eval.merge_class_reviews --apply          # 落盘 gold
+Usage:
+    python -m src.eval.merge_class_reviews                  # dry run, reports conflicts
+    python -m src.eval.merge_class_reviews --apply          # write gold to disk
     python -m src.eval.merge_class_reviews --apply --resolve hn_123:backend
 
-输出:
+Output:
     data/eval_results/classification_gold.json
 """
 
@@ -33,13 +33,13 @@ EXPECTED_SOURCES = ["claude", "chatgpt", "gemini"]
 
 
 def load_votes() -> dict[str, dict[str, str]]:
-    """返回 {job_id: {source: category}}。"""
+    """Return {job_id: {source: category}}."""
     votes: dict[str, dict[str, str]] = {}
 
     for src in EXPECTED_SOURCES:
         path = REVIEWS_DIR / f"{src}.json"
         if not path.exists():
-            print(f"[warn] 缺少 {path}", file=sys.stderr)
+            print(f"[warn] missing {path}", file=sys.stderr)
             continue
         with path.open("r", encoding="utf-8") as f:
             entries = json.load(f)
@@ -50,7 +50,7 @@ def load_votes() -> dict[str, dict[str, str]]:
 
 
 def tally(job_votes: dict[str, str]):
-    """返回 (winner|None, ranked_list)。"""
+    """Return (winner|None, ranked_list)."""
     counter = Counter(job_votes.values())
     ranked = counter.most_common()
     if not ranked:
@@ -85,7 +85,7 @@ def main() -> int:
 
     votes = load_votes()
     if not votes:
-        print("[error] reviews 目录下没有 JSON，先让用户贴三家答案", file=sys.stderr)
+        print("[error] no JSON in the reviews directory; collect the three LLM answers first", file=sys.stderr)
         return 1
 
     resolves = parse_resolves(args.resolve)
@@ -95,7 +95,7 @@ def main() -> int:
     disputed: list[tuple[str, list]] = []
     decisions: dict[str, tuple[str, str, list]] = {}
 
-    print(f"共 {len(test_set)} 条测试样本")
+    print(f"{len(test_set)} test samples in total")
     print("=" * 80)
 
     for job in test_set:
@@ -103,7 +103,7 @@ def main() -> int:
         jv = votes.get(jid, {})
         if len(jv) < len(EXPECTED_SOURCES):
             missing = set(EXPECTED_SOURCES) - set(jv)
-            print(f"[warn] {jid} 缺失来源：{missing}")
+            print(f"[warn] {jid} missing sources: {missing}")
         winner, ranked = tally(jv)
         ranked_str = ", ".join(f"{c}={n}" for c, n in ranked)
 
@@ -118,23 +118,23 @@ def main() -> int:
         else:
             if jid in resolves:
                 decisions[jid] = (resolves[jid], "human_resolved", ranked)
-                print(f"[裁决] {jid:<10} 人工 -> {resolves[jid]}  ({ranked_str})")
+                print(f"[resolved] {jid:<10} human -> {resolves[jid]}  ({ranked_str})")
             else:
                 disputed.append((jid, ranked))
-                print(f"[分歧] {jid:<10} 1-1-1  ({ranked_str})")
+                print(f"[disputed] {jid:<10} 1-1-1  ({ranked_str})")
 
     print("=" * 80)
-    print(f"一致 {unanimous}  多数 {majority}  分歧 {len(disputed)}")
+    print(f"unanimous {unanimous}  majority {majority}  disputed {len(disputed)}")
 
     if disputed:
         print()
-        print("未裁决分歧。重跑时追加：")
+        print("Unresolved disputes. Re-run with:")
         for jid, _ in disputed:
             print(f"    --resolve {jid}:<category>")
         return 2
 
     if not args.apply:
-        print("(dry run，加 --apply 写入 gold)")
+        print("(dry run; add --apply to write gold)")
         return 0
 
     gold = []
@@ -151,7 +151,7 @@ def main() -> int:
 
     GOLD_PATH.parent.mkdir(parents=True, exist_ok=True)
     GOLD_PATH.write_text(json.dumps(gold, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n已写入 {GOLD_PATH}")
+    print(f"\nWritten to {GOLD_PATH}")
     return 0
 
 

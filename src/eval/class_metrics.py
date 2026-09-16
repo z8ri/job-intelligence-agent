@@ -1,14 +1,14 @@
 """
-§7.3 分类准确率 — 指标计算
+Section 7.3 classification accuracy: metric computation.
 
-读取 data/eval_results/classification_gold.json，
-对比分类器预测值（predicted_category）和 gold（gold_category），
-计算 accuracy / per-class P-R-F1 / 混淆矩阵。
+Reads data/eval_results/classification_gold.json, compares the classifier's
+predictions (predicted_category) against gold (gold_category), and computes
+accuracy, per-class P/R/F1 and a confusion matrix.
 
-用法:
+Usage:
     python -m src.eval.class_metrics
 
-输出:
+Outputs:
     data/eval_results/classification_metrics.json
     data/eval_results/classification_report.md
 """
@@ -29,7 +29,7 @@ CATEGORIES = ["backend", "frontend", "data", "devops", "fullstack", "mobile", "m
 
 
 def build_confusion_md(cm, labels: list[str]) -> str:
-    """生成 markdown 混淆矩阵表格。"""
+    """Render the confusion matrix as a markdown table."""
     header = "| pred \\ gold | " + " | ".join(labels) + " |"
     sep = "|" + "---|" * (len(labels) + 1)
     rows = [header, sep]
@@ -41,7 +41,7 @@ def build_confusion_md(cm, labels: list[str]) -> str:
 
 def main() -> int:
     if not GOLD_PATH.exists():
-        print(f"[error] {GOLD_PATH} not found，先跑 merge_class_reviews --apply", file=sys.stderr)
+        print(f"[error] {GOLD_PATH} not found; run merge_class_reviews --apply first", file=sys.stderr)
         return 1
 
     with GOLD_PATH.open("r", encoding="utf-8") as f:
@@ -66,7 +66,8 @@ def main() -> int:
     )
 
     # sklearn confusion_matrix: rows = true, cols = pred
-    # 我们展示时转置为 rows=pred, cols=gold（贴合阅读习惯："预测为X的里有多少真实为Y"）
+    # We display the transpose (rows=pred, cols=gold), which reads more naturally:
+    # "of the items predicted as X, how many were actually Y"
     cm_true_pred = confusion_matrix(y_true, y_pred, labels=CATEGORIES)
     cm_pred_true = cm_true_pred.T  # transpose
 
@@ -98,19 +99,19 @@ def main() -> int:
     METRICS_PATH.write_text(json.dumps(metrics, ensure_ascii=False, indent=2), encoding="utf-8")
 
     lines = [
-        "# 职位分类准确率评估报告 (§7.3)",
+        "# Job Classification Accuracy Report (Section 7.3)",
         "",
-        f"- 测试集规模：**{total}** 条（从全库 2013 条预测中按 7 类分层抽样，排除 120 条训练集）",
-        f"- Gold 来源：Claude / ChatGPT / Gemini 三家独立分类 + 多数投票",
-        f"- 一致 / 多数 / 人工裁决：{verdict_counts.get('unanimous', 0)} / {verdict_counts.get('majority', 0)} / {verdict_counts.get('human_resolved', 0)}",
+        f"- Test set size: **{total}** items (stratified sample across 7 classes from 2013 predictions over the full DB, excluding the 120 training items)",
+        f"- Gold source: independent classification by Claude / ChatGPT / Gemini + majority vote",
+        f"- Unanimous / majority / human-resolved: {verdict_counts.get('unanimous', 0)} / {verdict_counts.get('majority', 0)} / {verdict_counts.get('human_resolved', 0)}",
         "",
-        f"## 总体",
+        f"## Overall",
         "",
         f"- **Accuracy: {accuracy:.3f}** ({correct}/{total})",
         f"- Macro  P/R/F1: {metrics['macro_avg']['precision']:.3f} / {metrics['macro_avg']['recall']:.3f} / {metrics['macro_avg']['f1']:.3f}",
         f"- Weighted P/R/F1: {metrics['weighted_avg']['precision']:.3f} / {metrics['weighted_avg']['recall']:.3f} / {metrics['weighted_avg']['f1']:.3f}",
         "",
-        "## 每类指标",
+        "## Per-class metrics",
         "",
         "| category | precision | recall | F1 | support |",
         "|---|---|---|---|---|",
@@ -123,9 +124,9 @@ def main() -> int:
 
     lines.extend([
         "",
-        "## 混淆矩阵",
+        "## Confusion matrix",
         "",
-        "行 = 分类器预测类别，列 = gold 类别。对角线即正确预测数。",
+        "Rows = classifier prediction, columns = gold category. The diagonal is the count of correct predictions.",
         "",
         build_confusion_md(cm_pred_true.tolist(), CATEGORIES),
         "",
@@ -135,7 +136,7 @@ def main() -> int:
 
     print(f"Accuracy: {accuracy:.3f} ({correct}/{total})")
     print(f"Macro F1: {metrics['macro_avg']['f1']:.3f}")
-    print(f"已写入:")
+    print(f"Written:")
     print(f"  - {METRICS_PATH}")
     print(f"  - {REPORT_PATH}")
     return 0

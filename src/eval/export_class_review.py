@@ -1,14 +1,15 @@
 """
-§7.3 分类准确率 — 导出三家 LLM 审查用 prompt
+Section 7.3 classification accuracy: export the review prompt for the three LLMs.
 
-读取 data/eval_results/classification_test_set.json（63 条测试职位），
-生成 data/classification_review_prompt.md，用户可直接贴到 claude.ai /
-chatgpt.com / gemini.google.com 获取三家独立分类结果。
+Reads data/eval_results/classification_test_set.json (63 test jobs) and
+generates data/classification_review_prompt.md, which can be pasted directly
+into claude.ai / chatgpt.com / gemini.google.com to collect three independent
+classifications.
 
-用法:
+Usage:
     python -m src.eval.export_class_review
 
-输出:
+Output:
     data/classification_review_prompt.md
 """
 
@@ -22,7 +23,7 @@ PROMPT_OUT = ROOT / "data" / "classification_review_prompt.md"
 
 DESC_MAX_CHARS = 600
 
-# 规则与训练集标注保持完全一致，保证可比性。
+# Rules are kept identical to the training-set annotation so results are comparable.
 RULES_MD = """\
 # Job Category Classification Task (Evaluation Set)
 
@@ -86,7 +87,7 @@ def format_job(i: int, job: dict) -> str:
 
 def main() -> int:
     if not TEST_SET_PATH.exists():
-        print(f"[error] {TEST_SET_PATH} not found. 先跑 `python -m src.eval.sample_class_test_set`", file=sys.stderr)
+        print(f"[error] {TEST_SET_PATH} not found. Run `python -m src.eval.sample_class_test_set` first", file=sys.stderr)
         return 1
 
     with TEST_SET_PATH.open("r", encoding="utf-8") as f:
@@ -97,12 +98,12 @@ def main() -> int:
         parts.append(format_job(i, job))
 
     PROMPT_OUT.write_text("\n".join(parts), encoding="utf-8")
-    print(f"已导出 {len(jobs)} 条到 {PROMPT_OUT}")
+    print(f"Exported {len(jobs)} jobs to {PROMPT_OUT}")
     print()
-    print("下一步：把该文件整份内容贴到：")
-    print("  - claude.ai       → 保存回复到 data/reviews_class/claude.json")
-    print("  - chatgpt.com     → 保存回复到 data/reviews_class/chatgpt.json")
-    print("  - gemini.google.com → 保存回复到 data/reviews_class/gemini.json")
+    print("Next: paste the whole file into:")
+    print("  - claude.ai       -> save the reply to data/reviews_class/claude.json")
+    print("  - chatgpt.com     -> save the reply to data/reviews_class/chatgpt.json")
+    print("  - gemini.google.com -> save the reply to data/reviews_class/gemini.json")
     return 0
 
 

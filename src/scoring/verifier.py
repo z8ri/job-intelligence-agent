@@ -1,27 +1,32 @@
-"""Verifier：区分 valid / rejected / unknown，而不是只看排序分数。
+"""Verifier: distinguish valid / rejected / unknown instead of relying on ranking score alone.
 
-排名靠前不等于可以推荐——一个职位可能语义很相关，却是兼职；也可能没有薪资
-字段，无法证明满足用户的薪资要求。规则式判断，不调用 LLM（不需要语义理解，
-字段/正则判断更快更可控，也不产生额外 API 成本）。
+Ranking high does not mean a job can be recommended: a posting may be
+semantically relevant yet part-time, or lack a salary field so it cannot be
+shown to meet the user's salary requirement. This is rule-based and does not
+call the LLM (no semantic understanding is needed; field/regex checks are faster,
+more controllable, and incur no extra API cost).
 
-"跨来源同一职位合并"由 src/scoring/fusion.py::fuse_and_rank(dedupe=True) 在
-更早的阶段完成，这里不重复处理。
+Merging the same posting across sources is handled earlier by
+src/scoring/fusion.py::fuse_and_rank(dedupe=True) and is not repeated here.
 """
 
 import re
 
-# 保守匹配：只认 part-time/intern/temporary 这类不太会误伤的词，以及括号内
-# "(Contract)"/"(Contractor)"/"(1099)" 这类明确标记；"contract"裸词排除紧跟在
-# "smart"后面的情况，避免误杀 "Smart Contract Engineer"（区块链全职岗位，
-# 和雇佣类型的 contract 是两回事）。数据是 HN 帖子爬的，标题噪声不小，正则
-# 规则做不到 100% 准确，这里宁可漏判、不错杀。
+# Conservative matching: only recognize words unlikely to cause false positives,
+# such as part-time/intern/temporary, plus explicit parenthesized markers like
+# "(Contract)"/"(Contractor)"/"(1099)". The bare word "contract" excludes the
+# case where it directly follows "smart", so "Smart Contract Engineer" (a
+# full-time blockchain role, unrelated to contract employment) is not killed.
+# The data is scraped from HN posts and titles are noisy; regex rules cannot be
+# 100% accurate, so prefer missing a case over rejecting a good job.
 #
-# 每条规则都要先检查用户原话有没有主动提到同一个词——如果用户本来就是在找
-# 实习/合同工/兼职，这条规则不该把它们全拒了（拒得越准，用户越找不到自己
-# 要的东西，等于系统性地让这类查询失效）。
+# Every rule first checks whether the user's own query mentions the same word.
+# If the user is explicitly looking for internships/contract/part-time work,
+# the rule must not reject them all (the more precisely it rejects, the less the
+# user can find what they asked for, which would systematically break such queries).
 _NON_FULLTIME_PATTERNS = {
     "part_time": re.compile(r"\bpart[- ]time\b"),
-    "intern": re.compile(r"\bintern(s|ship|ships)?\b"),  # 覆盖复数形式 interns/internships
+    "intern": re.compile(r"\bintern(s|ship|ships)?\b"),  # also covers the plural forms interns/internships
     "temporary": re.compile(r"\btemporary\b"),
     "temp": re.compile(r"\btemp\b"),
     "contract_1099": re.compile(r"\(1099\)"),
@@ -40,21 +45,21 @@ def _looks_non_fulltime(title: str | None, user_query: str = "") -> bool:
 
 
 def verify_jobs(jobs: list[dict], preferences: dict, user_query: str = "") -> list[dict]:
-    """给每条职位打 verification_status（valid/rejected/unknown）+ reason。
+    """Assign each job a verification_status (valid/rejected/unknown) plus a reason.
 
-    原地标注并返回同一个列表：
-    - rejected: 标题看起来是兼职/合同工/实习，且用户原话没有主动要求这类职位
-    - unknown: 用户提了 target_salary，但该职位完全没有薪资数据，无法验证
-    - valid: 其余情况
+    Annotates in place and returns the same list:
+    - rejected: the title looks part-time/contract/intern and the user's query did not ask for such roles
+    - unknown: the user gave a target_salary but the job has no salary data at all, so it cannot be verified
+    - valid: everything else
     """
     target_salary = preferences.get("target_salary")
     for job in jobs:
         if _looks_non_fulltime(job.get("title"), user_query):
             job["verification_status"] = "rejected"
-            job["verification_reason"] = "标题包含 part-time/contract/intern 等非全职标记，且用户未主动要求此类职位"
+            job["verification_reason"] = "Title contains a non-full-time marker (part-time/contract/intern) and the user did not ask for such roles"
         elif target_salary and not job.get("salary_min") and not job.get("salary_max"):
             job["verification_status"] = "unknown"
-            job["verification_reason"] = "用户指定了目标薪资，但该职位未公开薪资范围，无法验证"
+            job["verification_reason"] = "User specified a target salary but this posting discloses no salary range; cannot verify"
         else:
             job["verification_status"] = "valid"
             job["verification_reason"] = ""

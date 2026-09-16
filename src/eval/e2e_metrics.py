@@ -1,17 +1,17 @@
 """
-§7.6 端到端回答质量 — 指标计算
+Section 7.6 end-to-end answer quality: metric computation.
 
-读取 data/eval_results/e2e_gold.json，汇总：
-- 每维度 20 条 macro 平均分（± 跨 rater 一致性的标准差）
-- 每条 query 在 3 个维度的平均分
-- 评分员一致性：Intraclass Correlation ICC(2,1)（双向随机，单一评分者）
-  纯 numpy 手算，避免引入 pingouin 依赖。
-- Cronbach's α（作为备用一致性指标）
+Reads data/eval_results/e2e_gold.json and aggregates:
+- per-dimension macro mean over the 20 queries (with the cross-rater std)
+- per-query mean over the 3 dimensions
+- inter-rater agreement: Intraclass Correlation ICC(2,1) (two-way random,
+  single rater), computed by hand to avoid a pingouin dependency
+- Cronbach's alpha (as a secondary agreement metric)
 
-用法:
+Usage:
     python -m src.eval.e2e_metrics
 
-输出:
+Outputs:
     data/eval_results/e2e_metrics.json
     data/eval_results/e2e_report.md
 """
@@ -35,12 +35,12 @@ def _variance(vals: list[float]) -> float:
 
 
 def icc_2_1(matrix: list[list[float]]) -> float | None:
-    """ICC(2,1) 双向随机一致性（单测量）。
+    """ICC(2,1): two-way random, absolute agreement, single measurement.
 
-    matrix[i][j] = subject i 的 rater j 打分。
-    公式：ICC = (MSR - MSE) / (MSR + (k-1)*MSE + k*(MSC - MSE)/n)
+    matrix[i][j] = rater j's score for subject i.
+    Formula: ICC = (MSR - MSE) / (MSR + (k-1)*MSE + k*(MSC - MSE)/n)
 
-    参考：Shrout & Fleiss (1979)
+    Reference: Shrout & Fleiss (1979)
     """
     n = len(matrix)
     if n == 0:
@@ -49,7 +49,7 @@ def icc_2_1(matrix: list[list[float]]) -> float | None:
     if k < 2:
         return None
 
-    # 过滤掉含 None 的 subject
+    # Drop subjects with any missing rating
     clean = [row for row in matrix if all(v is not None for v in row)]
     if len(clean) < 2:
         return None
@@ -78,7 +78,7 @@ def icc_2_1(matrix: list[list[float]]) -> float | None:
 
 
 def cronbach_alpha(matrix: list[list[float]]) -> float | None:
-    """Cronbach's α 内部一致性指标。matrix[i][j] = subject i rater j."""
+    """Cronbach's alpha (internal consistency). matrix[i][j] = subject i, rater j."""
     clean = [row for row in matrix if all(v is not None for v in row)]
     if len(clean) < 2:
         return None
@@ -98,7 +98,7 @@ def cronbach_alpha(matrix: list[list[float]]) -> float | None:
 
 def main() -> int:
     if not GOLD_PATH.exists():
-        print(f"[error] {GOLD_PATH} not found，先跑 merge_e2e_reviews --apply", file=sys.stderr)
+        print(f"[error] {GOLD_PATH} not found; run merge_e2e_reviews --apply first", file=sys.stderr)
         return 1
 
     with GOLD_PATH.open("r", encoding="utf-8") as f:
@@ -106,10 +106,10 @@ def main() -> int:
 
     n = len(gold)
     if n == 0:
-        print("[error] gold 空", file=sys.stderr)
+        print("[error] gold is empty", file=sys.stderr)
         return 1
 
-    # 每维度 per-query mean → 再对 20 条 macro 平均
+    # Per-query mean for each dimension, then macro-average over the 20 queries
     per_dim_means: dict[str, list[float]] = {d: [] for d in DIMENSIONS}
     per_dim_stds: dict[str, list[float]] = {d: [] for d in DIMENSIONS}
     for rec in gold:
@@ -126,7 +126,7 @@ def main() -> int:
     mean_std = {d: round(sum(per_dim_stds[d]) / len(per_dim_stds[d]), 3)
                 for d in DIMENSIONS if per_dim_stds[d]}
 
-    # 每维度构造 n × k 矩阵（subjects × raters）算 ICC / α
+    # Build an n x k matrix (subjects x raters) per dimension for ICC / alpha
     icc: dict[str, float | None] = {}
     alpha: dict[str, float | None] = {}
     for d in DIMENSIONS:
@@ -152,18 +152,18 @@ def main() -> int:
     METRICS_PATH.write_text(json.dumps(metrics, ensure_ascii=False, indent=2), encoding="utf-8")
 
     lines = [
-        "# 端到端回答质量评估报告 (§7.6)",
+        "# End-to-End Answer Quality Report (Section 7.6)",
         "",
-        f"- 查询数：**{n}** 条（从 40 条 test_queries 中挑选，覆盖 7 类别 + 多字段组合 + 硬过滤）",
-        f"- 打分者：3 家 LLM 自动评估（Claude / ChatGPT / Gemini）独立打分，参考 G-Eval / MT-Bench 范式，各维度 1-5 分",
-        f"- 三维定义：",
-        f"  - **Relevance** 相关性 — 返回职位是否匹配查询核心约束",
-        f"  - **Completeness** 完整性 — 答案是否覆盖查询涉及的所有重要字段",
-        f"  - **Readability** 可读性 — 语言是否清晰、结构是否便于阅读",
+        f"- Queries: **{n}** (selected from the 40 test_queries, covering 7 categories + multi-field combinations + hard filters)",
+        f"- Raters: 3 LLM evaluators (Claude / ChatGPT / Gemini) scoring independently, following the G-Eval / MT-Bench paradigm, 1-5 per dimension",
+        f"- Dimensions:",
+        f"  - **Relevance** — do the returned jobs match the query's core constraints",
+        f"  - **Completeness** — does the answer cover every important field the query touches",
+        f"  - **Readability** — is the language clear and the structure easy to read",
         "",
-        "## 三维总评",
+        "## Overall scores",
         "",
-        "| 维度 | Macro 平均 | 跨打分者 std 的平均 | ICC(2,1) | Cronbach α |",
+        "| Dimension | Macro mean | Mean cross-rater std | ICC(2,1) | Cronbach alpha |",
         "|---|---|---|---|---|",
     ]
     for d in DIMENSIONS:
@@ -180,11 +180,11 @@ def main() -> int:
 
     lines.extend([
         "",
-        "- ICC(2,1) / Cronbach α 解读：>0.75 良好，0.5-0.75 中等，<0.5 弱一致。",
+        "- Interpreting ICC(2,1) / Cronbach alpha: >0.75 good, 0.5-0.75 moderate, <0.5 weak agreement.",
         "",
-        "## 每条 query 明细",
+        "## Per-query details",
         "",
-        "| query_id | query | relevance | completeness | readability | 平均 |",
+        "| query_id | query | relevance | completeness | readability | mean |",
         "|---|---|---|---|---|---|",
     ])
     for rec in gold:
@@ -204,11 +204,11 @@ def main() -> int:
     lines.append("")
     REPORT_PATH.write_text("\n".join(lines), encoding="utf-8")
 
-    print(f"Macro 平均：")
+    print(f"Macro mean:")
     for d in DIMENSIONS:
         print(f"  {d:<14} mean={macro_mean.get(d, 'N/A'):<6} std_avg={mean_std.get(d, 'N/A'):<6} "
               f"ICC={icc[d] if icc[d] is None else round(icc[d], 3)}")
-    print(f"已写入:")
+    print(f"Written:")
     print(f"  - {METRICS_PATH}")
     print(f"  - {REPORT_PATH}")
     return 0

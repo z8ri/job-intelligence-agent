@@ -27,16 +27,16 @@ class HNJobSpider:
     def scrape(self):
         for t_id in self.thread_ids:
             start_url = f"{self.base_url}item?id={t_id}"
-            print(f"\n正在采集职位，主贴 ID: {t_id}")
+            print(f"\nCollecting jobs from thread ID: {t_id}")
             self._process_page(start_url)
             time.sleep(5)
             
         self._save()
 
     def _process_page(self, url):
-        print(f"扫描页面: {url}")
+        print(f"Scanning page: {url}")
         if not self.rp.can_fetch(self.user_agent, url):
-            print(f"  robots.txt 不允许，跳过: {url}")
+            print(f"  Disallowed by robots.txt, skipping: {url}")
             return
 
         resp = self._get_with_retry(url)
@@ -70,7 +70,7 @@ class HNJobSpider:
                 self.job_results.append(job_entry)
                 page_count += 1
 
-        print(f"  本页提取了 {page_count} 个独立职位。")
+        print(f"  Extracted {page_count} distinct jobs from this page.")
 
         more_tag = soup.select_one('a.morelink')
         if more_tag:
@@ -86,16 +86,16 @@ class HNJobSpider:
                     return resp
                 if resp.status_code in (429, 500, 502, 503, 504):
                     backoff = 2 ** attempt
-                    print(f"  HTTP {resp.status_code}，{backoff}s 后重试 ({attempt+1}/{max_retries})")
+                    print(f"  HTTP {resp.status_code}, retrying in {backoff}s ({attempt+1}/{max_retries})")
                     time.sleep(backoff)
                     continue
-                print(f"  HTTP {resp.status_code}，跳过")
+                print(f"  HTTP {resp.status_code}, skipping")
                 return None
             except requests.RequestException as e:
                 backoff = 2 ** attempt
-                print(f"  网络错误: {e}，{backoff}s 后重试 ({attempt+1}/{max_retries})")
+                print(f"  Network error: {e}, retrying in {backoff}s ({attempt+1}/{max_retries})")
                 time.sleep(backoff)
-        print(f"  {max_retries} 次重试后仍失败")
+        print(f"  Still failing after {max_retries} retries")
         return None
 
     def _save(self):
@@ -103,9 +103,9 @@ class HNJobSpider:
         save_path = self.data_dir / filename
         with open(save_path, "w", encoding="utf-8") as f:
             json.dump(self.job_results, f, indent=2, ensure_ascii=False)
-        print(f"\n采集完毕。")
-        print(f"总计独立职位数: {len(self.job_results)}")
-        print(f"存储路径: {save_path}")
+        print(f"\nCrawl finished.")
+        print(f"Total distinct jobs: {len(self.job_results)}")
+        print(f"Saved to: {save_path}")
 
 if __name__ == "__main__":
     import argparse
@@ -115,18 +115,18 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--months", type=int, default=6,
-        help="抓取最近 N 个月的 Who is Hiring 月度帖（默认 6，最多 6）",
+        help="crawl the most recent N monthly Who is Hiring threads (default 6, max 6)",
     )
     args = parser.parse_args()
 
-    # 最近的月度帖在前；HN 的 item id 单调递增，所以列表是降序
+    # Most recent thread first; HN item ids increase monotonically, so the list is descending
     MONTHLY_THREAD_IDS = [
         "47601859", "47219668", "46857488",
         "46466074", "46108941", "45800465",
     ]
     n = max(1, min(args.months, len(MONTHLY_THREAD_IDS)))
     if n != args.months:
-        print(f"--months {args.months} 超出可用月度帖范围，回退到 {n}")
+        print(f"--months {args.months} is outside the available thread range, falling back to {n}")
 
     selected = MONTHLY_THREAD_IDS[:n]
     spider = HNJobSpider(thread_ids=selected)

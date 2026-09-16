@@ -1,24 +1,25 @@
 """
-§7.2 偏好提取准确率 — 合并三家 LLM 独立提取的偏好 JSON 为 gold
+Section 7.2 preference-extraction accuracy: merge the three LLMs' independently
+extracted preference JSON into gold.
 
-读取 data/reviews_pref/{claude,chatgpt,gemini}.json
-（格式：[{"query_id": "q01", "preferences": {...}}, ...]）
+Reads data/reviews_pref/{claude,chatgpt,gemini}.json
+(format: [{"query_id": "q01", "preferences": {...}}, ...])
 
-字段粒度多数投票：
-- 标量字段（target_salary / remote_preference / preferred_location / preferred_category）
-  - 3/3 一致 → unanimous
-  - 2/3 多数 → majority
-  - 1-1-1 → disputed（--resolve q01.field=value 裁决）
-- 列表字段（description_keywords / desired_tags）：取 "≥2 家都提到" 的元素并集
-- weight_adjustments：对每字段的 importance 标签分别多数投票
-- hard_filters：如果 ≥2 家都给空列表，gold=[]；否则取并集
+Field-level majority vote:
+- scalar fields (target_salary / remote_preference / preferred_location / preferred_category)
+  - 3/3 agree -> unanimous
+  - 2/3 agree -> majority
+  - 1-1-1 -> disputed (resolved with --resolve q01.field=value)
+- list fields (description_keywords / desired_tags): keep elements mentioned by >=2 raters
+- weight_adjustments: majority vote on the importance label of each field separately
+- hard_filters: gold=[] if >=2 raters gave an empty list; otherwise the union
 
-用法:
+Usage:
     python -m src.eval.merge_pref_reviews
     python -m src.eval.merge_pref_reviews --apply
     python -m src.eval.merge_pref_reviews --apply --resolve q01.target_salary=150000
 
-输出:
+Output:
     data/eval_results/pref_extraction_gold.json
 """
 
@@ -40,12 +41,12 @@ LIST_FIELDS = ["description_keywords", "desired_tags"]
 
 
 def load_reviews() -> dict[str, dict[str, dict]]:
-    """返回 {query_id: {source: preferences}}。"""
+    """Return {query_id: {source: preferences}}."""
     reviews: dict[str, dict[str, dict]] = {}
     for src in EXPECTED_SOURCES:
         path = REVIEWS_DIR / f"{src}.json"
         if not path.exists():
-            print(f"[warn] 缺少 {path}", file=sys.stderr)
+            print(f"[warn] missing {path}", file=sys.stderr)
             continue
         with path.open("r", encoding="utf-8") as f:
             entries = json.load(f)
@@ -57,7 +58,7 @@ def load_reviews() -> dict[str, dict[str, dict]]:
 
 
 def normalize_scalar(val):
-    """统一 None/空/归一化大小写，便于投票。"""
+    """Unify None/empty values and normalize case so votes compare cleanly."""
     if val is None or val == "":
         return None
     if isinstance(val, str):
@@ -66,7 +67,7 @@ def normalize_scalar(val):
 
 
 def vote_scalar(values: list):
-    """三家标量投票。返回 (winner, verdict, ranked)。"""
+    """Three-way vote on a scalar field. Returns (winner, verdict, ranked)."""
     normed = [normalize_scalar(v) for v in values]
     counter = Counter(normed)
     ranked = counter.most_common()
@@ -81,14 +82,14 @@ def vote_scalar(values: list):
 
 
 def normalize_list(vals):
-    """列表字段归一化：lowercase + strip + 去重，None 视为 []。"""
+    """Normalize a list field: lowercase + strip + dedupe; None counts as []."""
     if not vals:
         return set()
     return {str(v).strip().lower() for v in vals if v}
 
 
 def vote_list(values: list[list]):
-    """列表字段取 ">=2 家都提到" 的元素并集。"""
+    """For list fields, keep the elements mentioned by >=2 raters."""
     sets = [normalize_list(v) for v in values]
     all_elements: Counter = Counter()
     for s in sets:
@@ -99,7 +100,7 @@ def vote_list(values: list[list]):
 
 
 def vote_weight_adjustments(values: list[dict]):
-    """weight_adjustments: 对每字段的 importance 标签分别多数投票。"""
+    """weight_adjustments: majority vote on each field's importance label separately."""
     from collections import defaultdict
     per_field: dict[str, list[str]] = defaultdict(list)
     for v in values:
@@ -110,7 +111,7 @@ def vote_weight_adjustments(values: list[dict]):
 
     gold: dict[str, str] = {}
     for field, importances in per_field.items():
-        if len(importances) < 2:  # 少数派意见，不入 gold
+        if len(importances) < 2:  # minority opinion, not included in gold
             continue
         counter = Counter(importances)
         top_count = counter.most_common(1)[0][1]
@@ -121,7 +122,7 @@ def vote_weight_adjustments(values: list[dict]):
 
 
 def vote_hard_filters(values: list):
-    """hard_filters：≥2 家给空列表则 gold=[]；否则取并集。少见场景，简化处理。"""
+    """hard_filters: gold=[] if >=2 raters gave an empty list, otherwise the union. Rare case, kept simple."""
     empties = sum(1 for v in values if not v)
     if empties >= 2:
         return []
@@ -138,14 +139,14 @@ def vote_hard_filters(values: list):
 
 
 def parse_resolves(items: list[str]) -> dict:
-    """--resolve q01.target_salary=150000 → {q01: {target_salary: 150000}}"""
+    """--resolve q01.target_salary=150000 -> {q01: {target_salary: 150000}}"""
     out: dict[str, dict] = {}
     for item in items:
         if "=" not in item or "." not in item.split("=")[0]:
             raise SystemExit(f"invalid --resolve {item!r}, expected q01.field=value")
         lhs, rhs = item.split("=", 1)
         qid, field = lhs.split(".", 1)
-        # 尝试解析为 JSON，失败则当字符串
+        # Try to parse as JSON; fall back to a plain string
         try:
             val = json.loads(rhs)
         except json.JSONDecodeError:
@@ -169,7 +170,7 @@ def main() -> int:
 
     reviews = load_reviews()
     if not reviews:
-        print("[error] reviews_pref 目录空", file=sys.stderr)
+        print("[error] reviews_pref directory is empty", file=sys.stderr)
         return 1
 
     resolves = parse_resolves(args.resolve)
@@ -183,12 +184,12 @@ def main() -> int:
         rv = reviews.get(qid, {})
         if len(rv) < len(EXPECTED_SOURCES):
             missing = set(EXPECTED_SOURCES) - set(rv)
-            print(f"[warn] {qid} 缺失：{missing}")
+            print(f"[warn] {qid} missing: {missing}")
 
         gold = {}
         field_verdicts = {}
 
-        # 标量字段
+        # Scalar fields
         for f in SCALAR_FIELDS:
             vals = [rv.get(src, {}).get(f) for src in EXPECTED_SOURCES]
             winner, verdict, ranked = vote_scalar(vals)
@@ -203,9 +204,9 @@ def main() -> int:
                     field_verdicts[f] = "disputed"
                     stats["disputed"] += 1
             else:
-                # target_salary 是 int，winner 可能被 normalize_scalar 改成小写 str；还原
+                # target_salary is an int; normalize_scalar may have turned the winner into a lowercase str, so restore it
                 if f == "target_salary" and winner is not None:
-                    # 从原始 vals 里找匹配项
+                    # Find the matching original value
                     for v in vals:
                         if v is not None and normalize_scalar(v) == winner:
                             winner = v
@@ -214,7 +215,7 @@ def main() -> int:
                 field_verdicts[f] = verdict
                 stats[verdict] += 1
 
-        # 列表字段
+        # List fields
         for f in LIST_FIELDS:
             vals = [rv.get(src, {}).get(f) for src in EXPECTED_SOURCES]
             gold[f] = vote_list(vals)
@@ -239,28 +240,28 @@ def main() -> int:
             "raw_votes": rv,
         })
 
-    print(f"共 {len(queries)} 条查询 × {len(SCALAR_FIELDS)} 标量字段")
-    print(f"  一致 {stats['unanimous']}  多数 {stats['majority']}  分歧 {stats['disputed']}  人工裁决 {stats['human_resolved']}")
+    print(f"{len(queries)} queries x {len(SCALAR_FIELDS)} scalar fields")
+    print(f"  unanimous {stats['unanimous']}  majority {stats['majority']}  disputed {stats['disputed']}  human-resolved {stats['human_resolved']}")
 
     if disputed_fields:
         print()
-        print("未裁决分歧：")
+        print("Unresolved disputes:")
         for qid, f, ranked in disputed_fields:
             r_str = ", ".join(f"{v}={n}" for v, n in ranked)
             print(f"  {qid}.{f}: {r_str}")
-            print(f"    追加：--resolve {qid}.{f}=<value>")
+            print(f"    add: --resolve {qid}.{f}=<value>")
         if not args.apply:
             print()
             print("(dry run)")
         return 2
 
     if not args.apply:
-        print("(dry run，加 --apply 写入 gold)")
+        print("(dry run; add --apply to write gold)")
         return 0
 
     GOLD_PATH.parent.mkdir(parents=True, exist_ok=True)
     GOLD_PATH.write_text(json.dumps(gold_records, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n已写入 {GOLD_PATH}")
+    print(f"\nWritten to {GOLD_PATH}")
     return 0
 
 

@@ -1,10 +1,10 @@
 """
-§7.6 端到端回答质量 — 合并三家 LLM 独立打分，校验格式
+Section 7.6 end-to-end answer quality: merge the three LLMs' independent ratings and validate the format.
 
-读取 data/reviews_e2e/{claude,chatgpt,gemini}.json
-（格式：[{query_id, relevance:{comment,score}, completeness:{...}, readability:{...}}]）
+Reads data/reviews_e2e/{claude,chatgpt,gemini}.json
+(format: [{query_id, relevance:{comment,score}, completeness:{...}, readability:{...}}])
 
-输出 data/eval_results/e2e_gold.json：
+Writes data/eval_results/e2e_gold.json:
     [{
         "query_id": "q01",
         "per_rater": {"claude": {r, c, d}, "chatgpt": {...}, "gemini": {...}},
@@ -13,7 +13,7 @@
         "comments": {"claude": {...}, "chatgpt": {...}, "gemini": {...}}
     }, ...]
 
-用法:
+Usage:
     python -m src.eval.merge_e2e_reviews
     python -m src.eval.merge_e2e_reviews --apply
 """
@@ -34,7 +34,7 @@ DIMENSIONS = ["relevance", "completeness", "readability"]
 
 
 def _extract_score(entry: dict, dim: str) -> int | None:
-    """支持两种格式：{dim: {comment, score}} 或 {dim: 4}。"""
+    """Accept both formats: {dim: {comment, score}} or {dim: 4}."""
     v = entry.get(dim)
     if v is None:
         return None
@@ -59,12 +59,12 @@ def _extract_comment(entry: dict, dim: str) -> str:
 
 
 def load_reviews() -> dict[str, dict[str, dict]]:
-    """返回 {query_id: {source: raw_entry}}。"""
+    """Return {query_id: {source: raw_entry}}."""
     reviews: dict[str, dict[str, dict]] = {}
     for src in EXPECTED_SOURCES:
         path = REVIEWS_DIR / f"{src}.json"
         if not path.exists():
-            print(f"[warn] 缺少 {path}", file=sys.stderr)
+            print(f"[warn] missing {path}", file=sys.stderr)
             continue
         with path.open("r", encoding="utf-8") as f:
             entries = json.load(f)
@@ -82,7 +82,7 @@ def main() -> int:
     args = ap.parse_args()
 
     if not E2E_PATH.exists():
-        print(f"[error] {E2E_PATH} not found，先跑 prepare_e2e_queries", file=sys.stderr)
+        print(f"[error] {E2E_PATH} not found; run prepare_e2e_queries first", file=sys.stderr)
         return 1
 
     with E2E_PATH.open("r", encoding="utf-8") as f:
@@ -90,7 +90,7 @@ def main() -> int:
 
     reviews = load_reviews()
     if not reviews:
-        print("[error] reviews_e2e 目录空", file=sys.stderr)
+        print("[error] reviews_e2e directory is empty", file=sys.stderr)
         return 1
 
     gold_records = []
@@ -102,7 +102,7 @@ def main() -> int:
         rv = reviews.get(qid, {})
         if len(rv) < len(EXPECTED_SOURCES):
             missing = set(EXPECTED_SOURCES) - set(rv)
-            print(f"[warn] {qid} 缺失来源：{missing}")
+            print(f"[warn] {qid} missing sources: {missing}")
 
         per_rater_scores: dict[str, dict[str, int | None]] = {}
         per_rater_comments: dict[str, dict[str, str]] = {}
@@ -142,17 +142,17 @@ def main() -> int:
         })
 
     total_cells = len(query_records) * len(EXPECTED_SOURCES) * len(DIMENSIONS)
-    print(f"共 {len(query_records)} query × {len(EXPECTED_SOURCES)} rater × {len(DIMENSIONS)} dim = {total_cells} 单元格")
-    print(f"  无效/缺失分数：{invalid_score_count}")
-    print(f"  完全缺失维度：{missing_count}")
+    print(f"{len(query_records)} queries x {len(EXPECTED_SOURCES)} raters x {len(DIMENSIONS)} dims = {total_cells} cells")
+    print(f"  invalid/missing scores: {invalid_score_count}")
+    print(f"  dimensions with no scores at all: {missing_count}")
 
     if not args.apply:
-        print("(dry run，加 --apply 写入 e2e_gold.json)")
+        print("(dry run; add --apply to write e2e_gold.json)")
         return 0
 
     GOLD_PATH.parent.mkdir(parents=True, exist_ok=True)
     GOLD_PATH.write_text(json.dumps(gold_records, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n已写入 {GOLD_PATH}")
+    print(f"\nWritten to {GOLD_PATH}")
     return 0
 
 

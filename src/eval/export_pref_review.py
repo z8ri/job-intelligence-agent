@@ -1,14 +1,15 @@
 """
-§7.2 偏好提取准确率 — 导出三家 LLM 审查用 prompt
+Section 7.2 preference-extraction accuracy: export the review prompt for the three LLMs.
 
-把 40 条查询 + 偏好字段规范（与 src/llm/query_understanding.py 完全一致）
-打包到一份 markdown，用户可直接贴到 claude.ai / chatgpt.com / gemini.google.com。
-三家 LLM 独立从原始查询提取偏好 JSON，多数投票当 gold。
+Bundles the 40 queries plus the preference schema (identical to
+src/llm/query_understanding.py) into one markdown file that can be pasted
+directly into claude.ai / chatgpt.com / gemini.google.com. Each LLM extracts a
+preference JSON from the raw query independently; the majority vote is gold.
 
-用法:
+Usage:
     python -m src.eval.export_pref_review
 
-输出:
+Output:
     data/pref_extraction_review_prompt.md
 """
 
@@ -78,12 +79,12 @@ def main() -> int:
         parts.append("")
 
     PROMPT_OUT.write_text("\n".join(parts), encoding="utf-8")
-    print(f"已导出 {len(queries)} 条查询到 {PROMPT_OUT}")
+    print(f"Exported {len(queries)} queries to {PROMPT_OUT}")
     print()
-    print("下一步：把该文件整份内容贴到：")
-    print("  - claude.ai          → 保存回复到 data/reviews_pref/claude.json")
-    print("  - chatgpt.com        → 保存回复到 data/reviews_pref/chatgpt.json")
-    print("  - gemini.google.com  → 保存回复到 data/reviews_pref/gemini.json")
+    print("Next: paste the whole file into:")
+    print("  - claude.ai          -> save the reply to data/reviews_pref/claude.json")
+    print("  - chatgpt.com        -> save the reply to data/reviews_pref/chatgpt.json")
+    print("  - gemini.google.com  -> save the reply to data/reviews_pref/gemini.json")
     return 0
 
 

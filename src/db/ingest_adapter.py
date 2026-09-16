@@ -1,13 +1,13 @@
 """
-字段 adapter：把spider 的 data/structured_jobs.json 映射到 DB schema 格式。
+Field adapter: map the spider's data/structured_jobs.json onto the DB schema.
 
-Spider 输出字段与 DB schema 的差异：
-- JSON 有 publish_time（ISO 8601 字符串），DB 列名相同但需 DATETIME 格式
-- JSON remote 可能是 'remote_or_onsite'（spider 扩展值），DB enum 只有 remote/onsite/hybrid/unknown
-- JSON 无 degree_req / category / crawled_at，用默认值兜底
+Differences between the spider output and the DB schema:
+- JSON has publish_time as an ISO 8601 string; the DB column has the same name but needs DATETIME format
+- JSON remote may be 'remote_or_onsite' (a spider extension); the DB enum only has remote/onsite/hybrid/unknown
+- JSON has no degree_req / category / crawled_at; defaults are used as fallbacks
 
-用法:
-    python -m src.db.ingest_adapter                          # 入库默认文件
+Usage:
+    python -m src.db.ingest_adapter                          # ingest the default file
     python -m src.db.ingest_adapter data/structured_jobs.json
 """
 
@@ -31,10 +31,12 @@ VALID_REMOTE = {"remote", "onsite", "hybrid", "unknown"}
 _HTML_TAG_RE = re.compile(r"<[^>]+>")
 _WS_RE = re.compile(r"\s+")
 
-# Greenhouse 原始 slug（Stripe/Oklo/Coast）返回的岗位里大约 60% 是销售/业务/硬件
-# 岗位（Account Executive、Mechanical Engineer 等），与我们 7 类软件分类体系
-# 不匹配，会严重污染 TF-IDF 与分类器。入库前用 title 过滤到软件 / 数据 / 产品
-# 设计这类"技术向岗位"。HN 数据本身就是 Who-is-Hiring 技术帖，不经过这个过滤器。
+# Roughly 60% of the jobs returned by the raw Greenhouse slugs (Stripe/Oklo/Coast)
+# are sales/business/hardware roles (Account Executive, Mechanical Engineer, etc.).
+# They do not fit our 7-class software taxonomy and would badly pollute TF-IDF and
+# the classifier, so we filter by title to software / data / product-design style
+# "technical" roles before ingesting. HN data comes from Who-is-Hiring tech threads
+# already and skips this filter.
 _SOFTWARE_TITLE_RE = re.compile(
     r"\b("
     r"software|backend|frontend|fullstack|full[\-\s]?stack|front[\-\s]?end|back[\-\s]?end|"
@@ -50,7 +52,7 @@ _SOFTWARE_TITLE_RE = re.compile(
     re.IGNORECASE,
 )
 
-# title 含下列词则视为非软件岗直接剔除（即便名字里含 Engineer）
+# Titles containing any of these are treated as non-software and dropped (even if they say "Engineer")
 _NON_SOFTWARE_TITLE_RE = re.compile(
     r"\b("
     r"mechanical|thermal|nuclear|reactor|radioactive|radiochemistry|"
@@ -73,7 +75,7 @@ _NON_SOFTWARE_TITLE_RE = re.compile(
 
 
 def is_target_role(title: str | None, source: str | None = None) -> bool:
-    """是否保留此职位。HN 数据不过滤；Greenhouse/Lever 等 ATS 源走 title 白+黑名单。"""
+    """Whether to keep this job. HN data is not filtered; ATS sources (Greenhouse/Lever) go through the title whitelist + blacklist."""
     if source != "greenhouse" and source != "lever":
         return True
     if not title:
@@ -84,7 +86,7 @@ def is_target_role(title: str | None, source: str | None = None) -> bool:
 
 
 def _clean_description(text: str | None) -> str | None:
-    """Greenhouse 原始 description 带 HTML 标签与 smart quotes；入库前剥净并 NFKC 规范化。"""
+    """Raw Greenhouse descriptions contain HTML tags and smart quotes; strip them and NFKC-normalize before ingesting."""
     if not text:
         return text
     s = html.unescape(text)
@@ -95,7 +97,7 @@ def _clean_description(text: str | None) -> str | None:
 
 
 def _normalize_publish_time(value: str | None) -> str | None:
-    """ISO 8601 'T' 分隔 → MySQL DATETIME 'YYYY-MM-DD HH:MM:SS'。"""
+    """ISO 8601 with 'T' separator -> MySQL DATETIME 'YYYY-MM-DD HH:MM:SS'."""
     if not value:
         return None
     try:
@@ -114,7 +116,7 @@ def _normalize_remote(value: str | None) -> str:
 
 
 def adapt_record(raw: dict) -> dict:
-    """把spider 的 JSON dict 映射成 insert_job 期待的 dict。"""
+    """Map a spider JSON dict onto the dict that insert_job expects."""
     publish_time = _normalize_publish_time(raw.get("publish_time"))
     crawled_at = publish_time or datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
@@ -138,10 +140,10 @@ def adapt_record(raw: dict) -> dict:
 
 def ingest_structured_json(json_path: str | Path, **conn_overrides) -> int:
     """
-    读取 spider 产出的 structured_jobs.json，做字段映射后批量入库。
+    Read the spider's structured_jobs.json, map the fields, and bulk-insert into the DB.
 
     Returns:
-        成功插入的记录数。
+        Number of records inserted.
     """
     path = Path(json_path)
     with open(path, "r", encoding="utf-8") as f:
@@ -161,7 +163,7 @@ def ingest_structured_json(json_path: str | Path, **conn_overrides) -> int:
     finally:
         conn.close()
 
-    print(f"入库完成：{inserted} / {len(raw_jobs)} 条（过滤掉 {dropped} 条非软件岗）")
+    print(f"Ingested {inserted} / {len(raw_jobs)} jobs ({dropped} non-software roles filtered out)")
     return inserted
 
 

@@ -1,19 +1,21 @@
 """
-§7.6 端到端回答质量 — 导出三家 LLM 打分用 prompt
+Section 7.6 end-to-end answer quality: export the rating prompt for the three LLMs.
 
-读取 data/eval_results/e2e_queries.json（20 条 query + top-10 + system answer），
-生成一份可直接贴到 claude.ai / chatgpt.com / gemini.google.com 的 markdown。
+Reads data/eval_results/e2e_queries.json (20 queries + top-10 + system answer)
+and generates a markdown file that can be pasted directly into claude.ai /
+chatgpt.com / gemini.google.com.
 
-三家 LLM 独立给每条 (query, answer) 三维打分：
-- 相关性（Relevance）1-5：返回的职位是否真的匹配查询的核心约束
-- 完整性（Completeness）1-5：答案是否覆盖了查询涉及的所有重要字段
-- 可读性（Readability）1-5：语言是否清晰、结构是否便于阅读、有无冗余
-每维度先写一句简短评语再给分（减少纯数字幻觉）。
+Each LLM independently rates every (query, answer) pair on three dimensions:
+- Relevance 1-5: do the returned jobs really match the query's core constraints
+- Completeness 1-5: does the answer cover every important field the query touches
+- Readability 1-5: clear language, easy-to-read structure, no redundancy
+For each dimension the rater writes a short comment before the score (reduces
+number-only hallucination).
 
-用法:
+Usage:
     python -m src.eval.export_e2e_review
 
-输出:
+Output:
     data/e2e_review_prompt.md
 """
 
@@ -122,7 +124,7 @@ def _format_job_block(job: dict, rank: int) -> list[str]:
 
 def main() -> int:
     if not E2E_PATH.exists():
-        print(f"[error] {E2E_PATH} not found，先跑 prepare_e2e_queries", file=sys.stderr)
+        print(f"[error] {E2E_PATH} not found; run prepare_e2e_queries first", file=sys.stderr)
         return 1
 
     with E2E_PATH.open("r", encoding="utf-8") as f:
@@ -155,12 +157,12 @@ def main() -> int:
         parts.append("\n---\n")
 
     PROMPT_OUT.write_text("\n".join(parts), encoding="utf-8")
-    print(f"已导出 {len(records)} 条到 {PROMPT_OUT}")
+    print(f"Exported {len(records)} queries to {PROMPT_OUT}")
     print()
-    print("下一步：把该文件整份内容贴到：")
-    print("  - claude.ai          → 保存回复到 data/reviews_e2e/claude.json")
-    print("  - chatgpt.com        → 保存回复到 data/reviews_e2e/chatgpt.json")
-    print("  - gemini.google.com  → 保存回复到 data/reviews_e2e/gemini.json")
+    print("Next: paste the whole file into:")
+    print("  - claude.ai          -> save the reply to data/reviews_e2e/claude.json")
+    print("  - chatgpt.com        -> save the reply to data/reviews_e2e/chatgpt.json")
+    print("  - gemini.google.com  -> save the reply to data/reviews_e2e/gemini.json")
     return 0
 
 

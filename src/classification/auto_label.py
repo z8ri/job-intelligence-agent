@@ -1,19 +1,22 @@
 """
-LLM 辅助标注职位类别（训练集生成）
+LLM-assisted job category labeling (training set generation).
 
-从 MySQL 采样若干职位（分层 + 随机），调 GPT-4o-mini 分类成 7 类，
-产出 data/labeled_jobs.json 供 classifier.train() 使用。
+Samples jobs from MySQL (stratified + random), classifies them into 7
+categories with GPT-4o-mini, and writes data/labeled_jobs.json for
+classifier.train().
 
-策略：
-- 分层采样：对每个类别用 title 关键字预筛一批，保证各类有训练样本
-  （关键字不足的类别用随机补齐，剩余名额纯随机）
-- 关键字仅用于覆盖性，类别由 LLM 判断（避免"标题含 backend 就必分 backend"的 leakage）
-- Temperature=0.0，单条 prompt，输出单个类别名
+Strategy:
+- Stratified sampling: pre-filter a batch per category by title keywords so
+  every category has training samples (categories with too few keyword hits
+  are topped up randomly; the remaining quota is purely random).
+- Keywords are only used for coverage; the category is decided by the LLM
+  (avoids the leakage of "title contains backend => must be backend").
+- Temperature=0.0, one prompt per job, output is a single category name.
 
-用法:
-    python -m src.classification.auto_label              # 默认 120 条
-    python -m src.classification.auto_label 150          # 指定数量
-    python -m src.classification.auto_label 120 --dry-run   # 只采样不调 LLM
+Usage:
+    python -m src.classification.auto_label              # default 120 jobs
+    python -m src.classification.auto_label 150          # explicit count
+    python -m src.classification.auto_label 120 --dry-run   # sample only, no LLM calls
 """
 
 import json
@@ -132,7 +135,7 @@ for _job_text, _cat in FEW_SHOT:
 # ---------------------------------------------------------------------------
 
 def _fetch_by_title_keywords(conn, keywords: list[str], limit: int, exclude_ids: set[str]) -> list[dict]:
-    """按 title LIKE 关键字抓取一批职位，排除已采样的 id。"""
+    """Fetch a batch of jobs by title LIKE keywords, excluding already-sampled ids."""
     if not keywords:
         return []
     like_clauses = " OR ".join(["LOWER(title) LIKE %s"] * len(keywords))
@@ -156,7 +159,7 @@ def _fetch_by_title_keywords(conn, keywords: list[str], limit: int, exclude_ids:
 
 
 def _fetch_random(conn, limit: int, exclude_ids: set[str]) -> list[dict]:
-    """随机抓取（排除已采样）。"""
+    """Random fetch (excluding already-sampled ids)."""
     params: list = []
     exclude_sql = ""
     if exclude_ids:
@@ -193,7 +196,7 @@ def _fetch_tags(conn, job_ids: list[str]) -> dict[str, list[str]]:
 
 
 def sample_jobs(target_n: int = 120) -> list[dict]:
-    """分层 + 随机采样 target_n 条职位。"""
+    """Stratified + random sampling of target_n jobs."""
     conn = get_connection()
     try:
         sampled: dict[str, dict] = {}
@@ -204,14 +207,14 @@ def sample_jobs(target_n: int = 120) -> list[dict]:
             )
             for row in rows:
                 sampled[row["job_id"]] = row
-            print(f"  [{category}] 预筛命中 {len(rows)} 条（累计 {len(sampled)}）")
+            print(f"  [{category}] keyword pre-filter hit {len(rows)} jobs (total {len(sampled)})")
 
         remaining = target_n - len(sampled)
         if remaining > 0:
             random_rows = _fetch_random(conn, limit=remaining, exclude_ids=set(sampled.keys()))
             for row in random_rows:
                 sampled[row["job_id"]] = row
-            print(f"  [random] 补齐 {len(random_rows)} 条（累计 {len(sampled)}）")
+            print(f"  [random] topped up with {len(random_rows)} jobs (total {len(sampled)})")
 
         jobs = list(sampled.values())[:target_n]
         tag_map = _fetch_tags(conn, [j["job_id"] for j in jobs])
@@ -235,7 +238,7 @@ def _format_job_for_llm(job: dict) -> str:
 
 
 def classify_one(job: dict, client) -> str | None:
-    """调 LLM 分类单条职位，返回类别名（失败返回 None）。"""
+    """Classify a single job via the LLM; returns the category name (None on failure)."""
     user_text = _format_job_for_llm(job)
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
@@ -258,12 +261,12 @@ def classify_one(job: dict, client) -> str | None:
                 return cat
         return None
     except Exception as e:
-        print(f"    ! LLM 调用失败 {job.get('job_id')}: {e}")
+        print(f"    ! LLM call failed for {job.get('job_id')}: {e}")
         return None
 
 
 def label_jobs(jobs: list[dict]) -> list[dict]:
-    """对采样结果逐条调 LLM，返回带 category 的标注列表。"""
+    """Call the LLM on each sampled job; returns the labeled list with a category field."""
     client = get_client()
     labeled: list[dict] = []
     unknown = 0
@@ -282,8 +285,8 @@ def label_jobs(jobs: list[dict]) -> list[dict]:
             "label_source": f"llm-{MODEL}",
         })
         if i % 10 == 0:
-            print(f"  已标注 {i}/{len(jobs)}")
-    print(f"完成：{len(labeled)} 条成功、{unknown} 条失败")
+            print(f"  labeled {i}/{len(jobs)}")
+    print(f"Done: {len(labeled)} succeeded, {unknown} failed")
     return labeled
 
 
@@ -295,37 +298,37 @@ def write_labeled(labeled: list[dict], path: Path = OUTPUT_PATH) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(labeled, f, ensure_ascii=False, indent=2)
-    print(f"已写入 {path} ({len(labeled)} 条)")
+    print(f"Wrote {path} ({len(labeled)} jobs)")
 
 
 def print_category_distribution(labeled: list[dict]) -> None:
     counts: dict[str, int] = {cat: 0 for cat in CATEGORIES}
     for job in labeled:
         counts[job["category"]] = counts.get(job["category"], 0) + 1
-    print("\n类别分布：")
+    print("\nCategory distribution:")
     for cat in CATEGORIES:
         print(f"  {cat:12s} {counts[cat]:3d}")
 
 
 def main(target_n: int = 120, dry_run: bool = False) -> None:
     random.seed(42)
-    print(f"采样目标：{target_n} 条")
+    print(f"Sampling target: {target_n} jobs")
     jobs = sample_jobs(target_n)
-    print(f"采样完成：{len(jobs)} 条\n")
+    print(f"Sampled {len(jobs)} jobs\n")
 
     if dry_run:
-        print("=== dry-run：跳过 LLM 标注，仅写采样结果 ===")
+        print("=== dry-run: skipping LLM labeling, writing sampled jobs only ===")
         raw_path = OUTPUT_PATH.with_name("sampled_jobs_unlabeled.json")
         with open(raw_path, "w", encoding="utf-8") as f:
             json.dump(jobs, f, ensure_ascii=False, indent=2, default=str)
-        print(f"已写入 {raw_path}")
+        print(f"Wrote {raw_path}")
         return
 
-    print("开始 LLM 标注（GPT-4o-mini）...")
+    print("Starting LLM labeling (GPT-4o-mini)...")
     labeled = label_jobs(jobs)
     write_labeled(labeled)
     print_category_distribution(labeled)
-    print(f"\n下一步：人工抽查 {max(20, len(labeled) // 5)} 条校对，然后 "
+    print(f"\nNext: manually spot-check {max(20, len(labeled) // 5)} labels, then run "
           f"`python -m src.classification.classifier train`")
 
 

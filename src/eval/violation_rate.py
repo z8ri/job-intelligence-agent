@@ -1,13 +1,15 @@
-"""硬约束违反率：老系统历史 Top-K 结果里，有多少比例其实是兼职/合同工/实习
-这类本该被 Verifier 拦下的职位——量化"没有 Verifier 之前，结果有多脏"。
+"""Hard-constraint violation rate: what fraction of the old system's historical
+Top-K results are part-time / contract / internship postings that the Verifier
+should have blocked. Quantifies how dirty the results were before the Verifier.
 
-纯本地计算，不调 LLM：直接读老系统的历史排名 + 历史 preferences + 原始 query
-文本，对每条候选跑 src/scoring/verifier.py::verify_jobs()（规则式判断）。
+Purely local, no LLM calls: reads the old system's historical rankings, cached
+preferences and raw query text, and runs src/scoring/verifier.py::verify_jobs()
+(rule-based) on every candidate.
 
-不覆盖任何历史文件——只读 data/eval_results/、data/test_queries.json，
-产物写到 data/eval_results_vnext/violation_rate.json。
+Overwrites no historical files: only reads data/eval_results/ and
+data/test_queries.json, and writes to data/eval_results_vnext/violation_rate.json.
 
-用法:
+Usage:
     python -m src.eval.violation_rate
 """
 
@@ -52,8 +54,8 @@ def compute_violation_rate(
     query_texts: dict[str, str],
     top_n: int = TOP_N,
 ) -> dict:
-    """rankings: {qid: [job_id, ...]}（已经是某一个 config 的排名）。
-    返回 {"total": int, "rejected": int, "rate": float, "examples": [...]}。
+    """rankings: {qid: [job_id, ...]} (already the ranking of a single config).
+    Returns {"total": int, "rejected": int, "rate": float, "examples": [...]}.
     """
     needed_ids: set[str] = set()
     for qid, jids in rankings.items():
@@ -98,7 +100,7 @@ def main() -> None:
     old_config = "all_adaptive_weights"
     print(f"[old baseline] config={old_config}")
     old_result = compute_violation_rate(old_rankings[old_config], prefs_cache, query_texts)
-    print(f"  {old_result['rejected']}/{old_result['total']} = {old_result['rate']:.1%} 会被判 rejected")
+    print(f"  {old_result['rejected']}/{old_result['total']} = {old_result['rate']:.1%} would be rejected")
 
     result = {"old": {"config": old_config, **old_result}}
 
@@ -107,14 +109,14 @@ def main() -> None:
             new_rankings = json.load(f)
         new_config = "hybrid_rrf_reranked"
         if new_config in new_rankings:
-            print(f"\n[新检索方式候选池本身] config={new_config}")
+            print(f"\n[new retrieval candidate pool] config={new_config}")
             new_result = compute_violation_rate(new_rankings[new_config], prefs_cache, query_texts)
-            print(f"  {new_result['rejected']}/{new_result['total']} = {new_result['rate']:.1%} 会被判 rejected")
+            print(f"  {new_result['rejected']}/{new_result['total']} = {new_result['rate']:.1%} would be rejected")
             result["new_retrieval_pool"] = {"config": new_config, **new_result}
 
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(result, f, indent=2, ensure_ascii=False)
-    print(f"\n已写入 {OUT_PATH}")
+    print(f"\nWritten to {OUT_PATH}")
 
 
 if __name__ == "__main__":

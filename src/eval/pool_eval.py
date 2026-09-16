@@ -54,8 +54,9 @@ from src.llm import MODEL, get_client
 
 import os
 
-# 允许通过环境变量临时把产物重定向到另一个目录（例如跑 vNext 新增 config
-# 时不想覆盖已交付报告引用的历史结果），默认行为完全不变。
+# Outputs can be redirected to another directory via an environment variable
+# (e.g. when running new vNext configs without overwriting the historical results
+# cited by the delivered report). Default behavior is unchanged.
 RESULTS_DIR = Path(os.environ.get("POOL_EVAL_RESULTS_DIR") or (PROJECT_ROOT / "data" / "eval_results"))
 PREF_CACHE_PATH = RESULTS_DIR / "preferences_cache.json"
 RANKINGS_PATH = RESULTS_DIR / "rankings.json"
@@ -107,8 +108,8 @@ def apply_config_to_prefs(
     else:
         active = set(active_cfg)
 
-    # active_fields 已交给 engine 控制激活，这里再把对应 pref 置 None 是双保险，
-    # 对默认行为无副作用。
+    # The engine already gates activation on active_fields; nulling the matching
+    # pref here is a belt-and-braces measure with no effect on default behavior.
     for fld, pref_key in FIELD_TO_PREF.items():
         if fld == "description":
             continue
@@ -216,10 +217,10 @@ def cache_preferences(queries: list[dict], force: bool = False) -> dict:
     cache = {} if force else _load_or_init(PREF_CACHE_PATH, {})
     missing = [q for q in queries if q["id"] not in cache]
     if not missing:
-        print(f"[pref-cache] 40/40 命中，跳过 LLM 调用")
+        print(f"[pref-cache] 40/40 hits, skipping LLM calls")
         return cache
 
-    print(f"[pref-cache] 需要调用 LLM {len(missing)} 次（gpt-4o-mini）")
+    print(f"[pref-cache] {len(missing)} LLM calls needed (gpt-4o-mini)")
     for q in missing:
         try:
             result = parse_preferences(q["query"])
@@ -229,7 +230,7 @@ def cache_preferences(queries: list[dict], force: bool = False) -> dict:
             }
             print(f"  [{q['id']}] ok")
         except Exception as e:
-            print(f"  [{q['id']}] 失败: {e}")
+            print(f"  [{q['id']}] failed: {e}")
         _save_json(PREF_CACHE_PATH, cache)  # incremental save
 
     return cache
@@ -241,14 +242,14 @@ def run_phase_a(queries: list[dict], force: bool = False) -> dict:
     Preferences come from cache_preferences().
     """
     if RANKINGS_PATH.exists() and not force:
-        print(f"[phase-a] 已有 rankings.json，使用 --force-a 覆盖")
+        print(f"[phase-a] rankings.json already exists; use --force-a to overwrite")
         return _load_or_init(RANKINGS_PATH, {})
 
     pref_cache = cache_preferences(queries)
 
-    print("[phase-a] 加载候选全量 + TF-IDF + BM25 + ScoringEngine ...")
+    print("[phase-a] Loading all candidates + TF-IDF + BM25 + ScoringEngine ...")
     all_candidates = load_candidates()
-    print(f"  候选数: {len(all_candidates)}")
+    print(f"  Candidates: {len(all_candidates)}")
 
     ir = JobIRSystem()
     # pickle was saved with __main__.JobIRSystem; expose the class under
@@ -284,7 +285,7 @@ def run_phase_a(queries: list[dict], force: bool = False) -> dict:
     for q in queries:
         qid = q["id"]
         if qid not in pref_cache:
-            print(f"  [{qid}] 缺少 preferences，跳过")
+            print(f"  [{qid}] no preferences, skipping")
             continue
         prefs_base = pref_cache[qid]["preferences"]
         w_adj_base = prefs_base.get("weight_adjustments") or {}
@@ -316,10 +317,10 @@ def run_phase_a(queries: list[dict], force: bool = False) -> dict:
                     for jid in set(tfidf_s) | set(bm25_s)
                 }
             elif ir_mode == "hybrid_rrf":
-                # 镜像 src/pipeline/graph.py::node_unified_scoring 的写法，
-                # 包括 RRF 融合后必须重新 min-max 归一化到 [0,1] 这一步——
-                # 漏掉这步会让 description 权重被其他字段淹没（之前在
-                # graph.py 上踩过这个坑）。
+                # Mirrors src/pipeline/graph.py::node_unified_scoring, including
+                # the mandatory min-max re-normalization to [0,1] after RRF fusion.
+                # Skipping that step lets the other fields drown out the
+                # description weight (a bug we hit before in graph.py).
                 bm25_s = bm25.get_similarities(text_query)
                 dense_s = dense.get_similarities(text_query)
                 fused = reciprocal_rank_fusion([bm25_s, dense_s])
@@ -352,7 +353,7 @@ def run_phase_a(queries: list[dict], force: bool = False) -> dict:
                 tfidf = text_scores.get(job["job_id"], 0.0)
                 if cfg.get("hard_filter_mode"):
                     # Survivors ranked purely by description score (the
-                    # "硬过滤基线" baseline — no soft scoring).
+                    # hard-filter baseline; no soft scoring).
                     final = round(float(tfidf), 4)
                 else:
                     final = score_one_job(job, prefs, w_adj, tfidf, active, cfg, engine)
@@ -363,10 +364,10 @@ def run_phase_a(queries: list[dict], force: bool = False) -> dict:
             ranked = fuse_and_rank(scored, top_k=TOP_K)
             rankings[cfg_name][qid] = [j["job_id"] for j in ranked]
 
-        print(f"  [{qid}] done — {len(ABLATION_CONFIGS)} configs × top-{TOP_K}")
+        print(f"  [{qid}] done -- {len(ABLATION_CONFIGS)} configs x top-{TOP_K}")
 
     _save_json(RANKINGS_PATH, rankings)
-    print(f"[phase-a] 已写入 {RANKINGS_PATH}")
+    print(f"[phase-a] Written to {RANKINGS_PATH}")
     return rankings
 
 
@@ -461,19 +462,19 @@ def run_phase_b(queries: list[dict], force: bool = False) -> dict:
     """Annotate the pool. Cache per (qid, job_id)."""
     rankings = _load_or_init(RANKINGS_PATH, None)
     if rankings is None:
-        print("[phase-b] 缺 rankings.json，请先跑 phase_a")
+        print("[phase-b] rankings.json missing; run phase_a first")
         sys.exit(1)
 
     pool = build_pool(rankings)
     total = sum(len(ids) for ids in pool.values())
-    print(f"[phase-b] 池大小: {len(pool)} 查询 × 平均 {total / max(1,len(pool)):.1f} job = {total} 条待标注")
+    print(f"[phase-b] Pool size: {len(pool)} queries x avg {total / max(1,len(pool)):.1f} jobs = {total} to annotate")
 
     annotations = {} if force else _load_or_init(POOL_PATH, {})
 
     # Build qid → query text map and job_id → job dict map
     qtext = {q["id"]: q["query"] for q in queries}
 
-    print("[phase-b] 加载候选池（用于构造标注用的 job 描述）...")
+    print("[phase-b] Loading candidates (to build job descriptions for annotation)...")
     all_candidates = load_candidates()
     job_by_id = {j["job_id"]: j for j in all_candidates}
 
@@ -486,7 +487,7 @@ def run_phase_b(queries: list[dict], force: bool = False) -> dict:
                 continue
             pending += 1
 
-    print(f"[phase-b] 需要新增标注 {pending} 条（gpt-4o-mini）")
+    print(f"[phase-b] {pending} new annotations needed (gpt-4o-mini)")
     if pending == 0:
         return annotations
 
@@ -497,22 +498,22 @@ def run_phase_b(queries: list[dict], force: bool = False) -> dict:
                 continue
             job = job_by_id.get(jid)
             if job is None:
-                print(f"    [{qid}/{jid}] 库中找不到该 job，记 0")
+                print(f"    [{qid}/{jid}] job not found in DB, recording 0")
                 annotations[qid][jid] = 0
                 continue
             grade = _rate_one(client, qtext[qid], job)
             if grade is None:
-                print(f"    [{qid}/{jid}] 标注失败 → 记 0（保守）")
+                print(f"    [{qid}/{jid}] annotation failed -> recording 0 (conservative)")
                 grade = 0
             annotations[qid][jid] = grade
             done += 1
             if done % 20 == 0:
-                print(f"    进度 {done}/{pending}")
+                print(f"    progress {done}/{pending}")
                 _save_json(POOL_PATH, annotations)
         _save_json(POOL_PATH, annotations)
 
     _save_json(POOL_PATH, annotations)
-    print(f"[phase-b] 完成 {done} 条新标注 → {POOL_PATH}")
+    print(f"[phase-b] {done} new annotations done -> {POOL_PATH}")
     return annotations
 
 
@@ -524,7 +525,7 @@ def run_phase_c() -> dict:
     rankings = _load_or_init(RANKINGS_PATH, None)
     annotations = _load_or_init(POOL_PATH, None)
     if rankings is None or annotations is None:
-        print("[phase-c] 需要 rankings.json 和 pool_annotations.json 都就绪")
+        print("[phase-c] both rankings.json and pool_annotations.json must be ready")
         sys.exit(1)
 
     per_config: dict[str, dict] = {}
@@ -573,12 +574,12 @@ def run_phase_c() -> dict:
 def show_pool_stats() -> None:
     rankings = _load_or_init(RANKINGS_PATH, None)
     if rankings is None:
-        print("rankings.json 不存在")
+        print("rankings.json does not exist")
         return
     pool = build_pool(rankings)
     sizes = [len(v) for v in pool.values()]
     if not sizes:
-        print("空池")
+        print("empty pool")
         return
     print(f"queries: {len(sizes)}")
     print(f"pool size per query: min={min(sizes)} max={max(sizes)} mean={sum(sizes)/len(sizes):.1f}")

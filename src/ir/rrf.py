@@ -1,8 +1,10 @@
-"""Reciprocal Rank Fusion：按名次而非原始分数融合多路检索结果。
+"""Reciprocal Rank Fusion: fuse multiple retrieval result lists by rank rather than raw score.
 
-不同检索器的分数尺度不可比（TF-IDF cosine、BM25 raw score、embedding cosine
-分布都不同），直接加权平均会让尺度大的一路主导排序。RRF 只看每路内部的名次，
-天然免疫尺度差异。
+Scores from different retrievers are not on comparable scales (TF-IDF cosine, raw
+BM25 score, and embedding cosine are all distributed differently), so a direct
+weighted average lets the retriever with the largest scale dominate the ranking.
+RRF only looks at each retriever's internal ranks and is therefore immune to scale
+differences by construction.
 """
 
 
@@ -10,18 +12,19 @@ def reciprocal_rank_fusion(
     score_dicts: list[dict[str, float]], k: int = 60
 ) -> dict[str, float]:
     """
-    对多路 {job_id: score} 结果按名次做 RRF 融合。
+    Fuse multiple {job_id: score} result sets by rank using RRF.
 
-    公式：RRF(d) = sum_i 1 / (k + rank_i(d))，rank 从 1 开始（分数最高者 rank=1）。
-    某路里没出现的文档在该路贡献 0（不是所有检索器都会召回所有文档）。
+    Formula: RRF(d) = sum_i 1 / (k + rank_i(d)), with rank starting at 1 (highest score = rank 1).
+    A document absent from one retriever contributes 0 for that retriever (not every
+    retriever recalls every document).
 
     Args:
-        score_dicts: 每路检索器的 {job_id: score} 结果，score 降序表示更相关
-        k: RRF 常数，60 是原始论文（Cormack et al. 2009）的标准默认值，
-           越大则名次靠后的文档差距被压得越平
+        score_dicts: each retriever's {job_id: score} results; higher score means more relevant
+        k: RRF constant. 60 is the standard default from the original paper
+           (Cormack et al. 2009); larger values flatten the gap between lower-ranked documents
 
     Returns:
-        {job_id: fused_score}，覆盖所有出现过的 job_id
+        {job_id: fused_score}, covering every job_id that appeared in any list
     """
     fused: dict[str, float] = {}
     for scores in score_dicts:

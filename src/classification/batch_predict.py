@@ -1,13 +1,13 @@
 """
-批量预测全库职位类别并回写 DB。
+Batch-predict categories for every job in the DB and write them back.
 
-- 120 条训练集（labeled_jobs.json）保留 gold label
-- 其余全部走 Rocchio 分类器预测
+- The 120 training jobs (labeled_jobs.json) keep their gold labels
+- Everything else is predicted by the Rocchio classifier
 - UPDATE jobs SET category = ? WHERE job_id = ?
 
-用法：
-    python -m src.classification.batch_predict              # dry run，只打印分布
-    python -m src.classification.batch_predict --apply      # 真正写回 DB
+Usage:
+    python -m src.classification.batch_predict              # dry run, only print the distribution
+    python -m src.classification.batch_predict --apply      # actually write back to the DB
 """
 
 import argparse
@@ -26,7 +26,7 @@ CATEGORY_SCORES_PATH = ROOT / "data" / "category_scores.json"
 
 
 def load_gold_labels() -> dict[str, str]:
-    """返回 {job_id: category} 的 gold label 映射。"""
+    """Return the gold label mapping {job_id: category}."""
     with LABELED_PATH.open("r", encoding="utf-8") as f:
         labeled = json.load(f)
     return {job["job_id"]: job["category"] for job in labeled}
@@ -34,17 +34,17 @@ def load_gold_labels() -> dict[str, str]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--apply", action="store_true", help="真正写回 DB")
+    ap.add_argument("--apply", action="store_true", help="actually write back to the DB")
     args = ap.parse_args()
 
     clf = JobClassifier.load(str(MODEL_DIR))
     gold = load_gold_labels()
-    print(f"gold label: {len(gold)} 条")
+    print(f"gold labels: {len(gold)}")
 
     jobs = load_candidates()
-    print(f"DB 候选: {len(jobs)} 条")
+    print(f"DB candidates: {len(jobs)}")
     if not jobs:
-        print("[error] DB 无数据", file=sys.stderr)
+        print("[error] no data in DB", file=sys.stderr)
         return 1
 
     texts: list[str] = []
@@ -56,7 +56,7 @@ def main() -> int:
         jid = job["job_id"]
         if jid in gold:
             assignments[jid] = (gold[jid], "gold")
-            # gold 条目赋 one-hot：gold 类=1.0，其他=0.0
+            # gold entries get a one-hot vector: gold class=1.0, everything else=0.0
             scores_map[jid] = {c: (1.0 if c == gold[jid] else 0.0) for c in CATEGORIES}
             continue
         texts.append(JobClassifier.prepare_text(job))
@@ -66,7 +66,7 @@ def main() -> int:
         preds = clf.predict_batch(texts)
         for jid, (cat, scores) in zip(job_ids_to_predict, preds):
             assignments[jid] = (cat, "predicted")
-            # 全 7 类补齐：训练时缺失类别保 0
+            # fill in all 7 classes: categories missing at training time stay 0
             scores_map[jid] = {c: float(scores.get(c, 0.0)) for c in CATEGORIES}
 
     dist = Counter(cat for cat, _ in assignments.values())
@@ -79,7 +79,7 @@ def main() -> int:
     print(f"total  {dict(sorted(dist.items()))}")
 
     if not args.apply:
-        print("\n(dry run，加 --apply 写回 DB)")
+        print("\n(dry run; pass --apply to write back to the DB)")
         return 0
 
     rows = [(cat, jid) for jid, (cat, _) in assignments.items()]
@@ -94,8 +94,8 @@ def main() -> int:
     with CATEGORY_SCORES_PATH.open("w", encoding="utf-8") as f:
         json.dump(scores_map, f, ensure_ascii=False)
 
-    print(f"\n已更新 {len(rows)} 条 jobs.category")
-    print(f"已写入 {CATEGORY_SCORES_PATH} ({len(scores_map)} 条 7 类 cosine)")
+    print(f"\nUpdated jobs.category for {len(rows)} rows")
+    print(f"Wrote {CATEGORY_SCORES_PATH} ({len(scores_map)} jobs, 7-class cosine scores)")
     return 0
 
 

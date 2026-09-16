@@ -1,17 +1,19 @@
 """
-§7.6 端到端回答质量 — 对 20 条综合查询跑 run_pipeline，缓存四元组
+Section 7.6 end-to-end answer quality: run run_pipeline on 20 composite queries
+and cache the resulting tuples.
 
-从 40 条 test queries 中挑出 20 条覆盖多种字段组合的查询，
-逐条跑 pipeline 缓存 (query, preferences, top-10 精简信息, answer)
-到 data/eval_results/e2e_queries.json。
+Picks 20 of the 40 test queries that cover a variety of field combinations,
+runs the pipeline on each and caches (query, preferences, slimmed top-10, answer)
+to data/eval_results/e2e_queries.json.
 
-三家 LLM 后续基于这份缓存做端到端打分，无需重复调 pipeline。
+The three LLM raters then score end-to-end from this cache, so the pipeline
+never has to be re-run.
 
-用法:
+Usage:
     python -m src.eval.prepare_e2e_queries
 
-成本:
-    20 次 gpt-4o-mini 调用 × 2（parse_preferences + generate_answer）≈ $0.02
+Cost:
+    20 x 2 gpt-4o-mini calls (parse_preferences + generate_answer), roughly $0.02
 """
 
 import json
@@ -24,17 +26,18 @@ from src.pipeline.graph import run_pipeline
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 TEST_QUERIES_PATH = ROOT / "data" / "test_queries.json"
-# 允许通过环境变量重定向输出（例如跑 vNext 新 pipeline 对比时不覆盖已交付
-# 报告引用的历史结果），默认行为不变。
+# Output can be redirected via an environment variable (e.g. when running the
+# vNext pipeline for comparison, so historical results cited by the delivered
+# report are not overwritten). Default behavior is unchanged.
 E2E_RESULTS_DIR = Path(os.environ.get("E2E_EVAL_RESULTS_DIR") or (ROOT / "data" / "eval_results"))
 OUT_PATH = E2E_RESULTS_DIR / "e2e_queries.json"
 
-# 20 条覆盖字段组合的综合查询 id（从 40 条 test_queries 中挑选）：
-# - 纯字段：q11（纯 remote）/ q08（纯 location）/ q21（纯 category）
-# - 多字段：q01/q26/q28/q29（4-5 字段，高综合度）
-# - 有 hard_filter：q32（phd 排除）
-# - 纯描述（description only）：q34/q35
-# - 覆盖全 7 类（backend/frontend/data/devops/fullstack/mobile/management）
+# 20 composite query ids covering different field combinations (selected from the 40 test_queries):
+# - single field: q11 (remote only) / q08 (location only) / q21 (category only)
+# - multi-field: q01/q26/q28/q29 (4-5 fields, highly composite)
+# - with hard_filter: q32 (excludes PhD)
+# - description only: q34/q35
+# - covers all 7 categories (backend/frontend/data/devops/fullstack/mobile/management)
 SELECTED_IDS = [
     "q01",  # Remote Python backend 150k+ (salary+remote+tags+category)
     "q05",  # Data science 130-160k (salary+desc+category)
@@ -60,7 +63,7 @@ SELECTED_IDS = [
 
 
 def _slim_job(job: dict) -> dict:
-    """只保留评分 / LLM 打分需要的关键字段，剔除原始 description 全文等冗余。"""
+    """Keep only the fields needed for scoring / LLM rating; drop the full description and other bulk."""
     return {
         "job_id": job.get("job_id"),
         "title": job.get("title"),
@@ -88,10 +91,10 @@ def main() -> int:
 
     missing = [qid for qid in SELECTED_IDS if qid not in all_queries]
     if missing:
-        print(f"[error] test_queries.json 缺失选中 id: {missing}", file=sys.stderr)
+        print(f"[error] test_queries.json is missing selected ids: {missing}", file=sys.stderr)
         return 1
 
-    # 断点续跑
+    # Resumable
     existing: dict = {}
     if OUT_PATH.exists():
         with OUT_PATH.open("r", encoding="utf-8") as f:
@@ -103,7 +106,7 @@ def main() -> int:
         q = all_queries[qid]
         if qid in existing and "answer" in existing[qid]:
             results.append(existing[qid])
-            print(f"[{i}/{len(SELECTED_IDS)}] {qid} 已缓存")
+            print(f"[{i}/{len(SELECTED_IDS)}] {qid} cached")
             continue
         try:
             start = time.time()
@@ -127,7 +130,7 @@ def main() -> int:
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\n已缓存 {len(results)} 条到 {OUT_PATH}")
+    print(f"\nCached {len(results)} entries to {OUT_PATH}")
     return 0
 
 

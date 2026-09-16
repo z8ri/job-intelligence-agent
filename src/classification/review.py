@@ -1,22 +1,23 @@
 """
-人工抽查 data/labeled_jobs.json 中的 LLM 初标结果。
+Manual spot-check of the initial LLM labels in data/labeled_jobs.json.
 
-从标注文件里随机采样（默认 20% = 24 条），逐条展示 title/tags/description
-和 LLM 给的 category，让人工快速确认或覆盖。
+Randomly samples from the labeled file (default 20% = 24 jobs) and shows each
+job's title/tags/description plus the LLM-assigned category, so a human can
+quickly confirm or override it.
 
-用法:
-    python -m src.classification.review              # 默认抽查 24 条
-    python -m src.classification.review --sample 40  # 抽查 40 条
-    python -m src.classification.review --all        # 过一遍全部 120 条
-    python -m src.classification.review --seed 42    # 固定随机种子
+Usage:
+    python -m src.classification.review              # review 24 jobs (default)
+    python -m src.classification.review --sample 40  # review 40 jobs
+    python -m src.classification.review --all        # go through all 120 jobs
+    python -m src.classification.review --seed 42    # fixed random seed
 
-交互键:
-    0-6       选对应类别覆盖
-    Enter     保留 LLM 判断（视为人工已确认）
-    s         跳过此条（label_source 不变）
-    q         立即保存并退出
+Interactive keys:
+    0-6       override with the corresponding category
+    Enter     keep the LLM label (counts as human-confirmed)
+    s         skip this job (label_source unchanged)
+    q         save immediately and quit
 
-每条被修改或确认的 job,label_source 更新为 "llm-gpt-4o-mini + human-review"。
+Every job that is changed or confirmed gets label_source = "llm-gpt-4o-mini + human-review".
 """
 
 import argparse
@@ -70,7 +71,7 @@ def prompt_menu() -> str:
 
 
 def review(labeled: list[dict], indices: list[int]) -> tuple[int, int, int]:
-    """返回 (changed, confirmed, skipped) 计数。"""
+    """Return (changed, confirmed, skipped) counts."""
     changed = 0
     confirmed = 0
     skipped = 0

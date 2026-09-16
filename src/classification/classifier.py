@@ -245,9 +245,9 @@ def train_and_save(
     clf = JobClassifier()
     stats = clf.train(labeled_jobs)
     clf.save(model_dir or _default_model_dir)
-    print(f"训练完成: {stats['total']} 条数据, 词汇量 {stats['vocab_size']}")
-    print(f"各类别样本数: {stats['samples_per_category']}")
-    print(f"模型已保存到: {model_dir or _default_model_dir}")
+    print(f"Training done: {stats['total']} samples, vocab size {stats['vocab_size']}")
+    print(f"Samples per category: {stats['samples_per_category']}")
+    print(f"Model saved to: {model_dir or _default_model_dir}")
     return stats
 
 
@@ -255,9 +255,9 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 2:
-        print("用法:")
-        print("  python classifier.py train [data_path] [model_dir]  # 训练并保存")
-        print("  python classifier.py predict <text>                  # 预测单条文本")
+        print("Usage:")
+        print("  python classifier.py train [data_path] [model_dir]  # train and save")
+        print("  python classifier.py predict <text>                  # predict a single text")
         sys.exit(1)
 
     cmd = sys.argv[1]
@@ -269,8 +269,8 @@ if __name__ == "__main__":
     elif cmd in ("predict", "--predict") and len(sys.argv) >= 3:
         text = " ".join(sys.argv[2:])
         cat, scores = classify_job(text)
-        print(f"预测类别: {cat}")
+        print(f"Predicted category: {cat}")
         for c, s in sorted(scores.items(), key=lambda x: -x[1]):
             print(f"  {c}: {s:.4f}")
     else:
-        print(f"未知命令: {cmd}")
+        print(f"Unknown command: {cmd}")

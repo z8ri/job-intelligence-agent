@@ -1,15 +1,16 @@
 """
-§7.3 分类准确率测试集 — 分层抽样
+Section 7.3 classification accuracy test set: stratified sampling.
 
-从 MySQL jobs 表排除 120 条 labeled_jobs（训练集），按分类器预测的 category
-字段分层抽样，每类约 8-9 条，共 60 条。
+Excludes the 120 labeled_jobs (training set) from the MySQL jobs table, then
+samples stratified by the classifier's predicted category, about 8-9 per class
+for roughly 60 in total.
 
-用法:
-    python -m src.eval.sample_class_test_set                  # 默认 per-class=8, seed=42
+Usage:
+    python -m src.eval.sample_class_test_set                  # default per-class=8, seed=42
     python -m src.eval.sample_class_test_set --per-class 10
     python -m src.eval.sample_class_test_set --seed 123
 
-输出:
+Output:
     data/eval_results/classification_test_set.json
 """
 
@@ -36,7 +37,7 @@ def load_train_job_ids() -> set[str]:
 
 
 def fetch_jobs_by_category(exclude_ids: set[str]) -> dict[str, list[dict]]:
-    """按 category 分组取回所有可抽职位（已排除训练集）。"""
+    """Fetch all sampleable jobs grouped by category (training set excluded)."""
     groups: dict[str, list[dict]] = defaultdict(list)
     conn = get_connection()
     try:
@@ -89,19 +90,19 @@ def stratified_sample(groups: dict[str, list[dict]], per_class: int, seed: int) 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--per-class", type=int, default=8, help="samples per category (default 8 → 56 total)")
+    ap.add_argument("--per-class", type=int, default=8, help="samples per category (default 8 -> 56 total)")
     ap.add_argument("--seed", type=int, default=42)
     args = ap.parse_args()
 
     exclude = load_train_job_ids()
-    print(f"排除训练集 {len(exclude)} 条")
+    print(f"Excluding {len(exclude)} training-set jobs")
 
     groups = fetch_jobs_by_category(exclude)
     for cat in CATEGORIES:
-        print(f"  {cat:<12} 可抽 {len(groups.get(cat, []))}")
+        print(f"  {cat:<12} available {len(groups.get(cat, []))}")
 
     sampled = stratified_sample(groups, args.per_class, args.seed)
-    print(f"\n共抽样 {len(sampled)} 条")
+    print(f"\nSampled {len(sampled)} jobs in total")
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     out = [
@@ -116,7 +117,7 @@ def main() -> int:
         for j in sampled
     ]
     OUT_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"已写入 {OUT_PATH}")
+    print(f"Written to {OUT_PATH}")
     return 0
 
 
