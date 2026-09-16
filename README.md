@@ -8,7 +8,9 @@ Natural-language job search over 2,311 postings from HackerNews "Who is Hiring" 
 
 ## Background
 
-This project started as coursework for **Information Retrieval and Web Agents** (EN.601.466/666) at Johns Hopkins University, taught by Prof. David Yarowsky, and has continued to evolve independently in this personal repository since.
+This project started as coursework for **Information Retrieval and Web Agents** (EN.601.466/666) at Johns Hopkins University, taught by Prof. David Yarowsky (Spring 2026). The course version — crawler, MySQL storage, TF-IDF/BM25 retrieval, the multi-field scoring engine, and the centroid classifier — was graded as a course project. After the course ended, I added the vNext layer on top: the constrained Planner, dense retrieval + RRF fusion, the LLM reranker, the rule-based Verifier, and cross-turn preference memory.
+
+This standalone repository was extracted from the course repository on 2026-09-16 with the history squashed, so the commit log here does not reflect the original development timeline.
 
 ## How it works
 
@@ -41,7 +43,7 @@ See [docs/system_design.md](docs/system_design.md) for the full design — inclu
 
 ## Results
 
-Real pooled evaluation, 40 queries:
+Pooled evaluation over 40 queries. **Relevance judgments were produced by three LLM raters (Claude, GPT, Gemini) with majority vote, not by human annotators** — the query set was too large to annotate by hand for a solo project, so the pipeline was switched to LLM-as-judge (`src/eval/e2e_metrics.py`, rater outputs in `data/eval_results_vnext/reviews_e2e/`). Read the numbers with that caveat, in particular because the reranker under test is itself an LLM.
 
 | Config | P@5 | nDCG@10 |
 |---|---:|---:|
@@ -49,7 +51,7 @@ Real pooled evaluation, 40 queries:
 | RRF fusion (BM25 + Dense) + LLM reranker | **0.620** | **0.743** |
 | Δ | **+24.5pp** | **+17.6pp** |
 
-Full methodology in `data/eval_results_vnext/`.
+Full methodology and per-query results in `data/eval_results_vnext/`.
 
 ## Highlights
 
@@ -76,6 +78,7 @@ The Planner picks retrieval strategy automatically; each browser chat session ca
 1. **Conda env**: `conda activate jobir` (Python 3.11; dependencies in `requirements.txt`).
 2. **MySQL 8.0**: `mysql -u root -p < src/db/schema.sql` to create the database and tables, then `python -m src.db.ingest_adapter` to load `data/structured_jobs.json` (≈2,311 records).
 3. **Environment**: `cp .env.example .env` and fill in `OPENAI_API_KEY` (and `DB_*` if they differ from the defaults).
+4. **Build the retrieval indexes** (not committed — they are derived from `data/structured_jobs.json`): `python -m src.ir.tfidf`, `python -m src.ir.bm25`, and `python -m src.ir.dense` (the last one calls the OpenAI embeddings API once for the ≈2,311 postings). The external training-set expansion data (`data/external/engineering_jobs.csv`) is the public HuggingFace dataset `yiqing111/Engineering_Jobs_Insight_Dataset`; download it there if you want to re-run `src.classification.expand_training_set`.
 
 ```bash
 # CLI, one-shot

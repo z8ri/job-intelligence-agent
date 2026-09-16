@@ -8,7 +8,9 @@
 
 ## 项目背景
 
-这个项目最早是 Johns Hopkins University 的 **Information Retrieval and Web Agents**（EN.601.466/666，David Yarowsky 教授授课）这门课的课程作业，课程结束后在这个个人仓库里持续独立迭代至今。
+这个项目最早是 Johns Hopkins University 的 **Information Retrieval and Web Agents**（EN.601.466/666，David Yarowsky 教授授课，2026 春季）这门课的课程作业。课程版本包括爬虫、MySQL 存储、TF-IDF/BM25 检索、多字段打分引擎和质心分类器，作为课程项目评分。课程结束后我在此基础上加了 vNext 这一层：约束式 Planner、Dense 检索 + RRF 融合、LLM 精排、规则 Verifier 和跨轮偏好记忆。
+
+这个独立仓库是 2026-09-16 从课程仓库抽出来的，历史做了压缩，所以这里的 commit 记录不反映原始开发时间线。
 
 ## 工作原理
 
@@ -41,7 +43,7 @@ flowchart LR
 
 ## 评估结果
 
-真实 pooled evaluation，40 条测试 query：
+Pooled evaluation，40 条测试 query。**相关性标注由三个 LLM 评审（Claude、GPT、Gemini）多数投票产生，不是人工标注**——单人项目没有足够的人力标这么多 query，所以评测改成了 LLM-as-judge（`src/eval/e2e_metrics.py`，评审原始输出在 `data/eval_results_vnext/reviews_e2e/`）。看数字时请带上这个前提，尤其是被评测的精排器本身也是 LLM。
 
 | Config | P@5 | nDCG@10 |
 |---|---:|---:|
@@ -49,7 +51,7 @@ flowchart LR
 | RRF 融合（BM25 + Dense）+ LLM 精排 | **0.620** | **0.743** |
 | 差值 | **+24.5pp** | **+17.6pp** |
 
-完整方法论见 `data/eval_results_vnext/`。
+完整方法论和逐 query 结果见 `data/eval_results_vnext/`。
 
 ## 核心设计点
 
@@ -76,6 +78,7 @@ streamlit run app.py
 1. **Conda 环境**：`conda activate jobir`（Python 3.11；依赖见 `requirements.txt`）。
 2. **MySQL 8.0**：`mysql -u root -p < src/db/schema.sql` 建库建表，再 `python -m src.db.ingest_adapter` 导入 `data/structured_jobs.json`（约 2,311 条）。
 3. **环境变量**：`cp .env.example .env`，填入 `OPENAI_API_KEY`（`DB_*` 如果和默认值不一样也一并改）。
+4. **构建检索索引**（不入库，由 `data/structured_jobs.json` 派生）：`python -m src.ir.tfidf`、`python -m src.ir.bm25`、`python -m src.ir.dense`（最后一个会对约 2,311 条岗位调用一次 OpenAI embeddings API）。训练集扩展用的外部数据 `data/external/engineering_jobs.csv` 是公开的 HuggingFace 数据集 `yiqing111/Engineering_Jobs_Insight_Dataset`，需要重跑 `src.classification.expand_training_set` 时自行下载。
 
 ```bash
 # 命令行，跑一次

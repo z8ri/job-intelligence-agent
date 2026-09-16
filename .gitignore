@@ -1,8 +1,5 @@
-# 本地私有文件
-CLAUDE .md
+# Local-only
 archive/
-hw/
-docs/report/
 
 # Python
 __pycache__/
@@ -13,31 +10,27 @@ dist/
 build/
 .eggs/
 
-# 环境与密钥
+# Env and secrets
 .env
 .env.*
 !.env.example
 *.key
-docs/环境配置.md
 
-# 模型/数据产物（体积大，不入库）
+# Derived model artifacts (rebuild with `python -m src.ir.{tfidf,bm25,dense}`)
 *.pickle
 *.pkl
 *.joblib
-# 例外：核心模型产物入库，clone 后开箱可跑
-!data/tfidf_model.pkl
-!data/bm25_model.pkl
-!data/dense_model.pkl
 !models/classifier/vectorizer.joblib
+# External dataset (public HuggingFace dataset, download separately)
+data/external/engineering_jobs.csv
 
-# 评估前后对照中间产物
+# Before/after eval intermediates
 *_before_change*.json
 *.backup_before_*.json
 
 # IDE
 .idea/
 .vscode/
-.claude/
 *.swp
 *.swo
 
