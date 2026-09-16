@@ -1,0 +1,642 @@
+[
+  {
+    "id": "q01",
+    "query": "Remote Python backend jobs above 150k",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": 150000,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": ["Python"],
+      "preferred_category": "backend",
+      "weight_adjustments": {"salary": "high", "remote": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "remote", "tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q02",
+    "query": "Jobs paying over 200k in machine learning",
+    "expected_preferences": {
+      "description_keywords": ["machine learning"],
+      "target_salary": 200000,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"salary": "high", "description": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q03",
+    "query": "Entry level software engineering positions in the 70-90k range",
+    "expected_preferences": {
+      "description_keywords": ["entry level", "software engineering"],
+      "target_salary": 80000,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"salary": "high", "description": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "description"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q04",
+    "query": "High paying DevOps roles, at least 180k",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": 180000,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "devops",
+      "weight_adjustments": {"salary": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q05",
+    "query": "Data science positions around 130k to 160k",
+    "expected_preferences": {
+      "description_keywords": ["data science"],
+      "target_salary": 145000,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"salary": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q06",
+    "query": "Software engineering jobs in San Francisco Bay Area",
+    "expected_preferences": {
+      "description_keywords": ["software engineering"],
+      "target_salary": null,
+      "preferred_location": "San Francisco",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"location": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["location", "description"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q07",
+    "query": "Positions near Boston for backend developers",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": "Boston",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "backend",
+      "weight_adjustments": {"location": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["location", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q08",
+    "query": "Tech jobs in New York City area",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": "New York",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"location": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["location"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q09",
+    "query": "Engineering roles in Seattle or Portland",
+    "expected_preferences": {
+      "description_keywords": ["engineering"],
+      "target_salary": null,
+      "preferred_location": "Seattle",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"location": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["location", "description"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q10",
+    "query": "Jobs in Austin Texas for full stack developers",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": "Austin",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "fullstack",
+      "weight_adjustments": {"location": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["location", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q11",
+    "query": "Fully remote senior engineering roles",
+    "expected_preferences": {
+      "description_keywords": ["senior engineering"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"remote": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["remote", "description"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q12",
+    "query": "Hybrid work positions in New York",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": "New York",
+      "remote_preference": "hybrid",
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"remote": "high", "location": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["remote", "location"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q13",
+    "query": "On-site positions only, no remote",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "onsite",
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"remote": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["remote"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q14",
+    "query": "100% remote data engineering jobs",
+    "expected_preferences": {
+      "description_keywords": ["data engineering"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"remote": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["remote", "description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q15",
+    "query": "React and TypeScript frontend developer positions",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["React", "TypeScript"],
+      "preferred_category": "frontend",
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q16",
+    "query": "Kubernetes and Terraform DevOps engineer",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["Kubernetes", "Terraform"],
+      "preferred_category": "devops",
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q17",
+    "query": "Python and AWS cloud engineer positions",
+    "expected_preferences": {
+      "description_keywords": ["cloud engineer"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["Python", "AWS"],
+      "preferred_category": null,
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["tags", "description"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q18",
+    "query": "Golang microservices developer",
+    "expected_preferences": {
+      "description_keywords": ["microservices"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["Go"],
+      "preferred_category": "backend",
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["tags", "description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q19",
+    "query": "Rust systems programming jobs",
+    "expected_preferences": {
+      "description_keywords": ["systems programming"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["Rust"],
+      "preferred_category": "backend",
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["tags", "description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q20",
+    "query": "Mobile development jobs with Flutter or React Native",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["Flutter", "React Native"],
+      "preferred_category": "mobile",
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q21",
+    "query": "Frontend engineering positions",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "frontend",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "category_coverage": ["category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q22",
+    "query": "Engineering manager or tech lead openings",
+    "expected_preferences": {
+      "description_keywords": ["engineering manager", "tech lead"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "management",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "category_coverage": ["description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q23",
+    "query": "Data analytics and BI positions",
+    "expected_preferences": {
+      "description_keywords": ["data analytics", "BI"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "category_coverage": ["description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q24",
+    "query": "iOS developer positions",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["iOS", "Swift"],
+      "preferred_category": "mobile",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "category_coverage": ["tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q25",
+    "query": "Site reliability engineer SRE jobs",
+    "expected_preferences": {
+      "description_keywords": ["site reliability", "SRE"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "devops",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "category_coverage": ["description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q26",
+    "query": "Remote ML jobs in New York above 130k",
+    "expected_preferences": {
+      "description_keywords": ["machine learning"],
+      "target_salary": 130000,
+      "preferred_location": "New York",
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"salary": "high", "remote": "high", "location": "medium"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "remote", "location", "description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q27",
+    "query": "Backend Go developer, hybrid, 160k or more",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": 160000,
+      "preferred_location": null,
+      "remote_preference": "hybrid",
+      "desired_tags": ["Go"],
+      "preferred_category": "backend",
+      "weight_adjustments": {"salary": "high", "remote": "high", "tags": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "remote", "tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q28",
+    "query": "Full stack JavaScript developer in San Francisco, remote friendly, around 140k",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": 140000,
+      "preferred_location": "San Francisco",
+      "remote_preference": "remote",
+      "desired_tags": ["JavaScript"],
+      "preferred_category": "fullstack",
+      "weight_adjustments": {"salary": "medium", "location": "high", "remote": "medium"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "location", "remote", "tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q29",
+    "query": "Senior data engineer with Spark and Kafka experience, preferably remote, 170k+",
+    "expected_preferences": {
+      "description_keywords": ["data engineer"],
+      "target_salary": 170000,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": ["Spark", "Kafka"],
+      "preferred_category": "data",
+      "weight_adjustments": {"salary": "high", "tags": "high", "remote": "medium"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "remote", "tags", "description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q30",
+    "query": "React frontend roles in Chicago or nearby, 120k minimum",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": 120000,
+      "preferred_location": "Chicago",
+      "remote_preference": null,
+      "desired_tags": ["React"],
+      "preferred_category": "frontend",
+      "weight_adjustments": {"salary": "high", "location": "high", "tags": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "location", "tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q31",
+    "query": "DevOps with AWS and Docker in Austin, hybrid OK",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": "Austin",
+      "remote_preference": "hybrid",
+      "desired_tags": ["AWS", "Docker"],
+      "preferred_category": "devops",
+      "weight_adjustments": {"location": "high", "tags": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["location", "remote", "tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q32",
+    "query": "Remote Python or Java backend, good salary above 150k, no PhD required",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": 150000,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": ["Python", "Java"],
+      "preferred_category": "backend",
+      "weight_adjustments": {"salary": "high", "remote": "high", "tags": "high"},
+      "hard_filters": [{"field": "degree_req", "exclude": ["phd"]}]
+    },
+    "category_coverage": ["salary", "remote", "tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q33",
+    "query": "Management positions in Denver or Boulder area, 180k+",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": 180000,
+      "preferred_location": "Denver",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "management",
+      "weight_adjustments": {"salary": "high", "location": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["salary", "location", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q34",
+    "query": "Companies with good culture for junior developers",
+    "expected_preferences": {
+      "description_keywords": ["good culture", "junior developer"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"description": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["description"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q35",
+    "query": "Fast-paced startup environment with equity compensation",
+    "expected_preferences": {
+      "description_keywords": ["startup", "equity", "fast-paced"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"description": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["description"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q36",
+    "query": "Collaborative team working on distributed systems",
+    "expected_preferences": {
+      "description_keywords": ["collaborative team", "distributed systems"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "backend",
+      "weight_adjustments": {"description": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q37",
+    "query": "Mentorship-focused roles for career growth in engineering",
+    "expected_preferences": {
+      "description_keywords": ["mentorship", "career growth", "engineering"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {"description": "high"},
+      "hard_filters": []
+    },
+    "category_coverage": ["description"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q38",
+    "query": "No PhD required ML positions, remote preferred",
+    "expected_preferences": {
+      "description_keywords": ["machine learning"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"remote": "high", "description": "high"},
+      "hard_filters": [{"field": "degree_req", "exclude": ["phd"]}]
+    },
+    "category_coverage": ["remote", "description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q39",
+    "query": "Jobs that don't require a master's degree in data engineering",
+    "expected_preferences": {
+      "description_keywords": ["data engineering"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"description": "high"},
+      "hard_filters": [{"field": "degree_req", "exclude": ["phd", "master"]}]
+    },
+    "category_coverage": ["description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "q40",
+    "query": "jobs",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "category_coverage": [],
+    "relevance_annotations": []
+  }
+]

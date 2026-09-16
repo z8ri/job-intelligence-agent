@@ -1,0 +1,745 @@
+[
+  {
+    "job_id": "hn_1448",
+    "company": "Zeven",
+    "title": "Senior Backend Developer",
+    "tags": [
+      "AI",
+      "AWS",
+      "ML",
+      "Python",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Zeven | Senior Backend Developer | ONSITE in Zurich (Switzerland) | Full-time | Competitive salary + stock options We're a newly-founded and well-funded startup that is seeking to revolutionize the sports industry with AI-powered solutions. Our mission is to unlock human potential and redefine the sports experience through innovation and technology. We are looking for an experienced Senior Backend Developer and sports enthusiast to join our on-site team in Zurich, Switzerland. This is a hands-on, high impact role. We use Typescript for web, Python for ML, PostgreSQL, React + TanStack, AWS and SST. Please see the Full Job Description [ https://tinyurl.com/sw-zeven ] for requirements and more details about our Tech Stack. We are offering full-time employment with a competitive package: • Competitive salary and stock options. • Pension plan bonus and 25 days of paid vacation plus public holidays. • Charming office next to the lake of Zurich with fully-equipped kitchen. • Top-notch equipment (MacBook Pro laptops, standing desks, etc.). • We love to organize company outings and sport events. If you're a motivated and experienced backend engineer who is crazy about sports and looking for a new challenge, we'd love to hear from you! Please email CVs to alex@zeven.ai We do not consider remote candidates, agencies and candidates located outside the EU/UK/EEA/Switzerland",
+    "predicted_category": "backend"
+  },
+  {
+    "job_id": "hn_1102",
+    "company": "Hatchet",
+    "title": "Founding Engineer",
+    "tags": [
+      "AI",
+      "Go",
+      "Kubernetes",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Hatchet | Founding Engineer | NYC or REMOTE (US and EU) |  https://hatchet.run Hey HN! I'm Alexander, one of the founders of Hatchet. Hatchet is an open-source platform for running background jobs at scale. We're hiring engineers who are excited to build the next class of engineering primitives, starting with queues, background tasks and durable execution. We started in early 2024 after launching our distributed task queue ( https://news.ycombinator.com/item?id=39643136 ). Hatchet is currently used by thousands of engineers for all kinds of workloads: log ingestion pipelines, code review agents, video encoding, GPU scheduling, etc. Our target customer is fast-growing startups who have a strong need for background jobs system. These days, that tends to be AI companies, though we're general-purpose and not exclusively targeted for AI workloads. Stack: Postgres, Go, Typescript, React, Kubernetes Apply here:  https://www.ycombinator.com/companies/hatchet-run/jobs/SNpCm... Or email me at alexander [at] hatchet [dot] run",
+    "predicted_category": "backend"
+  },
+  {
+    "job_id": "hn_2023",
+    "company": "Nango",
+    "title": "Staff backend engineer",
+    "tags": [
+      "Go",
+      "Rust"
+    ],
+    "description": "Nango | Staff backend engineer | Remote | Full time | $120-200k + equity Nango (YC W23) is an open source product: Developer infrastructure for product integrations. We power the integrations of Semgrep, Motion, Vapi, Exa, and hundreds of other B2B software. Small but highly experienced team, hard technical challenges (scale + infra devtool running untrusted user code), tons of ownership, direct customer contact, growing very fast. We are looking for a Staff engineer that can touch every part of stack and is passionate about dev infrastructure. Website:  https://nango.dev  Jobs:  https://nango.dev/careers",
+    "predicted_category": "backend"
+  },
+  {
+    "job_id": "hn_19",
+    "company": "Copper Home",
+    "title": "Staff Embedded Systems Engineer",
+    "tags": [
+      "AI",
+      "AWS",
+      "Python"
+    ],
+    "description": "Copper Home | Staff Embedded Systems Engineer | ONSITE (Berkeley, CA) Copper Home (fka Channing Street Copper) builds battery-integrated induction appliances for home electrification — we're making decarbonization accessible by putting energy storage inside everyday products, starting with the stove. The firmware team is small and owns application firmware, device connectivity, automated testing, manufacturing tools, and an MQTT backend for OTA updates and fleet telemetry. We're hiring a  staff embedded systems engineer  focused core firmware architecture on the Charlie induction range. In this role, you may: - Own major pieces of our embedded platform and prototypes of future products. - Lead improvements to device connectivity (Wi-Fi, BLE, OTA, provisioning, failure recovery) and energy management. - Evolve fleet management, telemetry, and remote management/update systems with a focus on robustness and cost efficiency at scale. - Mentor engineers through design reviews and day-to-day technical collaboration. Tech stack: C and Python; FreeRTOS on ESP-IDF; 802.11, BLE, CAN; MQTT; AWS Salary: $182k–$210k + equity Questions? Send me an email (<username>@copperhome.com) or reply here. More details and apply:  https://copperhome.com/pages/jobs?gh_jid=4119303007",
+    "predicted_category": "backend"
+  },
+  {
+    "job_id": "hn_1836",
+    "company": "Kubermatic",
+    "title": "Unknown",
+    "tags": [
+      "AI"
+    ],
+    "description": "Kubermatic| Full-time | Product Eng & Open Source Dev | Remote Europe I am looking for Product Engineers and Open Source Developers to join the KDP and kcp teams at Kubermatic. - Open Source Software Engineer ( https://kubermatic.bamboohr.com/careers/24 ): Work directly on the upstream kcp project. Your contributions will have a direct impact on the open-source community and will help build a framework for managing multi-tenant services at scale. Kubermatic is the project’s maintainer. - Product Software Engineer ( https://kubermatic.bamboohr.com/careers/25 ): Build a platform that makes other engineers more productive. Drive features from discovery to delivery and shape architectural and product decisions. KDP is currently available as a standalone, on-premises solution. As we prepare to launch a new SaaS offering, you’ll help evolve our tech stack to meet these emerging requirements.I will post the links to both roles in the comments. Both projects tackle the same problem: managing complexity across heterogeneous IT landscapes at scale. kcp is the open source foundation—a control plane technology that works with any tech stack. We maintain it upstream and contribute to the community. KDP builds on that foundation, delivering a pragmatic platform for enterprise. Feel free to PM (wojciech.barczynski@kubermatic.com or LinkedIn) me if you would like to learn more.",
+    "predicted_category": "backend"
+  },
+  {
+    "job_id": "hn_1554",
+    "company": "Archera",
+    "title": "Mid + Senior level Engineers (Backend)",
+    "tags": [
+      "AI",
+      "AWS",
+      "Go",
+      "Python",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Archera | Mid + Senior level Engineers (Backend) | REMOTE (US/Canada) or Hybrid (Seattle) | Full-time Archera empowers organizations of all sizes to optimize their cloud costs through unique, short-term, insured GRI (Guaranteed Reserved Instance) and GSP (Guaranteed Savings Plan) commitments. We’re looking for a Mid and a Senior Software Engineer to join the platform team, working on ETL pipelines, APIs, product features and more. Stack: Python (SQLAlchemy, Flask), TypeScript (React), PostgreSQL, Snowflake, Argo Workflows, k8s, AWS/GCP/Azure Benefits: RRSP/401k match, healthcare, stock, wework/home office expenses. Apply:  https://job-boards.greenhouse.io/archera/jobs/4937570008  and email me at simon+hn <at> archera <dot> ai. - there's only one listing at the moment, so if you're a mid-level engineer apply via the listing with a note.",
+    "predicted_category": "backend"
+  },
+  {
+    "job_id": "hn_1417",
+    "company": "Clerq",
+    "title": "Staff Engineer",
+    "tags": [
+      "AI",
+      "AWS",
+      "Go",
+      "ML",
+      "Python",
+      "React"
+    ],
+    "description": "Clerq | Staff Engineer | Onsite 3 days (New York City) |  https://clerq.io \nClerq is a NYC based fintech startup building a next generation platform payments platform that delivers a seamless checkout experience for high-ticket transactions. By leveraging modern bank rails, the platform offers the conversion and UX benefits of cards with risk and money movement infrastructure purpose-built for large purchases. Clerq replaces outdated manual payment methods like cash, checks and wires and expensive card surcharges with a smooth, integrated solution that helps merchants convert more customers without sacrificing margins. We have started with the $1T+ U.S. auto vertical, where our platform is growing rapidly and already powering payments for several of the most recognized brands in the industry including multiple Fortune 500 companies. With proven traction, the company has expanded into high-growth adjacencies including high-ticket e-commerce, private travel and powersports. We recently announced our series A and are breaking records every month, so are looking for a Staff software engineer who is excited to scale out the future of bank payments. Currently we are primarily looking for backend engineers to focus on our core payments engine. Stack: Python/Django, Postgres, Temporal, React, AWS Comp: $225k-260k + Equity Email me at nick@clerq.io if you are interested in hearing more!",
+    "predicted_category": "backend"
+  },
+  {
+    "job_id": "hn_1378",
+    "company": "Fusionbox",
+    "title": "Python + TypeScript Engineers",
+    "tags": [
+      "AI",
+      "Go",
+      "Python",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Fusionbox | Python + TypeScript Engineers | United States| Full-time | REMOTE (Legal to work in the US)\nWe're a software engineering consultancy that builds enterprise software the right way. We negotiate the right to open source all our client code, maintain a handful of popular libraries, and our engineers contribute to Django core. We sponsor PyCon, DjangoCon, and Django Girls because we're invested in the ecosystem we build on. We're looking for software engineers who value software design, system architecture, and collaboration. You should be comfortable with about half of these areas and eager to learn the rest: web application security, relational database design (PostgreSQL, beyond \"SELECT *...\"), Django internals, React, and distributed systems. What you'll actually work on: complex state machines for financial workflows, multi-tenant architectures with row-level security, custom database functions when the ORM isn't enough, and React frontends that handle real-time data without being a mess of useEffect hooks. We're a small team where you'll own features end-to-end (database design to React components) and have opportunities to shape technical decisions. You'll get paid to write source code with a team that practices empathy and values work-life balance. If you've ever wished your job involved more elegant state machines and fewer marketing landing pages, let's talk: info@fusionbox.com.",
+    "predicted_category": "backend"
+  },
+  {
+    "job_id": "hn_654",
+    "company": "expand.ai (YC S24)",
+    "title": "Stack Engineers",
+    "tags": [
+      "AI"
+    ],
+    "description": "expand.ai (YC S24) | SF onsite | Full-Stack Engineers\nWe're building infrastructure that makes the web queryable for AI agents. Already in production with major AI labs.\nLooking for experienced full-stack devs who are comfortable wielding agent swarms to ship fast. Small team, well-funded, high intensity.\nfounders@expand.ai",
+    "predicted_category": "backend"
+  },
+  {
+    "job_id": "hn_1091",
+    "company": "Careful",
+    "title": "Unknown",
+    "tags": [],
+    "description": "Careful - I applied to this role and the founder (I assume) ghosted me mid-way.",
+    "predicted_category": "frontend"
+  },
+  {
+    "job_id": "hn_1062",
+    "company": "Runable",
+    "title": "Software Engineer",
+    "tags": [
+      "AI"
+    ],
+    "description": "Runable | Software Engineer | Bangalore | 60-120K USD depending on the candidate https://runable.com  is an AI suite for everyone. You can create decks, reports, documents, designs, websites etc by just describing what you want. We are looking for exceptional engineers to join us as we scale. We already process 100 billion+ tokens and billions of requests monthly. Send your best work to saksham@runable.com We don’t do DSA, leetcode etc and have a very hands on approach to interviewing",
+    "predicted_category": "frontend"
+  },
+  {
+    "job_id": "hn_1241",
+    "company": "Doubling",
+    "title": "Junior Software Engineer (Contract, 1099)",
+    "tags": [
+      "AI",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Doubling | Junior Software Engineer (Contract, 1099) | NYC ONSITE | doubling.io Doubling is partnering with an early-stage AI-driven fintech startup building a platform that converts real-time financial data and news into clear, actionable client communications. We are actively hiring a junior full-stack engineer to help ship web, mobile, and AI-enabled features. You will work directly with the company’s CEO and CTO as one of the earliest engineering contributors. Tech: TypeScript, React, Firebase\nHours: ~20 hrs/week\nLocation: NYC ONSITE (no remote)\nAuthorization: US work authorization required, no visa sponsorship Strong performance may lead to extended scope or future full-time consideration. I am directly involved in hiring and will respond to applicants. Please apply here:  https://www.doubling.io/careers/junior-software-engineer-fin...",
+    "predicted_category": "frontend"
+  },
+  {
+    "job_id": "hn_1666",
+    "company": "Parseur",
+    "title": "Unknown",
+    "tags": [
+      "React"
+    ],
+    "description": "Parseur | Front-end dev with design appetite | REMOTE [GMT:GMT+6] Parseur is a B2B Saas that automates document-processing workflows. We are a 100% office-less, fully remote team of 5 looking for the 6th full-time (or 80%) team member. We're looking for an excellent front-end dev who ideally knows React.\nAnd it would be nice if you could also design and know your way around CSS. More info here:  https://parseur.com/jobs",
+    "predicted_category": "frontend"
+  },
+  {
+    "job_id": "hn_1685",
+    "company": "Quantitative Trading Co",
+    "title": "Unknown",
+    "tags": [
+      "AI"
+    ],
+    "description": "Quantitative Trading Co-Founder | US  https://0dte.tech/ Seeking US-based co-founder with _strong_ FOSS credentials to establish and operate quantitative trading firm. Prior  Trading experience desired. email me: lakshmipathi [dot] g [at] gmail [dot] com",
+    "predicted_category": "frontend"
+  },
+  {
+    "job_id": "hn_605",
+    "company": "We at Avride are hiring in Austin for a full",
+    "title": "Seasoned Ui Engineer",
+    "tags": [
+      "React"
+    ],
+    "description": "We at Avride are hiring in Austin for a full-time, onsite position. In this role, you'll help build state-of-the-art 3D data annotation tools that advance autonomous driving. We're looking for a seasoned UI engineer with a strong React background and relevant experience building highly stateful, low-latency interactive applications. Experience with 3D graphics is a plus. Apply here:  https://job-boards.greenhouse.io/avride/jobs/4012877009",
+    "predicted_category": "frontend"
+  },
+  {
+    "job_id": "hn_963",
+    "company": "SEEKING REMOTE UI/UX DESIGN OPPORTUNITIES Location",
+    "title": "Unknown",
+    "tags": [
+      "AI"
+    ],
+    "description": "SEEKING REMOTE UI/UX DESIGN OPPORTUNITIES Location: India Remote: Yes Willing to relocate: Open to discuss\nTechnologies: Figma, Canva, Figjam, Notion, Miro, Visily, Maze, Jitter, Asana, AI, Framer, Wireframing, Prototyping, Mockups, Microinteractions, User Research, Competitive Analysis, User Flows, UI Design, UX Research, Product Management, Jira, Lottie Animations Portfolio:  https://anshimasainiproduct.framer.website/ Email: sainianshima@gmail.com I'm a Product designer and manager looking for remote opportunities anywhere. Feel free to check my portfolio website.",
+    "predicted_category": "frontend"
+  },
+  {
+    "job_id": "hn_888",
+    "company": "Cliniko",
+    "title": "Full stack developer, React developer",
+    "tags": [
+      "AI",
+      "React"
+    ],
+    "description": "Cliniko | Full stack developer, React developer |  https://www.cliniko.com/  | Remote | Full Time (30 hour week, full time pay) Cliniko is practice management software that makes life easy for allied health professionals by handling appointment scheduling, storing treatment notes, managing invoices and payments, running video consultations, and much more. The software is used globally by 100,000+ people every day. It’s a web application built using Ruby on Rails in the back end and we’re in the process of transitioning the front end to React. Cliniko is made up of a team of 63 considerate and friendly people, spread around the world. We work completely remotely, although our base is in Melbourne, Australia. We care much more about finding the best person for the job, rather than looking for someone that lives nearby. We don't have managers, we don't have meetings, there are no time-sheets to complete. We're responsible, autonomous, creative, and proactive in doing our best for our customers. We're focused on making great software and providing great support. We take pride in doing our best work, and enjoy bettering ourselves and each other. We strive to make the world a bit better, both personally and through our work. If you want to know more about how we work, our founder, Joel, gave a talk about it:  https://www.youtube.com/watch?v=o_2jXqzxBNU Full stack developer:  https://apply.workable.com/cliniko/j/B8F753BB53/ React developer:  https://apply.workable.com/cliniko/j/F99FC13BB2/",
+    "predicted_category": "frontend"
+  },
+  {
+    "job_id": "hn_1619",
+    "company": "Document Crunch",
+    "title": "Senior/Staff/Principal Frontend Engineer (fullstack Typescript nice to have)",
+    "tags": [
+      "AI",
+      "ML",
+      "Python",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Document Crunch | REMOTE(US) / HYBRID Company description: We do construction compliance AI. We're in series B, about $40m raised. Growing a lot! Feel free to reply or DM me if you want some more info. Tech Stack: Typescript full stack except for Python for ML, NestJS backend, NextJS frontend, React Native mobile, IaC in Pulumi using TS. Open Jobs: - Senior/Staff/Principal Frontend Engineer (fullstack Typescript nice to have) - Senior/Staff/Principal Node Engineer (fullstack Typescript nice to have) - Senior/Staff/Principal QA Engineer Location: Austin or Texas preferred, but open to remote for the right candidate in the US. Jobs page:  https://www.documentcrunch.com/careers#open-roles",
+    "predicted_category": "frontend"
+  },
+  {
+    "job_id": "hn_795",
+    "company": "Layer Health",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Go",
+      "ML",
+      "Python",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Layer Health |  https://www.layerhealth.com/  Amazing (and no ego) engineering team:  https://www.linkedin.com/company/layerhealth/people/  Location: BOSTON (Boston Common) or NYC (downtown) - hybrid in both locations; <<NO REMOTE>> Headcount: ~37 and growing\nStack:React / Typescript / Python / GCP Open Roles (all roles require a MINIMUM of 6 years of work experience): ML Infrastructure (Staff+) * Data Infrastructure Lead * ML Engineer  * ML/Research Scientist (PhD's) * Security Engineer We Offer: * competitive base salary + equity + great health/medical benefits * unlimited PTO * collaborative engineering-first culture Layer Health was founded in 2023 by leading ML researchers from MIT and Harvard Medical School. We've built (and are live with multiple large health systems/hospitals) an ML product that scalably synthesizes patient medical records. Our LLM-powered platform is solving patient chart review - it dramatically accelerates clinical registry abstraction in areas ranging from surgery and cardiology, to oncology. Our long term vision is for our AI layer to safely transform patient care and minimize unnecessary heartbreak. Layer Health’s diverse founding team brings expertise across machine learning, UI/UX, large language models, and medicine. Email me at mike.hauschild@layerhealth.com for more info",
+    "predicted_category": "data"
+  },
+  {
+    "job_id": "hn_343",
+    "company": "Baseten Labs",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Kubernetes",
+      "ML",
+      "Python",
+      "Rust"
+    ],
+    "description": "Baseten Labs | San Francisco, New York |ONSITE, REMOTE, HYBRID | VISA SPONSORSHIP | RELOCATION SUPPORT We are Baseten, the team that powers mission-critical inference for the world’s most dynamic AI companies such as Cursor, Notion, OpenEvidence, Abridge, Clay, Gamma and Writer. We’re growing quickly and recently raised our $300M Series E, backed by investors including BOND, IVP, Spark Capital, Greylock and Conviction.\nBy uniting applied AI research, flexible infrastructure, and seamless developer tooling, we enable companies operating at the frontier of AI to bring cutting-edge models into production. Apply Here:  https://jobs.ashbyhq.com/baseten?utm_source=gkzEP29VD4  or email Jason.dupree@baseten.co We are hiring for multiple core roles: 1. Solution Architect: You will partner closely with sales and customers to translate business needs into technical solutions, run technical discovery, and guide repeatable deployments and proofs of value for customers. This role is a great fit for entrepreneurial, customer-facing technical professionals who want a front-row view into how modern companies adopt AI at scale, and who enjoy working across technical discovery, solution design, demos, deployment scoping, and hands-on customer implementations, in close partnerships with Sales and Engineering 2. AI Solutions Engineer/Forward Deployed Engineer: You will partner directly with customers to architect, build, and deploy high-scale production AI applications on Baseten’s platform. You’ll own the journey with customers from initial exploration to production deployment. To be clear, this is a technical engineering role with hands-on coding and software dev that also includes aspects of product management, technical customer success and pre-sales solutions engineering mixed in. We’re language agnostic but strong Python and ML experience is a big plus. 3. Customer Engineer: You'll partner closely with Solutions Architecture, SRE, Infra, Product, and Forward Deployed Engineering, but you own the customer outcome end-to-end: from first response to root-cause analysis to the follow-up that reinforces trust. This role blends deep infrastructure debugging, AI/ML performance expertise, incident command, and proactive account ownership. You'll triage and resolve issues across Kubernetes, GPUs, networking, and model serving, lead war rooms during P0 escalations, and translate recurring pain points into product improvements. The Offer: Compensation: Very competitive, we’re looking for folks with a breadth of experience Equity: This is an opportunity to participate in the ownership of a fast-growing AI Infrastructure platform Location: We are based out of San Francisco with offices in New York. We are also open to remote employees for these roles. Process: If you’re interested, please apply here  https://jobs.ashbyhq.com/baseten?utm_source=gkzEP29VD4  or email me direct at Jason.dupree@baseten.co",
+    "predicted_category": "data"
+  },
+  {
+    "job_id": "hn_1630",
+    "company": "Atlassian",
+    "title": "Machine Learning Engineers Atlassian's flagship AI product",
+    "tags": [
+      "AI",
+      "Go"
+    ],
+    "description": "Atlassian |  https://www.atlassian.com/software/rovo  | REMOTE | Full-time | Machine Learning Engineers Atlassian's flagship AI product - Rovo Chat is going through a hockey stick growth moment, and we are looking for machine learning engineer passionate about building machine learning systems that operate at XX million user scale We are pushing the boundaries on: - Agent Orchestration - Evals and benchmarks - Model Training (SFT + RL) Apply here:  https://www.atlassian.com/company/careers/details/22898",
+    "predicted_category": "data"
+  },
+  {
+    "job_id": "hn_443",
+    "company": "Yuzu Health (yuzu.health, Series A)",
+    "title": "Unknown",
+    "tags": [
+      "AI"
+    ],
+    "description": "Yuzu Health (yuzu.health, Series A) | Location: New York City (Flatiron) | ONSITE\nPitch: Yuzu is not a wrapper, point solution, or integration on top of something. Our platform makes it easy for anyone to create their own health plan from scratch. That means our tech handles everything from the member/HR portals, claims adjudication, invoice automation, member support tools, to even printing and sending out ID cards. Why: We're truly rebuilding health insurance from the ground up. We currently serve over 1,000 employers, and we're growing extremely fast (like over 10x last year fast)! Investors: We're well funded with investors like General Catalyst, Chemistry, Anthropic, Lachy Groom, Neo and founders from startups you know like Notion, Brex, Deel, and Mercury. Roles: We're hiring engineers for in-person work over here at Yuzu's HQ in Union Sq, Flatiron. Primary need is for Fullstack/Product Engineers but we're also looking for a Data Engineer and a Product Designer. Job board here -  https://yuzu.health/careers \nYou can check out our office in our recent MTV cribs office tour also -   https://www.linkedin.com/feed/update/urn:li:activity:7398820... I'm Kev, the recruiting lead. Reach out to me directly if interested on kev ( at ) yuzu ( dot ) health",
+    "predicted_category": "data"
+  },
+  {
+    "job_id": "hn_918",
+    "company": "Rad AI",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "AWS",
+      "Kubernetes",
+      "ML",
+      "Python"
+    ],
+    "description": "Rad AI | Infra / Platform / ML Infra / SWE | San Francisco, CA | ONSITE/HYBRID Preferred, Remote Available | Full-time Rad AI builds AI products used by thousands of radiologists, helping reduce burnout and catch more disease across a large share of US medical imaging. We’ve raised $140M+ and are expanding our San Francisco presence with a new office at 2nd + Market, and we’re especially looking for infrastructure engineers who want to work in-person in SF. Work areas:\nInfra / Platform: AWS, Kubernetes, Terraform, PostgreSQL, observability, secure/HIPAA production infra ML infra / MLOps: Python, PyTorch, Airflow/LangGraph, data/feature pipelines, model serving More about current roles and to apply: \n https://www.radai.com/careers?utm_source=W29wy29rlJ",
+    "predicted_category": "data"
+  },
+  {
+    "job_id": "hn_1835",
+    "company": "Redpanda Data",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Go"
+    ],
+    "description": "Redpanda Data | REMOTE | Full-time Redpanda is pioneering the Agentic Data Plane (ADP) - a new category in AI infrastructure that makes it simple and secure to connect AI agents with enterprise data and systems. Built on a multi-modal data streaming engine, Redpanda empowers agentic applications that reason and act in real-time with speed, autonomy, and precision.\nGlobal leaders including Activision Blizzard, Cisco, Moody's, Texas Instruments, Vodafone and 2 of the top 5 banks in the U.S. rely on Redpanda to process hundreds of terabytes of data a day.\nBacked by premier venture investors Lightspeed, GV and Haystack VC, Redpanda is a diverse, people-first organization with teams distributed around the globe. Software Engineer, Core Replication -  https://job-boards.greenhouse.io/redpandadata/jobs/457731100... Software Engineer, Connect -  https://job-boards.greenhouse.io/redpandadata/jobs/457974900...",
+    "predicted_category": "data"
+  },
+  {
+    "job_id": "hn_1018",
+    "company": "xdof",
+    "title": "Robotics Engineers, Infra Engineers, Product Engineers, GTM",
+    "tags": [
+      "AI"
+    ],
+    "description": "xdof | Robotics Engineers, Infra Engineers, Product Engineers, GTM | SF Bay preferred, NYC & Remote possible for non-robotics roles At xdof, we're at an inflection point. Frontier labs are racing to build general-purpose robots, and high-quality training data is the bottleneck. We're building the foundation behind the foundation models – the data collection systems, operational capability, exabyte-scale data warehouse, and software toolchain – to help our partners drive the field forward. Founded by UC Berkeley Robotics PhDs and MechEs, this is a team that executes across software, hardware, and operations faster than I can believe sometimes. This speed and ability to deliver has led to partnerships with many of the top players in the space. We are not quite yet out of stealth, so not able to share more details here, but are so understaffed relative to demand that I'd like to start semi-public hiring ASAP. https://jobs.ashbyhq.com/xdof/ If you are interested but can't find a role that suits you, please email me at (check username)",
+    "predicted_category": "data"
+  },
+  {
+    "job_id": "hn_1464",
+    "company": "Source ( https://source.network )",
+    "title": "Lead Edge AI Engineer",
+    "tags": [
+      "AI",
+      "Rust"
+    ],
+    "description": "Source ( https://source.network )| USA/Canada: REMOTE | Full-Time |  https://careers.source.network Our mission is to make it normal, not heroic, for edge AI, mobile apps, and critical software to run close to where data is born: on devices, in vehicles, in field hardware, not just in a distant GPU farm. We’re building the data and trust layer that lets developers ship systems that still behave correctly when links are flaky, latency is awful, and the cloud is optional instead of mandatory—instead of the usual “SQLite everywhere + ad-hoc sync” duct tape. We’re growing fast and are looking to fill the following positions: -Chief of Staff -  https://source.network/careers/chief-of-staff -Lead Edge AI Engineer\n -  https://source.network/careers/lead-edge-ai-engineer -Head of Developer Relations -  https://source.network/careers/head-of-developer-relations-r... -Lead Technical Writer & Documentation Engineer -  https://source.network/careers/lead-technical-writer--docume...",
+    "predicted_category": "data"
+  },
+  {
+    "job_id": "hn_356",
+    "company": "Lead Full",
+    "title": "Stack Engineer",
+    "tags": [
+      "AI",
+      "Go",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Lead Full-Stack Engineer\nMarker Learning | Remote (U.S. only) | Full-time | Engineering | 185-250k I have dyslexia. I was one of the lucky ones. Diagnosed at eight, I got accommodations and support before things spiraled. Most kids aren't so lucky. The path from initial concern to diagnosis can take years and cost families upward of $5,000. For many, it never comes at all. In one study, 50% of prisoners were found to be dyslexic, with 80% functionally illiterate. Behind every missed diagnosis is a kid who gets told they're lazy, when the reality is no one ever gave them the right test. Marker Learning is building an AI-enhanced assessment platform that makes identifying learning differences faster, cheaper, and more equitable, especially for multilingual students who are routinely misidentified or overlooked. Imagine if every kid could be screened for learning differences as easily as they're screened for vision. That's what we're building. This isn't a chatbot or a homework helper. We're a Series B company backed by Reach Capital, Andreessen Horowitz, and Primary, running a multi-million-dollar longitudinal study spanning K–12 and developing the psychometric engine behind it. We need engineers who are excited by that. We're hiring a hands-on full-stack engineer (React, Node.js, TypeScript) to help build and scale the platform: adaptive testing infrastructure, AI-powered scoring scoring and data pipelines, and the systems that maintain clinical rigor at scale. High autonomy, lightweight process, fast-paced. 8–10+ years, ideally with 0-to-1 or early-stage experience. You'll work directly with psychometrics, product, and data science, and the engineering decisions you make now will define the platform for years. Reach out directly with your resume and why you want this position to lucie@markerlearning.com. Make the subject \"Lead Engineer Application (I am not a bot)\".",
+    "predicted_category": "data"
+  },
+  {
+    "job_id": "hn_388",
+    "company": "Ford Motor Company",
+    "title": "Cloud Site Reliability Engineer",
+    "tags": [
+      "AI",
+      "Go",
+      "Kubernetes",
+      "Python"
+    ],
+    "description": "Ford Motor Company | Cloud Site Reliability Engineer | Full-Time | Remote (US) | 113k-190k USD Visa Sponsorship Is not provided. Ford is seeking an experienced and passionate Site Reliability Engineer (SRE) to join our team. You will play a critical role in designing, implementing, and enhancing Agentic triage software used across the company to drive automated and fast response times and lower MTTX. In this role, you will contribute hands-on to ensuring the reliability and scalability of our systems, working alongside a global SRE team, fostering a culture of collaboration and continuous improvement. Most of our code is in Python and Go hosted in Kubernetes. We use Dynatrace + OpenTelemetry + GCP + both traditional and in-house developed LLM based AI tools/MCP. https://apply.ford.com/en/sites/CX_1/job/58080 If interested, first apply, then reach out directly to me:channon4 [at] ford.com. Send me your resume. p.s., the last time I posted on \"Who is hiring?\", I hired someone that reached out through Hacker News :)",
+    "predicted_category": "devops"
+  },
+  {
+    "job_id": "hn_2061",
+    "company": "Black Hills Information Security",
+    "title": "Senior DevOps Engineer",
+    "tags": [
+      "AI"
+    ],
+    "description": "Black Hills Information Security | Senior DevOps Engineer | REMOTE Role focuses on developing and maintaining automation for penetration testing service infrastructure (C2, remote access, phishing, etc.).",
+    "predicted_category": "devops"
+  },
+  {
+    "job_id": "hn_1557",
+    "company": "Saypien",
+    "title": "Equity More senior role bridging product and engineering. End",
+    "tags": [
+      "AI",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Saypien | Berlin, Germany | REMOTE (Europe) | Full-time We're building an AI-native SaaS platform that helps companies extracting actionable insights from data in real-time. Think of it as an architectural intelligence layer that ingests heterogeneous data, learns your business context, and delivers decision-ready guidance. Tech stack: Next.js, React, TypeScript, PostgreSQL, Redis. – Hiring for two roles: Software Engineer (Full Stack) - €60-157k (incl. Bonus) | Equity You'll build and optimize our web platform end-to-end, work closely with AI, Product, and Design. Strong Node.js, PostgreSQL, React/Next.js. Experience with LLM integrations is a plus. AI Product Engineer (Full Stack) - €70-169k (incl. Bonus) | Equity More senior role bridging product and engineering. End-to-end feature ownership, customer feedback integration, shaping product direction while shipping production code. – Small team, real customers, fast iteration cycles, shipping. Apply:  https://work-at-saypien.jobs.personio.com",
+    "predicted_category": "devops"
+  },
+  {
+    "job_id": "hn_1792",
+    "company": "Adalat AI",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Go",
+      "Kubernetes",
+      "ML",
+      "React"
+    ],
+    "description": "Adalat AI |  https://www.adalat.ai  | Remote (India, but open to global for exceptional candidates) | Go, React, Next.js, k8s We're Hiring at Adalat AI: Join Us in Building the Future of Justice\nAdalat AI is on a mission to transform India’s judicial system with cutting-edge AI — reimagining courtroom workflows from transcription to summarization, just as UPI transformed payments and Aadhaar revolutionized identity verification. Deployed across 10 states and recently launched at the Delhi High Court, our platform is backed by global foundations and built by a team with roots at Harvard, Oxford, MIT, and IIIT-Hyderabad. Roles: - 2 X Fullstack Engineer – Own end-to-end feature delivery across React/Next.js, Go services, with Postgres as your database:  https://www.adalat.ai/careers/full-stack-engineer - Senior Site Reliability Engineer - Manage Kubernetes clusters, streamline complex deployments with ArgoCD, and ensure reliability for a system processing sensitive, real-time data:  https://www.adalat.ai/careers/site-reliability-engineer Why Adalat AI? - Mission-driven: Your work has real-world impact—helping untangle India’s court backlog, improving access to justice for millions. - Remote-first: Work from anywhere. - Unlimited PTO: Yes, seriously. - Unique environment: Co-design with judges, legal experts, and researchers. Publish, learn, grow. We value tech, law, and impact equally. Send your resume and cover letter to careers@adalat.ai, using the subject lines: - Fullstack Engineer | [Your Name] - Senior SRE engineer | [Your Name]",
+    "predicted_category": "devops"
+  },
+  {
+    "job_id": "hn_379",
+    "company": "Silkline",
+    "title": "Senior Software Engineer",
+    "tags": [
+      "AI",
+      "AWS",
+      "Go",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Silkline | Senior Software Engineer | Seattle | ONSITE (5 days/week) | $175k-$225k + equity |  https://silkline.ai Modern hardware supply chains run on spreadsheets, email, and PDFs. It's like fax woke up in 2025. We're fixing this with an AI-first procurement platform for aerospace, defense, and nuclear manufacturing. Our customers: Machina Labs, Astranis, K2 Space, Castelion, Antares, and more. They use us to manage suppliers, track $M+ in orders, automate RFQs, and stay ITAR-compliant. Every day of production delay costs $50k+—our platform keeps them moving. The role: Own features end-to-end, build ERP integrations that sync POs and manufacturing data, real-time order tracking dashboards, and a user experience that people LOVE. Work directly with customers whose supply chains depend on what you ship. Stack: TypeScript, React, Next.js, Hasura (GraphQL), PostgreSQL, Trigger.dev, AWS GovCloud, Pulumi, Elbow grease. You: 5+ years shipping production systems, strong full-stack or frontend generalist who moves fast, thrive on customer feedback and direct impact, bonus: ERP integrations, B2B SaaS, or regulated industries Traction: 5x'd customer count last year, $5M funding to date, landing massive defense/space logos. Small team shipping incredibly fast—you'll work directly with our founders (Isaac and myself). Apply:  https://jobs.gem.com/silkline/am9icG9zdDrLwsEQTKKa02Ut_F9kgz... \nQuestions? brent@silkline.ai (mention HN)",
+    "predicted_category": "devops"
+  },
+  {
+    "job_id": "hn_1373",
+    "company": "Category Labs",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Go",
+      "Rust"
+    ],
+    "description": "Category Labs |  https://www.category.xyz/  | Remote and NYC | Full Time | $200K USD+ Category Labs (formerly known as Monad Labs) is a team of systems engineers and researchers on a mission to design and build at the frontier of decentralized technology. We strive to design and build step-function improvements over existing blockchain solutions. After raising $225M in series A funding, led by Paradigm, we are growing our team. Monad Mainnet Launched on November 24th! Technical Project Manager:  https://jobs.ashbyhq.com/category-labs/bdfe89a6-83f6-4ab3-b6... Senior SWE (Rust, C/C++):  https://jobs.ashbyhq.com/category-labs/45f674b2-d904-482e-a5... Senior Researcher, Systems:  https://jobs.ashbyhq.com/category-labs/015934c5-66e5-4042-94...",
+    "predicted_category": "devops"
+  },
+  {
+    "job_id": "hn_1326",
+    "company": "Common Prefix",
+    "title": "Software Engineers / DevOps",
+    "tags": [
+      "AI",
+      "Go",
+      "Rust",
+      "TypeScript"
+    ],
+    "description": "Common Prefix | Software Engineers / DevOps | Greece | Remote | Full-time Common Prefix is a blockchain research & development company. Blockchain technologies enable large-scale economic coordination through shared, programmable ledgers. Our mission is to solve the foundational scientific and engineering challenges standing in the way of mainstream adoption, particularly around interoperability, scalability, and usability. We combine formal scientific research with production-grade engineering. Our team publishes in top-tier peer-reviewed venues and builds open-source infrastructure used across major blockchain ecosystems. We have contributed to advanced systems including Axelar, XRPL, Sui, and Flashbots, and are trusted partners to protocols building critical infrastructure. What we're looking for: Software engineers who can solve problems, are smart, get things done, and enjoy working on the bleeding edge, learning about cryptography, and working from first-principles. Tech stack: Doesn't matter, we'll teach you. But we work mostly with Rust, Go, and TypeScript. Open roles: - Software Engineer (mid):  https://www.notion.so/commonprefix/Opening-Software-Engineer... - Senior Software Engineer:  https://www.notion.so/commonprefix/Opening-Senior-Software-E... - DevOps:  https://www.notion.so/commonprefix/Opening-DevOps-Engineer-2... We offer: - $50,000–$160,000 / year cash + stock grant + performance bonus (depends on level but not location) - Local from Athens, Greece, or remote - Conference participation in exciting scientific and engineering venues, 2-3 times per year - The opportunity to work and learn from world-class scientists from major universities in the field of blockchains, cryptography, and consensus Apply here: https://commonprefix.notion.site/2b7bf672de828051b53cdd37811...",
+    "predicted_category": "devops"
+  },
+  {
+    "job_id": "hn_5",
+    "company": "Eequ",
+    "title": "Senior Backend Engineer",
+    "tags": [
+      "AI",
+      "AWS",
+      "TypeScript"
+    ],
+    "description": "Eequ | Senior Backend Engineer | Remote (UK) | Full-time | £80k–£110k | Node.js, NestJS, TypeScript, MySQL, AWS, Terraform Join a disciplined, senior team responsible for the platform behind Eequ, where engineers have real ownership and operate with high autonomy. We are the market-leading supplier to local authorities in the UK for council-funded activity programmes and we also serve thousands of independent providers. Our platform handles bookings, payments, and sensitive data at scale. We are profitable, bootstrapped, and growing. What you'll do\nBuild and operate the backend platform that powers a real marketplace handling bookings, payments, and reporting for thousands of families and providers. Design and ship features from API design through database models to deployment\nMake architectural decisions and communicate them clearly to the team\nOwn our AWS infrastructure, CI/CD pipelines, and keep production healthy with observability and alerting\nLead incident response when things break, find root causes, and drive follow-ups\nImprove database performance, query patterns, and data pipeline as usage grows. Stack: Node.js, NestJS, TypeScript, MySQL with TypeORM, Redis, AWS (EC2, RDS, S3, CloudWatch), Terraform, Turborepo monorepo. Apply via eequ.org/careers or email directly: avida@eequ.org",
+    "predicted_category": "devops"
+  },
+  {
+    "job_id": "hn_1334",
+    "company": "ChainSecurity",
+    "title": "Blockchain Security Engineer",
+    "tags": [
+      "AI",
+      "Go",
+      "Rust"
+    ],
+    "description": "ChainSecurity | Blockchain Security Engineer | Full-time | INTERNS , HYBRID/REMOTE, Zurich, Switzerland | VISA possible |  https://chainsecurity.com/ ChainSecurity is a young and innovative cybersecurity company that operates in the blockchain and cryptocurrency space. Our mission is to make the blockchain space secure and trustworthy for people, companies, and governments alike. We are proud of our security experts from the renowned universities ETH Zurich, EPFL Lausanne and others. We are trusted by 100+ blockchain companies and established corporations with security audits and services. We have secured complex systems for top blockchain clients, such as decentralized finance (DeFi) projects, and multinational organizations, such as banks and industrial consortia. A ChainSecurity Auditor will review the most complex blockchain projects to find vulnerabilities which no-one else can. By using state of the art tools, expert knowledge and a deep understanding of the fundamentals, we secure projects handling billions, often forming the foundation in the new paradigm of an open financial system. Your Responsibilities: * Work directly with the developers of the most successful teams in the blockchain industry to audit their code and secure their products * Contribute to our security tools and create new ones in collaboration with our internal research team * Conduct security research and publish your findings Requirements: * Strong background in software engineering, focused on security relevant areas and most importantly being able to reason about complex code * Experience with penetration testing, vulnerability scanning, threat modeling or similar is a plus * Good knowledge of cryptography * Proficiency with Linux and Git * Good written communication skills * Fluent in OOP programming language Bonus Points: * Formal Verification, White Box, Vulnerability Scanning * Solid Blockchain Knowledge * Consensus Algorithms Join us here:  https://www.chainsecurity.com/jobs/blockchain-security-engin... Questions about the role? Contact: jobs@chainsecurity.com",
+    "predicted_category": "devops"
+  },
+  {
+    "job_id": "hn_1911",
+    "company": "DocSpot",
+    "title": "end developer:  https://docs.google.com/document/d/1IvcTtE7yE7m5u0NfrVmvtR_i... Full",
+    "tags": [
+      "Go"
+    ],
+    "description": "DocSpot | ONSITE (Santa Clara, CA) |  https://docspot.com DocSpot helps people find doctors by indexing information from a plethora of sources and empowering patients to search through one unified interface. Tiny company, entry-level candidates welcome (no experience required): Back-end developer:  https://docs.google.com/document/d/1IvcTtE7yE7m5u0NfrVmvtR_i... Full-stack developer:  https://docs.google.com/document/d/1eX3-FuDFaK6kX6IQupm81p3S... Content specialist (non-technical):  https://docs.google.com/document/d/1YKvuLVMXgj527fMuEyaVnum1...",
+    "predicted_category": "fullstack"
+  },
+  {
+    "job_id": "hn_1909",
+    "company": "*Maiven",
+    "title": "Stack Engineer & Energy Modeling Engineer",
+    "tags": [
+      "AI",
+      "AWS",
+      "Python",
+      "React",
+      "TypeScript"
+    ],
+    "description": "*Maiven | Full-Stack Engineer & Energy Modeling Engineer | Remote (US) | Full-Time* Maiven is the software platform automating home decarbonization. We’re a small, mission-driven team punching way above our weight: we have large utility customers, contracts in multiple states, and a growing pipeline of programs launching later this year. We’re venture backed and moving fast. We’re hiring two engineers: - *Full-Stack Engineer* – NestJS, React, Tailwind, TypeScript, Python, Postgres, AWS, Lambdas. Someone who cares deeply about UX and moving fast while delighting the user. - *Energy Modeling Engineer* – Python, pandas, AWS, modeling frameworks (ResStock, EnergyPlus, etc.). Experience with energy programs or building science is a huge plus. Looking for builders who want real ownership, thrive in early-stage startups, and move with urgency and care. Competitive startup salary + meaningful equity. More:  https://www.askmaiven.com To apply: email [hiring@askmaiven.com](mailto:hiring@askmaiven.com) with a resume, your links, and a few reasons why an early stage startup is the right choice for you right now.",
+    "predicted_category": "fullstack"
+  },
+  {
+    "job_id": "hn_679",
+    "company": "Beautiful.ai",
+    "title": "AI Industry 1. Senior Platform Engineer",
+    "tags": [
+      "AI"
+    ],
+    "description": "Beautiful.ai | Full-Time | Remote in US & CAN | SaaS B2B Presentation Software | Series B | 16M Funding | AI Industry 1. Senior Platform Engineer | 160k - 200k Base salary + Equity |  https://job-boards.greenhouse.io/beautifulai/jobs/4802989007 2. Senior Software Engineer | 160k - 200k Base Salary + Equity |  https://job-boards.greenhouse.io/beautifulai/jobs/4802854007 3. Software Engineer | 120k - 160k Base Salary + Equity |  https://job-boards.greenhouse.io/beautifulai/jobs/4802768007 4. Staff Platform Engineer | 200k - 250k Base Salary + Equity |  https://job-boards.greenhouse.io/beautifulai/jobs/4803038007 5. Staff Software Engineer | 200k - 250k Base Salary + Equity |  https://job-boards.greenhouse.io/beautifulai/jobs/4802916007 6. Account Executive | 140k - 180k USD Base Salary + Uncapped On-Target Commission at 50/50 Split |  https://job-boards.greenhouse.io/beautifulai/jobs/4955956007",
+    "predicted_category": "fullstack"
+  },
+  {
+    "job_id": "hn_1766",
+    "company": "Stellar Science",
+    "title": "Full time, interns/co",
+    "tags": [
+      "AI",
+      "Java",
+      "ML",
+      "Python",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Stellar Science | Hybrid (USA) Albuquerque NM, Washington DC (Tysons VA), Dayton OH | Full time, interns/co-ops | U.S. citizenship required |  https://www.stellarscience.com Company: We're a small scientific software development company that develops custom scientific and engineering analysis applications in domains including: space situational awareness (monitoring the locations, health and status of on-orbit satellites), image simulation, high power microwave systems, modeling and simulation, laser systems modeling, AI/ML including physics-informed neural networks (PINN), human body thermoregulation, computer vision and image processing, high performance computing (HPC), computer aided design (CAD), and more. All exciting applications and no CRUD. We emphasize high quality code and lightweight processes that free software engineers to be productive. Experience: Other than interns, we currently require a Bachelors degree in physics, engineering, math, computer science, or a related field, plus preferably 3+ years of work experience, or a Masters or PhD in lieu of work experience. (Roughly 25% of our staff have PhDs.) Technologies: Mostly C++23, Qt 6.9, CMake, git, OpenGL, CUDA, Boost, Jenkins. Windows and Linux, msvc/gcc/clang/clangcl. AI/ML and analysis projects use Python and C++. Some projects use Java or Typescript/React. Apply online at  https://www.stellarscience.com/careers/ .",
+    "predicted_category": "fullstack"
+  },
+  {
+    "job_id": "hn_110",
+    "company": "StraighterLine (straighterline.com)",
+    "title": "Staff Software Engineer (Full Stack)",
+    "tags": [
+      "AI",
+      "AWS",
+      "React",
+      "TypeScript"
+    ],
+    "description": "StraighterLine (straighterline.com) | Staff Software Engineer (Full Stack) | Remote (US Only) | Full Time\nOur mission is to create opportunities for career advancement through access to affordable education. We are also the market leaders in early childhood (ECE) training and certifications. We are looking for two Staff Engineers to help lead development on next-generation AI-assisted learning platforms. You will be building modern, API-driven, scalable services and applications with React/Next.js, TypeScript, Node.js, GraphQL, and AWS, using AI-native development practices. You will collaborate on architecture, shared services, internal tooling, and interface design, owning features from concept to production. Competitive base salary, bonus and benefits (401k match). Apply here:  https://jobs.lever.co/straighterline/36d8f56b-14ac-4a35-af0c...  and please mention HN under Additional Information. To get full attention, also send your resume, github, and linkedin profiles to hr at straighterline.com with subject line Hacker News.",
+    "predicted_category": "fullstack"
+  },
+  {
+    "job_id": "hn_26",
+    "company": "Proven Software",
+    "title": "Unknown",
+    "tags": [
+      "AI"
+    ],
+    "description": "Proven Software | QA Analyst | REMOTE (US) Full-Time | $85k-$110k We've hired three developers from HN and now we're looking for a QA Analyst to join the team. Proven is a start-up software company delivering a modern electronic medical record (EMR) to behavioral health and physical therapy. Proven's Founders and Executive team have decades of experience successfully growing and scaling companies in healthcare. Our mission is to deliver an innovative and impactful solution to healthcare providers leveraging modern technology. At Proven, we are looking for bright, hard-working, and highly motivated individuals who want to be a part of our fast-growing company. 4+ years software QA testing experience required. Manual testing across our EMR platform — functional, regression, and usability. Strong understanding of SDLC and Agile. Experience building out automated testing processes, EMR/healthcare software, HIPAA, or SQL are bonuses but not required. We primarily work ET hours but are flexible. Excellent PTO and employer-sponsored healthcare benefits. Email us at: hiring AT provensoftware DOT com",
+    "predicted_category": "fullstack"
+  },
+  {
+    "job_id": "hn_446",
+    "company": "Deep Core Technology",
+    "title": "Stack Engineer (First Hire)",
+    "tags": [
+      "AI",
+      "Python",
+      "TypeScript"
+    ],
+    "description": "Deep Core Technology | Full-Stack Engineer (First Hire) | Remote (Canada/US) | Full-Time We're building the web-native natural language geological modelling platform for geologists at mineral exploration companies. Think Cursor for 3D mining data investigation. Two founders (CTO + structural geologist CEO), early pilots, and in process of a raise. You'd be hire #1. Technical Challenges\n- staying performant while streaming millions of geological data points into a browser environment\n- dealing with the very high data security and compliance expectations\n- designing to hide complexity from end user Stack: TypeScript, Next.js/Vercel, CesiumJS, Supabase, a bit of Python. Looking for a senior full-stack engineer comfortable in Typescript and Node, but is open to learning and being flexible if things change. Should be AI-native in their workflow and likes owning things end-to-end. 3D graphics or geo experience a plus. Competitive salary + early equity. jeff@deepcoretech.com — email me directly. https://deepcoretech.com",
+    "predicted_category": "fullstack"
+  },
+  {
+    "job_id": "hn_1235",
+    "company": "Tasklet",
+    "title": "Staff Software Engineer",
+    "tags": [
+      "AI",
+      "Kubernetes",
+      "ML",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Tasklet | Staff Software Engineer - AI Agents | San Francisco, CA | ONSITE | $260k-$330k + 0.8-1.6% equity At Tasklet ( https://tasklet.ai/ ), we're building the world's most powerful AI agent platform for business automation. We're looking for a staff-level software engineer to share technical leadership of our core agent infrastructure. You'll architect systems for multi-step agent orchestration, state management, trigger systems, and seamless integration with thousands of APIs. Our stack: TypeScript, React, GCP, Kubernetes, Claude Looking for: 5+ years experience building production-scale systems, proven technical leadership, experience building AI agents, exceptional programming skills across the full stack. Compensation: $260k-$330k salary + 0.8-1.6% equity, competitive benefits including medical, dental, vision, 401k, 4 weeks PTO Apply:  https://shortwave.notion.site/Open-Positions-at-Tasklet-2a36...",
+    "predicted_category": "fullstack"
+  },
+  {
+    "job_id": "hn_2042",
+    "company": "Suno",
+    "title": "Software Engineer, Android",
+    "tags": [
+      "AI",
+      "Go",
+      "Python",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Suno | Cambridge, MA | New York, NY | Full-time | Onsite We are building a future where anyone can make music. We’re scaling our engineering team and hiring for the following roles: - Software Engineer, Android - Jetpack Compose, Kotlin - Software Engineer, iOS - SwiftUI - Software Engineer, Fullstack Web - Typescript, React, \nNextJS, Python, Django\n - Software Engineer, Growth - all the things - AI Researchers - Other roles here  https://jobs.ashbyhq.com/suno Apply at the link above or feel free to shoot me an email at matthiesen (at) suno.com if you have any questions or want to learn more.",
+    "predicted_category": "fullstack"
+  },
+  {
+    "job_id": "hn_1117",
+    "company": "Eleos Technologies",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Go"
+    ],
+    "description": "Eleos Technologies | DNS Consulting | REMOTE (US) | Contractor We build mobile apps and supporting systems for long-haul truck drivers. We have a critical DNS registrar/hosting migration to do this year and while I did the last one (on a less-critical domain), I'd really like support from someone who has done >5 of these to help our team get it right. Good news: no DNSSEC. =) Please reach out to me at phil@eleostech.com and mention this post if this is you and you have a reference or two. It should be really easy project for the right person, but we'll compensate commensurate with the business risk.",
+    "predicted_category": "mobile"
+  },
+  {
+    "job_id": "hn_1981",
+    "company": "Product Consultant / AudioDiary /  https://audiodi",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Go"
+    ],
+    "description": "Product Consultant / AudioDiary /  https://audiodiary.ai  / Remote / CONTRACT / flexible hours / Up to $250 daily or performance-based - subject to discussion. Our app, AudioDiary, has recently been through a period of highly organic growth. We need a someone with successful experience in scaling apps to help us grow more intentionally. We're open to any kind of improvement, from product to app store presence and beyond—the main goal being growth. AudioDiary is a new and exciting project that's already helping thousands of people. We have big ambitions and we hope that working with us could be the start of something wonderful. If interested, send us an email that includes your relevant work experience, in particular your success stories with growing new products. hacker@audiodiary.ai",
+    "predicted_category": "mobile"
+  },
+  {
+    "job_id": "hn_382",
+    "company": "Instinct Science",
+    "title": "Stack Engineer",
+    "tags": [
+      "AI",
+      "AWS",
+      "React",
+      "TypeScript"
+    ],
+    "description": "Instinct Science | Senior Full-Stack Engineer | REMOTE (US) | Full-Time | $150K–$175K Instinct Science is the AI leader in veterinary medicine - and we're just getting started. Our platform is already transforming how veterinary teams practice, combining a cloud-native EMR with real-time clinical decision support and applied AI that saves animal lives every single day. We didn't enter this space to make incremental improvements. We're here to disrupt a massive, underserved industry from the ground up - and we're looking for the engineers who want to help us define what comes next. What you'll work on: Own projects from scoping through release\nBuild full-stack features using Elixir (backend) and React/TypeScript (frontend)\nDesign scalable, reliable solutions in a small, cross-functional team Stack: Elixir, React, TypeScript, AWS, PostgreSQL\nYou're a strong fit if you: Have solid experience building modern SaaS applications across the stack\nThrive in a remote-first, async-friendly environment\nCare deeply about code quality and the end user (in our case — vets and their patients) Nice to have: Deep Elixir/Erlang experience, AWS, relational DB design\nCompensation & Benefits: $150,000–$175,000 base\nMedical, dental, vision + 401K with match\nGenerous stipend for wellness, professional development, and your pet(s)\n\"Flow State Fridays\" and owner-like flexibility over time-off\nAnnual all-expense-paid company retreat Apply:  https://instinctscience.applytojob.com/apply/1H156iuuzg/Seni...",
+    "predicted_category": "mobile"
+  },
+  {
+    "job_id": "hn_939",
+    "company": "Product incubator",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Go",
+      "Rust"
+    ],
+    "description": "Product incubator | REMOTE (US) | Consulting (1099) We are a small team with a wide network, bringing ideas to market with a focus on simplicity and trust. Clients a mix of early-stage and enterprise. Seeking long-term collaboration with imaginative people who communicate well. Teams are built around projects: At the moment, looking for experience in F&B logistics, pickup/delivery/scheduling systems, price monitoring, banking integration, mobile shopping tools and redundancy for a neat client. Otherwise, there's more in the pipeline so feel free to reach out. As a consultant, collaboration could be anything from periodic advisor to dedicated contributor. As for technology, pragmatic - best tool for the job. Rough consensus and running code. Based in NYC, with clients and team beyond the US. We've got a life to live. Under wraps due to client, but otherwise transparent and operate in good faith. Email in profile.",
+    "predicted_category": "mobile"
+  },
+  {
+    "job_id": "hn_1261",
+    "company": "MyLegalPal",
+    "title": "Unknown",
+    "tags": [],
+    "description": "MyLegalPal | India (Remote/Hybrid) | Full Time |  https://mylegalpal.com MyLegalPal is a legal technology platform that simplifies contract drafting, review, and legal support for startups, founders, and businesses globally. We help people deal with legal work without confusion, delays, or unnecessary costs. We are looking for: Frontend Developer Backend Developer Full Stack Developer Legal Operations / Legal Tech Associate Our current stack includes modern web technologies with a strong focus on performance, security, and scalability. Legal understanding is a plus, but curiosity and problem-solving matter more. We are bootstrapped, growing steadily, and work directly with real clients across India and international markets. As a small team, your work will have visible impact, and you’ll be closely involved in shaping both the product and the platform. If you enjoy building meaningful products in the legal-tech space, we’d love to hear from you. Send your resume or questions to contact@mylegalpal.com",
+    "predicted_category": "mobile"
+  },
+  {
+    "job_id": "hn_350",
+    "company": "FUTO",
+    "title": "Software Engineers",
+    "tags": [
+      "AI",
+      "Rust"
+    ],
+    "description": "FUTO | Software Engineers | Austin, TX | Remote or Onsite | Full Time FUTO is an organization dedicated to developing, both through in-house engineering and investment, technologies that frustrate centralization and industry consolidation. Our work consists of a combination of in-house engineering projects, targeted investments, generous grants, and multi-media public education efforts. We are hiring for a few of our projects, Immich and Grayjay. Immich is on a mission to provide a secure and private home for your most precious memories through our high-performance, self-hostable photo and video backup solution. Grayjay is a privacy first media application that lets users follow creators, not platforms. The app aggregates content from multiple video sources including YouTube, Rumble, Twitch, PeerTube, Odysee, and more, into a single unified experience. Grayjay gives users full control over their viewing experience. Roles currently available: Mobile Developer - Immich :  https://futo.tech/jobs/mobile-developer-immich Android/iOS Mobile Engineer - Grayjay :  https://futo.tech/jobs/mobile-engineer-grayjay Plugin Engineer - Grayjay :  https://futo.tech/jobs/plugin-engineer-grayjay More details and job postings here:  https://futo.tech/jobs To apply, send your resume and cover letter to jobs at futo dot org.",
+    "predicted_category": "mobile"
+  },
+  {
+    "job_id": "hn_1067",
+    "company": "Bliro.io",
+    "title": "Unknown",
+    "tags": [],
+    "description": "Bliro.io | Munich | Germany | Seed\nFounding Product Manager\nTech Lead iOS App",
+    "predicted_category": "mobile"
+  },
+  {
+    "job_id": "hn_1029",
+    "company": "Clutch  https://www.clutchapp.io",
+    "title": "Frontend Engineer (Mobile), Head of Product Design",
+    "tags": [
+      "AI",
+      "React"
+    ],
+    "description": "Clutch  https://www.clutchapp.io  - building future of padel with AI cameras | Full-time | Frontend Engineer (Mobile), Head of Product Design | Remote (worldwide) | 50-96k + equity We are Clutch, building an automated videographer and coaching experience for padel players. We are small but quickly-growing startup with cameras in over 30 clubs around the world. We are hiring for two key positions to enhance our app and our self-designed camera. Frontend Engineer (Mobile): Experienced mobile developers (iOS, Android) only. Expertise in React Native, PostgreSQL, Amazon lambdas or similar, Amazon s3 or similar. Experience with UI design is a big plus. Head of Product Design: Expertise in product analytics, modern design tools and design systems. Strong record leading end-to-end design for digital products. Strong track record of independent projects and passion for racket sports is a big plus! Full job postings:  https://wellfound.com/l/2C12ko ,  https://wellfound.com/l/2C1w5e Contacts: Kirill Paramonov (CTO) kirill[at]clutchapp[dot]io, Kári Gunnarsson (CEO) kari[at]clutchapp[dot]io",
+    "predicted_category": "mobile"
+  },
+  {
+    "job_id": "hn_28",
+    "company": "Revelare Networks / Mobile Software Engineer/ Full",
+    "title": "Unknown",
+    "tags": [],
+    "description": "Revelare Networks / Mobile Software Engineer/ Fully Remote/ Full-Time/ US Citizen We are hiring a Mobile Software Engineer with extensive experience in Android (Kotlin/Jetpack Compose) and iOS (Swift/SwiftUI). \nThe salary range for this position is $110,000 - $155,000, depending on experience level. You must be a U.S. citizen for this position Please apply here:  https://apply.workable.com/revelare-networks/j/3B32865D60/",
+    "predicted_category": "mobile"
+  },
+  {
+    "job_id": "hn_1651",
+    "company": "Common Prefix – Software Engineers / Auditors – Gr",
+    "title": "person team, half scientists (cryptographer PhDs, post",
+    "tags": [
+      "AI",
+      "Rust"
+    ],
+    "description": "Common Prefix – Software Engineers / Auditors – Greece – Remote – Full-Time Common Prefix is a science-first blockchain consulting company. Our vision is to make blockchains usable for mainstream users and everyday people – paying at the supermarket, remittances, moving money across borders, saving, investing – and solving the real problems of usability, scalability, and interoperability that come with it. We're a 30-person team, half scientists (cryptographer PhDs, post-docs, and professors) from renowned universities, half engineers with long web2 experience. A lot of our field is broken and we're trying to make a small contribution in fixing it, by introducing provable security and proper engineering practices across the board. What we're looking for: Software engineers who can solve problems, are smart, get things done, and enjoy working on the bleeding edge, learning about cryptography, and working from first-principles. Auditors who can write and read code, especially low-level cryptographic implementation code (zero knowledge verifiers, signature schemes, etc), consensus (PoW, PoS), or smart contracts (everything DeFi). Tech stack: Doesn't matter, we'll teach you. But we work mostly with Rust. Open roles: * Software Engineer,  https://commonprefix.notion.site/sw-folk * Auditor,  https://commonprefix.notion.site/auditing-folk We offer: - $80,000–$160,000 / year cash - Local from Athens, Greece, or remote, preferably in Europe - Conference participation in exciting scientific and engineering venues, 2-3 times per year - The opportunity to work and learn from world-class scientists from major universities in the field of blockchains, cryptography, and consensus If you're interested in joining our team, apply here:  https://commonprefix.notion.site/2b7bf672de828051b53cdd37811...",
+    "predicted_category": "management"
+  },
+  {
+    "job_id": "hn_1842",
+    "company": "VIVA Finance",
+    "title": "Unknown",
+    "tags": [
+      "AWS",
+      "React"
+    ],
+    "description": "VIVA Finance | Atlanta, GA (In Person)| Front-End Developer VIVA is a Fintech Startup based in Atlanta, GA with the mission to build a more inclusive financial system. VIVA offers unsecured personal loans to customers who have traditionally been excluded and taken advantage of by the legacy financial institutions. The VIVA difference is to underwrite heavily on employment history and set up repayments through voluntary direct deposit payments from the borrower's paycheck. Our interest rates are less than 1/3 of the rates our customers are able to get from other financing options. We are a VC backed company and have been in business for 6 years. We have been profitable for the past year are a half. We are hiring an additional frontend engineer to support our increasing customer volume, as well as to support new products we plan to launch to diversify our revenue stream. You will join our engineering team of 10 and work in a dynamic environment where you are frequently writing net new code to support business objectives. Our tech stack for the front-end is fully hosted on AWS. The web app is in React and we are building a mobile app with React Native, but experience with this specific stack is not necessary for talented candidates. Our preference is candidates who can come in office 4 days a week to our office on the Atlanta Beltline (next to Krog Street Market). VIVA does not provide visa sponsorship, so please have authorization to work in the USA. Send an introduction to our hiring manger (alexa@viva-finance.com) with a resume and we will be in touch!",
+    "predicted_category": "management"
+  },
+  {
+    "job_id": "hn_1230",
+    "company": "Pango",
+    "title": "stack Software Engineer",
+    "tags": [
+      "AI",
+      "Go",
+      "React"
+    ],
+    "description": "Pango | Founding Full-stack Software Engineer | On-site (hybrid) in Stockholm, Sweden (Visa Sponsorship possible) | Full time Pango is building the world's first Agentic Operating System for e-commerce logistics. Our vision is to create the AI e-commerce employee of the future. We are forming our core team in Stockholm and are looking for exceptional engineers. We are based at the SSE Business Lab, where companies such as Klarna, Voi, Budbee or Legora originated. We have achieved a product-market fit and are growing rapidly. You are a good fit if: * You are comfortable maintaining, expanding and operating an entire B2B SaaS platform with a high sense of ownership. * You are happy to take on work that in a large company is divided into a dozen roles, and execute it all at a good enough level. * You are unafraid of any technology. If we need a desktop app and you haven't done one before, you will study the documentation of Electron.js and build one. If a model for predicting delivery times is needed, you will do a literature review to find the right architecture and train one. * You have strong proficiency in any backend language or platform, with a strong willingness to dive deep into PHP/Laravel OR strong proficiency in JS/React. * E-commerce (Shopify, Magento, other platforms, shipping carrier integrations) experience is a plus. You will take a key role in shaping the product and company, with ability to make an impact and advance career limited only by your aptitude and interest. Reach out to lukasz@pango.ai if you are interested or have any questions. We review applications immediately and move quickly.",
+    "predicted_category": "management"
+  },
+  {
+    "job_id": "hn_1674",
+    "company": "40GRID",
+    "title": "Technical Program Manager Our mission is to empower field",
+    "tags": [
+      "AI"
+    ],
+    "description": "40GRID - Full-time Remote | Technical Program Manager Our mission is to empower field-service companies to grow by modernizing and automating their business operations. Every company we work with has unrealized potentials — our task is to build the platform that empowers growth and helps them unlock opportunities. Email: jobs [at] 40grid.com (no recruiters or agencies, please put HN in subject line, thanks).",
+    "predicted_category": "management"
+  },
+  {
+    "job_id": "hn_1300",
+    "company": "Architect Financial Technologies",
+    "title": "Knowledge of architecture, testing, and deployment of distributed systems",
+    "tags": [
+      "AI",
+      "Go",
+      "React",
+      "Rust",
+      "TypeScript"
+    ],
+    "description": "Architect Financial Technologies | Chicago | Onsite / Remote | Full-time | architect.co Architect recently raised a $35M series A and is looking to fill a number of software engineering roles. As a key member of our growing team, you will help build out our advanced exchange which is the world's first centralized and regulated exchange for perpetual futures on traditional assets (FX, stocks, metals, interest rates, energy, compute, and other commodities). Bonus points if you have: - Experience with Rust - Experience working in the finance industry, or a strong interest in electronic trading - Knowledge of architecture, testing, and deployment of distributed systems - Live in Chicago Full-stack development experience with Typescript and React a plus If you’re interested, please send a resume and brief intro to jobs@architect.co or reach out to me with any questions about the role",
+    "predicted_category": "management"
+  },
+  {
+    "job_id": "hn_2088",
+    "company": "Logs SRL",
+    "title": "manager",
+    "tags": [
+      "AI"
+    ],
+    "description": "i-Logs SRL | Brussels, Belgium | Full Time | On Site |  https://www.i-logs.com Brussels based company specialized in Custom Web & Android Applications, Security and Compliance, Managed IT Services and Cloud Hosting. We are looking for Commercial Manager M/F. As a Commercial Manager, you will play a central role in the development of our business. You will work directly with the management committee, actively contribute to defining the commercial strategy, represent the company’s image in the field, and stay continuously trained and informed on cybersecurity issues. Info & Application:  https://www.i-logs.com/job-opportunity-commercial-manager-25...",
+    "predicted_category": "management"
+  },
+  {
+    "job_id": "hn_1815",
+    "company": "Optimal",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Go",
+      "Python",
+      "React"
+    ],
+    "description": "Optimal | London, UK | ONSITE Simulation and Control Engineer: Up to £150k + 2% depending on experience. Full-stack Software Engineer (Python, React): Up to £150k + 2% depending on experience. Reach out directly to me (founder): david@optimal.ag Optimal is building agents to control the world’s most critical infrastructure - from factories, to datacenters, to farms. We are backed by the Director of AI Research at Google DeepMind as well as early VC investors in SpaceX, Anduril, and Palantir. We have built the world’s most advanced climate control system for high-tech greenhouses and have customers in North America and Europe. https://www.optimal.ag",
+    "predicted_category": "management"
+  },
+  {
+    "job_id": "hn_338",
+    "company": "Kinelo",
+    "title": "Product Engineering (Backend+AI focus)",
+    "tags": [
+      "AI",
+      "Go",
+      "Python",
+      "TypeScript"
+    ],
+    "description": "Kinelo | kinelo.com | Product Engineering (Backend+AI focus) | San Francisco | Onsite (with flexibility) We are hiring two Product Engineers to join us in our newly opened office in SF. We're small and early and you'll help shape team culture. Kinelo solves \"context myopia\": autonomous and semi-autonomous AI agents don't know what they don't know, so they can't search or find the background information required to accomplish tasks accurately and effectively. The result looks like slop but it's not due to model performance, more due to workflow integration. From there, we're rapidly moving into organizing humans together with autonomous \"AI coworkers\" into workflows that span both. Our goal is to change how organizations are run and structured. Our #1 hiring criteria for this position is immense software wisdom, the kind not yet encoded in the weights of an LLM. We are not looking for artisans to meticulously craft single lines of code. We're looking for software engineers excited to use the leverage that AI offers for code production to permit focus on higher order technical architecture, product requirements, and user needs. We're looking for enough experience that indicates accumulated wisdom in shipping and maintaining reliable, scalable software, solid CS fundamentals, experience taking products from 0 to 1, and versatility. Our current tech stack includes TypeScript, a managed container service, Postgres, and Redis. But we are adaptive and you should be too. We highly value software engineering and computer science fundamentals and experience with other languages like Go, C++, Python is valued. Competitive salary, meaningful (~first batch of hires) equity, founder previously exited to Apple, strong fundraising history (~$10m). Please email us at jobs@kinelo.com. If you want to stand out, tell us how you think the job of a software engineer is changing. There's also a full JD here:  https://job-boards.greenhouse.io/kinelo/jobs/4205846009",
+    "predicted_category": "management"
+  },
+  {
+    "job_id": "hn_751",
+    "company": "Cloudflare",
+    "title": "Unknown",
+    "tags": [
+      "AI",
+      "Python",
+      "Rust"
+    ],
+    "description": "Cloudflare | New York City, Austin, London, Lisbon, San Francisco, Seattle | Full Time I’m hiring for some (IMHO) really fun product manager roles on Cloudflare’s Developer Platform (workers.cloudflare.com)\n- Workers Runtime - Set vision for our V8 isolate based runtime that lets people deploy JS, TS, Rust and Python to the globe in seconds with great dev ex.\n- Containers - Help build our new containers platform into the best place for both agent Sandboxes and stateless global apps.\n- AI Agents - Define what Agents on Cloudflare look like: from our AgentsSDK, to Sandboxes, to MCP Servers, “Code Mode” (see our blog) and more. We’re a really technical group, and tend to like product managers that can straddle the line between engineer and PM. You should be able to set high-level vision, understand architectural constraints, and be technical enough to really deeply understand our users (developers). email: <my-hn-username>@cloudflare.com - Please add “HackerNews” to the subject line.",
+    "predicted_category": "management"
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "total_queries": 40,
+  "field_accuracy": {
+    "target_salary": 0.95,
+    "preferred_location": 0.975,
+    "remote_preference": 0.975,
+    "preferred_category": 0.875,
+    "desired_tags": 0.9,
+    "description_keywords": 0.775,
+    "weight_adjustments": 0.775
+  },
+  "macro_field_accuracy": 0.8892857142857143,
+  "all_fields_correct": 17,
+  "all_fields_correct_ratio": 0.425
+}

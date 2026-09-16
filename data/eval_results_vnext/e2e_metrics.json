@@ -1,0 +1,32 @@
+{
+  "total_queries": 20,
+  "rater": "gpt-4o-mini (single)",
+  "dimensions": [
+    "relevance",
+    "completeness",
+    "readability"
+  ],
+  "macro_mean": {
+    "relevance": 3.55,
+    "completeness": 4.1,
+    "readability": 4.3
+  },
+  "score_distribution": {
+    "relevance": {
+      "2": 3,
+      "3": 3,
+      "4": 14
+    },
+    "completeness": {
+      "3": 3,
+      "4": 12,
+      "5": 5
+    },
+    "readability": {
+      "3": 2,
+      "4": 10,
+      "5": 8
+    }
+  },
+  "note": "Single-rater auto evaluation (option B). ICC/Cronbach not applicable."
+}

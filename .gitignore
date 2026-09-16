@@ -1,0 +1,51 @@
+# 本地私有文件
+CLAUDE .md
+archive/
+hw/
+docs/report/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# 环境与密钥
+.env
+.env.*
+*.key
+docs/环境配置.md
+
+# 模型/数据产物（体积大，不入库）
+*.pickle
+*.pkl
+*.joblib
+# 例外：核心模型产物入库，clone 后开箱可跑
+!data/tfidf_model.pkl
+!data/bm25_model.pkl
+!data/dense_model.pkl
+!models/classifier/vectorizer.joblib
+
+# 评估前后对照中间产物
+*_before_change*.json
+*.backup_before_*.json
+
+# IDE
+.idea/
+.vscode/
+.claude/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# pytest cache
+.pytest_cache/

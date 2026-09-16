@@ -1,0 +1,302 @@
+[
+  {
+    "query_id": "q01",
+    "relevance": {
+      "comment": "Most jobs meet the salary and remote criteria, but Enveritas slightly falls short on salary.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer covers key aspects and provides justifications for each job, but could include more detail on tradeoffs.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear and easy to follow, but could benefit from a more concise format.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q05",
+    "relevance": {
+      "comment": "Most jobs exceed the specified salary range, with only one job meeting it exactly.",
+      "score": 3
+    },
+    "completeness": {
+      "comment": "The answer provides details on salary, location, and tech stack, but lacks clarity on why some jobs are included despite exceeding the salary range.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear with numbered points, but the summary could be more concise.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q07",
+    "relevance": {
+      "comment": "Most jobs are remote and do not meet the Boston location requirement, which is a core constraint.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "The answer provides job details and tradeoffs but lacks a thorough explanation of how each job meets the user's request.",
+      "score": 3
+    },
+    "readability": {
+      "comment": "The structure is clear, but the summary could be more concise to enhance readability.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q11",
+    "relevance": {
+      "comment": "Most jobs listed are fully remote and align with senior engineering roles, but some lack salary information.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer covers key aspects like remote status and tech stack, but could improve on salary details for all roles.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear with numbered points, making it easy to follow and scan.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q14",
+    "relevance": {
+      "comment": "Most jobs match the remote preference and data engineering focus, but some lack salary details.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer covers job details and tradeoffs, but could provide more on salary implications.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Well-structured with clear sections, but could be more concise in some areas.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q15",
+    "relevance": {
+      "comment": "Most jobs align with React and TypeScript, but onsite positions may not meet remote preferences.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer covers key aspects and tradeoffs for each job, but could provide more detail on salary for Level.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear and easy to follow, with a good summary at the end.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q16",
+    "relevance": {
+      "comment": "Most jobs align with the user's tech stack and remote preference, but some are onsite and have unspecified salaries.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer covers job details and tradeoffs, but lacks mention of Terraform, which was part of the user's query.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear with numbered jobs and concise descriptions, making it easy to read.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q20",
+    "relevance": {
+      "comment": "Most jobs listed do not match the specific tech stack of Flutter or React Native.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "The answer provides some justification for job matches but lacks detail on all aspects, especially salary.",
+      "score": 3
+    },
+    "readability": {
+      "comment": "The structure is clear, but the summary could be more concise.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q22",
+    "relevance": {
+      "comment": "Most jobs align with the management category, but some have location and remote mode mismatches.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer provides job details and tradeoffs, but lacks specific salary information for most roles.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear with numbered listings, but could be more concise.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q25",
+    "relevance": {
+      "comment": "Most jobs align with SRE roles, but some have onsite or hybrid requirements that may not fit all users' preferences.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer covers key aspects like remote options and tech stacks, but lacks specific salary details for most jobs.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear with numbered listings, but the summary could be more concise.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q26",
+    "relevance": {
+      "comment": "Most jobs meet the salary and remote criteria, but one job falls below the salary target.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer explains job matches well, but the last job's salary detail could be clearer.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear and easy to follow, with a good summary at the end.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q27",
+    "relevance": {
+      "comment": "Most jobs align with salary and tech stack, but DISCORD is onsite, violating hybrid preference.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer explains job matches well, but could provide more detail on salary tradeoffs for all positions.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear and easy to follow, but could benefit from more concise language.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q28",
+    "relevance": {
+      "comment": "Most jobs align with remote preference and salary, but some are not in San Francisco.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer covers job details and tradeoffs, but could better emphasize tech stack relevance.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Well-structured with clear job listings, but could be more concise.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q29",
+    "relevance": {
+      "comment": "Most jobs listed do not match the specific tech stack of Spark and Kafka, which is a significant mismatch.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "The answer provides some justification for each job, but lacks detailed alignment with the user's tech stack preference.",
+      "score": 3
+    },
+    "readability": {
+      "comment": "The structure is clear, but the summary could be more concise to enhance readability.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q30",
+    "relevance": {
+      "comment": "Most jobs are remote and do not meet the Chicago location preference, but some meet the salary requirement.",
+      "score": 3
+    },
+    "completeness": {
+      "comment": "The answer explains job matches and trade-offs, but lacks detail on all jobs' salary specifics.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear with numbered jobs, but could be more concise.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q31",
+    "relevance": {
+      "comment": "All jobs are remote, violating the location preference for Austin.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "The answer explains job matches but lacks specific mention of hybrid work options.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear, but the summary could be more concise.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q32",
+    "relevance": {
+      "comment": "Most jobs meet salary and remote requirements, but Enveritas falls slightly short on salary.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer covers key aspects and provides justifications for each job, but could include more detail on tradeoffs.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear and easy to follow, but could be more concise in some areas.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q33",
+    "relevance": {
+      "comment": "Most jobs are remote and do not meet the location preference, which is a significant mismatch.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "The answer provides some justification for each job, but lacks a thorough explanation of how they meet the user's criteria.",
+      "score": 3
+    },
+    "readability": {
+      "comment": "The structure is clear, but the answer could be more concise and organized for easier scanning.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q34",
+    "relevance": {
+      "comment": "Most jobs listed are relevant to junior developers, but some do not specify salary or remote options clearly.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer provides reasons for job matches and covers various aspects, but lacks salary details for most positions.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear and easy to follow, but the presence of duplicate listings affects overall clarity.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q35",
+    "relevance": {
+      "comment": "Most jobs align with the startup and fast-paced criteria, but equity details are vague for some.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "The answer covers job details and potential equity but lacks specific equity information for each role.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "The structure is clear and easy to follow, but could benefit from more concise language.",
+      "score": 4
+    }
+  }
+]

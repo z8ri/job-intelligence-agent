@@ -1,0 +1,252 @@
+{
+  "san francisco": {
+    "cities": ["san francisco", "oakland", "berkeley", "palo alto", "san jose", "mountain view", "sunnyvale", "santa clara", "redwood city", "menlo park", "cupertino", "fremont", "hayward", "south san francisco", "daly city", "san mateo", "foster city", "sf", "sf bay area", "bay area"],
+    "state": "ca",
+    "neighbors": ["nv", "or", "az"]
+  },
+  "los angeles": {
+    "cities": ["los angeles", "santa monica", "pasadena", "long beach", "burbank", "glendale", "culver city", "el segundo", "irvine", "anaheim", "torrance", "inglewood", "la"],
+    "state": "ca",
+    "neighbors": ["nv", "az"]
+  },
+  "san diego": {
+    "cities": ["san diego", "la jolla", "chula vista", "carlsbad", "escondido", "oceanside"],
+    "state": "ca",
+    "neighbors": ["az", "nv"]
+  },
+  "sacramento": {
+    "cities": ["sacramento", "roseville", "elk grove", "folsom", "davis"],
+    "state": "ca",
+    "neighbors": ["nv", "or"]
+  },
+  "new york": {
+    "cities": ["new york", "manhattan", "brooklyn", "queens", "bronx", "staten island", "jersey city", "hoboken", "newark", "white plains", "yonkers", "stamford", "new haven", "new york city", "nyc"],
+    "state": "ny",
+    "neighbors": ["nj", "ct", "pa", "ma"]
+  },
+  "seattle": {
+    "cities": ["seattle", "bellevue", "redmond", "kirkland", "tacoma", "everett", "renton", "bothell", "issaquah"],
+    "state": "wa",
+    "neighbors": ["or", "id"]
+  },
+  "austin": {
+    "cities": ["austin", "round rock", "cedar park", "san marcos", "georgetown", "pflugerville"],
+    "state": "tx",
+    "neighbors": ["ok", "ar", "la", "nm"]
+  },
+  "dallas": {
+    "cities": ["dallas", "fort worth", "plano", "irving", "arlington", "frisco", "richardson", "mckinney", "garland", "denton"],
+    "state": "tx",
+    "neighbors": ["ok", "ar", "la", "nm"]
+  },
+  "houston": {
+    "cities": ["houston", "sugar land", "the woodlands", "katy", "pearland", "pasadena", "league city"],
+    "state": "tx",
+    "neighbors": ["la", "ok", "ar", "nm"]
+  },
+  "san antonio": {
+    "cities": ["san antonio", "new braunfels", "boerne"],
+    "state": "tx",
+    "neighbors": ["ok", "ar", "la", "nm"]
+  },
+  "boston": {
+    "cities": ["boston", "cambridge", "somerville", "brookline", "quincy", "newton", "waltham", "lexington", "woburn", "burlington", "framingham"],
+    "state": "ma",
+    "neighbors": ["nh", "ri", "ct", "ny", "vt"]
+  },
+  "chicago": {
+    "cities": ["chicago", "evanston", "naperville", "schaumburg", "oak brook", "skokie", "arlington heights", "aurora"],
+    "state": "il",
+    "neighbors": ["in", "wi", "ia", "mo", "ky"]
+  },
+  "denver": {
+    "cities": ["denver", "boulder", "aurora", "lakewood", "broomfield", "littleton", "englewood", "westminster", "thornton", "fort collins"],
+    "state": "co",
+    "neighbors": ["wy", "ne", "ks", "ok", "nm", "ut"]
+  },
+  "washington dc": {
+    "cities": ["washington", "washington dc", "arlington", "alexandria", "bethesda", "silver spring", "tysons", "mclean", "reston", "fairfax", "rockville", "college park", "dc"],
+    "state": "dc",
+    "neighbors": ["va", "md"]
+  },
+  "atlanta": {
+    "cities": ["atlanta", "sandy springs", "roswell", "alpharetta", "marietta", "decatur", "duluth", "kennesaw", "johns creek"],
+    "state": "ga",
+    "neighbors": ["tn", "nc", "sc", "al", "fl"]
+  },
+  "miami": {
+    "cities": ["miami", "fort lauderdale", "boca raton", "west palm beach", "hollywood", "coral gables", "doral", "aventura"],
+    "state": "fl",
+    "neighbors": ["ga", "al"]
+  },
+  "tampa": {
+    "cities": ["tampa", "st petersburg", "clearwater", "sarasota", "lakeland"],
+    "state": "fl",
+    "neighbors": ["ga", "al"]
+  },
+  "orlando": {
+    "cities": ["orlando", "kissimmee", "sanford", "winter park", "lake mary"],
+    "state": "fl",
+    "neighbors": ["ga", "al"]
+  },
+  "jacksonville": {
+    "cities": ["jacksonville", "st augustine"],
+    "state": "fl",
+    "neighbors": ["ga", "al"]
+  },
+  "philadelphia": {
+    "cities": ["philadelphia", "cherry hill", "king of prussia", "conshohocken", "wilmington", "camden"],
+    "state": "pa",
+    "neighbors": ["nj", "de", "md", "ny", "oh", "wv"]
+  },
+  "pittsburgh": {
+    "cities": ["pittsburgh", "cranberry township", "monroeville"],
+    "state": "pa",
+    "neighbors": ["oh", "wv", "md", "ny", "nj", "de"]
+  },
+  "detroit": {
+    "cities": ["detroit", "ann arbor", "troy", "dearborn", "southfield", "royal oak", "birmingham"],
+    "state": "mi",
+    "neighbors": ["oh", "in", "wi"]
+  },
+  "minneapolis": {
+    "cities": ["minneapolis", "st paul", "bloomington", "eden prairie", "plymouth", "maple grove", "eagan"],
+    "state": "mn",
+    "neighbors": ["wi", "ia", "sd", "nd"]
+  },
+  "portland": {
+    "cities": ["portland", "beaverton", "hillsboro", "lake oswego", "tigard", "gresham", "vancouver"],
+    "state": "or",
+    "neighbors": ["wa", "ca", "nv", "id"]
+  },
+  "phoenix": {
+    "cities": ["phoenix", "scottsdale", "tempe", "mesa", "chandler", "gilbert", "glendale"],
+    "state": "az",
+    "neighbors": ["ca", "nv", "ut", "nm", "co"]
+  },
+  "salt lake city": {
+    "cities": ["salt lake city", "provo", "ogden", "sandy", "west jordan", "orem", "lehi", "draper"],
+    "state": "ut",
+    "neighbors": ["id", "wy", "co", "nv", "az", "nm"]
+  },
+  "raleigh": {
+    "cities": ["raleigh", "durham", "chapel hill", "cary", "morrisville", "research triangle park"],
+    "state": "nc",
+    "neighbors": ["va", "tn", "sc", "ga"]
+  },
+  "charlotte": {
+    "cities": ["charlotte", "huntersville", "concord", "mooresville", "rock hill"],
+    "state": "nc",
+    "neighbors": ["va", "tn", "sc", "ga"]
+  },
+  "nashville": {
+    "cities": ["nashville", "franklin", "murfreesboro", "brentwood", "hendersonville"],
+    "state": "tn",
+    "neighbors": ["ky", "va", "nc", "ga", "al", "ms", "ar", "mo"]
+  },
+  "st louis": {
+    "cities": ["st louis", "clayton", "chesterfield", "creve coeur", "o fallon"],
+    "state": "mo",
+    "neighbors": ["il", "ky", "tn", "ar", "ok", "ks", "ne", "ia"]
+  },
+  "kansas city": {
+    "cities": ["kansas city", "overland park", "olathe", "lenexa", "shawnee", "lee's summit"],
+    "state": "mo",
+    "neighbors": ["ks", "ne", "ia", "il", "ky", "tn", "ar", "ok"]
+  },
+  "columbus": {
+    "cities": ["columbus", "dublin", "westerville", "grove city"],
+    "state": "oh",
+    "neighbors": ["pa", "wv", "ky", "in", "mi"]
+  },
+  "cincinnati": {
+    "cities": ["cincinnati", "mason", "blue ash", "west chester", "covington", "florence"],
+    "state": "oh",
+    "neighbors": ["ky", "in", "pa", "wv", "mi"]
+  },
+  "cleveland": {
+    "cities": ["cleveland", "akron", "beachwood", "independence"],
+    "state": "oh",
+    "neighbors": ["pa", "wv", "ky", "in", "mi"]
+  },
+  "indianapolis": {
+    "cities": ["indianapolis", "carmel", "fishers", "noblesville", "westfield"],
+    "state": "in",
+    "neighbors": ["oh", "ky", "il", "mi"]
+  },
+  "baltimore": {
+    "cities": ["baltimore", "columbia", "towson", "hunt valley", "annapolis"],
+    "state": "md",
+    "neighbors": ["pa", "de", "va", "wv", "dc"]
+  },
+  "richmond": {
+    "cities": ["richmond", "glen allen", "midlothian", "henrico"],
+    "state": "va",
+    "neighbors": ["md", "dc", "nc", "tn", "ky", "wv"]
+  },
+  "virginia beach": {
+    "cities": ["virginia beach", "norfolk", "newport news", "hampton", "chesapeake"],
+    "state": "va",
+    "neighbors": ["md", "dc", "nc", "tn", "ky", "wv"]
+  },
+  "milwaukee": {
+    "cities": ["milwaukee", "brookfield", "waukesha", "madison"],
+    "state": "wi",
+    "neighbors": ["il", "mn", "ia", "mi"]
+  },
+  "las vegas": {
+    "cities": ["las vegas", "henderson", "north las vegas", "summerlin"],
+    "state": "nv",
+    "neighbors": ["ca", "or", "id", "ut", "az"]
+  },
+  "new orleans": {
+    "cities": ["new orleans", "metairie", "kenner", "baton rouge"],
+    "state": "la",
+    "neighbors": ["tx", "ar", "ms"]
+  },
+  "oklahoma city": {
+    "cities": ["oklahoma city", "tulsa", "edmond", "norman"],
+    "state": "ok",
+    "neighbors": ["tx", "ks", "mo", "ar", "co", "nm"]
+  },
+  "hartford": {
+    "cities": ["hartford", "new haven", "stamford", "greenwich", "norwalk", "danbury", "bridgeport"],
+    "state": "ct",
+    "neighbors": ["ny", "ma", "ri"]
+  },
+  "providence": {
+    "cities": ["providence", "warwick", "cranston"],
+    "state": "ri",
+    "neighbors": ["ma", "ct"]
+  },
+  "honolulu": {
+    "cities": ["honolulu", "pearl city", "kailua"],
+    "state": "hi",
+    "neighbors": []
+  },
+  "anchorage": {
+    "cities": ["anchorage", "fairbanks"],
+    "state": "ak",
+    "neighbors": []
+  },
+  "des moines": {
+    "cities": ["des moines", "west des moines", "ames"],
+    "state": "ia",
+    "neighbors": ["mn", "wi", "il", "mo", "ne", "sd"]
+  },
+  "omaha": {
+    "cities": ["omaha", "lincoln", "bellevue"],
+    "state": "ne",
+    "neighbors": ["ia", "sd", "wy", "co", "ks", "mo"]
+  },
+  "birmingham": {
+    "cities": ["birmingham", "huntsville", "hoover"],
+    "state": "al",
+    "neighbors": ["tn", "ga", "fl", "ms"]
+  },
+  "madison": {
+    "cities": ["madison", "middleton", "sun prairie", "fitchburg"],
+    "state": "wi",
+    "neighbors": ["il", "mn", "ia", "mi"]
+  }
+}

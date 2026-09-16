@@ -1,0 +1,962 @@
+[
+  {
+    "query_id": "q01",
+    "query": "Remote Python backend jobs above 150k",
+    "per_rater": {
+      "claude": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 4.0,
+      "completeness": 4.0,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.0,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Most picks are remote Python backend at/above $150k. Enveritas at $135-155k partially below target but flagged.",
+        "completeness": "Cites salary, remote, Python tech stack per pick. Backend category implied not always explicit.",
+        "readability": "Clean numbered list with consistent structure. Summary paragraph slightly verbose."
+      },
+      "chatgpt": {
+        "relevance": "Most selected jobs are remote Python backend roles above or near 150k; Enveritas is only partially salary-fit.",
+        "completeness": "Explains remote, salary, Python, and backend fit for each role, though some tradeoffs are softened.",
+        "readability": "Clear numbered structure with consistent fields; summary is useful but slightly wordy."
+      },
+      "gemini": {
+        "relevance": "Most jobs match constraints perfectly, though Enveritas starts below the 150k target.",
+        "completeness": "Clearly justifies picks against constraints, covering salary, location, and stack.",
+        "readability": "Clean structure, consistent formatting, and highly scannable."
+      }
+    }
+  },
+  {
+    "query_id": "q05",
+    "query": "Data science positions around 130k to 160k",
+    "per_rater": {
+      "claude": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 2,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 3,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 2.333,
+      "completeness": 3.667,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.471,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "User wants $130-160k but four of five picks are above $170k, some far above. Major salary mismatches.",
+        "completeness": "Acknowledges salary tradeoffs explicitly for each pick; addresses remote and tech stack dimensions.",
+        "readability": "Clean list with consistent fields per entry; summary is concise."
+      },
+      "chatgpt": {
+        "relevance": "Only one role truly fits 130k-160k; several are far above range or data engineering rather than data science.",
+        "completeness": "Covers salary and category, but does not adequately filter around the requested compensation band.",
+        "readability": "Easy to scan with consistent formatting, despite a somewhat misleading summary."
+      },
+      "gemini": {
+        "relevance": "Significant salary misses; most jobs far exceed the 130-160k target range requested.",
+        "completeness": "Addresses constraints and explicitly notes the salary tradeoffs for the mismatched jobs.",
+        "readability": "Excellent formatting and easy-to-read numbered list."
+      }
+    }
+  },
+  {
+    "query_id": "q07",
+    "query": "Positions near Boston for backend developers",
+    "per_rater": {
+      "claude": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 2,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 2.0,
+      "completeness": 3.667,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "User wants Boston specifically; zero picks are in Boston. All remote-USA. Hard location constraint violated throughout.",
+        "completeness": "Honestly flags Boston mismatch in every entry and summary; addresses tech stack and salary.",
+        "readability": "Consistent structure across entries; summary explains gap clearly."
+      },
+      "chatgpt": {
+        "relevance": "Most roles are not near Boston, and one is frontend rather than backend.",
+        "completeness": "Mentions backend and admits location mismatch, but fails to provide actual Boston-area options.",
+        "readability": "Structured and readable, with clear tradeoffs for each role."
+      },
+      "gemini": {
+        "relevance": "Fails the location constraint entirely; none of the jobs are in or near Boston.",
+        "completeness": "System actively acknowledges the lack of Boston locations in the justifications.",
+        "readability": "Very clear and consistent layout."
+      }
+    }
+  },
+  {
+    "query_id": "q11",
+    "query": "Fully remote senior engineering roles",
+    "per_rater": {
+      "claude": {
+        "relevance": 4,
+        "completeness": 3,
+        "readability": 3
+      },
+      "chatgpt": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 4.0,
+      "completeness": 3.667,
+      "readability": 4.0
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.471,
+      "readability": 0.816
+    },
+    "comments": {
+      "claude": {
+        "relevance": "All picks are remote and senior-level, matching core constraints. Some are management-category which fits 'senior engineering' broadly.",
+        "completeness": "Covers remote and seniority but justifications are thin and partially repetitive on tech stack.",
+        "readability": "Clean list but tradeoffs feel formulaic; salary-not-specified repeated heavily."
+      },
+      "chatgpt": {
+        "relevance": "Nearly all roles are remote and senior-level; Rootly is not clearly senior.",
+        "completeness": "Covers remote status, seniority, tech stack, and salary availability for most roles.",
+        "readability": "Clean list with consistent explanations and manageable length."
+      },
+      "gemini": {
+        "relevance": "Jobs are fully remote and at the senior level, matching constraints perfectly.",
+        "completeness": "Solid justifications noting lack of salary data where applicable.",
+        "readability": "Clean and concise itemization."
+      }
+    }
+  },
+  {
+    "query_id": "q14",
+    "query": "100% remote data engineering jobs",
+    "per_rater": {
+      "claude": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 3
+      },
+      "chatgpt": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 4
+      }
+    },
+    "mean": {
+      "relevance": 4.0,
+      "completeness": 4.0,
+      "readability": 3.667
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.0,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Most picks are remote data-engineering roles matching core ask. Foxglove is hybrid; Data Analyst is weak fit.",
+        "completeness": "Addresses remote, salary, and tech stack per entry. Some justifications generic.",
+        "readability": "Ten entries make it long; structure is consistent but verbose to scan."
+      },
+      "chatgpt": {
+        "relevance": "Most roles are remote data engineering roles; Data Analyst and some vague listings weaken fit.",
+        "completeness": "Covers remote status, salary, and data relevance, but includes weaker non-engineering matches.",
+        "readability": "Well structured, but listing ten roles makes it somewhat long."
+      },
+      "gemini": {
+        "relevance": "Most are remote data engineering, though some drift into general data analysis or ML.",
+        "completeness": "Addresses remote and data engineering needs well.",
+        "readability": "A bit long with 10 items, but maintains solid structure."
+      }
+    }
+  },
+  {
+    "query_id": "q15",
+    "query": "React and TypeScript frontend developer positions",
+    "per_rater": {
+      "claude": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 5
+      },
+      "gemini": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 4.0,
+      "completeness": 4.0,
+      "readability": 4.667
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.0,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "All five have React+TypeScript tags. Document Crunch $40k salary suspiciously low; some onsite without explicit remote ask.",
+        "completeness": "Cites tech stack, location, salary, and remote mode per pick consistently.",
+        "readability": "Compact bolded fields, easy to scan; summary is balanced."
+      },
+      "chatgpt": {
+        "relevance": "Most roles match React and TypeScript; a few are full-stack rather than pure frontend.",
+        "completeness": "Addresses stack, role type, salary, location, and tradeoffs for each pick.",
+        "readability": "Concise, consistent, and easy to scan."
+      },
+      "gemini": {
+        "relevance": "Strong stack matches for React and TypeScript, hitting the frontend target.",
+        "completeness": "Covers tech stack well and notes remote/onsite tradeoffs.",
+        "readability": "Well-organized and highly scannable."
+      }
+    }
+  },
+  {
+    "query_id": "q16",
+    "query": "Kubernetes and Terraform DevOps engineer",
+    "per_rater": {
+      "claude": {
+        "relevance": 3,
+        "completeness": 2,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 2,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 2.667,
+      "completeness": 2.667,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.471,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Kubernetes appears in tags but Terraform is absent from every pick. Half the asked stack is unmet.",
+        "completeness": "Never flags Terraform absence — a major omission given it's an explicit desired tag.",
+        "readability": "Bullet-style format different from other answers but consistent and scannable."
+      },
+      "chatgpt": {
+        "relevance": "Roles match Kubernetes and DevOps, but Terraform is missing from every highlighted job.",
+        "completeness": "Explains Kubernetes fit but ignores the explicit Terraform requirement.",
+        "readability": "Readable and organized, with clear per-role tradeoffs."
+      },
+      "gemini": {
+        "relevance": "Finds Kubernetes roles, but Terraform is completely absent from both jobs and justifications.",
+        "completeness": "Skips the Terraform constraint entirely without explaining its absence.",
+        "readability": "Clean presentation and formatting."
+      }
+    }
+  },
+  {
+    "query_id": "q20",
+    "query": "Mobile development jobs with Flutter or React Native",
+    "per_rater": {
+      "claude": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 3,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 3.0,
+      "completeness": 3.333,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Several picks lack Flutter or React Native tags (Musa, Songscription, Revelare); only EnsoData and Chatwoot truly match.",
+        "completeness": "Notes when picks deviate from Flutter/RN but inconsistently. Mostly addresses tech stack and remote.",
+        "readability": "Clean structured list with consistent fields and concise summary."
+      },
+      "chatgpt": {
+        "relevance": "Only EnsoData and Chatwoot directly match React Native; several picks are generic iOS or Android roles.",
+        "completeness": "Covers mobile, remote, and salary, but does not satisfy Flutter or React Native consistently.",
+        "readability": "Clear five-item structure with useful tradeoffs."
+      },
+      "gemini": {
+        "relevance": "Matches mobile, but only two use React Native; the rest are native iOS/Android.",
+        "completeness": "Accurately details the specific tech stack of each job, noting deviations.",
+        "readability": "Consistent and readable layout."
+      }
+    }
+  },
+  {
+    "query_id": "q22",
+    "query": "Engineering manager or tech lead openings",
+    "per_rater": {
+      "claude": {
+        "relevance": 4,
+        "completeness": 3,
+        "readability": 3
+      },
+      "chatgpt": {
+        "relevance": 4,
+        "completeness": 5,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 5,
+        "completeness": 4,
+        "readability": 4
+      }
+    },
+    "mean": {
+      "relevance": 4.333,
+      "completeness": 4.0,
+      "readability": 3.667
+    },
+    "std": {
+      "relevance": 0.471,
+      "completeness": 0.816,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "All picks are management category. Some are Senior/Staff IC roles, not strictly EM/Tech Lead titles.",
+        "completeness": "Justifications are thin and repetitive across entries. Tech stack noted but role-fit reasoning shallow.",
+        "readability": "Ten entries make scanning tedious; tradeoffs feel boilerplate."
+      },
+      "chatgpt": {
+        "relevance": "Most roles are engineering manager or tech lead related; some staff IC roles are weaker matches.",
+        "completeness": "Covers role, location, remote status, salary, and why each fits.",
+        "readability": "Consistent but long, since it lists all ten roles."
+      },
+      "gemini": {
+        "relevance": "All returned jobs are strictly in the management or tech lead categories.",
+        "completeness": "Thorough justifications regarding role scope and tradeoffs.",
+        "readability": "List of 10 items is long but remains structurally sound."
+      }
+    }
+  },
+  {
+    "query_id": "q25",
+    "query": "Site reliability engineer SRE jobs",
+    "per_rater": {
+      "claude": {
+        "relevance": 5,
+        "completeness": 4,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 5,
+        "completeness": 4,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 5,
+        "completeness": 5,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 5.0,
+      "completeness": 4.333,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "All five picks are SRE or reliability-engineering roles in devops category. Strong direct match.",
+        "completeness": "Addresses remote mode and tech stack; salary noted when available. Solid justifications.",
+        "readability": "Clean structure, concise summary, easy to scan."
+      },
+      "chatgpt": {
+        "relevance": "All highlighted roles are SRE, reliability, or closely related DevOps roles.",
+        "completeness": "Explains SRE relevance, remote mode, and stack, though one salary detail appears unsupported.",
+        "readability": "Clear and compact five-role list."
+      },
+      "gemini": {
+        "relevance": "Jobs are highly relevant to SRE and Reliability Engineering.",
+        "completeness": "Excellent explanations tying tech stacks directly to SRE responsibilities.",
+        "readability": "Flawless formatting."
+      }
+    }
+  },
+  {
+    "query_id": "q26",
+    "query": "Remote ML jobs in New York above 130k",
+    "per_rater": {
+      "claude": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 3.0,
+      "completeness": 3.0,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.0,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Only PhysicsX explicitly mentions NY; others just remote. EnsoData salary below $130k target. Location dimension mostly unmet.",
+        "completeness": "Discusses salary and remote but rarely engages NY-specific location ask. Misses key dimension.",
+        "readability": "Consistent format and scannable; summary balanced."
+      },
+      "chatgpt": {
+        "relevance": "Several roles match remote ML and salary, but New York fit is mostly omitted and one role is under target.",
+        "completeness": "Covers salary and ML relevance but largely skips the New York location constraint.",
+        "readability": "Readable list with concise role-level tradeoffs."
+      },
+      "gemini": {
+        "relevance": "Most jobs do not specify New York, and one falls slightly below the 130k minimum.",
+        "completeness": "Misses discussing the New York location constraint for almost all entries.",
+        "readability": "Clear bullet points and bolding."
+      }
+    }
+  },
+  {
+    "query_id": "q27",
+    "query": "Backend Go developer, hybrid, 160k or more",
+    "per_rater": {
+      "claude": {
+        "relevance": 3,
+        "completeness": 4,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 3,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 3.333,
+      "completeness": 4.0,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.471,
+      "completeness": 0.0,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Bloomberg and Prophet Town fit hybrid+Go+$160k. Discord is onsite (not hybrid); Nango is remote-only and below target.",
+        "completeness": "Flags hybrid, salary, and Go stack tradeoffs per entry. Solid coverage of all asked dimensions.",
+        "readability": "Clean numbered list; summary helps prioritize."
+      },
+      "chatgpt": {
+        "relevance": "Most roles match Go, backend, and salary, but some violate hybrid preference or salary floor.",
+        "completeness": "Covers backend, Go, salary, and work mode with explicit tradeoffs.",
+        "readability": "Well structured and easy to compare."
+      },
+      "gemini": {
+        "relevance": "Mix of hits and misses; includes fully remote and onsite roles instead of just hybrid.",
+        "completeness": "Acknowledges the mismatches in remote/hybrid preference well.",
+        "readability": "Easy to digest and well-structured."
+      }
+    }
+  },
+  {
+    "query_id": "q28",
+    "query": "Full stack JavaScript developer in San Francisco, remote friendly, around 140k",
+    "per_rater": {
+      "claude": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 3.667,
+      "completeness": 3.667,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.471,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Only Miniswap is in SF; all others fail location constraint. Salary fits mostly. Major location miss.",
+        "completeness": "Notes SF mismatch but inconsistently; tech stack and remote covered.",
+        "readability": "Different bullet style with bold company names; still readable and consistent."
+      },
+      "chatgpt": {
+        "relevance": "Most roles fit full-stack and salary; San Francisco and JavaScript fit are uneven.",
+        "completeness": "Addresses salary, location, remote flexibility, and full-stack fit, but not JavaScript consistently.",
+        "readability": "Clean structure, though the summary slightly overstates the best match."
+      },
+      "gemini": {
+        "relevance": "Miniswap is a perfect location/stack match; others are remote but not SF.",
+        "completeness": "Discusses location, tech stack, and salary constraints clearly.",
+        "readability": "Clean and consistent formatting."
+      }
+    }
+  },
+  {
+    "query_id": "q29",
+    "query": "Senior data engineer with Spark and Kafka experience, preferably remote, 170k+",
+    "per_rater": {
+      "claude": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 2,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 2.0,
+      "completeness": 3.667,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Zero picks have Spark or Kafka tags; several are Data Scientist not Data Engineer titles. Core stack unmet.",
+        "completeness": "Explicitly flags Spark/Kafka absence in each entry — strong honest justification of mismatches.",
+        "readability": "Includes Final Score field unusually; otherwise clean and scannable."
+      },
+      "chatgpt": {
+        "relevance": "Most roles meet salary and remote preference, but none mention Spark or Kafka and several are data science.",
+        "completeness": "Acknowledges missing Spark and Kafka, but still recommends weak matches.",
+        "readability": "Clear formatting and useful caveats."
+      },
+      "gemini": {
+        "relevance": "None of the jobs mention Spark or Kafka; many are Data Science instead of Engineering.",
+        "completeness": "System admits the absence of Spark and Kafka in the roles.",
+        "readability": "Clean presentation despite poor retrieval results."
+      }
+    }
+  },
+  {
+    "query_id": "q30",
+    "query": "React frontend roles in Chicago or nearby, 120k minimum",
+    "per_rater": {
+      "claude": {
+        "relevance": 2,
+        "completeness": 3,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 2,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 2.0,
+      "completeness": 3.333,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Zero picks are in Chicago or nearby; all remote. Pelairo lower bound below $120k. Location entirely missed.",
+        "completeness": "Notes Chicago gap but treats it as minor; salary and tech stack addressed.",
+        "readability": "Compact and consistent format; summary acknowledges trade-offs."
+      },
+      "chatgpt": {
+        "relevance": "Roles often match React, but none are Chicago-specific and some miss frontend or salary constraints.",
+        "completeness": "Covers React, salary, and location tradeoffs, but fails the nearby Chicago requirement.",
+        "readability": "Readable and consistently formatted."
+      },
+      "gemini": {
+        "relevance": "Fails the location constraint; none are in Chicago. One job drops below 120k.",
+        "completeness": "Openly addresses the failure to find Chicago-specific roles.",
+        "readability": "Excellent bulleted structure."
+      }
+    }
+  },
+  {
+    "query_id": "q31",
+    "query": "DevOps with AWS and Docker in Austin, hybrid OK",
+    "per_rater": {
+      "claude": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 2.0,
+      "completeness": 4.0,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.0,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Zero picks are in Austin or hybrid in Austin. All fully remote. Location and work-mode constraints fully violated.",
+        "completeness": "Honestly flags Austin gap in every entry and summary; tech stack covered.",
+        "readability": "Consistent structured entries, scannable summary."
+      },
+      "chatgpt": {
+        "relevance": "Most roles match AWS, Docker, and DevOps, but all miss Austin and hybrid preference.",
+        "completeness": "Explains stack and salary well, and acknowledges the Austin mismatch.",
+        "readability": "Clear list with concise tradeoffs."
+      },
+      "gemini": {
+        "relevance": "All jobs are remote or remote EU/UK; none are Austin hybrid roles.",
+        "completeness": "Acknowledges the location constraint failure clearly in the tradeoffs.",
+        "readability": "Crisp and readable output."
+      }
+    }
+  },
+  {
+    "query_id": "q32",
+    "query": "Remote Python or Java backend, good salary above 150k, no PhD required",
+    "per_rater": {
+      "claude": {
+        "relevance": 4,
+        "completeness": 3,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 4,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 4,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 4.0,
+      "completeness": 3.333,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Most picks are remote Python backend above $150k. Enveritas borderline at upper end. Java largely absent.",
+        "completeness": "Addresses salary, remote, Python; never engages the no-PhD hard filter or Java alternative.",
+        "readability": "Clean list and concise summary; easy to scan."
+      },
+      "chatgpt": {
+        "relevance": "Most roles match remote Python backend and salary; Enveritas only partly meets salary.",
+        "completeness": "Covers remote, salary, stack, and backend, but ignores the no-PhD hard filter.",
+        "readability": "Clear, concise, and consistently structured."
+      },
+      "gemini": {
+        "relevance": "Good tech and remote matches, though one dips below 150k and one is fullstack.",
+        "completeness": "Covers salary and stack well, but ignores the 'no PhD' constraint check.",
+        "readability": "Clean list format."
+      }
+    }
+  },
+  {
+    "query_id": "q33",
+    "query": "Management positions in Denver or Boulder area, 180k+",
+    "per_rater": {
+      "claude": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 2,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 2,
+        "completeness": 4,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 2.0,
+      "completeness": 3.667,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.0,
+      "completeness": 0.471,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Zero picks are in Denver or Boulder; all remote. Salary mostly meets $180k+. Location entirely missed.",
+        "completeness": "Flags Denver/Boulder gap in every entry; addresses salary and category clearly.",
+        "readability": "Consistent structure and clear closing recommendation."
+      },
+      "chatgpt": {
+        "relevance": "Most roles are not in Denver or Boulder, and some are not clearly management roles.",
+        "completeness": "Addresses salary and location tradeoffs, but does not deliver local management matches.",
+        "readability": "Well organized and easy to scan."
+      },
+      "gemini": {
+        "relevance": "Every single job is remote; none meet the strict Denver/Boulder location preference.",
+        "completeness": "Explicitly points out the location mismatch in every single tradeoff.",
+        "readability": "Neat and perfectly structured."
+      }
+    }
+  },
+  {
+    "query_id": "q34",
+    "query": "Companies with good culture for junior developers",
+    "per_rater": {
+      "claude": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 2
+      },
+      "chatgpt": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 4,
+        "completeness": 3,
+        "readability": 4
+      }
+    },
+    "mean": {
+      "relevance": 3.333,
+      "completeness": 3.0,
+      "readability": 3.333
+    },
+    "std": {
+      "relevance": 0.471,
+      "completeness": 0.0,
+      "readability": 0.943
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Most are junior roles. Includes literal duplicate (CT RISE listed twice, openly labeled 'duplicate listing'). Culture is speculation.",
+        "completeness": "Attempts to address culture aspect but speculatively; covers remote, location, tech stack.",
+        "readability": "Acknowledged duplicate entry hurts scannability; otherwise structured but visibly long."
+      },
+      "chatgpt": {
+        "relevance": "Many roles are junior, but culture fit is speculative and one listing is duplicated.",
+        "completeness": "Attempts to justify culture, but relies on weak inferences rather than evidence.",
+        "readability": "Structured and readable, though somewhat repetitive."
+      },
+      "gemini": {
+        "relevance": "Provides junior roles, though it includes strange duplicates and broad Jr-to-Sr listings.",
+        "completeness": "Tries to infer 'good culture' from nonprofit or healthtech status, which is superficial.",
+        "readability": "Lists duplicates unnecessarily, slightly reducing scan efficiency."
+      }
+    }
+  },
+  {
+    "query_id": "q35",
+    "query": "Fast-paced startup environment with equity compensation",
+    "per_rater": {
+      "claude": {
+        "relevance": 2,
+        "completeness": 3,
+        "readability": 4
+      },
+      "chatgpt": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 4
+      },
+      "gemini": {
+        "relevance": 3,
+        "completeness": 3,
+        "readability": 5
+      }
+    },
+    "mean": {
+      "relevance": 2.667,
+      "completeness": 3.0,
+      "readability": 4.333
+    },
+    "std": {
+      "relevance": 0.471,
+      "completeness": 0.0,
+      "readability": 0.471
+    },
+    "comments": {
+      "claude": {
+        "relevance": "Discord and three Figma roles are not startups. Only Stealth AI and Northstar fit. Equity is speculated, not confirmed.",
+        "completeness": "Discusses startup vibe and speculates on equity; doesn't tie to query terms rigorously.",
+        "readability": "Consistent format and clean summary; easy enough to scan."
+      },
+      "chatgpt": {
+        "relevance": "Some startup roles fit, but Discord and Figma are not startups and equity is mostly assumed.",
+        "completeness": "Covers salary, location, startup pace, and equity, but several claims are speculative.",
+        "readability": "Clear numbered format with concise tradeoffs."
+      },
+      "gemini": {
+        "relevance": "Figma and Discord are not fast-paced startups. Only a couple options fit the startup vibe.",
+        "completeness": "Assumes equity is included without confirming it from the text for most roles.",
+        "readability": "Perfect formatting and easy to read."
+      }
+    }
+  }
+]

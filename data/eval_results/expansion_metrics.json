@@ -1,0 +1,530 @@
+{
+  "no_expansion": {
+    "description": "Query expansion disabled (baseline)",
+    "average": {
+      "P@5": 0.6333333333333333,
+      "nDCG@5": 0.6487302987650743,
+      "P@10": 0.5888888888888889,
+      "nDCG@10": 0.7745951785046735
+    },
+    "per_query": [
+      {
+        "P@5": 0.8,
+        "nDCG@5": 0.8281827047067384,
+        "P@10": 0.8,
+        "nDCG@10": 0.9498833051993554,
+        "query_id": "exp_q01"
+      },
+      {
+        "P@5": 0.2,
+        "nDCG@5": 0.6309297535714575,
+        "P@10": 0.1,
+        "nDCG@10": 0.6309297535714575,
+        "query_id": "exp_q02"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.7968124369890611,
+        "P@10": 1.0,
+        "nDCG@10": 0.9296072198274722,
+        "query_id": "exp_q03"
+      },
+      {
+        "P@5": 0.0,
+        "nDCG@5": 0.0,
+        "P@10": 0.0,
+        "nDCG@10": 0.0,
+        "query_id": "exp_q04"
+      },
+      {
+        "P@5": 0.4,
+        "nDCG@5": 0.7039180890341347,
+        "P@10": 0.3,
+        "nDCG@10": 0.8451850618939637,
+        "query_id": "exp_q05"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.7089194055617978,
+        "P@10": 0.9,
+        "nDCG@10": 0.8705882094211357,
+        "query_id": "exp_q06"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 1.0,
+        "P@10": 0.9,
+        "nDCG@10": 0.9900319043930013,
+        "query_id": "exp_q07"
+      },
+      {
+        "P@5": 0.2,
+        "nDCG@5": 0.23719771276929622,
+        "P@10": 0.2,
+        "nDCG@10": 0.45560514958746035,
+        "query_id": "exp_q08"
+      },
+      {
+        "P@5": 0.8,
+        "nDCG@5": 0.8724997542842517,
+        "P@10": 0.6,
+        "nDCG@10": 0.9438991252093981,
+        "query_id": "exp_q09"
+      },
+      {
+        "P@5": 0.2,
+        "nDCG@5": 0.2960819109658652,
+        "P@10": 0.3,
+        "nDCG@10": 0.5937751258332797,
+        "query_id": "exp_q10"
+      },
+      {
+        "P@5": 0.8,
+        "nDCG@5": 0.8992701400310253,
+        "P@10": 0.8,
+        "nDCG@10": 0.9400624066362377,
+        "query_id": "exp_q11"
+      },
+      {
+        "P@5": 0.6,
+        "nDCG@5": 0.6645320995916081,
+        "P@10": 0.7,
+        "nDCG@10": 0.8620328307284608,
+        "query_id": "exp_q12"
+      },
+      {
+        "P@5": 0.6,
+        "nDCG@5": 0.6992148198508501,
+        "P@10": 0.5,
+        "nDCG@10": 0.9143656167316339,
+        "query_id": "exp_q13"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.5181822849033655,
+        "P@10": 0.9,
+        "nDCG@10": 0.7542205525296103,
+        "query_id": "exp_q14"
+      },
+      {
+        "P@5": 0.8,
+        "nDCG@5": 0.6608397947263839,
+        "P@10": 0.8,
+        "nDCG@10": 0.8165229378311881,
+        "query_id": "exp_q15"
+      },
+      {
+        "P@5": 0.8,
+        "nDCG@5": 0.7557415207297861,
+        "P@10": 0.8,
+        "nDCG@10": 0.9475975389839959,
+        "query_id": "exp_q16"
+      },
+      {
+        "P@5": 0.2,
+        "nDCG@5": 0.6309297535714575,
+        "P@10": 0.1,
+        "nDCG@10": 0.6309297535714575,
+        "query_id": "exp_q17"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.7738931964842558,
+        "P@10": 0.9,
+        "nDCG@10": 0.867476721135015,
+        "query_id": "exp_q18"
+      }
+    ]
+  },
+  "with_expansion": {
+    "description": "Query expansion enabled (synonyms + tag hierarchy)",
+    "average": {
+      "P@5": 0.6666666666666667,
+      "nDCG@5": 0.6262998450401107,
+      "P@10": 0.5833333333333335,
+      "nDCG@10": 0.7664061170124414
+    },
+    "per_query": [
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.7895676983469901,
+        "P@10": 0.9,
+        "nDCG@10": 0.9489717341674135,
+        "query_id": "exp_q01"
+      },
+      {
+        "P@5": 0.2,
+        "nDCG@5": 0.6309297535714575,
+        "P@10": 0.1,
+        "nDCG@10": 0.6309297535714575,
+        "query_id": "exp_q02"
+      },
+      {
+        "P@5": 0.8,
+        "nDCG@5": 0.8724997542842517,
+        "P@10": 0.9,
+        "nDCG@10": 0.9453409181812843,
+        "query_id": "exp_q03"
+      },
+      {
+        "P@5": 0.0,
+        "nDCG@5": 0.0,
+        "P@10": 0.1,
+        "nDCG@10": 0.31546487678572877,
+        "query_id": "exp_q04"
+      },
+      {
+        "P@5": 0.4,
+        "nDCG@5": 0.6509209298071326,
+        "P@10": 0.2,
+        "nDCG@10": 0.6509209298071326,
+        "query_id": "exp_q05"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.7968124369890611,
+        "P@10": 0.9,
+        "nDCG@10": 0.9192217385856823,
+        "query_id": "exp_q06"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 1.0,
+        "P@10": 0.8,
+        "nDCG@10": 0.9929612350237579,
+        "query_id": "exp_q07"
+      },
+      {
+        "P@5": 0.2,
+        "nDCG@5": 0.23719771276929622,
+        "P@10": 0.2,
+        "nDCG@10": 0.45560514958746035,
+        "query_id": "exp_q08"
+      },
+      {
+        "P@5": 0.8,
+        "nDCG@5": 0.5987986924358393,
+        "P@10": 0.8,
+        "nDCG@10": 0.8249649475194119,
+        "query_id": "exp_q09"
+      },
+      {
+        "P@5": 0.4,
+        "nDCG@5": 0.5706417189553201,
+        "P@10": 0.2,
+        "nDCG@10": 0.5706417189553201,
+        "query_id": "exp_q10"
+      },
+      {
+        "P@5": 0.8,
+        "nDCG@5": 0.8015792876461758,
+        "P@10": 0.6,
+        "nDCG@10": 0.9491273987520084,
+        "query_id": "exp_q11"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.9578347709816888,
+        "P@10": 0.7,
+        "nDCG@10": 0.9620485720672829,
+        "query_id": "exp_q12"
+      },
+      {
+        "P@5": 0.6,
+        "nDCG@5": 0.6096199500078984,
+        "P@10": 0.4,
+        "nDCG@10": 0.7397466333385988,
+        "query_id": "exp_q13"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.47476776900380596,
+        "P@10": 1.0,
+        "nDCG@10": 0.7474427036679173,
+        "query_id": "exp_q14"
+      },
+      {
+        "P@5": 0.4,
+        "nDCG@5": 0.27727342735504823,
+        "P@10": 0.6,
+        "nDCG@10": 0.6425958210520416,
+        "query_id": "exp_q15"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.7895676983469901,
+        "P@10": 0.9,
+        "nDCG@10": 0.9481069894166072,
+        "query_id": "exp_q16"
+      },
+      {
+        "P@5": 0.4,
+        "nDCG@5": 0.44149241373678083,
+        "P@10": 0.4,
+        "nDCG@10": 0.6933937345964917,
+        "query_id": "exp_q17"
+      },
+      {
+        "P@5": 1.0,
+        "nDCG@5": 0.7738931964842558,
+        "P@10": 0.8,
+        "nDCG@10": 0.8578252511483447,
+        "query_id": "exp_q18"
+      }
+    ],
+    "hit_rate": {
+      "avg_kw_hit_rate": 0.5609243697478992,
+      "avg_tag_hit_rate": 0.39545454545454545,
+      "queries_with_new_kw": 17,
+      "queries_with_new_tag": 11,
+      "per_query": [
+        {
+          "kw_hit_rate": 1.0,
+          "tag_hit_rate": null,
+          "new_kw_count": 3,
+          "new_tag_count": 0,
+          "new_kw_hit_list": [
+            "ai engineer",
+            "ml engineer",
+            "mle"
+          ],
+          "new_tag_hit_list": [],
+          "query_id": "exp_q01"
+        },
+        {
+          "kw_hit_rate": 1.0,
+          "tag_hit_rate": null,
+          "new_kw_count": 4,
+          "new_tag_count": 0,
+          "new_kw_hit_list": [
+            "neural networks",
+            "pt",
+            "pytorch",
+            "torch"
+          ],
+          "new_tag_hit_list": [],
+          "query_id": "exp_q02"
+        },
+        {
+          "kw_hit_rate": 0.0,
+          "tag_hit_rate": 0.3333333333333333,
+          "new_kw_count": 6,
+          "new_tag_count": 3,
+          "new_kw_hit_list": [],
+          "new_tag_hit_list": [
+            "py"
+          ],
+          "query_id": "exp_q03"
+        },
+        {
+          "kw_hit_rate": 0.0,
+          "tag_hit_rate": null,
+          "new_kw_count": 3,
+          "new_tag_count": 0,
+          "new_kw_hit_list": [],
+          "new_tag_hit_list": [],
+          "query_id": "exp_q04"
+        },
+        {
+          "kw_hit_rate": 0.6666666666666666,
+          "tag_hit_rate": 0.6666666666666666,
+          "new_kw_count": 6,
+          "new_tag_count": 3,
+          "new_kw_hit_list": [
+            "infrastructure engineer",
+            "k8s",
+            "kube",
+            "site reliability engineer"
+          ],
+          "new_tag_hit_list": [
+            "k8s",
+            "kube"
+          ],
+          "query_id": "exp_q05"
+        },
+        {
+          "kw_hit_rate": 0.3333333333333333,
+          "tag_hit_rate": 0.2,
+          "new_kw_count": 3,
+          "new_tag_count": 5,
+          "new_kw_hit_list": [
+            "platform engineer"
+          ],
+          "new_tag_hit_list": [
+            "infrastructure as code"
+          ],
+          "query_id": "exp_q06"
+        },
+        {
+          "kw_hit_rate": 0.5,
+          "tag_hit_rate": 0.5,
+          "new_kw_count": 4,
+          "new_tag_count": 4,
+          "new_kw_hit_list": [
+            "fe",
+            "front-end"
+          ],
+          "new_tag_hit_list": [
+            "js",
+            "node.js"
+          ],
+          "query_id": "exp_q07"
+        },
+        {
+          "kw_hit_rate": null,
+          "tag_hit_rate": 0.4,
+          "new_kw_count": 0,
+          "new_tag_count": 5,
+          "new_kw_hit_list": [],
+          "new_tag_hit_list": [
+            "nextjs",
+            "ts"
+          ],
+          "query_id": "exp_q08"
+        },
+        {
+          "kw_hit_rate": 0.3333333333333333,
+          "tag_hit_rate": 0.3333333333333333,
+          "new_kw_count": 3,
+          "new_tag_count": 3,
+          "new_kw_hit_list": [
+            "postgresql"
+          ],
+          "new_tag_hit_list": [
+            "postgresql"
+          ],
+          "query_id": "exp_q09"
+        },
+        {
+          "kw_hit_rate": 0.42857142857142855,
+          "tag_hit_rate": 0.25,
+          "new_kw_count": 7,
+          "new_tag_count": 4,
+          "new_kw_hit_list": [
+            "analytics engineer",
+            "de",
+            "mongodb"
+          ],
+          "new_tag_hit_list": [
+            "mongodb"
+          ],
+          "query_id": "exp_q10"
+        },
+        {
+          "kw_hit_rate": 0.6666666666666666,
+          "tag_hit_rate": 0.6666666666666666,
+          "new_kw_count": 3,
+          "new_tag_count": 3,
+          "new_kw_hit_list": [
+            "infrastructure engineer",
+            "site reliability engineer"
+          ],
+          "new_tag_hit_list": [
+            "google cloud",
+            "google cloud platform"
+          ],
+          "query_id": "exp_q11"
+        },
+        {
+          "kw_hit_rate": 0.8571428571428571,
+          "tag_hit_rate": null,
+          "new_kw_count": 7,
+          "new_tag_count": 0,
+          "new_kw_hit_list": [
+            "automation engineer",
+            "cloud engineer",
+            "devops engineer",
+            "github actions",
+            "jenkins",
+            "pipelines"
+          ],
+          "new_tag_hit_list": [],
+          "query_id": "exp_q12"
+        },
+        {
+          "kw_hit_rate": 0.6666666666666666,
+          "tag_hit_rate": 0.0,
+          "new_kw_count": 3,
+          "new_tag_count": 2,
+          "new_kw_hit_list": [
+            "analytics engineer",
+            "de"
+          ],
+          "new_tag_hit_list": [],
+          "query_id": "exp_q13"
+        },
+        {
+          "kw_hit_rate": 0.25,
+          "tag_hit_rate": null,
+          "new_kw_count": 4,
+          "new_tag_count": 0,
+          "new_kw_hit_list": [
+            "be"
+          ],
+          "new_tag_hit_list": [],
+          "query_id": "exp_q14"
+        },
+        {
+          "kw_hit_rate": 0.6666666666666666,
+          "tag_hit_rate": 0.5,
+          "new_kw_count": 3,
+          "new_tag_count": 6,
+          "new_kw_hit_list": [
+            "ai engineer",
+            "mle"
+          ],
+          "new_tag_hit_list": [
+            "pt",
+            "tf",
+            "torch"
+          ],
+          "query_id": "exp_q15"
+        },
+        {
+          "kw_hit_rate": 1.0,
+          "tag_hit_rate": null,
+          "new_kw_count": 3,
+          "new_tag_count": 0,
+          "new_kw_hit_list": [
+            "ai engineer",
+            "ml engineer",
+            "mle"
+          ],
+          "new_tag_hit_list": [],
+          "query_id": "exp_q16"
+        },
+        {
+          "kw_hit_rate": 0.6666666666666666,
+          "tag_hit_rate": null,
+          "new_kw_count": 6,
+          "new_tag_count": 0,
+          "new_kw_hit_list": [
+            "container orchestration",
+            "infrastructure engineer",
+            "kube",
+            "sre"
+          ],
+          "new_tag_hit_list": [],
+          "query_id": "exp_q17"
+        },
+        {
+          "kw_hit_rate": 0.5,
+          "tag_hit_rate": 0.5,
+          "new_kw_count": 8,
+          "new_tag_count": 4,
+          "new_kw_hit_list": [
+            "fe",
+            "front-end",
+            "js",
+            "node.js"
+          ],
+          "new_tag_hit_list": [
+            "js",
+            "node.js"
+          ],
+          "query_id": "exp_q18"
+        }
+      ]
+    }
+  }
+}

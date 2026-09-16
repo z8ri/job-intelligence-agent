@@ -1,0 +1,122 @@
+[
+{
+"query_id": "q01",
+"relevance": {"comment": "Most selected jobs are remote Python backend roles above or near 150k; Enveritas is only partially salary-fit.", "score": 4},
+"completeness": {"comment": "Explains remote, salary, Python, and backend fit for each role, though some tradeoffs are softened.", "score": 4},
+"readability": {"comment": "Clear numbered structure with consistent fields; summary is useful but slightly wordy.", "score": 4}
+},
+{
+"query_id": "q05",
+"relevance": {"comment": "Only one role truly fits 130k-160k; several are far above range or data engineering rather than data science.", "score": 2},
+"completeness": {"comment": "Covers salary and category, but does not adequately filter around the requested compensation band.", "score": 3},
+"readability": {"comment": "Easy to scan with consistent formatting, despite a somewhat misleading summary.", "score": 4}
+},
+{
+"query_id": "q07",
+"relevance": {"comment": "Most roles are not near Boston, and one is frontend rather than backend.", "score": 2},
+"completeness": {"comment": "Mentions backend and admits location mismatch, but fails to provide actual Boston-area options.", "score": 3},
+"readability": {"comment": "Structured and readable, with clear tradeoffs for each role.", "score": 4}
+},
+{
+"query_id": "q11",
+"relevance": {"comment": "Nearly all roles are remote and senior-level; Rootly is not clearly senior.", "score": 4},
+"completeness": {"comment": "Covers remote status, seniority, tech stack, and salary availability for most roles.", "score": 4},
+"readability": {"comment": "Clean list with consistent explanations and manageable length.", "score": 4}
+},
+{
+"query_id": "q14",
+"relevance": {"comment": "Most roles are remote data engineering roles; Data Analyst and some vague listings weaken fit.", "score": 4},
+"completeness": {"comment": "Covers remote status, salary, and data relevance, but includes weaker non-engineering matches.", "score": 4},
+"readability": {"comment": "Well structured, but listing ten roles makes it somewhat long.", "score": 4}
+},
+{
+"query_id": "q15",
+"relevance": {"comment": "Most roles match React and TypeScript; a few are full-stack rather than pure frontend.", "score": 4},
+"completeness": {"comment": "Addresses stack, role type, salary, location, and tradeoffs for each pick.", "score": 4},
+"readability": {"comment": "Concise, consistent, and easy to scan.", "score": 5}
+},
+{
+"query_id": "q16",
+"relevance": {"comment": "Roles match Kubernetes and DevOps, but Terraform is missing from every highlighted job.", "score": 2},
+"completeness": {"comment": "Explains Kubernetes fit but ignores the explicit Terraform requirement.", "score": 3},
+"readability": {"comment": "Readable and organized, with clear per-role tradeoffs.", "score": 4}
+},
+{
+"query_id": "q20",
+"relevance": {"comment": "Only EnsoData and Chatwoot directly match React Native; several picks are generic iOS or Android roles.", "score": 3},
+"completeness": {"comment": "Covers mobile, remote, and salary, but does not satisfy Flutter or React Native consistently.", "score": 3},
+"readability": {"comment": "Clear five-item structure with useful tradeoffs.", "score": 4}
+},
+{
+"query_id": "q22",
+"relevance": {"comment": "Most roles are engineering manager or tech lead related; some staff IC roles are weaker matches.", "score": 4},
+"completeness": {"comment": "Covers role, location, remote status, salary, and why each fits.", "score": 5},
+"readability": {"comment": "Consistent but long, since it lists all ten roles.", "score": 4}
+},
+{
+"query_id": "q25",
+"relevance": {"comment": "All highlighted roles are SRE, reliability, or closely related DevOps roles.", "score": 5},
+"completeness": {"comment": "Explains SRE relevance, remote mode, and stack, though one salary detail appears unsupported.", "score": 4},
+"readability": {"comment": "Clear and compact five-role list.", "score": 4}
+},
+{
+"query_id": "q26",
+"relevance": {"comment": "Several roles match remote ML and salary, but New York fit is mostly omitted and one role is under target.", "score": 3},
+"completeness": {"comment": "Covers salary and ML relevance but largely skips the New York location constraint.", "score": 3},
+"readability": {"comment": "Readable list with concise role-level tradeoffs.", "score": 4}
+},
+{
+"query_id": "q27",
+"relevance": {"comment": "Most roles match Go, backend, and salary, but some violate hybrid preference or salary floor.", "score": 4},
+"completeness": {"comment": "Covers backend, Go, salary, and work mode with explicit tradeoffs.", "score": 4},
+"readability": {"comment": "Well structured and easy to compare.", "score": 4}
+},
+{
+"query_id": "q28",
+"relevance": {"comment": "Most roles fit full-stack and salary; San Francisco and JavaScript fit are uneven.", "score": 4},
+"completeness": {"comment": "Addresses salary, location, remote flexibility, and full-stack fit, but not JavaScript consistently.", "score": 4},
+"readability": {"comment": "Clean structure, though the summary slightly overstates the best match.", "score": 4}
+},
+{
+"query_id": "q29",
+"relevance": {"comment": "Most roles meet salary and remote preference, but none mention Spark or Kafka and several are data science.", "score": 2},
+"completeness": {"comment": "Acknowledges missing Spark and Kafka, but still recommends weak matches.", "score": 3},
+"readability": {"comment": "Clear formatting and useful caveats.", "score": 4}
+},
+{
+"query_id": "q30",
+"relevance": {"comment": "Roles often match React, but none are Chicago-specific and some miss frontend or salary constraints.", "score": 2},
+"completeness": {"comment": "Covers React, salary, and location tradeoffs, but fails the nearby Chicago requirement.", "score": 3},
+"readability": {"comment": "Readable and consistently formatted.", "score": 4}
+},
+{
+"query_id": "q31",
+"relevance": {"comment": "Most roles match AWS, Docker, and DevOps, but all miss Austin and hybrid preference.", "score": 2},
+"completeness": {"comment": "Explains stack and salary well, and acknowledges the Austin mismatch.", "score": 4},
+"readability": {"comment": "Clear list with concise tradeoffs.", "score": 4}
+},
+{
+"query_id": "q32",
+"relevance": {"comment": "Most roles match remote Python backend and salary; Enveritas only partly meets salary.", "score": 4},
+"completeness": {"comment": "Covers remote, salary, stack, and backend, but ignores the no-PhD hard filter.", "score": 3},
+"readability": {"comment": "Clear, concise, and consistently structured.", "score": 4}
+},
+{
+"query_id": "q33",
+"relevance": {"comment": "Most roles are not in Denver or Boulder, and some are not clearly management roles.", "score": 2},
+"completeness": {"comment": "Addresses salary and location tradeoffs, but does not deliver local management matches.", "score": 3},
+"readability": {"comment": "Well organized and easy to scan.", "score": 4}
+},
+{
+"query_id": "q34",
+"relevance": {"comment": "Many roles are junior, but culture fit is speculative and one listing is duplicated.", "score": 3},
+"completeness": {"comment": "Attempts to justify culture, but relies on weak inferences rather than evidence.", "score": 3},
+"readability": {"comment": "Structured and readable, though somewhat repetitive.", "score": 4}
+},
+{
+"query_id": "q35",
+"relevance": {"comment": "Some startup roles fit, but Discord and Figma are not startups and equity is mostly assumed.", "score": 3},
+"completeness": {"comment": "Covers salary, location, startup pace, and equity, but several claims are speculative.", "score": 3},
+"readability": {"comment": "Clear numbered format with concise tradeoffs.", "score": 4}
+}
+]

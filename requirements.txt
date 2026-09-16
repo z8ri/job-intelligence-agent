@@ -1,0 +1,13 @@
+openai
+pymysql
+scikit-learn
+nltk
+numpy
+langgraph>=0.2.0
+joblib
+rank_bm25
+matplotlib>=3.7
+pytest>=7.4
+streamlit>=1.32
+requests
+beautifulsoup4

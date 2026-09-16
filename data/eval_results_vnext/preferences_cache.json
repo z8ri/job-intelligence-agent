@@ -1,0 +1,1006 @@
+{
+  "q01": {
+    "preferences": {
+      "description_keywords": [
+        "python",
+        "backend"
+      ],
+      "target_salary": 150000,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": [
+        "Python"
+      ],
+      "preferred_category": "backend",
+      "weight_adjustments": {
+        "salary": "high",
+        "remote": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.26923076923076916,
+      "salary": 0.30769230769230765,
+      "location": 0.11538461538461536,
+      "remote": 0.15384615384615383,
+      "tags": 0.07692307692307691,
+      "category": 0.07692307692307691
+    }
+  },
+  "q02": {
+    "preferences": {
+      "description_keywords": [
+        "machine learning"
+      ],
+      "target_salary": 200000,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {
+        "salary": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.29166666666666663,
+      "salary": 0.3333333333333333,
+      "location": 0.12499999999999997,
+      "remote": 0.08333333333333333,
+      "tags": 0.08333333333333333,
+      "category": 0.08333333333333333
+    }
+  },
+  "q03": {
+    "preferences": {
+      "description_keywords": [
+        "entry level",
+        "software engineering"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {
+        "salary": "medium"
+      },
+      "hard_filters": [
+        {
+          "field": "salary_range",
+          "include": [
+            70000,
+            90000
+          ]
+        }
+      ]
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q04": {
+    "preferences": {
+      "description_keywords": [
+        "devops"
+      ],
+      "target_salary": 180000,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "devops",
+      "weight_adjustments": {
+        "salary": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.29166666666666663,
+      "salary": 0.3333333333333333,
+      "location": 0.12499999999999997,
+      "remote": 0.08333333333333333,
+      "tags": 0.08333333333333333,
+      "category": 0.08333333333333333
+    }
+  },
+  "q05": {
+    "preferences": {
+      "description_keywords": [
+        "data science"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {
+        "salary": "medium"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q06": {
+    "preferences": {
+      "description_keywords": [
+        "software engineering"
+      ],
+      "target_salary": null,
+      "preferred_location": "San Francisco Bay Area",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.3043478260869565,
+      "salary": 0.17391304347826086,
+      "location": 0.26086956521739124,
+      "remote": 0.08695652173913043,
+      "tags": 0.08695652173913043,
+      "category": 0.08695652173913043
+    }
+  },
+  "q07": {
+    "preferences": {
+      "description_keywords": [
+        "backend developer"
+      ],
+      "target_salary": null,
+      "preferred_location": "Boston",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "backend",
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.3043478260869565,
+      "salary": 0.17391304347826086,
+      "location": 0.26086956521739124,
+      "remote": 0.08695652173913043,
+      "tags": 0.08695652173913043,
+      "category": 0.08695652173913043
+    }
+  },
+  "q08": {
+    "preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": "New York City",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.3043478260869565,
+      "salary": 0.17391304347826086,
+      "location": 0.26086956521739124,
+      "remote": 0.08695652173913043,
+      "tags": 0.08695652173913043,
+      "category": 0.08695652173913043
+    }
+  },
+  "q09": {
+    "preferences": {
+      "description_keywords": [
+        "engineering"
+      ],
+      "target_salary": null,
+      "preferred_location": "Seattle or Portland",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.3043478260869565,
+      "salary": 0.17391304347826086,
+      "location": 0.26086956521739124,
+      "remote": 0.08695652173913043,
+      "tags": 0.08695652173913043,
+      "category": 0.08695652173913043
+    }
+  },
+  "q10": {
+    "preferences": {
+      "description_keywords": [
+        "full stack developer"
+      ],
+      "target_salary": null,
+      "preferred_location": "Austin",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "fullstack",
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.3043478260869565,
+      "salary": 0.17391304347826086,
+      "location": 0.26086956521739124,
+      "remote": 0.08695652173913043,
+      "tags": 0.08695652173913043,
+      "category": 0.08695652173913043
+    }
+  },
+  "q11": {
+    "preferences": {
+      "description_keywords": [
+        "senior engineering"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {
+        "remote": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.31818181818181807,
+      "salary": 0.18181818181818177,
+      "location": 0.13636363636363633,
+      "remote": 0.18181818181818177,
+      "tags": 0.09090909090909088,
+      "category": 0.09090909090909088
+    }
+  },
+  "q12": {
+    "preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": "New York",
+      "remote_preference": "hybrid",
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {
+        "location": "high",
+        "remote": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.2799999999999999,
+      "salary": 0.15999999999999998,
+      "location": 0.23999999999999994,
+      "remote": 0.15999999999999998,
+      "tags": 0.07999999999999999,
+      "category": 0.07999999999999999
+    }
+  },
+  "q13": {
+    "preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "onsite",
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {
+        "remote": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.31818181818181807,
+      "salary": 0.18181818181818177,
+      "location": 0.13636363636363633,
+      "remote": 0.18181818181818177,
+      "tags": 0.09090909090909088,
+      "category": 0.09090909090909088
+    }
+  },
+  "q14": {
+    "preferences": {
+      "description_keywords": [
+        "data engineering"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {
+        "remote": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.31818181818181807,
+      "salary": 0.18181818181818177,
+      "location": 0.13636363636363633,
+      "remote": 0.18181818181818177,
+      "tags": 0.09090909090909088,
+      "category": 0.09090909090909088
+    }
+  },
+  "q15": {
+    "preferences": {
+      "description_keywords": [
+        "frontend developer"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": [
+        "React",
+        "TypeScript"
+      ],
+      "preferred_category": "frontend",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q16": {
+    "preferences": {
+      "description_keywords": [
+        "devops engineer"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": [
+        "Kubernetes",
+        "Terraform"
+      ],
+      "preferred_category": "devops",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q17": {
+    "preferences": {
+      "description_keywords": [
+        "cloud engineer"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": [
+        "Python",
+        "AWS"
+      ],
+      "preferred_category": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q18": {
+    "preferences": {
+      "description_keywords": [
+        "Golang",
+        "microservices",
+        "developer"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": [
+        "Golang"
+      ],
+      "preferred_category": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q19": {
+    "preferences": {
+      "description_keywords": [
+        "systems programming"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": [
+        "Rust"
+      ],
+      "preferred_category": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q20": {
+    "preferences": {
+      "description_keywords": [
+        "mobile development"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": [
+        "Flutter",
+        "React Native"
+      ],
+      "preferred_category": "mobile",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q21": {
+    "preferences": {
+      "description_keywords": [
+        "frontend engineering"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "frontend",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q22": {
+    "preferences": {
+      "description_keywords": [
+        "engineering manager",
+        "tech lead"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "management",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q23": {
+    "preferences": {
+      "description_keywords": [
+        "data analytics",
+        "business intelligence"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q24": {
+    "preferences": {
+      "description_keywords": [
+        "iOS developer"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "mobile",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q25": {
+    "preferences": {
+      "description_keywords": [
+        "site reliability engineer",
+        "SRE"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "devops",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q26": {
+    "preferences": {
+      "description_keywords": [
+        "machine learning"
+      ],
+      "target_salary": 130000,
+      "preferred_location": "New York",
+      "remote_preference": "remote",
+      "desired_tags": [
+        "Machine Learning"
+      ],
+      "preferred_category": "data",
+      "weight_adjustments": {
+        "location": "high",
+        "salary": "medium"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.3043478260869565,
+      "salary": 0.17391304347826086,
+      "location": 0.26086956521739124,
+      "remote": 0.08695652173913043,
+      "tags": 0.08695652173913043,
+      "category": 0.08695652173913043
+    }
+  },
+  "q27": {
+    "preferences": {
+      "description_keywords": [
+        "backend",
+        "Go developer"
+      ],
+      "target_salary": 160000,
+      "preferred_location": null,
+      "remote_preference": "hybrid",
+      "desired_tags": [
+        "Go"
+      ],
+      "preferred_category": "backend",
+      "weight_adjustments": {
+        "salary": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.29166666666666663,
+      "salary": 0.3333333333333333,
+      "location": 0.12499999999999997,
+      "remote": 0.08333333333333333,
+      "tags": 0.08333333333333333,
+      "category": 0.08333333333333333
+    }
+  },
+  "q28": {
+    "preferences": {
+      "description_keywords": [
+        "full stack",
+        "JavaScript developer"
+      ],
+      "target_salary": 140000,
+      "preferred_location": "San Francisco",
+      "remote_preference": "hybrid",
+      "desired_tags": [
+        "JavaScript"
+      ],
+      "preferred_category": "fullstack",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q29": {
+    "preferences": {
+      "description_keywords": [
+        "senior",
+        "data engineer"
+      ],
+      "target_salary": 170000,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": [
+        "Spark",
+        "Kafka"
+      ],
+      "preferred_category": "data",
+      "weight_adjustments": {
+        "salary": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.29166666666666663,
+      "salary": 0.3333333333333333,
+      "location": 0.12499999999999997,
+      "remote": 0.08333333333333333,
+      "tags": 0.08333333333333333,
+      "category": 0.08333333333333333
+    }
+  },
+  "q30": {
+    "preferences": {
+      "description_keywords": [
+        "frontend",
+        "React"
+      ],
+      "target_salary": 120000,
+      "preferred_location": "Chicago",
+      "remote_preference": null,
+      "desired_tags": [
+        "React"
+      ],
+      "preferred_category": "frontend",
+      "weight_adjustments": {
+        "location": "high",
+        "salary": "medium"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.3043478260869565,
+      "salary": 0.17391304347826086,
+      "location": 0.26086956521739124,
+      "remote": 0.08695652173913043,
+      "tags": 0.08695652173913043,
+      "category": 0.08695652173913043
+    }
+  },
+  "q31": {
+    "preferences": {
+      "description_keywords": [
+        "devops"
+      ],
+      "target_salary": null,
+      "preferred_location": "Austin",
+      "remote_preference": "hybrid",
+      "desired_tags": [
+        "AWS",
+        "Docker"
+      ],
+      "preferred_category": "devops",
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q32": {
+    "preferences": {
+      "description_keywords": [
+        "backend",
+        "Python",
+        "Java"
+      ],
+      "target_salary": 150000,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": [
+        "Python",
+        "Java"
+      ],
+      "preferred_category": "backend",
+      "weight_adjustments": {
+        "salary": "high",
+        "remote": "high"
+      },
+      "hard_filters": [
+        {
+          "field": "degree_req",
+          "exclude": [
+            "phd"
+          ]
+        }
+      ]
+    },
+    "weights": {
+      "description": 0.26923076923076916,
+      "salary": 0.30769230769230765,
+      "location": 0.11538461538461536,
+      "remote": 0.15384615384615383,
+      "tags": 0.07692307692307691,
+      "category": 0.07692307692307691
+    }
+  },
+  "q33": {
+    "preferences": {
+      "description_keywords": [
+        "management"
+      ],
+      "target_salary": 180000,
+      "preferred_location": "Denver or Boulder",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "management",
+      "weight_adjustments": {
+        "location": "high",
+        "salary": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.2592592592592592,
+      "salary": 0.2962962962962962,
+      "location": 0.22222222222222215,
+      "remote": 0.07407407407407406,
+      "tags": 0.07407407407407406,
+      "category": 0.07407407407407406
+    }
+  },
+  "q34": {
+    "preferences": {
+      "description_keywords": [
+        "junior developer"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q35": {
+    "preferences": {
+      "description_keywords": [
+        "fast-paced",
+        "startup",
+        "equity compensation"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q36": {
+    "preferences": {
+      "description_keywords": [
+        "collaborative",
+        "distributed systems"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q37": {
+    "preferences": {
+      "description_keywords": [
+        "mentorship",
+        "career growth",
+        "engineering"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {
+        "description": "high"
+      },
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.5185185185185185,
+      "salary": 0.14814814814814814,
+      "location": 0.1111111111111111,
+      "remote": 0.07407407407407407,
+      "tags": 0.07407407407407407,
+      "category": 0.07407407407407407
+    }
+  },
+  "q38": {
+    "preferences": {
+      "description_keywords": [
+        "machine learning"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {
+        "remote": "high"
+      },
+      "hard_filters": [
+        {
+          "field": "degree_req",
+          "exclude": [
+            "phd"
+          ]
+        }
+      ]
+    },
+    "weights": {
+      "description": 0.31818181818181807,
+      "salary": 0.18181818181818177,
+      "location": 0.13636363636363633,
+      "remote": 0.18181818181818177,
+      "tags": 0.09090909090909088,
+      "category": 0.09090909090909088
+    }
+  },
+  "q39": {
+    "preferences": {
+      "description_keywords": [
+        "data engineering"
+      ],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {},
+      "hard_filters": [
+        {
+          "field": "degree_req",
+          "exclude": [
+            "master"
+          ]
+        }
+      ]
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  },
+  "q40": {
+    "preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "weights": {
+      "description": 0.35,
+      "salary": 0.2,
+      "location": 0.15,
+      "remote": 0.1,
+      "tags": 0.1,
+      "category": 0.1
+    }
+  }
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "query_id": "q01",
+    "relevance": {
+      "comment": "Most jobs match constraints perfectly, though Enveritas starts below the 150k target.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "Clearly justifies picks against constraints, covering salary, location, and stack.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Clean structure, consistent formatting, and highly scannable.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q05",
+    "relevance": {
+      "comment": "Significant salary misses; most jobs far exceed the 130-160k target range requested.",
+      "score": 3
+    },
+    "completeness": {
+      "comment": "Addresses constraints and explicitly notes the salary tradeoffs for the mismatched jobs.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Excellent formatting and easy-to-read numbered list.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q07",
+    "relevance": {
+      "comment": "Fails the location constraint entirely; none of the jobs are in or near Boston.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "System actively acknowledges the lack of Boston locations in the justifications.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Very clear and consistent layout.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q11",
+    "relevance": {
+      "comment": "Jobs are fully remote and at the senior level, matching constraints perfectly.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "Solid justifications noting lack of salary data where applicable.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Clean and concise itemization.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q14",
+    "relevance": {
+      "comment": "Most are remote data engineering, though some drift into general data analysis or ML.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "Addresses remote and data engineering needs well.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "A bit long with 10 items, but maintains solid structure.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q15",
+    "relevance": {
+      "comment": "Strong stack matches for React and TypeScript, hitting the frontend target.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "Covers tech stack well and notes remote/onsite tradeoffs.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Well-organized and highly scannable.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q16",
+    "relevance": {
+      "comment": "Finds Kubernetes roles, but Terraform is completely absent from both jobs and justifications.",
+      "score": 3
+    },
+    "completeness": {
+      "comment": "Skips the Terraform constraint entirely without explaining its absence.",
+      "score": 3
+    },
+    "readability": {
+      "comment": "Clean presentation and formatting.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q20",
+    "relevance": {
+      "comment": "Matches mobile, but only two use React Native; the rest are native iOS/Android.",
+      "score": 3
+    },
+    "completeness": {
+      "comment": "Accurately details the specific tech stack of each job, noting deviations.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Consistent and readable layout.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q22",
+    "relevance": {
+      "comment": "All returned jobs are strictly in the management or tech lead categories.",
+      "score": 5
+    },
+    "completeness": {
+      "comment": "Thorough justifications regarding role scope and tradeoffs.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "List of 10 items is long but remains structurally sound.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q25",
+    "relevance": {
+      "comment": "Jobs are highly relevant to SRE and Reliability Engineering.",
+      "score": 5
+    },
+    "completeness": {
+      "comment": "Excellent explanations tying tech stacks directly to SRE responsibilities.",
+      "score": 5
+    },
+    "readability": {
+      "comment": "Flawless formatting.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q26",
+    "relevance": {
+      "comment": "Most jobs do not specify New York, and one falls slightly below the 130k minimum.",
+      "score": 3
+    },
+    "completeness": {
+      "comment": "Misses discussing the New York location constraint for almost all entries.",
+      "score": 3
+    },
+    "readability": {
+      "comment": "Clear bullet points and bolding.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q27",
+    "relevance": {
+      "comment": "Mix of hits and misses; includes fully remote and onsite roles instead of just hybrid.",
+      "score": 3
+    },
+    "completeness": {
+      "comment": "Acknowledges the mismatches in remote/hybrid preference well.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Easy to digest and well-structured.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q28",
+    "relevance": {
+      "comment": "Miniswap is a perfect location/stack match; others are remote but not SF.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "Discusses location, tech stack, and salary constraints clearly.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Clean and consistent formatting.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q29",
+    "relevance": {
+      "comment": "None of the jobs mention Spark or Kafka; many are Data Science instead of Engineering.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "System admits the absence of Spark and Kafka in the roles.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Clean presentation despite poor retrieval results.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q30",
+    "relevance": {
+      "comment": "Fails the location constraint; none are in Chicago. One job drops below 120k.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "Openly addresses the failure to find Chicago-specific roles.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Excellent bulleted structure.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q31",
+    "relevance": {
+      "comment": "All jobs are remote or remote EU/UK; none are Austin hybrid roles.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "Acknowledges the location constraint failure clearly in the tradeoffs.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Crisp and readable output.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q32",
+    "relevance": {
+      "comment": "Good tech and remote matches, though one dips below 150k and one is fullstack.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "Covers salary and stack well, but ignores the 'no PhD' constraint check.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Clean list format.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q33",
+    "relevance": {
+      "comment": "Every single job is remote; none meet the strict Denver/Boulder location preference.",
+      "score": 2
+    },
+    "completeness": {
+      "comment": "Explicitly points out the location mismatch in every single tradeoff.",
+      "score": 4
+    },
+    "readability": {
+      "comment": "Neat and perfectly structured.",
+      "score": 5
+    }
+  },
+  {
+    "query_id": "q34",
+    "relevance": {
+      "comment": "Provides junior roles, though it includes strange duplicates and broad Jr-to-Sr listings.",
+      "score": 4
+    },
+    "completeness": {
+      "comment": "Tries to infer 'good culture' from nonprofit or healthtech status, which is superficial.",
+      "score": 3
+    },
+    "readability": {
+      "comment": "Lists duplicates unnecessarily, slightly reducing scan efficiency.",
+      "score": 4
+    }
+  },
+  {
+    "query_id": "q35",
+    "relevance": {
+      "comment": "Figma and Discord are not fast-paced startups. Only a couple options fit the startup vibe.",
+      "score": 3
+    },
+    "completeness": {
+      "comment": "Assumes equity is included without confirming it from the text for most roles.",
+      "score": 3
+    },
+    "readability": {
+      "comment": "Perfect formatting and easy to read.",
+      "score": 5
+    }
+  }
+]

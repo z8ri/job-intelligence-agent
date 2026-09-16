@@ -1,0 +1,62 @@
+{
+  "total": 63,
+  "accuracy": 0.47619047619047616,
+  "verdict_counts": {
+    "unanimous": 53,
+    "majority": 10
+  },
+  "per_class": {
+    "backend": {
+      "precision": 0.5,
+      "recall": 0.3,
+      "f1": 0.375,
+      "support": 20
+    },
+    "frontend": {
+      "precision": 0.6,
+      "recall": 0.5,
+      "f1": 0.5454545454545454,
+      "support": 6
+    },
+    "data": {
+      "precision": 0.6666666666666666,
+      "recall": 0.4,
+      "f1": 0.5,
+      "support": 10
+    },
+    "devops": {
+      "precision": 0.2857142857142857,
+      "recall": 0.6666666666666666,
+      "f1": 0.4,
+      "support": 6
+    },
+    "fullstack": {
+      "precision": 0.42857142857142855,
+      "recall": 0.75,
+      "f1": 0.5454545454545454,
+      "support": 12
+    },
+    "mobile": {
+      "precision": 0.5,
+      "recall": 0.3333333333333333,
+      "f1": 0.4,
+      "support": 3
+    },
+    "management": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "support": 6
+    }
+  },
+  "macro_avg": {
+    "precision": 0.5687074829931972,
+    "recall": 0.4928571428571429,
+    "f1": 0.4903679653679653
+  },
+  "weighted_avg": {
+    "precision": 0.5495842781557068,
+    "recall": 0.47619047619047616,
+    "f1": 0.47489177489177486
+  }
+}

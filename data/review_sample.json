@@ -1,0 +1,609 @@
+{
+  "seed": 42,
+  "total_in_file": 733,
+  "sample_size": 120,
+  "job_ids": [
+    "hn_1706",
+    "hn_528",
+    "hn_1248",
+    "hn_1239",
+    "hn_1615",
+    "hn_1050",
+    "hn_1973",
+    "hn_571",
+    "hn_477",
+    "hn_1906",
+    "hn_958",
+    "hn_1551",
+    "hn_1181",
+    "hn_1746",
+    "hn_1620",
+    "hn_1491",
+    "hn_1671",
+    "hn_197",
+    "hn_211",
+    "hn_1182",
+    "hn_1773",
+    "ext_01024",
+    "ext_01451",
+    "ext_01938",
+    "ext_01931",
+    "ext_03031",
+    "ext_01005",
+    "ext_01440",
+    "ext_00342",
+    "ext_01842",
+    "ext_01865",
+    "ext_01891",
+    "ext_01888",
+    "ext_01889",
+    "ext_01906",
+    "ext_08384",
+    "ext_01901",
+    "ext_01866",
+    "ext_01864",
+    "ext_01869",
+    "ext_01872",
+    "ext_01874",
+    "ext_01861",
+    "ext_01908",
+    "ext_01863",
+    "ext_02629",
+    "ext_02459",
+    "ext_02601",
+    "ext_02492",
+    "ext_06898",
+    "ext_03278",
+    "ext_02672",
+    "ext_02786",
+    "ext_03282",
+    "ext_03088",
+    "ext_02006",
+    "ext_02490",
+    "ext_02746",
+    "ext_02479",
+    "ext_02939",
+    "ext_02561",
+    "ext_07749",
+    "ext_07448",
+    "ext_07330",
+    "ext_07637",
+    "ext_07556",
+    "ext_01468",
+    "ext_07981",
+    "ext_07744",
+    "ext_07316",
+    "ext_07529",
+    "ext_07929",
+    "ext_07301",
+    "ext_07561",
+    "ext_09343",
+    "ext_01603",
+    "ext_00983",
+    "ext_01645",
+    "ext_00912",
+    "ext_01784",
+    "ext_01597",
+    "ext_01699",
+    "ext_01749",
+    "ext_01684",
+    "ext_00990",
+    "ext_01563",
+    "ext_01570",
+    "ext_01951",
+    "ext_01959",
+    "ext_01945",
+    "ext_00341",
+    "ext_07543",
+    "ext_08719",
+    "ext_08432",
+    "ext_01252",
+    "ext_09827",
+    "ext_02921",
+    "ext_09329",
+    "ext_08418",
+    "ext_02930",
+    "ext_02869",
+    "ext_10540",
+    "ext_09131",
+    "ext_00770",
+    "ext_00644",
+    "ext_10758",
+    "ext_00075",
+    "ext_06473",
+    "ext_06211",
+    "ext_09177",
+    "ext_08830",
+    "ext_00903",
+    "ext_09209",
+    "ext_00531",
+    "ext_08650",
+    "ext_00433",
+    "ext_00172",
+    "ext_00199",
+    "ext_00150",
+    "ext_00021"
+  ],
+  "llm_initial_labels": [
+    {
+      "job_id": "hn_1706",
+      "category": "backend"
+    },
+    {
+      "job_id": "hn_528",
+      "category": "frontend"
+    },
+    {
+      "job_id": "hn_1248",
+      "category": "frontend"
+    },
+    {
+      "job_id": "hn_1239",
+      "category": "data"
+    },
+    {
+      "job_id": "hn_1615",
+      "category": "data"
+    },
+    {
+      "job_id": "hn_1050",
+      "category": "data"
+    },
+    {
+      "job_id": "hn_1973",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "hn_571",
+      "category": "devops"
+    },
+    {
+      "job_id": "hn_477",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "hn_1906",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "hn_958",
+      "category": "data"
+    },
+    {
+      "job_id": "hn_1551",
+      "category": "devops"
+    },
+    {
+      "job_id": "hn_1181",
+      "category": "mobile"
+    },
+    {
+      "job_id": "hn_1746",
+      "category": "backend"
+    },
+    {
+      "job_id": "hn_1620",
+      "category": "management"
+    },
+    {
+      "job_id": "hn_1491",
+      "category": "management"
+    },
+    {
+      "job_id": "hn_1671",
+      "category": "management"
+    },
+    {
+      "job_id": "hn_197",
+      "category": "management"
+    },
+    {
+      "job_id": "hn_211",
+      "category": "backend"
+    },
+    {
+      "job_id": "hn_1182",
+      "category": "management"
+    },
+    {
+      "job_id": "hn_1773",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_01024",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_01451",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_01938",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_01931",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_03031",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_01005",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_01440",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_00342",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_01842",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01865",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01891",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01888",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01889",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01906",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_08384",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01901",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01866",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01864",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01869",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01872",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01874",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01861",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01908",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_01863",
+      "category": "frontend"
+    },
+    {
+      "job_id": "ext_02629",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02459",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02601",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02492",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_06898",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_03278",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02672",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02786",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_03282",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_03088",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02006",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02490",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02746",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02479",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02939",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_02561",
+      "category": "data"
+    },
+    {
+      "job_id": "ext_07749",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07448",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07330",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07637",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07556",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_01468",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07981",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07744",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07316",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07529",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07929",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07301",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_07561",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_09343",
+      "category": "devops"
+    },
+    {
+      "job_id": "ext_01603",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_00983",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_01645",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_00912",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_01784",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_01597",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_01699",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_01749",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_01684",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_00990",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_01563",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_01570",
+      "category": "fullstack"
+    },
+    {
+      "job_id": "ext_01951",
+      "category": "mobile"
+    },
+    {
+      "job_id": "ext_01959",
+      "category": "mobile"
+    },
+    {
+      "job_id": "ext_01945",
+      "category": "mobile"
+    },
+    {
+      "job_id": "ext_00341",
+      "category": "mobile"
+    },
+    {
+      "job_id": "ext_07543",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_08719",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_08432",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_01252",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_09827",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_02921",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_09329",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_08418",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_02930",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_02869",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_10540",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_09131",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_00770",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_00644",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_10758",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_00075",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_06473",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_06211",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_09177",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_08830",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_00903",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_09209",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_00531",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_08650",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_00433",
+      "category": "management"
+    },
+    {
+      "job_id": "ext_00172",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_00199",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_00150",
+      "category": "backend"
+    },
+    {
+      "job_id": "ext_00021",
+      "category": "backend"
+    }
+  ]
+}

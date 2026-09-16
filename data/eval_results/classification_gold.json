@@ -1,0 +1,579 @@
+[
+  {
+    "job_id": "hn_1448",
+    "predicted_category": "fullstack",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1102",
+    "predicted_category": "devops",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_2023",
+    "predicted_category": "backend",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_19",
+    "predicted_category": "backend",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1836",
+    "predicted_category": "fullstack",
+    "gold_category": "devops",
+    "verdict": "majority",
+    "votes": {
+      "devops": 2,
+      "backend": 1
+    }
+  },
+  {
+    "job_id": "hn_1554",
+    "predicted_category": "devops",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1417",
+    "predicted_category": "devops",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1378",
+    "predicted_category": "backend",
+    "gold_category": "fullstack",
+    "verdict": "majority",
+    "votes": {
+      "fullstack": 2,
+      "backend": 1
+    }
+  },
+  {
+    "job_id": "hn_654",
+    "predicted_category": "fullstack",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_1091",
+    "predicted_category": "devops",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1062",
+    "predicted_category": "backend",
+    "gold_category": "data",
+    "verdict": "majority",
+    "votes": {
+      "data": 2,
+      "backend": 1
+    }
+  },
+  {
+    "job_id": "hn_1241",
+    "predicted_category": "fullstack",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_1666",
+    "predicted_category": "frontend",
+    "gold_category": "frontend",
+    "verdict": "unanimous",
+    "votes": {
+      "frontend": 3
+    }
+  },
+  {
+    "job_id": "hn_1685",
+    "predicted_category": "fullstack",
+    "gold_category": "data",
+    "verdict": "majority",
+    "votes": {
+      "data": 2,
+      "management": 1
+    }
+  },
+  {
+    "job_id": "hn_605",
+    "predicted_category": "frontend",
+    "gold_category": "frontend",
+    "verdict": "unanimous",
+    "votes": {
+      "frontend": 3
+    }
+  },
+  {
+    "job_id": "hn_963",
+    "predicted_category": "frontend",
+    "gold_category": "frontend",
+    "verdict": "unanimous",
+    "votes": {
+      "frontend": 3
+    }
+  },
+  {
+    "job_id": "hn_888",
+    "predicted_category": "frontend",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_1619",
+    "predicted_category": "fullstack",
+    "gold_category": "frontend",
+    "verdict": "unanimous",
+    "votes": {
+      "frontend": 3
+    }
+  },
+  {
+    "job_id": "hn_795",
+    "predicted_category": "data",
+    "gold_category": "data",
+    "verdict": "unanimous",
+    "votes": {
+      "data": 3
+    }
+  },
+  {
+    "job_id": "hn_343",
+    "predicted_category": "devops",
+    "gold_category": "data",
+    "verdict": "majority",
+    "votes": {
+      "data": 2,
+      "devops": 1
+    }
+  },
+  {
+    "job_id": "hn_1630",
+    "predicted_category": "data",
+    "gold_category": "data",
+    "verdict": "unanimous",
+    "votes": {
+      "data": 3
+    }
+  },
+  {
+    "job_id": "hn_443",
+    "predicted_category": "devops",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_918",
+    "predicted_category": "devops",
+    "gold_category": "devops",
+    "verdict": "unanimous",
+    "votes": {
+      "devops": 3
+    }
+  },
+  {
+    "job_id": "hn_1835",
+    "predicted_category": "data",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1018",
+    "predicted_category": "data",
+    "gold_category": "data",
+    "verdict": "majority",
+    "votes": {
+      "data": 2,
+      "backend": 1
+    }
+  },
+  {
+    "job_id": "hn_1464",
+    "predicted_category": "data",
+    "gold_category": "data",
+    "verdict": "unanimous",
+    "votes": {
+      "data": 3
+    }
+  },
+  {
+    "job_id": "hn_356",
+    "predicted_category": "data",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_388",
+    "predicted_category": "devops",
+    "gold_category": "devops",
+    "verdict": "unanimous",
+    "votes": {
+      "devops": 3
+    }
+  },
+  {
+    "job_id": "hn_2061",
+    "predicted_category": "devops",
+    "gold_category": "devops",
+    "verdict": "unanimous",
+    "votes": {
+      "devops": 3
+    }
+  },
+  {
+    "job_id": "hn_1557",
+    "predicted_category": "fullstack",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_1792",
+    "predicted_category": "devops",
+    "gold_category": "backend",
+    "verdict": "majority",
+    "votes": {
+      "backend": 2,
+      "data": 1
+    }
+  },
+  {
+    "job_id": "hn_379",
+    "predicted_category": "fullstack",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_1373",
+    "predicted_category": "backend",
+    "gold_category": "management",
+    "verdict": "unanimous",
+    "votes": {
+      "management": 3
+    }
+  },
+  {
+    "job_id": "hn_1326",
+    "predicted_category": "devops",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_5",
+    "predicted_category": "devops",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1334",
+    "predicted_category": "backend",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1911",
+    "predicted_category": "fullstack",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1909",
+    "predicted_category": "fullstack",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_679",
+    "predicted_category": "backend",
+    "gold_category": "devops",
+    "verdict": "unanimous",
+    "votes": {
+      "devops": 3
+    }
+  },
+  {
+    "job_id": "hn_1766",
+    "predicted_category": "fullstack",
+    "gold_category": "data",
+    "verdict": "unanimous",
+    "votes": {
+      "data": 3
+    }
+  },
+  {
+    "job_id": "hn_110",
+    "predicted_category": "fullstack",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_26",
+    "predicted_category": "backend",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_446",
+    "predicted_category": "fullstack",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_1235",
+    "predicted_category": "fullstack",
+    "gold_category": "data",
+    "verdict": "majority",
+    "votes": {
+      "data": 2,
+      "backend": 1
+    }
+  },
+  {
+    "job_id": "hn_2042",
+    "predicted_category": "backend",
+    "gold_category": "mobile",
+    "verdict": "unanimous",
+    "votes": {
+      "mobile": 3
+    }
+  },
+  {
+    "job_id": "hn_1117",
+    "predicted_category": "devops",
+    "gold_category": "devops",
+    "verdict": "unanimous",
+    "votes": {
+      "devops": 3
+    }
+  },
+  {
+    "job_id": "hn_1981",
+    "predicted_category": "backend",
+    "gold_category": "management",
+    "verdict": "unanimous",
+    "votes": {
+      "management": 3
+    }
+  },
+  {
+    "job_id": "hn_382",
+    "predicted_category": "fullstack",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_939",
+    "predicted_category": "devops",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1261",
+    "predicted_category": "fullstack",
+    "gold_category": "frontend",
+    "verdict": "unanimous",
+    "votes": {
+      "frontend": 3
+    }
+  },
+  {
+    "job_id": "hn_350",
+    "predicted_category": "fullstack",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1067",
+    "predicted_category": "mobile",
+    "gold_category": "management",
+    "verdict": "majority",
+    "votes": {
+      "management": 2,
+      "mobile": 1
+    }
+  },
+  {
+    "job_id": "hn_1029",
+    "predicted_category": "frontend",
+    "gold_category": "mobile",
+    "verdict": "unanimous",
+    "votes": {
+      "mobile": 3
+    }
+  },
+  {
+    "job_id": "hn_28",
+    "predicted_category": "mobile",
+    "gold_category": "mobile",
+    "verdict": "unanimous",
+    "votes": {
+      "mobile": 3
+    }
+  },
+  {
+    "job_id": "hn_1651",
+    "predicted_category": "backend",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_1842",
+    "predicted_category": "fullstack",
+    "gold_category": "frontend",
+    "verdict": "unanimous",
+    "votes": {
+      "frontend": 3
+    }
+  },
+  {
+    "job_id": "hn_1230",
+    "predicted_category": "fullstack",
+    "gold_category": "fullstack",
+    "verdict": "unanimous",
+    "votes": {
+      "fullstack": 3
+    }
+  },
+  {
+    "job_id": "hn_1674",
+    "predicted_category": "management",
+    "gold_category": "management",
+    "verdict": "unanimous",
+    "votes": {
+      "management": 3
+    }
+  },
+  {
+    "job_id": "hn_1300",
+    "predicted_category": "fullstack",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_2088",
+    "predicted_category": "management",
+    "gold_category": "management",
+    "verdict": "unanimous",
+    "votes": {
+      "management": 3
+    }
+  },
+  {
+    "job_id": "hn_1815",
+    "predicted_category": "fullstack",
+    "gold_category": "data",
+    "verdict": "majority",
+    "votes": {
+      "data": 2,
+      "backend": 1
+    }
+  },
+  {
+    "job_id": "hn_338",
+    "predicted_category": "backend",
+    "gold_category": "backend",
+    "verdict": "unanimous",
+    "votes": {
+      "backend": 3
+    }
+  },
+  {
+    "job_id": "hn_751",
+    "predicted_category": "management",
+    "gold_category": "management",
+    "verdict": "unanimous",
+    "votes": {
+      "management": 3
+    }
+  }
+]

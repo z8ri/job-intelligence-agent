@@ -1,0 +1,46 @@
+{
+  "old": {
+    "config": "all_adaptive_weights",
+    "total": 200,
+    "rejected": 2,
+    "rate": 0.01,
+    "examples": [
+      {
+        "qid": "q21",
+        "query": "Frontend engineering positions",
+        "job_id": "hn_1931",
+        "title": "Frontend Engineer (Contract)",
+        "reason": "标题包含 part-time/contract/intern 等非全职标记，且用户未主动要求此类职位"
+      },
+      {
+        "qid": "q34",
+        "query": "Companies with good culture for junior developers",
+        "job_id": "hn_1241",
+        "title": "Junior Software Engineer (Contract, 1099)",
+        "reason": "标题包含 part-time/contract/intern 等非全职标记，且用户未主动要求此类职位"
+      }
+    ]
+  },
+  "new_retrieval_pool": {
+    "config": "hybrid_rrf_reranked",
+    "total": 200,
+    "rejected": 2,
+    "rate": 0.01,
+    "examples": [
+      {
+        "qid": "q13",
+        "query": "On-site positions only, no remote",
+        "job_id": "hn_1241",
+        "title": "Junior Software Engineer (Contract, 1099)",
+        "reason": "标题包含 part-time/contract/intern 等非全职标记，且用户未主动要求此类职位"
+      },
+      {
+        "qid": "q15",
+        "query": "React and TypeScript frontend developer positions",
+        "job_id": "hn_1931",
+        "title": "Frontend Engineer (Contract)",
+        "reason": "标题包含 part-time/contract/intern 等非全职标记，且用户未主动要求此类职位"
+      }
+    ]
+  }
+}

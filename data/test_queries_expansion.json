@@ -1,0 +1,362 @@
+[
+  {
+    "id": "exp_q01",
+    "query": "Remote ML engineer roles",
+    "expected_preferences": {
+      "description_keywords": ["ML"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"description": "high", "remote": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["machine learning", "statistical modeling", "predictive analytics"],
+      "tags": []
+    },
+    "category_coverage": ["description", "remote", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q02",
+    "query": "DL researcher above 200k",
+    "expected_preferences": {
+      "description_keywords": ["DL"],
+      "target_salary": 200000,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"description": "high", "salary": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["deep learning", "neural networks", "tensorflow", "pytorch"],
+      "tags": []
+    },
+    "category_coverage": ["description", "salary", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q03",
+    "query": "NLP backend engineer with Python",
+    "expected_preferences": {
+      "description_keywords": ["NLP"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["python"],
+      "preferred_category": "backend",
+      "weight_adjustments": {"description": "high", "tags": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["natural language processing", "bert", "gpt"],
+      "tags": ["py", "python3"]
+    },
+    "category_coverage": ["description", "tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q04",
+    "query": "CV jobs in SF bay area",
+    "expected_preferences": {
+      "description_keywords": ["CV"],
+      "target_salary": null,
+      "preferred_location": "San Francisco",
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"description": "high", "location": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["computer vision", "opencv", "image recognition"],
+      "tags": []
+    },
+    "category_coverage": ["description", "location", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q05",
+    "query": "k8s SRE in NYC",
+    "expected_preferences": {
+      "description_keywords": ["k8s"],
+      "target_salary": null,
+      "preferred_location": "New York City",
+      "remote_preference": null,
+      "desired_tags": ["SRE"],
+      "preferred_category": "devops",
+      "weight_adjustments": {"description": "high", "tags": "high", "location": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["kubernetes", "kube", "container orchestration"],
+      "tags": ["site reliability engineer"]
+    },
+    "category_coverage": ["description", "tags", "location", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q06",
+    "query": "Docker and Terraform DevOps engineer",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["docker", "terraform"],
+      "preferred_category": "devops",
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": [],
+      "tags": ["containerization", "iac", "infrastructure as code", "ansible", "jenkins"]
+    },
+    "category_coverage": ["tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q07",
+    "query": "JS frontend remote position",
+    "expected_preferences": {
+      "description_keywords": ["JS"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": "frontend",
+      "weight_adjustments": {"description": "high", "remote": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["javascript", "es6", "node.js"],
+      "tags": []
+    },
+    "category_coverage": ["description", "remote", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q08",
+    "query": "TS React engineer with NextJS",
+    "expected_preferences": {
+      "description_keywords": ["TS"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["react"],
+      "preferred_category": "frontend",
+      "weight_adjustments": {"description": "high", "tags": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["typescript", "typed js"],
+      "tags": ["reactjs", "react.js", "nextjs"]
+    },
+    "category_coverage": ["description", "tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q09",
+    "query": "Postgres backend developer",
+    "expected_preferences": {
+      "description_keywords": ["postgres"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "backend",
+      "weight_adjustments": {"description": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["postgresql", "psql", "pg"],
+      "tags": []
+    },
+    "category_coverage": ["description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q10",
+    "query": "NoSQL data engineer",
+    "expected_preferences": {
+      "description_keywords": ["NoSQL"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"description": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["mongodb", "cassandra", "dynamodb", "non-relational"],
+      "tags": []
+    },
+    "category_coverage": ["description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q11",
+    "query": "SRE on GCP infrastructure",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["SRE", "GCP"],
+      "preferred_category": "devops",
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": [],
+      "tags": ["site reliability engineer", "google cloud platform", "bigquery"]
+    },
+    "category_coverage": ["tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q12",
+    "query": "CI/CD platform engineer",
+    "expected_preferences": {
+      "description_keywords": ["CI/CD"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "devops",
+      "weight_adjustments": {"description": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["continuous integration", "github actions", "jenkins"],
+      "tags": []
+    },
+    "category_coverage": ["description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q13",
+    "query": "GCP data engineer with BigQuery",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["GCP"],
+      "preferred_category": "data",
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": [],
+      "tags": ["google cloud platform", "bigquery", "google cloud"]
+    },
+    "category_coverage": ["tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q14",
+    "query": "AWS lambda backend role",
+    "expected_preferences": {
+      "description_keywords": null,
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": ["AWS"],
+      "preferred_category": "backend",
+      "weight_adjustments": {"tags": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": [],
+      "tags": ["amazon web services", "ec2", "s3", "lambda"]
+    },
+    "category_coverage": ["tags", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q15",
+    "query": "TF and PyTorch ML engineer",
+    "expected_preferences": {
+      "description_keywords": ["TF", "PyTorch"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": null,
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"description": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["tensorflow", "torch", "deep learning", "neural networks"],
+      "tags": []
+    },
+    "category_coverage": ["description", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q16",
+    "query": "Remote machine learning engineer roles",
+    "expected_preferences": {
+      "description_keywords": ["machine learning"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": "data",
+      "weight_adjustments": {"description": "high", "remote": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["ml", "statistical modeling", "predictive analytics"],
+      "tags": []
+    },
+    "category_coverage": ["description", "remote", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q17",
+    "query": "Kubernetes site reliability engineer in New York",
+    "expected_preferences": {
+      "description_keywords": ["kubernetes"],
+      "target_salary": null,
+      "preferred_location": "New York City",
+      "remote_preference": null,
+      "desired_tags": ["site reliability engineer"],
+      "preferred_category": "devops",
+      "weight_adjustments": {"description": "high", "tags": "high", "location": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["k8s", "kube", "container orchestration"],
+      "tags": ["sre", "infrastructure engineer"]
+    },
+    "category_coverage": ["description", "tags", "location", "category"],
+    "relevance_annotations": []
+  },
+  {
+    "id": "exp_q18",
+    "query": "Remote javascript frontend position",
+    "expected_preferences": {
+      "description_keywords": ["javascript"],
+      "target_salary": null,
+      "preferred_location": null,
+      "remote_preference": "remote",
+      "desired_tags": null,
+      "preferred_category": "frontend",
+      "weight_adjustments": {"description": "high", "remote": "high"},
+      "hard_filters": []
+    },
+    "expected_expansion": {
+      "keywords": ["js", "es6", "node.js"],
+      "tags": []
+    },
+    "category_coverage": ["description", "remote", "category"],
+    "relevance_annotations": []
+  }
+]

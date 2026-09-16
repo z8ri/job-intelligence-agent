@@ -1,0 +1,3038 @@
+[
+  {
+    "query_id": "q01",
+    "query": "Remote Python backend jobs above 150k",
+    "gold_preferences": {
+      "target_salary": 150000,
+      "remote_preference": "remote",
+      "preferred_location": null,
+      "preferred_category": "backend",
+      "description_keywords": [
+        "backend"
+      ],
+      "desired_tags": [
+        "python"
+      ],
+      "weight_adjustments": {
+        "salary": "high",
+        "remote": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "backend"
+        ],
+        "target_salary": 150000,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Python"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "salary": "high",
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "backend"
+        ],
+        "target_salary": 150000,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Python"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "salary": "high",
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "backend"
+        ],
+        "target_salary": 150000,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Python"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "salary": "high",
+          "remote": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q02",
+    "query": "Jobs paying over 200k in machine learning",
+    "gold_preferences": {
+      "target_salary": 200000,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "data",
+      "description_keywords": [
+        "machine learning"
+      ],
+      "desired_tags": [
+        "machine learning"
+      ],
+      "weight_adjustments": {
+        "salary": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "machine learning"
+        ],
+        "target_salary": 200000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Machine Learning"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "salary": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "machine learning"
+        ],
+        "target_salary": 200000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Machine Learning"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "salary": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "machine learning"
+        ],
+        "target_salary": 200000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Machine Learning"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "salary": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q03",
+    "query": "Entry level software engineering positions in the 70-90k range",
+    "gold_preferences": {
+      "target_salary": 80000,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": null,
+      "description_keywords": [
+        "entry level",
+        "software engineering"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "entry level",
+          "software engineering"
+        ],
+        "target_salary": 80000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "entry level",
+          "software engineering"
+        ],
+        "target_salary": 80000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "entry level",
+          "software engineering"
+        ],
+        "target_salary": 80000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "salary": "medium"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q04",
+    "query": "High paying DevOps roles, at least 180k",
+    "gold_preferences": {
+      "target_salary": 180000,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "devops",
+      "description_keywords": [
+        "devops"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {
+        "salary": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "devops"
+        ],
+        "target_salary": 180000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "devops",
+        "weight_adjustments": {
+          "salary": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "devops"
+        ],
+        "target_salary": 180000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "devops",
+        "weight_adjustments": {
+          "salary": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "DevOps"
+        ],
+        "target_salary": 180000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "devops",
+        "weight_adjustments": {
+          "salary": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q05",
+    "query": "Data science positions around 130k to 160k",
+    "gold_preferences": {
+      "target_salary": 145000,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "data",
+      "description_keywords": [
+        "data science"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "data science"
+        ],
+        "target_salary": 145000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "data",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "data science"
+        ],
+        "target_salary": 145000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "data",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "data science"
+        ],
+        "target_salary": 145000,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Data Science"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "salary": "medium"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q06",
+    "query": "Software engineering jobs in San Francisco Bay Area",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": "san francisco bay area",
+      "preferred_category": null,
+      "description_keywords": [
+        "software engineering"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "software engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": "San Francisco Bay Area",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "software engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": "San Francisco Bay Area",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "software engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": "San Francisco Bay Area",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q07",
+    "query": "Positions near Boston for backend developers",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": "boston",
+      "preferred_category": "backend",
+      "description_keywords": [
+        "backend developer"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "backend developer"
+        ],
+        "target_salary": null,
+        "preferred_location": "Boston",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "backend developer"
+        ],
+        "target_salary": null,
+        "preferred_location": "Boston",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "backend developers"
+        ],
+        "target_salary": null,
+        "preferred_location": "Boston",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q08",
+    "query": "Tech jobs in New York City area",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": "new york city",
+      "preferred_category": null,
+      "description_keywords": [
+        "tech"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": "New York City",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "tech"
+        ],
+        "target_salary": null,
+        "preferred_location": "New York City",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "tech"
+        ],
+        "target_salary": null,
+        "preferred_location": "New York City",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q09",
+    "query": "Engineering roles in Seattle or Portland",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": "seattle or portland",
+      "preferred_category": null,
+      "description_keywords": [
+        "engineering"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": "Seattle or Portland",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": "Seattle or Portland",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": "Seattle or Portland",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q10",
+    "query": "Jobs in Austin Texas for full stack developers",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": "austin, texas",
+      "preferred_category": "fullstack",
+      "description_keywords": [
+        "full stack developer"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "human_resolved",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "full stack developer"
+        ],
+        "target_salary": null,
+        "preferred_location": "Austin",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "fullstack",
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "full stack developer"
+        ],
+        "target_salary": null,
+        "preferred_location": "Austin, Texas",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "fullstack",
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "full stack developers"
+        ],
+        "target_salary": null,
+        "preferred_location": "Austin Texas",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "fullstack",
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q11",
+    "query": "Fully remote senior engineering roles",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": "remote",
+      "preferred_location": null,
+      "preferred_category": null,
+      "description_keywords": [
+        "engineering",
+        "senior"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {
+        "remote": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "senior",
+          "engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "senior",
+          "engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "senior",
+          "engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "remote": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q12",
+    "query": "Hybrid work positions in New York",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": "hybrid",
+      "preferred_location": "new york",
+      "preferred_category": null,
+      "description_keywords": null,
+      "desired_tags": null,
+      "weight_adjustments": {
+        "remote": "high",
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": "New York",
+        "remote_preference": "hybrid",
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "remote": "high",
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": "New York",
+        "remote_preference": "hybrid",
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high",
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": "New York",
+        "remote_preference": "hybrid",
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q13",
+    "query": "On-site positions only, no remote",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": "onsite",
+      "preferred_location": null,
+      "preferred_category": null,
+      "description_keywords": null,
+      "desired_tags": null,
+      "weight_adjustments": {
+        "remote": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "onsite",
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "onsite",
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "onsite",
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {
+          "remote": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q14",
+    "query": "100% remote data engineering jobs",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": "remote",
+      "preferred_location": null,
+      "preferred_category": "data",
+      "description_keywords": [
+        "data engineering"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {
+        "remote": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "data engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": null,
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "data engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": null,
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "data engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": null,
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "remote": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q15",
+    "query": "React and TypeScript frontend developer positions",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "frontend",
+      "description_keywords": [
+        "frontend developer"
+      ],
+      "desired_tags": [
+        "react",
+        "typescript"
+      ],
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "frontend developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "React",
+          "TypeScript"
+        ],
+        "preferred_category": "frontend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "frontend developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "React",
+          "TypeScript"
+        ],
+        "preferred_category": "frontend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "frontend developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "React",
+          "TypeScript"
+        ],
+        "preferred_category": "frontend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q16",
+    "query": "Kubernetes and Terraform DevOps engineer",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "devops",
+      "description_keywords": [
+        "devops engineer"
+      ],
+      "desired_tags": [
+        "kubernetes",
+        "terraform"
+      ],
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "devops engineer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Kubernetes",
+          "Terraform"
+        ],
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "devops engineer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Kubernetes",
+          "Terraform"
+        ],
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "DevOps engineer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Kubernetes",
+          "Terraform"
+        ],
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q17",
+    "query": "Python and AWS cloud engineer positions",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "devops",
+      "description_keywords": [
+        "cloud engineer"
+      ],
+      "desired_tags": [
+        "aws",
+        "python"
+      ],
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "cloud engineer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Python",
+          "AWS"
+        ],
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "cloud engineer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Python",
+          "AWS"
+        ],
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "cloud engineer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Python",
+          "AWS"
+        ],
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q18",
+    "query": "Golang microservices developer",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "backend",
+      "description_keywords": [
+        "microservices developer"
+      ],
+      "desired_tags": [
+        "golang"
+      ],
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "microservices",
+          "developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Go"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "microservices developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Golang"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "microservices developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Golang"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q19",
+    "query": "Rust systems programming jobs",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "backend",
+      "description_keywords": [
+        "systems programming"
+      ],
+      "desired_tags": [
+        "rust"
+      ],
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "systems programming"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Rust"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "systems programming"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Rust"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "systems programming"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Rust"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q20",
+    "query": "Mobile development jobs with Flutter or React Native",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "mobile",
+      "description_keywords": [
+        "mobile development"
+      ],
+      "desired_tags": [
+        "flutter",
+        "react native"
+      ],
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "mobile development"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Flutter",
+          "React Native"
+        ],
+        "preferred_category": "mobile",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "mobile development"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Flutter",
+          "React Native"
+        ],
+        "preferred_category": "mobile",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "mobile development"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "Flutter",
+          "React Native"
+        ],
+        "preferred_category": "mobile",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q21",
+    "query": "Frontend engineering positions",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "frontend",
+      "description_keywords": [
+        "frontend engineering"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "frontend engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "frontend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "frontend engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "frontend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "frontend engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "frontend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q22",
+    "query": "Engineering manager or tech lead openings",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "management",
+      "description_keywords": [
+        "engineering manager",
+        "tech lead"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "engineering manager",
+          "tech lead"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "management",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "engineering manager",
+          "tech lead"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "management",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "engineering manager",
+          "tech lead"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "management",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q23",
+    "query": "Data analytics and BI positions",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "data",
+      "description_keywords": [
+        "business intelligence",
+        "data analytics"
+      ],
+      "desired_tags": [
+        "bi"
+      ],
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "data analytics",
+          "business intelligence"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "data",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "data analytics",
+          "business intelligence"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "BI"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "data analytics",
+          "BI"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "BI"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q24",
+    "query": "iOS developer positions",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "mobile",
+      "description_keywords": [
+        "ios developer"
+      ],
+      "desired_tags": [
+        "ios"
+      ],
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "iOS developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "iOS"
+        ],
+        "preferred_category": "mobile",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "iOS developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "iOS"
+        ],
+        "preferred_category": "mobile",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "iOS developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": [
+          "iOS"
+        ],
+        "preferred_category": "mobile",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q25",
+    "query": "Site reliability engineer SRE jobs",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "devops",
+      "description_keywords": [
+        "site reliability engineer",
+        "sre"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "site reliability engineer",
+          "SRE"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "site reliability engineer",
+          "SRE"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "site reliability engineer",
+          "SRE"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q26",
+    "query": "Remote ML jobs in New York above 130k",
+    "gold_preferences": {
+      "target_salary": 130000,
+      "remote_preference": "remote",
+      "preferred_location": "new york",
+      "preferred_category": "data",
+      "description_keywords": [
+        "machine learning"
+      ],
+      "desired_tags": [
+        "machine learning"
+      ],
+      "weight_adjustments": {
+        "remote": "high",
+        "location": "high",
+        "salary": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "machine learning"
+        ],
+        "target_salary": 130000,
+        "preferred_location": "New York",
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Machine Learning"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "remote": "high",
+          "location": "medium",
+          "salary": "medium"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "machine learning"
+        ],
+        "target_salary": 130000,
+        "preferred_location": "New York",
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Machine Learning"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "location": "high",
+          "salary": "high",
+          "remote": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "ML"
+        ],
+        "target_salary": 130000,
+        "preferred_location": "New York",
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Machine Learning"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "salary": "high",
+          "location": "high",
+          "remote": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q27",
+    "query": "Backend Go developer, hybrid, 160k or more",
+    "gold_preferences": {
+      "target_salary": 160000,
+      "remote_preference": "hybrid",
+      "preferred_location": null,
+      "preferred_category": "backend",
+      "description_keywords": [
+        "backend developer"
+      ],
+      "desired_tags": [
+        "go"
+      ],
+      "weight_adjustments": {
+        "salary": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "backend developer"
+        ],
+        "target_salary": 160000,
+        "preferred_location": null,
+        "remote_preference": "hybrid",
+        "desired_tags": [
+          "Go"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "salary": "high"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "backend developer"
+        ],
+        "target_salary": 160000,
+        "preferred_location": null,
+        "remote_preference": "hybrid",
+        "desired_tags": [
+          "Go"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "salary": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "backend developer"
+        ],
+        "target_salary": 160000,
+        "preferred_location": null,
+        "remote_preference": "hybrid",
+        "desired_tags": [
+          "Go"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "salary": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q28",
+    "query": "Full stack JavaScript developer in San Francisco, remote friendly, around 140k",
+    "gold_preferences": {
+      "target_salary": 140000,
+      "remote_preference": "remote",
+      "preferred_location": "san francisco",
+      "preferred_category": "fullstack",
+      "description_keywords": [
+        "full stack developer"
+      ],
+      "desired_tags": [
+        "javascript"
+      ],
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "full stack developer"
+        ],
+        "target_salary": 140000,
+        "preferred_location": "San Francisco",
+        "remote_preference": "remote",
+        "desired_tags": [
+          "JavaScript"
+        ],
+        "preferred_category": "fullstack",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "full stack developer"
+        ],
+        "target_salary": 140000,
+        "preferred_location": "San Francisco",
+        "remote_preference": "remote",
+        "desired_tags": [
+          "JavaScript"
+        ],
+        "preferred_category": "fullstack",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "full stack developer"
+        ],
+        "target_salary": 140000,
+        "preferred_location": "San Francisco",
+        "remote_preference": "remote",
+        "desired_tags": [
+          "JavaScript"
+        ],
+        "preferred_category": "fullstack",
+        "weight_adjustments": {
+          "location": "high",
+          "salary": "medium"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q29",
+    "query": "Senior data engineer with Spark and Kafka experience, preferably remote, 170k+",
+    "gold_preferences": {
+      "target_salary": 170000,
+      "remote_preference": "remote",
+      "preferred_location": null,
+      "preferred_category": "data",
+      "description_keywords": [
+        "data engineer",
+        "senior"
+      ],
+      "desired_tags": [
+        "kafka",
+        "spark"
+      ],
+      "weight_adjustments": {
+        "salary": "high",
+        "remote": "medium"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "senior",
+          "data engineer"
+        ],
+        "target_salary": 170000,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Spark",
+          "Kafka"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "salary": "high",
+          "remote": "medium"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "senior",
+          "data engineer"
+        ],
+        "target_salary": 170000,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Spark",
+          "Kafka"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "remote": "medium",
+          "salary": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "senior",
+          "data engineer"
+        ],
+        "target_salary": 170000,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Spark",
+          "Kafka"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "salary": "high",
+          "remote": "medium"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q30",
+    "query": "React frontend roles in Chicago or nearby, 120k minimum",
+    "gold_preferences": {
+      "target_salary": 120000,
+      "remote_preference": null,
+      "preferred_location": "chicago",
+      "preferred_category": "frontend",
+      "description_keywords": [
+        "frontend"
+      ],
+      "desired_tags": [
+        "react"
+      ],
+      "weight_adjustments": {
+        "salary": "high",
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "frontend"
+        ],
+        "target_salary": 120000,
+        "preferred_location": "Chicago",
+        "remote_preference": null,
+        "desired_tags": [
+          "React"
+        ],
+        "preferred_category": "frontend",
+        "weight_adjustments": {
+          "salary": "high",
+          "location": "medium"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "frontend"
+        ],
+        "target_salary": 120000,
+        "preferred_location": "Chicago",
+        "remote_preference": null,
+        "desired_tags": [
+          "React"
+        ],
+        "preferred_category": "frontend",
+        "weight_adjustments": {
+          "location": "high",
+          "salary": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "frontend"
+        ],
+        "target_salary": 120000,
+        "preferred_location": "Chicago",
+        "remote_preference": null,
+        "desired_tags": [
+          "React"
+        ],
+        "preferred_category": "frontend",
+        "weight_adjustments": {
+          "location": "high",
+          "salary": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q31",
+    "query": "DevOps with AWS and Docker in Austin, hybrid OK",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": "hybrid",
+      "preferred_location": "austin",
+      "preferred_category": "devops",
+      "description_keywords": [
+        "devops"
+      ],
+      "desired_tags": [
+        "aws",
+        "docker"
+      ],
+      "weight_adjustments": {
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "devops"
+        ],
+        "target_salary": null,
+        "preferred_location": "Austin",
+        "remote_preference": "hybrid",
+        "desired_tags": [
+          "AWS",
+          "Docker"
+        ],
+        "preferred_category": "devops",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "devops"
+        ],
+        "target_salary": null,
+        "preferred_location": "Austin",
+        "remote_preference": "hybrid",
+        "desired_tags": [
+          "AWS",
+          "Docker"
+        ],
+        "preferred_category": "devops",
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "DevOps"
+        ],
+        "target_salary": null,
+        "preferred_location": "Austin",
+        "remote_preference": "hybrid",
+        "desired_tags": [
+          "AWS",
+          "Docker"
+        ],
+        "preferred_category": "devops",
+        "weight_adjustments": {
+          "location": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q32",
+    "query": "Remote Python or Java backend, good salary above 150k, no PhD required",
+    "gold_preferences": {
+      "target_salary": 150000,
+      "remote_preference": "remote",
+      "preferred_location": null,
+      "preferred_category": "backend",
+      "description_keywords": [
+        "backend"
+      ],
+      "desired_tags": [
+        "java",
+        "python"
+      ],
+      "weight_adjustments": {
+        "remote": "high",
+        "salary": "high"
+      },
+      "hard_filters": [
+        {
+          "field": "degree_req",
+          "exclude": [
+            "phd"
+          ]
+        }
+      ]
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "backend"
+        ],
+        "target_salary": 150000,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Python",
+          "Java"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "remote": "high",
+          "salary": "high"
+        },
+        "hard_filters": [
+          {
+            "field": "degree_req",
+            "exclude": [
+              "phd"
+            ]
+          }
+        ]
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "backend"
+        ],
+        "target_salary": 150000,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Python",
+          "Java"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "salary": "high",
+          "remote": "high"
+        },
+        "hard_filters": [
+          {
+            "field": "degree_req",
+            "exclude": [
+              "phd"
+            ]
+          }
+        ]
+      },
+      "gemini": {
+        "description_keywords": [
+          "backend"
+        ],
+        "target_salary": 150000,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Python",
+          "Java"
+        ],
+        "preferred_category": "backend",
+        "weight_adjustments": {
+          "salary": "high",
+          "remote": "high"
+        },
+        "hard_filters": [
+          {
+            "field": "degree_req",
+            "exclude": [
+              "phd"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "query_id": "q33",
+    "query": "Management positions in Denver or Boulder area, 180k+",
+    "gold_preferences": {
+      "target_salary": 180000,
+      "remote_preference": null,
+      "preferred_location": "denver or boulder",
+      "preferred_category": "management",
+      "description_keywords": [
+        "management"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {
+        "salary": "high",
+        "location": "high"
+      },
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "majority",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "management"
+        ],
+        "target_salary": 180000,
+        "preferred_location": "Denver",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "management",
+        "weight_adjustments": {
+          "salary": "high",
+          "location": "medium"
+        },
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "management"
+        ],
+        "target_salary": 180000,
+        "preferred_location": "Denver or Boulder",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "management",
+        "weight_adjustments": {
+          "location": "high",
+          "salary": "high"
+        },
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "management"
+        ],
+        "target_salary": 180000,
+        "preferred_location": "Denver or Boulder",
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "management",
+        "weight_adjustments": {
+          "location": "high",
+          "salary": "high"
+        },
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q34",
+    "query": "Companies with good culture for junior developers",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": null,
+      "description_keywords": [
+        "junior developer"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "junior",
+          "junior developer",
+          "company culture"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "junior developer"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "junior developer",
+          "good culture"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q35",
+    "query": "Fast-paced startup environment with equity compensation",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": null,
+      "description_keywords": [
+        "fast-paced",
+        "startup"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "startup",
+          "fast-paced",
+          "equity"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "startup",
+          "fast-paced"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "startup",
+          "equity compensation"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q36",
+    "query": "Collaborative team working on distributed systems",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "backend",
+      "description_keywords": [
+        "distributed systems"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "majority",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "distributed systems",
+          "collaborative"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "backend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "distributed systems"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "backend",
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "distributed systems",
+          "collaborative team"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q37",
+    "query": "Mentorship-focused roles for career growth in engineering",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": null,
+      "description_keywords": [
+        "career growth",
+        "engineering",
+        "mentorship"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "majority",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "mentorship",
+          "career growth",
+          "engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "engineering",
+          "mentorship",
+          "career growth"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": [
+          "mentorship",
+          "career growth"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "management",
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  },
+  {
+    "query_id": "q38",
+    "query": "No PhD required ML positions, remote preferred",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": "remote",
+      "preferred_location": null,
+      "preferred_category": "data",
+      "description_keywords": [
+        "machine learning"
+      ],
+      "desired_tags": [
+        "machine learning"
+      ],
+      "weight_adjustments": {
+        "remote": "medium"
+      },
+      "hard_filters": [
+        {
+          "field": "degree_req",
+          "exclude": [
+            "phd"
+          ]
+        }
+      ]
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "machine learning"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Machine Learning"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "remote": "medium"
+        },
+        "hard_filters": [
+          {
+            "field": "degree_req",
+            "exclude": [
+              "phd"
+            ]
+          }
+        ]
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "machine learning"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Machine Learning"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "remote": "medium"
+        },
+        "hard_filters": [
+          {
+            "field": "degree_req",
+            "exclude": [
+              "phd"
+            ]
+          }
+        ]
+      },
+      "gemini": {
+        "description_keywords": [
+          "ML"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": "remote",
+        "desired_tags": [
+          "Machine Learning"
+        ],
+        "preferred_category": "data",
+        "weight_adjustments": {
+          "remote": "medium"
+        },
+        "hard_filters": [
+          {
+            "field": "degree_req",
+            "exclude": [
+              "phd"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "query_id": "q39",
+    "query": "Jobs that don't require a master's degree in data engineering",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": "data",
+      "description_keywords": [
+        "data engineering"
+      ],
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": [
+        {
+          "field": "degree_req",
+          "exclude": [
+            "master",
+            "phd"
+          ]
+        },
+        {
+          "field": "degree_req",
+          "exclude": [
+            "master"
+          ]
+        }
+      ]
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": [
+          "data engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "data",
+        "weight_adjustments": {},
+        "hard_filters": [
+          {
+            "field": "degree_req",
+            "exclude": [
+              "master",
+              "phd"
+            ]
+          }
+        ]
+      },
+      "chatgpt": {
+        "description_keywords": [
+          "data engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "data",
+        "weight_adjustments": {},
+        "hard_filters": [
+          {
+            "field": "degree_req",
+            "exclude": [
+              "master"
+            ]
+          }
+        ]
+      },
+      "gemini": {
+        "description_keywords": [
+          "data engineering"
+        ],
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": "data",
+        "weight_adjustments": {},
+        "hard_filters": [
+          {
+            "field": "degree_req",
+            "exclude": [
+              "master"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "query_id": "q40",
+    "query": "jobs",
+    "gold_preferences": {
+      "target_salary": null,
+      "remote_preference": null,
+      "preferred_location": null,
+      "preferred_category": null,
+      "description_keywords": null,
+      "desired_tags": null,
+      "weight_adjustments": {},
+      "hard_filters": []
+    },
+    "field_verdicts": {
+      "target_salary": "unanimous",
+      "remote_preference": "unanimous",
+      "preferred_location": "unanimous",
+      "preferred_category": "unanimous",
+      "description_keywords": "list_union≥2",
+      "desired_tags": "list_union≥2",
+      "weight_adjustments": "wa_vote",
+      "hard_filters": "hf_merge"
+    },
+    "raw_votes": {
+      "claude": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "chatgpt": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      },
+      "gemini": {
+        "description_keywords": null,
+        "target_salary": null,
+        "preferred_location": null,
+        "remote_preference": null,
+        "desired_tags": null,
+        "preferred_category": null,
+        "weight_adjustments": {},
+        "hard_filters": []
+      }
+    }
+  }
+]
