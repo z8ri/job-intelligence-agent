@@ -7,6 +7,13 @@ from openai import OpenAI
 MODEL = "gpt-4o-mini"
 EMBEDDING_MODEL = "text-embedding-3-small"
 
+# Explicit timeout/retry policy instead of relying on the SDK's undocumented
+# defaults. max_retries covers transient failures (429/5xx/connection errors)
+# with the SDK's built-in exponential backoff; callers only see an exception
+# once these retries are exhausted.
+DEFAULT_TIMEOUT = 20.0
+DEFAULT_MAX_RETRIES = 2
+
 _client: OpenAI | None = None
 
 
@@ -35,5 +42,5 @@ def get_client(api_key: str | None = None) -> OpenAI:
     global _client
     key = api_key or os.environ.get("OPENAI_API_KEY")
     if _client is None or (api_key and api_key != _client.api_key):
-        _client = OpenAI(api_key=key)
+        _client = OpenAI(api_key=key, timeout=DEFAULT_TIMEOUT, max_retries=DEFAULT_MAX_RETRIES)
     return _client

@@ -8,10 +8,12 @@ class PipelineState(TypedDict, total=False):
     user_query: str
     api_key: str | None
     session_id: str | None  # for cross-turn preference memory; None means single-turn, stateless
+    run_id: str  # correlates this run's LLM calls in the observability trace (src/observability.py)
 
     # After query_understanding
     is_job_query: bool   # False → route to reject node, skip retrieval
     needs_clarification: bool  # True → route to clarify node; too few fields filled, ask instead of guessing
+    llm_unavailable: bool  # True → route to llm_error node; the LLM call failed after all retries
     preferences: dict
     weights: dict
 

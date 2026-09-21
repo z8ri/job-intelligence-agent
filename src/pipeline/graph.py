@@ -1,12 +1,14 @@
 """
-LangGraph pipeline: 8 main nodes + 1 reject branch + 1 bounded retry loop.
+LangGraph pipeline: 8 main nodes + 3 short-circuit branches + 1 bounded retry loop.
 
 Flow:
-  query_understanding ──[is_job_query=True]──> query_expansion → candidate_loading
+  query_understanding ──[is_job_query=True, has signal]──> query_expansion → candidate_loading
                                               → unified_scoring → collection_fusion
                                               → verification ──[valid_count>0 or retried]──> classification → answer_generation → END
                                                              ──[valid_count==0 and retry_count<1]──> unified_scoring (retry, at most once)
-                       ──[is_job_query=False]─> reject → END
+                       ──[is_job_query=False]────────────> reject → END
+                       ──[cold start, exploratory, no signal]─> clarify → END
+                       ──[LLM call failed after retries]───> llm_error → END
 
 Nodes:
   1. query_understanding  — LLM extracts structured preferences AND classifies intent
@@ -16,11 +18,14 @@ Nodes:
   5. collection_fusion    — normalize scores across sources, top-K
   6. verification         — mark valid/rejected/unknown; if 0 valid, retry once (switch retrieval strategy, never relax hard filters)
   7. classification       — predict job category (fallback if model absent)
-  8. answer_generation    — LLM generates natural language answer
+  8. answer_generation    — LLM generates natural language answer; degrades to a template listing if this LLM call fails after retries
   R. reject               — produce a polite refusal for non-job queries
+  C. clarify              — ask a clarifying question instead of guessing on a true cold start
+  E. llm_error            — honest failure message when query_understanding's LLM call never succeeded
 """
 
 import sys
+import uuid
 
 from langgraph.graph import StateGraph, END
 
@@ -33,7 +38,7 @@ from src.db.memory import load_memory, save_memory, merge_preferences
 from src.scoring.fusion import fuse_and_rank
 from src.scoring.reranker import rerank
 from src.scoring.verifier import verify_jobs
-from src.llm.answer_generation import generate_answer
+from src.llm.answer_generation import generate_answer, format_fallback_answer
 from src.classification.classifier import JobClassifier
 
 # Retrieval + query expansion
@@ -142,8 +147,16 @@ def node_query_understanding(state: PipelineState) -> dict:
     preferences still carry no usable signal at all. The exploratory mode is
     designed to handle vague queries, so vagueness alone must not trigger
     clarification, or the upstream work is wasted.
+
+    If the LLM call fails even after the client's built-in retries (timeout,
+    rate limit, or repeated invalid JSON), route to llm_error instead of
+    guessing at preferences from an empty/default state.
     """
-    result = parse_preferences(state["user_query"], state.get("api_key"))
+    try:
+        result = parse_preferences(state["user_query"], state.get("api_key"), run_id=state.get("run_id"))
+    except Exception as e:
+        print(f"[query_understanding] LLM call failed after retries: {e}", file=sys.stderr)
+        return {"llm_unavailable": True}
     prefs = result["preferences"]
     is_job_query = bool(prefs.get("is_job_query", True))
 
@@ -168,6 +181,17 @@ def node_query_understanding(state: PipelineState) -> dict:
         "preferences": prefs,
         "weights": result["weights"],
     }
+
+
+def node_llm_error(state: PipelineState) -> dict:
+    """Honest failure message when query understanding's LLM call never succeeded,
+    even after retries. Does not guess at preferences from an empty state."""
+    msg = (
+        "Sorry, I'm having trouble reaching the language model service right now "
+        "(the request timed out or failed after automatic retries). Please try again "
+        "in a moment."
+    )
+    return {"answer": msg, "classified_jobs": []}
 
 
 def node_reject(state: PipelineState) -> dict:
@@ -277,7 +301,7 @@ def node_unified_scoring(state: PipelineState) -> dict:
         ranked_candidates = sorted(
             state["candidates"], key=lambda j: text_scores.get(j["job_id"], 0.0), reverse=True
         )
-        reranked = rerank(state["user_query"], ranked_candidates, api_key=state.get("api_key"))
+        reranked = rerank(state["user_query"], ranked_candidates, api_key=state.get("api_key"), run_id=state.get("run_id"))
         text_scores.update(reranked)  # only the reranked Top-N are overwritten; the rest keep their coarse scores
 
     weight_adjustments = prefs.get("weight_adjustments") or {}
@@ -371,13 +395,23 @@ def node_classification(state: PipelineState) -> dict:
 
 
 def node_answer_generation(state: PipelineState) -> dict:
-    """Generate natural language answer via LLM."""
-    answer = generate_answer(
-        user_query=state["user_query"],
-        ranked_jobs=state["classified_jobs"],
-        preferences=state.get("preferences"),
-        api_key=state.get("api_key"),
-    )
+    """Generate natural language answer via LLM.
+
+    Retrieval, ranking, and verification have already succeeded by this point,
+    so a failure here (after retries) degrades to a template listing of the
+    same ranked results instead of discarding them.
+    """
+    try:
+        answer = generate_answer(
+            user_query=state["user_query"],
+            ranked_jobs=state["classified_jobs"],
+            preferences=state.get("preferences"),
+            api_key=state.get("api_key"),
+            run_id=state.get("run_id"),
+        )
+    except Exception as e:
+        print(f"[answer_generation] LLM call failed after retries: {e}", file=sys.stderr)
+        answer = format_fallback_answer(state["classified_jobs"])
     return {"answer": answer}
 
 
@@ -386,7 +420,9 @@ def node_answer_generation(state: PipelineState) -> dict:
 # ---------------------------------------------------------------------------
 
 def _route_after_understanding(state: PipelineState) -> str:
-    """Route to retrieval / reject / clarify based on is_job_query + needs_clarification."""
+    """Route to retrieval / reject / clarify / llm_error based on query_understanding's outcome."""
+    if state.get("llm_unavailable"):
+        return "llm_error"
     if not state.get("is_job_query", True):
         return "reject"
     if state.get("needs_clarification"):
@@ -408,12 +444,18 @@ def build_graph():
     graph.add_node("answer_generation", node_answer_generation)
     graph.add_node("reject", node_reject)
     graph.add_node("clarify", node_clarify)
+    graph.add_node("llm_error", node_llm_error)
 
     graph.set_entry_point("query_understanding")
     graph.add_conditional_edges(
         "query_understanding",
         _route_after_understanding,
-        {"query_expansion": "query_expansion", "reject": "reject", "clarify": "clarify"},
+        {
+            "query_expansion": "query_expansion",
+            "reject": "reject",
+            "clarify": "clarify",
+            "llm_error": "llm_error",
+        },
     )
     graph.add_edge("query_expansion", "candidate_loading")
     graph.add_edge("candidate_loading", "unified_scoring")
@@ -428,6 +470,7 @@ def build_graph():
     graph.add_edge("answer_generation", END)
     graph.add_edge("reject", END)
     graph.add_edge("clarify", END)
+    graph.add_edge("llm_error", END)
 
     return graph.compile()
 
@@ -465,6 +508,7 @@ def run_pipeline(
         "top_k": top_k,
         "config": config or {},
         "session_id": session_id,
+        "run_id": str(uuid.uuid4()),
     }
     return app.invoke(initial_state)
 

@@ -9,6 +9,7 @@ retrieval or ranking.
 import json
 
 from src.llm import MODEL, get_client
+from src.observability import log_call, timed_call
 MAX_RETRIES = 2
 
 SYSTEM_PROMPT = """\
@@ -352,13 +353,14 @@ def compute_weights(weight_adjustments: dict) -> dict[str, float]:
     return weights
 
 
-def parse_preferences(user_query: str, api_key: str | None = None) -> dict:
+def parse_preferences(user_query: str, api_key: str | None = None, run_id: str | None = None) -> dict:
     """
     Main entry point: convert the user's natural-language query into a structured preference JSON.
 
     Args:
         user_query: the user's natural-language query
         api_key: OpenAI API key; falls back to the OPENAI_API_KEY env var if omitted
+        run_id: pipeline run identifier, threaded through to the observability trace
 
     Returns:
         A dict with preferences and weights:
@@ -379,11 +381,21 @@ def parse_preferences(user_query: str, api_key: str | None = None) -> dict:
     for attempt in range(1 + MAX_RETRIES):
         messages = _build_messages(user_query, error_feedback)
 
-        response = client.chat.completions.create(
-            model=MODEL,
-            messages=messages,
-            temperature=0.0,
-            max_tokens=512,
+        try:
+            with timed_call() as t:
+                response = client.chat.completions.create(
+                    model=MODEL,
+                    messages=messages,
+                    temperature=0.0,
+                    max_tokens=512,
+                )
+        except Exception as e:
+            log_call(run_id, "query_understanding", MODEL, t.elapsed_ms, success=False, error=str(e))
+            raise
+        usage = response.usage
+        log_call(
+            run_id, "query_understanding", MODEL, t.elapsed_ms,
+            prompt_tokens=usage.prompt_tokens, completion_tokens=usage.completion_tokens,
         )
 
         raw = response.choices[0].message.content.strip()
@@ -415,6 +427,7 @@ def parse_preferences(user_query: str, api_key: str | None = None) -> dict:
             "raw_response": last_raw,
         }
 
+    log_call(run_id, "query_understanding", MODEL, 0.0, success=False, error=f"exhausted retries: {error_feedback}")
     raise ValueError(
         f"Failed to get valid preferences after {1 + MAX_RETRIES} attempts. "
         f"Last error: {error_feedback}\nLast response: {last_raw}"

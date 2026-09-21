@@ -35,6 +35,18 @@ class TestRouteAfterUnderstanding:
         state = {"needs_clarification": False}
         assert _route_after_understanding(state) == "query_expansion"
 
+    def test_llm_unavailable_routes_to_llm_error_regardless_of_other_fields(self):
+        # node_query_understanding only sets llm_unavailable (is_job_query/
+        # needs_clarification are absent in that case) — but even if they were
+        # somehow both set, llm_unavailable must win: there's no real
+        # preferences to route on.
+        state = {"llm_unavailable": True, "is_job_query": True, "needs_clarification": True}
+        assert _route_after_understanding(state) == "llm_error"
+
+    def test_llm_unavailable_false_does_not_affect_normal_routing(self):
+        state = {"llm_unavailable": False, "is_job_query": True, "needs_clarification": False}
+        assert _route_after_understanding(state) == "query_expansion"
+
 
 class TestRouteAfterVerification:
     def test_should_retry_true_routes_to_retry(self):

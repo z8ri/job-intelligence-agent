@@ -11,6 +11,7 @@ first-stage scores.
 import json
 
 from src.llm import MODEL, get_client
+from src.observability import log_call, timed_call
 
 RERANK_TOP_N = 50
 # Many job descriptions open with company boilerplate ("XX is growing our team
@@ -36,6 +37,7 @@ def rerank(
     candidates: list[dict],
     top_n: int = RERANK_TOP_N,
     api_key: str | None = None,
+    run_id: str | None = None,
 ) -> dict[str, float]:
     """LLM-rerank the first top_n candidates and return {job_id: score}.
 
@@ -59,20 +61,28 @@ def rerank(
     ]
     valid_ids = {c["job_id"] for c in subset}
 
+    t = None
     try:
         client = get_client(api_key)
-        resp = client.chat.completions.create(
-            model=MODEL,
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": f"Query: {query}\n\nJobs:\n{json.dumps(listing)}"},
-            ],
-            temperature=0.0,
-            response_format={"type": "json_object"},
-        )
+        with timed_call() as t:
+            resp = client.chat.completions.create(
+                model=MODEL,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": f"Query: {query}\n\nJobs:\n{json.dumps(listing)}"},
+                ],
+                temperature=0.0,
+                response_format={"type": "json_object"},
+            )
+        usage = resp.usage
         data = json.loads(resp.choices[0].message.content)
-    except Exception:
+    except Exception as e:
+        log_call(run_id, "reranker", MODEL, getattr(t, "elapsed_ms", 0.0), success=False, error=str(e))
         return {}
+    log_call(
+        run_id, "reranker", MODEL, t.elapsed_ms,
+        prompt_tokens=usage.prompt_tokens, completion_tokens=usage.completion_tokens,
+    )
 
     if not isinstance(data, dict):
         return {}

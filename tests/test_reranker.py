@@ -19,6 +19,7 @@ def _fake_client(content: str):
     client = MagicMock()
     resp = MagicMock()
     resp.choices = [MagicMock(message=MagicMock(content=content))]
+    resp.usage = MagicMock(prompt_tokens=100, completion_tokens=20)
     client.chat.completions.create.return_value = resp
     return client
 

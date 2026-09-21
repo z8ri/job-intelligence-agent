@@ -17,6 +17,7 @@ This standalone repository was extracted from the course repository on 2026-09-1
 ```mermaid
 flowchart LR
     Q[user query] --> QU["query_understanding<br/>+ retrieval_mode classification<br/>+ cross-turn memory merge"]
+    QU -- LLM call failed after retries --> LE[llm_error]
     QU -- not a job query --> RJ[reject]
     QU -- signal-free cold start --> CL[clarify]
     QU -- else --> QE[query_expansion] --> CA[candidate_loading]
@@ -61,6 +62,8 @@ Full methodology and per-query results in `data/eval_results_vnext/`.
 - **Verifier + bounded retry** — rule-based, no extra LLM cost, catches what a relevance score can't (`src/scoring/verifier.py`).
 - **Cross-turn preference memory** — session-scoped MySQL merge, built without LangGraph's interrupt/checkpointer machinery (`src/db/memory.py`).
 - **Domain-original scoring** — asymmetric-decay salary scoring, tiered location proximity with a hand-built US-metro lookup table, and query-adaptive weight renormalization, all pre-dating the LLM/retrieval layer above (`src/scoring/engine.py`).
+- **Resilient LLM calls + lightweight observability** — explicit timeout/retry on every OpenAI call, honest short-circuits when the LLM is unavailable (query understanding fails loudly; answer generation degrades to a template listing), and a JSONL trace of latency/tokens/estimated cost per call, no external tracing dependency (`src/llm/__init__.py`, `src/observability.py`, sample trace in `data/sample_pipeline_trace.jsonl`).
+- **Grounded answer generation** — the final LLM call supplies only the subjective per-job narrative (structured JSON keyed by `job_id`); company/title/location/salary/tags are rendered straight from the retrieved record, so the model can't introduce a job that wasn't retrieved or misstate a fact for one that was. A best-effort regex fact-check flags a narrative that states a salary figure outside the job's real range (`src/llm/answer_generation.py`).
 
 ## Demo
 
@@ -101,9 +104,10 @@ pytest tests/
 │   ├── ir/               # TF-IDF / BM25 / Dense retrieval + RRF fusion + Query Expansion
 │   ├── scoring/          # Multi-field scoring engine + Collection Fusion + LLM reranker + Verifier
 │   ├── classification/  # Vector centroid classifier
-│   ├── llm/              # LLM query understanding (incl. retrieval-mode classification) + answer generation
-│   └── pipeline/         # LangGraph pipeline orchestration (Planner, verification retry, clarify/reject)
-├── data/                 # Static resources + eval outputs (data/eval_results/ is the historical, already-graded baseline; data/eval_results_vnext/ is the post-vNext measurement — kept separate on purpose)
+│   ├── llm/              # LLM query understanding (incl. retrieval-mode classification) + grounded answer generation
+│   ├── pipeline/         # LangGraph pipeline orchestration (Planner, verification retry, clarify/reject/llm_error)
+│   └── observability.py  # Per-call latency/token/cost trace (JSONL, no external tracing dependency)
+├── data/                 # Static resources + eval outputs (data/eval_results/ is the historical, already-graded baseline; data/eval_results_vnext/ is the post-vNext measurement — kept separate on purpose; data/sample_pipeline_trace.jsonl is a real captured observability trace)
 ├── tests/                # Unit tests (offline — external calls are mocked)
 └── .github/workflows/    # CI
 ```

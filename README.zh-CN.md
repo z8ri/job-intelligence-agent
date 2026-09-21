@@ -17,6 +17,7 @@
 ```mermaid
 flowchart LR
     Q[用户查询] --> QU["query_understanding<br/>+ retrieval_mode 分类<br/>+ 跨轮记忆合并"]
+    QU -- LLM调用重试后仍失败 --> LE[llm_error]
     QU -- 非求职query --> RJ[reject]
     QU -- 冷启动且无信号 --> CL[clarify 反问]
     QU -- 其他 --> QE[query_expansion] --> CA[candidate_loading]
@@ -61,6 +62,8 @@ Pooled evaluation，40 条测试 query。**相关性标注由三个 LLM 评审�
 - **Verifier + 有限重试** —— 纯规则判断，不产生额外 LLM 调用，专门抓相似度分数抓不住的问题（`src/scoring/verifier.py`）。
 - **跨轮偏好记忆** —— 基于 MySQL 的会话级合并，没有用 LangGraph 自带的 interrupt/checkpointer 机制（`src/db/memory.py`）。
 - **领域原创打分设计** —— 非对称衰减薪资打分、基于手工建表的美国都市圈分级地理邻近度、query 自适应权重归一化，这些都是在上面这层 LLM/检索之前就已经存在的原创设计（`src/scoring/engine.py`）。
+- **LLM 调用的容错 + 轻量可观测性** —— 每次 OpenAI 调用都显式配置了超时/重试；LLM 彻底不可用时诚实短路（查询理解直接报错、答案生成降级成结构化列表），并把每次调用的延迟/token/预估成本记录成 JSONL trace，没有引入外部追踪服务的依赖（`src/llm/__init__.py`、`src/observability.py`，示例 trace 见 `data/sample_pipeline_trace.jsonl`）。
+- **答案生成的事实溯源** —— 最后一步 LLM 调用只负责生成"为什么匹配"这段主观叙述（按 `job_id` 归属的结构化 JSON）；公司/职位/地点/薪资/标签这些客观事实完全由代码从检索结果直接渲染，模型没有机会引用一个没被检索到的职位，也没法在已检索职位上说错客观事实。一个基于正则的事后核验会标记出叙述文字里提到的、超出该职位真实薪资范围的数字（`src/llm/answer_generation.py`）。
 
 ## Demo
 
@@ -101,9 +104,10 @@ pytest tests/
 │   ├── ir/               # TF-IDF / BM25 / Dense 检索 + RRF 融合 + 查询扩展
 │   ├── scoring/          # 多字段评分引擎 + Collection Fusion + LLM 精排 + Verifier
 │   ├── classification/  # 向量质心分类器
-│   ├── llm/              # LLM 查询理解（含检索模式分类）+ 回答生成
-│   └── pipeline/         # LangGraph 流水线编排（Planner、验证重试、反问/拒绝）
-├── data/                 # 静态资源 + 评估产物（data/eval_results/ 是已交付课程报告用的历史 baseline；data/eval_results_vnext/ 是 vNext 之后的实测数据——刻意分开存放）
+│   ├── llm/              # LLM 查询理解（含检索模式分类）+ 事实溯源的回答生成
+│   ├── pipeline/         # LangGraph 流水线编排（Planner、验证重试、反问/拒绝/llm_error）
+│   └── observability.py  # 每次调用的延迟/token/成本 trace（JSONL，不依赖外部追踪服务）
+├── data/                 # 静态资源 + 评估产物（data/eval_results/ 是已交付课程报告用的历史 baseline；data/eval_results_vnext/ 是 vNext 之后的实测数据——刻意分开存放；data/sample_pipeline_trace.jsonl 是一份真实抓取的可观测性 trace 示例）
 ├── tests/                # 单元测试（离线——外部调用全部 mock）
 └── .github/workflows/    # CI
 ```
