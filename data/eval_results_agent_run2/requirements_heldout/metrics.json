@@ -1,0 +1,477 @@
+{
+ "metrics": {
+  "strict": {
+   "all": {
+    "requests": 24,
+    "tp": 66,
+    "fp": 20,
+    "fn": 16,
+    "precision": 0.767,
+    "recall": 0.805,
+    "f1": 0.786,
+    "exact_correct": 6,
+    "exact_rate": 0.25
+   },
+   "without_schema_gap_requests": {
+    "requests": 17,
+    "tp": 53,
+    "fp": 13,
+    "fn": 13,
+    "precision": 0.803,
+    "recall": 0.803,
+    "f1": 0.803,
+    "exact_correct": 5,
+    "exact_rate": 0.294
+   }
+  },
+  "nostrength": {
+   "all": {
+    "requests": 24,
+    "tp": 68,
+    "fp": 18,
+    "fn": 14,
+    "precision": 0.791,
+    "recall": 0.829,
+    "f1": 0.81,
+    "exact_correct": 6,
+    "exact_rate": 0.25
+   },
+   "without_schema_gap_requests": {
+    "requests": 17,
+    "tp": 55,
+    "fp": 11,
+    "fn": 11,
+    "precision": 0.833,
+    "recall": 0.833,
+    "f1": 0.833,
+    "exact_correct": 5,
+    "exact_rate": 0.294
+   }
+  },
+  "nofield": {
+   "all": {
+    "requests": 24,
+    "tp": 70,
+    "fp": 16,
+    "fn": 12,
+    "precision": 0.814,
+    "recall": 0.854,
+    "f1": 0.833,
+    "exact_correct": 7,
+    "exact_rate": 0.292
+   },
+   "without_schema_gap_requests": {
+    "requests": 17,
+    "tp": 57,
+    "fp": 9,
+    "fn": 9,
+    "precision": 0.864,
+    "recall": 0.864,
+    "f1": 0.864,
+    "exact_correct": 6,
+    "exact_rate": 0.353
+   }
+  },
+  "clarification": {
+   "expected": 5,
+   "raised_when_expected": 2,
+   "raised_when_not_expected": 1,
+   "not_expected_total": 19
+  },
+  "salary_basis_invented": {
+   "matched_salary_conditions_without_stated_basis": 6,
+   "parser_added_a_basis": 0
+  },
+  "forbidden_hard_violations": 2
+ },
+ "per_request": {
+  "h01": {
+   "tp": 3,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": true
+  },
+  "h02": {
+   "tp": 4,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": true
+  },
+  "h03": {
+   "tp": 3,
+   "fn": 0,
+   "fp": 1,
+   "missing": [],
+   "extras": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "推荐系统"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h04": {
+   "tp": 2,
+   "fn": 1,
+   "fp": 2,
+   "missing": [
+    "Senior"
+   ],
+   "extras": [
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Austin or fully remote"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "hard",
+     "quote": "fully remote"
+    }
+   ],
+   "forbidden_hard": [
+    "work_region",
+    "remote_mode"
+   ],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h05": {
+   "tp": 3,
+   "fn": 1,
+   "fp": 0,
+   "missing": [
+    "B2B SaaS company"
+   ],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h06": {
+   "tp": 2,
+   "fn": 2,
+   "fp": 1,
+   "missing": [
+    "Junior",
+    "work from home most days"
+   ],
+   "extras": [
+    {
+     "field": "remote_mode",
+     "strength": "soft",
+     "quote": "I would like to work from home most days"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h07": {
+   "tp": 2,
+   "fn": 1,
+   "fp": 2,
+   "missing": [
+    "PhD preferred"
+   ],
+   "extras": [
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "reinforcement learning"
+    },
+    {
+     "field": "seniority",
+     "strength": "soft",
+     "quote": "PhD preferred"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h08": {
+   "tp": 3,
+   "fn": 1,
+   "fp": 0,
+   "missing": [
+    "technical recruiter"
+   ],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h09": {
+   "tp": 3,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": true
+  },
+  "h10": {
+   "tp": 1,
+   "fn": 1,
+   "fp": 1,
+   "missing": [
+    "not the west coast"
+   ],
+   "extras": [
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "not the west coast"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h11": {
+   "tp": 3,
+   "fn": 1,
+   "fp": 0,
+   "missing": [
+    "Rust"
+   ],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h12": {
+   "tp": 5,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": true
+  },
+  "h13": {
+   "tp": 5,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": true
+  },
+  "h14": {
+   "tp": 3,
+   "fn": 0,
+   "fp": 2,
+   "missing": [],
+   "extras": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "pre-sales"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "soft",
+     "quote": "Boston or New York"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h15": {
+   "tp": 4,
+   "fn": 1,
+   "fp": 2,
+   "missing": [
+    "hybrid"
+   ],
+   "extras": [
+    {
+     "field": "employment_type",
+     "strength": "hard",
+     "quote": "hybrid"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "soft",
+     "quote": "hybrid"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h16": {
+   "tp": 2,
+   "fn": 3,
+   "fp": 1,
+   "missing": [
+    "Staff",
+    "in the US",
+    "not interested in consulting firms"
+   ],
+   "extras": [
+    {
+     "field": "other",
+     "strength": "hard",
+     "quote": "not interested in consulting firms"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h17": {
+   "tp": 0,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": false,
+   "exact": false
+  },
+  "h18": {
+   "tp": 2,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": true
+  },
+  "h19": {
+   "tp": 3,
+   "fn": 0,
+   "fp": 1,
+   "missing": [],
+   "extras": [
+    {
+     "field": "remote_mode",
+     "strength": "soft",
+     "quote": "willing to relocate from Toronto"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h20": {
+   "tp": 2,
+   "fn": 1,
+   "fp": 1,
+   "missing": [
+    "only speak English and Spanish"
+   ],
+   "extras": [
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "I only speak English and Spanish"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h21": {
+   "tp": 3,
+   "fn": 1,
+   "fp": 0,
+   "missing": [
+    "Kubernetes"
+   ],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  },
+  "h22": {
+   "tp": 1,
+   "fn": 0,
+   "fp": 3,
+   "missing": [],
+   "extras": [
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "London, anything above $200k, or Zurich"
+    },
+    {
+     "field": "salary",
+     "strength": "hard",
+     "quote": "anything above $200k, or Zurich at 250k"
+    },
+    {
+     "field": "salary",
+     "strength": "hard",
+     "quote": "Zurich at 250k"
+    }
+   ],
+   "forbidden_hard": [
+    "work_region",
+    "salary",
+    "salary"
+   ],
+   "clarification_ok": false,
+   "exact": false
+  },
+  "h23": {
+   "tp": 4,
+   "fn": 0,
+   "fp": 1,
+   "missing": [],
+   "extras": [
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "Selenium or Cypress"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": false,
+   "exact": false
+  },
+  "h24": {
+   "tp": 3,
+   "fn": 2,
+   "fp": 2,
+   "missing": [
+    "generalist full-stack",
+    "Startup"
+   ],
+   "extras": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Startup engineer"
+    },
+    {
+     "field": "employment_type",
+     "strength": "hard",
+     "quote": "full-stack"
+    }
+   ],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": false
+  }
+ }
+}

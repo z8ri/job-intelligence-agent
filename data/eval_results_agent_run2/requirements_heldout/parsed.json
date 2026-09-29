@@ -1,0 +1,1263 @@
+{
+ "h01": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Data scientist working on fraud detection"
+    },
+    "quote": "Data scientist working on fraud detection",
+    "weight": null,
+    "id": "role_focus:7d5fe215"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Chicago"
+     ]
+    },
+    "quote": "Chicago",
+    "weight": null,
+    "id": "work_region:9ac16f66"
+   },
+   {
+    "field": "salary",
+    "strength": "hard",
+    "value": {
+     "kind": "salary",
+     "currency": "USD",
+     "period": "year",
+     "basis": "unspecified",
+     "min_amount": 140000.0,
+     "region": null
+    },
+    "quote": "at least $140k",
+    "weight": null,
+    "id": "salary:4c14aad4"
+   }
+  ],
+  "clarifications": []
+ },
+ "h02": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "DevOps role"
+    },
+    "quote": "DevOps role",
+    "weight": null,
+    "id": "role_focus:70e5e967"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Terraform"
+    },
+    "quote": "Terraform",
+    "weight": null,
+    "id": "skill:edf5db39"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "AWS"
+    },
+    "quote": "AWS",
+    "weight": null,
+    "id": "skill:a2687520"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "hard",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "remote"
+     ]
+    },
+    "quote": "remote",
+    "weight": null,
+    "id": "remote_mode:b07a06ba"
+   },
+   {
+    "field": "employment_type",
+    "strength": "soft",
+    "value": {
+     "kind": "employment",
+     "types": [
+      "contract",
+      "full_time"
+     ]
+    },
+    "quote": "contract or full-time is fine",
+    "weight": 0.5,
+    "id": "employment_type:8b43493c"
+   }
+  ],
+  "clarifications": []
+ },
+ "h03": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "algorithm engineer"
+    },
+    "quote": "算法工程师",
+    "weight": null,
+    "id": "role_focus:520151bb"
+   },
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "recommendation system"
+    },
+    "quote": "推荐系统",
+    "weight": null,
+    "id": "role_focus:7adbff58"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Beijing"
+     ]
+    },
+    "quote": "北京的",
+    "weight": null,
+    "id": "work_region:235d1199"
+   },
+   {
+    "field": "salary",
+    "strength": "hard",
+    "value": {
+     "kind": "salary",
+     "currency": "CNY",
+     "period": "year",
+     "basis": "unspecified",
+     "min_amount": 500000.0,
+     "region": null
+    },
+    "quote": "年薪 50 万人民币以上",
+    "weight": null,
+    "id": "salary:05b82e70"
+   }
+  ],
+  "clarifications": []
+ },
+ "h04": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Senior iOS engineer"
+    },
+    "quote": "Senior iOS engineer",
+    "weight": null,
+    "id": "role_focus:3c1892bd"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Swift"
+    },
+    "quote": "Swift",
+    "weight": null,
+    "id": "skill:c60e5c1a"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Austin"
+     ]
+    },
+    "quote": "Austin or fully remote",
+    "weight": null,
+    "id": "work_region:d1e804c2"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "hard",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "remote"
+     ]
+    },
+    "quote": "fully remote",
+    "weight": null,
+    "id": "remote_mode:b07a06ba"
+   }
+  ],
+  "clarifications": [
+   {
+    "question": "Are you looking for a job in Austin, or are you open to fully remote positions?",
+    "reason": "The request mentions both Austin and fully remote, which could affect the job search criteria.",
+    "options": [
+     "Austin",
+     "fully remote"
+    ],
+    "affects": [
+     "work_region",
+     "remote_mode"
+    ]
+   }
+  ]
+ },
+ "h05": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Product manager for a B2B SaaS company"
+    },
+    "quote": "Product manager for a B2B SaaS company",
+    "weight": null,
+    "id": "role_focus:0cb987bc"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Seattle"
+     ]
+    },
+    "quote": "Seattle",
+    "weight": null,
+    "id": "work_region:314850e3"
+   },
+   {
+    "field": "other",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "no travel"
+    },
+    "quote": "no travel",
+    "weight": null,
+    "id": "other:a80f0d83"
+   }
+  ],
+  "clarifications": []
+ },
+ "h06": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Junior frontend developer"
+    },
+    "quote": "Junior frontend developer",
+    "weight": null,
+    "id": "role_focus:19db6e4e"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Vue"
+    },
+    "quote": "Vue",
+    "weight": null,
+    "id": "skill:ea3fe0ca"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "soft",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "remote"
+     ]
+    },
+    "quote": "I would like to work from home most days",
+    "weight": 0.7,
+    "id": "remote_mode:b07a06ba"
+   }
+  ],
+  "clarifications": []
+ },
+ "h07": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Machine learning researcher"
+    },
+    "quote": "Machine learning researcher",
+    "weight": null,
+    "id": "role_focus:5a5a0af4"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "reinforcement learning"
+    },
+    "quote": "reinforcement learning",
+    "weight": null,
+    "id": "skill:c730038d"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Zurich",
+      "London"
+     ]
+    },
+    "quote": "Zurich or London",
+    "weight": null,
+    "id": "work_region:0aac2f94"
+   },
+   {
+    "field": "seniority",
+    "strength": "soft",
+    "value": {
+     "kind": "experience",
+     "level": null,
+     "max_years_required": null
+    },
+    "quote": "PhD preferred",
+    "weight": 0.6,
+    "id": "seniority:97a802b2"
+   }
+  ],
+  "clarifications": []
+ },
+ "h08": {
+  "conditions": [
+   {
+    "field": "employment_type",
+    "strength": "hard",
+    "value": {
+     "kind": "employment",
+     "types": [
+      "part_time",
+      "contract"
+     ]
+    },
+    "quote": "Part-time or freelance",
+    "weight": null,
+    "id": "employment_type:f4e02b88"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "hard",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "remote"
+     ]
+    },
+    "quote": "remote",
+    "weight": null,
+    "id": "remote_mode:b07a06ba"
+   },
+   {
+    "field": "salary",
+    "strength": "hard",
+    "value": {
+     "kind": "salary",
+     "currency": "USD",
+     "period": "hour",
+     "basis": "unspecified",
+     "min_amount": 50.0,
+     "region": null
+    },
+    "quote": "$50/hour or more",
+    "weight": null,
+    "id": "salary:47026b53"
+   }
+  ],
+  "clarifications": []
+ },
+ "h09": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Cloud security architect"
+    },
+    "quote": "Cloud security architect",
+    "weight": null,
+    "id": "role_focus:3cfebf49"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Washington DC"
+     ]
+    },
+    "quote": "Washington DC",
+    "weight": null,
+    "id": "work_region:271357dd"
+   },
+   {
+    "field": "other",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "active security clearance required"
+    },
+    "quote": "active security clearance required",
+    "weight": null,
+    "id": "other:890dab06"
+   }
+  ],
+  "clarifications": []
+ },
+ "h10": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "robotics software"
+    },
+    "quote": "Anything in robotics software",
+    "weight": null,
+    "id": "role_focus:0419bec7"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "not the west coast"
+     ]
+    },
+    "quote": "not the west coast",
+    "weight": null,
+    "id": "work_region:b341306c"
+   }
+  ],
+  "clarifications": [
+   {
+    "question": "What specific locations are you considering for the job?",
+    "reason": "The user is flexible on location but has excluded the west coast, which requires clarification on acceptable regions.",
+    "options": [
+     "Midwest",
+     "South",
+     "Northeast",
+     "Southeast",
+     "International"
+    ],
+    "affects": [
+     "work_region"
+    ]
+   }
+  ]
+ },
+ "h11": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Backend engineer with Rust"
+    },
+    "quote": "Backend engineer with Rust",
+    "weight": null,
+    "id": "role_focus:e4649bd7"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "hard",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "remote"
+     ]
+    },
+    "quote": "remote",
+    "weight": null,
+    "id": "remote_mode:b07a06ba"
+   },
+   {
+    "field": "other",
+    "strength": "soft",
+    "value": {
+     "kind": "text",
+     "text": "companies that publish their salary"
+    },
+    "quote": "prefer companies that publish their salary",
+    "weight": 0.6,
+    "id": "other:91ecbb90"
+   }
+  ],
+  "clarifications": []
+ },
+ "h12": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Data analyst"
+    },
+    "quote": "Data analyst",
+    "weight": null,
+    "id": "role_focus:84462c2a"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "SQL"
+    },
+    "quote": "SQL",
+    "weight": null,
+    "id": "skill:c5dcab3c"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Tableau"
+    },
+    "quote": "Tableau",
+    "weight": null,
+    "id": "skill:8ee5fa7d"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Denver"
+     ]
+    },
+    "quote": "Denver",
+    "weight": null,
+    "id": "work_region:10852200"
+   },
+   {
+    "field": "seniority",
+    "strength": "hard",
+    "value": {
+     "kind": "experience",
+     "level": "entry",
+     "max_years_required": 2
+    },
+    "quote": "entry level, no more than 2 years experience required",
+    "weight": null,
+    "id": "seniority:3c47d221"
+   }
+  ],
+  "clarifications": []
+ },
+ "h13": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "front-end development"
+    },
+    "quote": "前端开发",
+    "weight": null,
+    "id": "role_focus:b61e6016"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "React"
+    },
+    "quote": "React",
+    "weight": null,
+    "id": "skill:22cf3c49"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Shenzhen"
+     ]
+    },
+    "quote": "深圳",
+    "weight": null,
+    "id": "work_region:3e4df8a6"
+   },
+   {
+    "field": "salary",
+    "strength": "hard",
+    "value": {
+     "kind": "salary",
+     "currency": "CNY",
+     "period": "month",
+     "basis": "unspecified",
+     "min_amount": 20000.0,
+     "region": "Shenzhen"
+    },
+    "quote": "月薪 2 万人民币起",
+    "weight": null,
+    "id": "salary:2022b047"
+   },
+   {
+    "field": "other",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "not 996"
+    },
+    "quote": "不要 996",
+    "weight": null,
+    "id": "other:cff2dd90"
+   }
+  ],
+  "clarifications": []
+ },
+ "h14": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Solutions architect"
+    },
+    "quote": "Solutions architect",
+    "weight": null,
+    "id": "role_focus:33c6b131"
+   },
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "pre-sales"
+    },
+    "quote": "pre-sales",
+    "weight": null,
+    "id": "role_focus:4d17a9e9"
+   },
+   {
+    "field": "other",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "healthcare industry"
+    },
+    "quote": "healthcare industry",
+    "weight": null,
+    "id": "other:d9b9ce84"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Boston",
+      "New York"
+     ]
+    },
+    "quote": "Boston or New York",
+    "weight": null,
+    "id": "work_region:8b691ba1"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "soft",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "remote"
+     ]
+    },
+    "quote": "Boston or New York",
+    "weight": 0.5,
+    "id": "remote_mode:b07a06ba"
+   }
+  ],
+  "clarifications": [
+   {
+    "question": "What is your preferred work arrangement?",
+    "reason": "The request mentions both Boston and New York, which could imply a preference for either location or a willingness to work remotely.",
+    "options": [
+     "Boston",
+     "New York",
+     "Remote"
+    ],
+    "affects": [
+     "work_region",
+     "remote_mode"
+    ]
+   }
+  ]
+ },
+ "h15": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Embedded firmware engineer"
+    },
+    "quote": "Embedded firmware engineer",
+    "weight": null,
+    "id": "role_focus:21edd8a7"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "C"
+    },
+    "quote": "C",
+    "weight": null,
+    "id": "skill:3d7408b8"
+   },
+   {
+    "field": "employment_type",
+    "strength": "hard",
+    "value": {
+     "kind": "employment",
+     "types": [
+      "full_time"
+     ]
+    },
+    "quote": "hybrid",
+    "weight": null,
+    "id": "employment_type:43e5af28"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Munich"
+     ]
+    },
+    "quote": "Munich",
+    "weight": null,
+    "id": "work_region:f51cbc9f"
+   },
+   {
+    "field": "salary",
+    "strength": "hard",
+    "value": {
+     "kind": "salary",
+     "currency": "EUR",
+     "period": "year",
+     "basis": "unspecified",
+     "min_amount": 70000.0,
+     "region": null
+    },
+    "quote": "at least 70k euros",
+    "weight": null,
+    "id": "salary:401ecf5d"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "soft",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "hybrid"
+     ]
+    },
+    "quote": "hybrid",
+    "weight": 0.5,
+    "id": "remote_mode:e949af9b"
+   }
+  ],
+  "clarifications": []
+ },
+ "h16": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Staff data engineer"
+    },
+    "quote": "Staff data engineer",
+    "weight": null,
+    "id": "role_focus:e6ffc363"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "hard",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "remote"
+     ]
+    },
+    "quote": "remote in the US",
+    "weight": null,
+    "id": "remote_mode:b07a06ba"
+   },
+   {
+    "field": "other",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "not interested in consulting firms"
+    },
+    "quote": "not interested in consulting firms",
+    "weight": null,
+    "id": "other:edf719af"
+   }
+  ],
+  "clarifications": []
+ },
+ "h17": {
+  "conditions": [],
+  "clarifications": [],
+  "failed": "no conditions extracted"
+ },
+ "h18": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Growth marketing manager"
+    },
+    "quote": "Growth marketing manager",
+    "weight": null,
+    "id": "role_focus:6c381f93"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Los Angeles"
+     ]
+    },
+    "quote": "Los Angeles",
+    "weight": null,
+    "id": "work_region:15a43461"
+   },
+   {
+    "field": "salary",
+    "strength": "hard",
+    "value": {
+     "kind": "salary",
+     "currency": "USD",
+     "period": "year",
+     "basis": "unspecified",
+     "min_amount": 110000.0,
+     "region": null
+    },
+    "quote": "$110k to $130k",
+    "weight": null,
+    "id": "salary:bc667e83"
+   }
+  ],
+  "clarifications": []
+ },
+ "h19": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Technical program manager"
+    },
+    "quote": "Technical program manager",
+    "weight": null,
+    "id": "role_focus:213901bd"
+   },
+   {
+    "field": "other",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Google-scale infrastructure"
+    },
+    "quote": "Google-scale infra",
+    "weight": null,
+    "id": "other:f84bd4d2"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Mountain View"
+     ]
+    },
+    "quote": "willing to relocate from Toronto",
+    "weight": null,
+    "id": "work_region:88c05104"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "soft",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "onsite"
+     ]
+    },
+    "quote": "willing to relocate from Toronto",
+    "weight": null,
+    "id": "remote_mode:a8b61e20"
+   }
+  ],
+  "clarifications": []
+ },
+ "h20": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "customer success roles"
+    },
+    "quote": "customer success roles",
+    "weight": null,
+    "id": "role_focus:c6f06dd6"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "Miami"
+     ]
+    },
+    "quote": "in Miami",
+    "weight": null,
+    "id": "work_region:05f701d2"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "English and Spanish"
+    },
+    "quote": "I only speak English and Spanish",
+    "weight": null,
+    "id": "skill:ae5679ed"
+   }
+  ],
+  "clarifications": []
+ },
+ "h21": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Kubernetes platform engineer"
+    },
+    "quote": "Kubernetes platform engineer",
+    "weight": null,
+    "id": "role_focus:311bf0b9"
+   },
+   {
+    "field": "seniority",
+    "strength": "hard",
+    "value": {
+     "kind": "experience",
+     "level": "mid",
+     "max_years_required": null
+    },
+    "quote": "mid or senior level",
+    "weight": null,
+    "id": "seniority:39eda094"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "hard",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "remote"
+     ]
+    },
+    "quote": "remote",
+    "weight": null,
+    "id": "remote_mode:b07a06ba"
+   },
+   {
+    "field": "salary",
+    "strength": "hard",
+    "value": {
+     "kind": "salary",
+     "currency": "USD",
+     "period": "year",
+     "basis": "total",
+     "min_amount": 170000.0,
+     "region": null
+    },
+    "quote": "at least $170k total compensation",
+    "weight": null,
+    "id": "salary:b68b2816"
+   }
+  ],
+  "clarifications": []
+ },
+ "h22": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Research engineer at an AI lab"
+    },
+    "quote": "Research engineer at an AI lab",
+    "weight": null,
+    "id": "role_focus:504bcb29"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "London",
+      "Zurich"
+     ]
+    },
+    "quote": "London, anything above $200k, or Zurich",
+    "weight": null,
+    "id": "work_region:0aac2f94"
+   },
+   {
+    "field": "salary",
+    "strength": "hard",
+    "value": {
+     "kind": "salary",
+     "currency": "USD",
+     "period": "year",
+     "basis": "unspecified",
+     "min_amount": 200000.0,
+     "region": "London"
+    },
+    "quote": "anything above $200k, or Zurich at 250k",
+    "weight": null,
+    "id": "salary:e939f318"
+   },
+   {
+    "field": "salary",
+    "strength": "hard",
+    "value": {
+     "kind": "salary",
+     "currency": "USD",
+     "period": "year",
+     "basis": "unspecified",
+     "min_amount": 250000.0,
+     "region": "Zurich"
+    },
+    "quote": "Zurich at 250k",
+    "weight": null,
+    "id": "salary:80406d2d"
+   }
+  ],
+  "clarifications": []
+ },
+ "h23": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "QA automation engineer"
+    },
+    "quote": "QA automation engineer",
+    "weight": null,
+    "id": "role_focus:e7551037"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Selenium"
+    },
+    "quote": "Selenium or Cypress",
+    "weight": null,
+    "id": "skill:d682841c"
+   },
+   {
+    "field": "skill",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Cypress"
+    },
+    "quote": "Selenium or Cypress",
+    "weight": null,
+    "id": "skill:41717e5a"
+   },
+   {
+    "field": "seniority",
+    "strength": "hard",
+    "value": {
+     "kind": "experience",
+     "level": "mid",
+     "max_years_required": null
+    },
+    "quote": "3+ years",
+    "weight": null,
+    "id": "seniority:39eda094"
+   },
+   {
+    "field": "employment_type",
+    "strength": "soft",
+    "value": {
+     "kind": "employment",
+     "types": [
+      "contract"
+     ]
+    },
+    "quote": "contract preferred",
+    "weight": 0.7,
+    "id": "employment_type:a7c9996d"
+   },
+   {
+    "field": "remote_mode",
+    "strength": "hard",
+    "value": {
+     "kind": "modes",
+     "modes": [
+      "remote"
+     ]
+    },
+    "quote": "Remote",
+    "weight": null,
+    "id": "remote_mode:b07a06ba"
+   }
+  ],
+  "clarifications": []
+ },
+ "h24": {
+  "conditions": [
+   {
+    "field": "role_focus",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "Startup engineer"
+    },
+    "quote": "Startup engineer",
+    "weight": null,
+    "id": "role_focus:81361bf9"
+   },
+   {
+    "field": "employment_type",
+    "strength": "hard",
+    "value": {
+     "kind": "employment",
+     "types": [
+      "full_time"
+     ]
+    },
+    "quote": "full-stack",
+    "weight": null,
+    "id": "employment_type:43e5af28"
+   },
+   {
+    "field": "work_region",
+    "strength": "hard",
+    "value": {
+     "kind": "regions",
+     "regions": [
+      "San Francisco"
+     ]
+    },
+    "quote": "San Francisco",
+    "weight": null,
+    "id": "work_region:56b60796"
+   },
+   {
+    "field": "other",
+    "strength": "hard",
+    "value": {
+     "kind": "text",
+     "text": "not big tech"
+    },
+    "quote": "not big tech",
+    "weight": null,
+    "id": "other:73f41cfc"
+   },
+   {
+    "field": "other",
+    "strength": "soft",
+    "value": {
+     "kind": "text",
+     "text": "wants equity"
+    },
+    "quote": "wants equity",
+    "weight": 0.8,
+    "id": "other:6594e446"
+   }
+  ],
+  "clarifications": []
+ }
+}

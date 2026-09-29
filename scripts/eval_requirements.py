@@ -169,7 +169,7 @@ def score_all() -> None:
     metrics["salary_basis_invented"] = {"matched_salary_conditions_without_stated_basis": basis_total, "parser_added_a_basis": basis_invented}
     metrics["forbidden_hard_violations"] = sum(1 for r in gold if per_request["strict"][r["id"]]["forbidden_hard"])
     (OUT / "metrics.json").write_text(json.dumps({"metrics": metrics, "per_request": per_request["strict"]}, ensure_ascii=False, indent=1))
-    lines = ["# 需求理解准确率（30 条新需求，用户确认标注，gpt-4o-mini 解析）", ""]
+    lines = [f"# 需求理解准确率（{len(gold)} 条需求，标注文件 {GOLD.name}，gpt-4o-mini 解析）", ""]
     for mode, label in (("strict", "严格：字段+硬软+值"), ("nostrength", "忽略硬软"), ("nofield", "忽略字段（文本条件按引文位置匹配）")):
         m = metrics[mode]
         lines.append(f"- {label}：条件 P/R/F1 = {m['all']['precision']}/{m['all']['recall']}/{m['all']['f1']}；整条完全正确 {m['all']['exact_correct']}/{m['all']['requests']}；"
@@ -188,6 +188,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("command", choices=["parse", "score"])
     ap.add_argument("--out", type=Path, default=OUT)
+    ap.add_argument("--gold", type=Path, default=GOLD)
     a = ap.parse_args()
-    OUT = a.out
+    OUT, GOLD = a.out, a.gold
     parse_all() if a.command == "parse" else score_all()
