@@ -1,0 +1,2779 @@
+{
+ "d01": {
+  "greenhouse:5551532004": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "satisfied",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a Machine Learning Engineer in New York with a salary range starting at $153,000.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:7005605": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a machine learning engineer role with a salary above $150k, but it is remote and not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7116975": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a machine learning engineer role with a salary above $150k, but it is remote and not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7454348": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a Machine Learning Engineer role with a salary above $150k, but it is not located in New York.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:7669906": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is related to machine learning engineering but is not located in New York and does not meet the salary requirement.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7747259": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a machine learning engineer role with a salary above $150k, but it is remote and not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1237": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a Machine Learning Engineer in New York, but the salary is not specified.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1427": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a Machine Learning Engineer but is located in Europe, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:157": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a Machine Learning Engineer but is located in Europe, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1630": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a machine learning engineer, but it is remote and does not specify a salary.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2001": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a Machine Learning Engineer, but it is located in Seattle, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2031": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a machine learning engineer and offers a salary above $150k, but it is not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:451": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a Machine Learning Engineer but is located in Europe, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:511": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a Machine Learning Engineer in New York, but the salary is not specified.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:526": {
+   "hard": {
+    "role_focus:b51ee4b5": "violated",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a Machine Learning Manager, not an engineer, and is located in Paris, not New York.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:74": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a Machine Learning Engineer in New York, but the salary is not specified.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:742": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a Machine Learning Engineer in New York, but the salary is not specified.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:809": {
+   "hard": {
+    "role_focus:b51ee4b5": "satisfied",
+    "salary:477ba811": "unstated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a Machine Learning Engineer but is located in Europe, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  }
+ },
+ "d02": {
+  "greenhouse:7378231": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "violated"
+   },
+   "reason": "The job is for a Frontend React developer and is fully remote, but it is based in Brazil, not the US.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:7546721": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "violated"
+   },
+   "reason": "The job is for a Frontend Engineer focusing on React, is remote eligible, but requires the candidate to be based in China, not the US.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8399456002": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:a6b78c60": "violated",
+    "work_region:24e2375f": "satisfied"
+   },
+   "reason": "The job is related to frontend development but is not focused on React and requires presence in the San Francisco Bay Area, violating the remote work condition.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1248": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "satisfied"
+   },
+   "reason": "The job is for a Frontend React developer but is not remote.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1356": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "violated",
+    "work_region:24e2375f": "unstated"
+   },
+   "reason": "The job is for a Frontend developer but does not specify React, is fully remote, and does not mention a requirement for being based in the US.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1370": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "violated"
+   },
+   "reason": "The job is relevant as it involves frontend React development and is remote, but it is limited to candidates in the EU, violating the US location requirement.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1496": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "violated",
+    "work_region:24e2375f": "satisfied"
+   },
+   "reason": "The job requires a Frontend Developer with experience in technologies other than React, but it is fully remote and based in the US.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1623": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "satisfied"
+   },
+   "reason": "The job is for a Frontend React developer but is not remote, which violates the remote work condition.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1661": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "violated"
+   },
+   "reason": "The job is for a Frontend React developer and is fully remote, but it specifies that candidates must be based in South or Latin America, which violates the US-based requirement.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1666": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "unstated"
+   },
+   "reason": "The job is for a front-end React developer and is fully remote, but it does not specify if candidates must be based in the US.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1913": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "violated"
+   },
+   "reason": "The job involves frontend development with React but is not fully remote and is not based in the US.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1931": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "violated",
+    "work_region:24e2375f": "unstated"
+   },
+   "reason": "The job is for a Frontend Engineer but does not specify React, and while it is fully remote, the location requirement for US-based candidates is not mentioned.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1967": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "violated"
+   },
+   "reason": "The job is for a React Native Developer and is fully remote, but it specifies a preference for candidates based in India, which violates the US location requirement.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:204": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "satisfied"
+   },
+   "reason": "The job is for a Frontend React developer but is not remote, which violates the seeker's requirement.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:397": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "unstated"
+   },
+   "reason": "The job is for a Senior Frontend Engineer focusing on React and is fully remote, but it does not specify if applicants must be based in the US.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:401": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "violated",
+    "work_region:24e2375f": "unstated"
+   },
+   "reason": "The job is for a Senior Frontend Engineer with a focus on Svelte, which violates the request for a React developer.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:485": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "violated"
+   },
+   "reason": "The job is for a frontend React developer and is fully remote, but it specifies a preference for candidates in the UK/EU, which violates the US location requirement.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:516": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "satisfied"
+   },
+   "reason": "The job is for a Frontend React developer, fully remote, and based in the US.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:574": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "violated"
+   },
+   "reason": "The job is for a Frontend React developer and is fully remote, but it specifies a preference for candidates in Europe, not the US.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:896": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:a6b78c60": "satisfied",
+    "work_region:24e2375f": "unstated"
+   },
+   "reason": "The job is for a Frontend React developer but is strictly on-site, violating the remote work requirement.",
+   "relevance": 1,
+   "source": "silver"
+  }
+ },
+ "d03": {
+  "greenhouse:7525479": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job involves backend engineering on payments infrastructure, but it is located in India, not San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7546721": {
+   "hard": {
+    "role_focus:05fa3a72": "violated",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a Frontend Engineer position focused on payments, located in China, which does not match the request for a Backend engineer in San Francisco.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:7581839": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a backend engineer working on payments infrastructure, but it is located in Bangalore, not San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7613550": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a backend engineer focused on payments infrastructure, but it is located in Bangalore, not San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7668022": {
+   "hard": {
+    "role_focus:05fa3a72": "violated",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a Senior Software Engineer focused on quality and automation in payments, not specifically a backend engineer, and it is located in Bangalore, not San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7755758": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job involves backend engineering for payments but is remote and not based in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8452933002": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "satisfied"
+   },
+   "reason": "The job is for a backend engineer focused on payments infrastructure in San Francisco.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1417": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a backend engineer focused on payments infrastructure, but it is located in New York City instead of San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1586": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a backend engineer, which is related to the request, but it is remote and not located in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1595": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job involves backend engineering in payments infrastructure but is remote and not located in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1626": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job involves backend engineering related to payments, but it is remote and not located in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1762": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a backend engineer focused on payments infrastructure, but it is located in New York City instead of San Francisco.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1813": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job involves backend engineering related to payments, but it is remote and not located in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:335": {
+   "hard": {
+    "role_focus:05fa3a72": "violated",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job posting is for a backend engineer focused on a fantasy soccer platform, not payments infrastructure, and it specifies a remote position rather than San Francisco.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:358": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is related to backend engineering in payments infrastructure but is remote, not located in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:547": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a backend engineer working on payments infrastructure, but it is located in Toronto instead of San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:595": {
+   "hard": {
+    "role_focus:05fa3a72": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job involves backend engineering related to payments, but it is remote and not located in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  }
+ },
+ "d04": {
+  "greenhouse:7095225": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting is for a Staff Software Engineer focused on data engineering, which includes building data pipelines, and it is a senior-level position.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:8299493002": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting is for a Staff Data Engineer focused on building data pipelines, which aligns perfectly with the seeker's request for a senior data engineer role.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1043": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting is for a Senior Data Engineer role focused on building data pipelines, which matches the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1208": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting is for a Senior Backend Engineer focused on building real-time data pipelines, which aligns perfectly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1247": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job is for a Senior Software Engineer focused on building data pipelines, which aligns perfectly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1400": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job directly involves building data pipelines and is for a senior position.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1446": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job directly involves building data pipelines and is for a senior position.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1456": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "violated"
+   },
+   "reason": "The job is for a Staff Data Engineer focused on building data pipelines, but it requires more experience than a Senior level.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1487": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting is for a Senior Backend Engineer focused on building data pipelines, which aligns perfectly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:154": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "violated"
+   },
+   "reason": "The job focuses on building data pipelines, but it does not specify a senior level position.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1610": {
+   "hard": {
+    "role_focus:06a8b6ad": "violated",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job is for a Senior Software Engineer focused on distributed systems rather than specifically building data pipelines.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1761": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting is for a Lead Data & AI Engineer, which involves building data pipelines, aligning well with the seeker's request for a senior data engineer role.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:328": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting directly matches the request for a Senior Data Engineer focused on building data pipelines.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:414": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "unstated"
+   },
+   "reason": "The job involves building data pipelines, which aligns with the seeker's request for a senior data engineer role.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:476": {
+   "hard": {
+    "role_focus:06a8b6ad": "violated",
+    "seniority:e5969f95": "unstated"
+   },
+   "reason": "The job involves working with data automation pipelines but is focused on a sales role rather than a senior data engineering position.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:504": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting directly aligns with the seeker's request for a senior data engineer role focused on building data pipelines.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:513": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting is for a Senior Backend Engineer role focused on building data pipelines, which aligns perfectly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:543": {
+   "hard": {
+    "role_focus:06a8b6ad": "violated",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job is for a Senior Backend Engineer, which is partly related to data engineering but focuses more on backend systems and architecture.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:63": {
+   "hard": {
+    "role_focus:06a8b6ad": "violated",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job involves backend engineering and AI features rather than specifically building data pipelines, but it is a senior role.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:650": {
+   "hard": {
+    "role_focus:06a8b6ad": "violated",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job involves data integration and infrastructure rather than specifically building data pipelines.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:852": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job posting is for a Senior Backend Engineer focused on building data pipelines, which aligns perfectly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:871": {
+   "hard": {
+    "role_focus:06a8b6ad": "satisfied",
+    "seniority:e5969f95": "satisfied"
+   },
+   "reason": "The job involves backend Python engineering and data engineering for pipelines, which is partly related to the seeker's request for a senior data engineer role.",
+   "relevance": 1,
+   "source": "silver"
+  }
+ },
+ "d05": {
+  "greenhouse:5813865004": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "satisfied"
+   },
+   "reason": "The job is primarily focused on IT engineering with an emphasis on endpoint management and security, which is partly related to security engineering.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8440430002": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for an Engineering Manager in Application Security at Discord, not a Security Engineer, and it is located in the San Francisco Bay Area, not London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:8447477002": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a Security Engineer role, but it is located in the San Francisco Bay Area, not London.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:100": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a Security Engineer, but it is remote and not specifically located in London.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1045": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a security engineer but is located in Zurich, not London.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:12": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job focuses on a security engineering role but is not located in London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1225": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a Software Engineer focused on application security, but it is located in Paris, not London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1288": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a Software Engineer role at a cybersecurity startup in San Francisco, which does not match the request for a Security Engineer position in London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1303": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "satisfied"
+   },
+   "reason": "The job is for software engineers, not security engineers, despite being located in London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1334": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a security engineer but is located in Zurich, not London.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1687": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a security engineer but is located in Zurich, not London.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1698": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "satisfied"
+   },
+   "reason": "The job is for an Engineering Manager or Director, which does not align with the request for a Security Engineer.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1707": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a frontend engineer position focused on developing a SaaS platform, not a security engineer role, and it is remote rather than based in London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1727": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "satisfied"
+   },
+   "reason": "The job is for a Systems Engineer, which is not the same as a Security Engineer, but it is located in London.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2089": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a security engineer but is located in Zurich, not London.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2100": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a frontend engineer position focused on developing a SaaS platform, not a security engineer role, and it is remote rather than based in London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:216": {
+   "hard": {
+    "role_focus:d7be3af0": "unstated",
+    "work_region:cb186c73": "satisfied"
+   },
+   "reason": "The job is related to security but does not specifically mention a security engineer role.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:234": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a Software Engineer role focused on AI in San Francisco, which does not match the request for a Security Engineer in London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:276": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "satisfied"
+   },
+   "reason": "The job is related to software engineering in London but does not focus on security engineering.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:277": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "satisfied"
+   },
+   "reason": "The job is for a Founding Account Executive, which does not match the request for a Security Engineer.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:377": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a security engineer role but is fully remote in the US, not in London.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:418": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a security engineer but is remote and does not specify London as a work region.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:45": {
+   "hard": {
+    "role_focus:d7be3af0": "satisfied",
+    "work_region:cb186c73": "violated"
+   },
+   "reason": "The job is for a security researcher/software engineer in New York City, not a security engineer in London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:578": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "satisfied"
+   },
+   "reason": "The job is for a Founding Account Executive in New York, which does not match the seeker's request for a Security Engineer in London.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:820": {
+   "hard": {
+    "role_focus:d7be3af0": "violated",
+    "work_region:cb186c73": "satisfied"
+   },
+   "reason": "The job posting is for engineering roles that do not focus on security engineering.",
+   "relevance": 0,
+   "source": "silver"
+  }
+ },
+ "d06": {
+  "greenhouse:7669906": {
+   "hard": {
+    "employment_type:0a0eba08": "satisfied",
+    "role_focus:975f00b0": "satisfied",
+    "work_region:e39aa428": "satisfied"
+   },
+   "reason": "The job posting is for a Software Engineering Internship in the United States, which directly matches the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:7707077": {
+   "hard": {
+    "employment_type:0a0eba08": "satisfied",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "satisfied"
+   },
+   "reason": "The job posting is for a Communications Intern, which does not align with the request for a Software Engineering internship.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:7707299": {
+   "hard": {
+    "employment_type:0a0eba08": "satisfied",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "satisfied"
+   },
+   "reason": "The job posting is for an accounting internship, which does not align with the request for a software engineering internship.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:7839237": {
+   "hard": {
+    "employment_type:0a0eba08": "satisfied",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "satisfied"
+   },
+   "reason": "The job posting is for a Data Science internship, not a Software Engineering internship.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:115": {
+   "hard": {
+    "employment_type:0a0eba08": "violated",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "satisfied"
+   },
+   "reason": "The job is for a full-time position, not an internship, and while it is located in the United States, it does not match the request for a software engineering internship.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1202": {
+   "hard": {
+    "employment_type:0a0eba08": "violated",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "violated"
+   },
+   "reason": "The job posting is for a full-stack engineer position, not an internship, and it is remote for North America and Europe, not specifically in the United States.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1242": {
+   "hard": {
+    "employment_type:0a0eba08": "satisfied",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "satisfied"
+   },
+   "reason": "The job is for a full-time position rather than a software engineering internship.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1838": {
+   "hard": {
+    "employment_type:0a0eba08": "violated",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "satisfied"
+   },
+   "reason": "The job posting is for full-time software engineering roles, not internships.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1954": {
+   "hard": {
+    "employment_type:0a0eba08": "satisfied",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "violated"
+   },
+   "reason": "The job offers an internship but is located in India, not the United States.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2063": {
+   "hard": {
+    "employment_type:0a0eba08": "satisfied",
+    "role_focus:975f00b0": "satisfied",
+    "work_region:e39aa428": "violated"
+   },
+   "reason": "The job offers a software engineering internship but is located in India, not the United States.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:221": {
+   "hard": {
+    "employment_type:0a0eba08": "violated",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "violated"
+   },
+   "reason": "The job posting is for a software engineer position, not an internship, and is located in the UK, not the United States.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:287": {
+   "hard": {
+    "employment_type:0a0eba08": "violated",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "satisfied"
+   },
+   "reason": "The job is for full-time engineering roles, not an internship.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:303": {
+   "hard": {
+    "employment_type:0a0eba08": "violated",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "unstated"
+   },
+   "reason": "The job posting is for full-time software engineering positions, not internships.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:431": {
+   "hard": {
+    "employment_type:0a0eba08": "violated",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "violated"
+   },
+   "reason": "The job posting is for a software engineer position, not an internship, and is located in the UK, not the United States.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:894": {
+   "hard": {
+    "employment_type:0a0eba08": "satisfied",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "unstated"
+   },
+   "reason": "The job is an internship but focuses on product management rather than software engineering, and it is remote rather than specifically in the United States.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:974": {
+   "hard": {
+    "employment_type:0a0eba08": "satisfied",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "violated"
+   },
+   "reason": "The job is an internship but is not located in the United States.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:993": {
+   "hard": {
+    "employment_type:0a0eba08": "violated",
+    "role_focus:975f00b0": "violated",
+    "work_region:e39aa428": "satisfied"
+   },
+   "reason": "The job is for a full-time software developer position, not an internship.",
+   "relevance": 0,
+   "source": "silver"
+  }
+ },
+ "d07": {
+  "greenhouse:7565550": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a Site Reliability Engineer, but it is not remote and the salary is not specified.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1043": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "satisfied"
+   },
+   "reason": "The job posting includes a Senior DevOps Engineer role that is remote and offers a salary range starting at $200k.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1290": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a DevOps Engineer position that is remote, but the salary is not specified.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1492": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "violated"
+   },
+   "reason": "The job is for a DevOps engineer and is remote, but the salary offered is below the seeker's minimum requirement.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1641": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a DevOps Engineer, is remote, but does not specify the salary.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1851": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "satisfied"
+   },
+   "reason": "The job is for a Senior Site Reliability Engineer, which matches the seeker's desired role, is remote, and offers a salary within the specified range.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1986": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a Sr DevOps Engineer, but it is not remote and the salary is not specified.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1992": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a DevOps Engineer, is remote, but does not specify the salary.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:2002": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a DevOps role that is remote, but the salary is not mentioned.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:2038": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a DevOps engineer and is remote, but the salary is not mentioned.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:2061": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is a remote DevOps engineer position, but the salary is not specified.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:247": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a DevOps Engineer, but it is not remote and the salary is not specified.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:376": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a Senior DevOps Engineer, is remote, but does not specify a salary.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:388": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "violated"
+   },
+   "reason": "The job is for a Site Reliability Engineer, is remote, but the salary range starts below the requested minimum.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:4": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "satisfied"
+   },
+   "reason": "The job is for a Senior DevOps Engineer, is remote, and offers a salary range starting above $140k.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:459": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "unstated",
+    "salary:67bb14ca": "satisfied"
+   },
+   "reason": "The job posting mentions DevOps roles but does not specifically state a focus on Site Reliability Engineering.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:56": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "unstated"
+   },
+   "reason": "The job is for a Site Reliability Engineer, is fully remote, but does not specify the salary.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:905": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "violated"
+   },
+   "reason": "The job is for a Site Reliability Engineer, but it is not remote and the salary does not meet the seeker's requirement.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:935": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "satisfied"
+   },
+   "reason": "The job is for a Site Reliability Engineer, offers a salary above $140k, but is not remote.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:987": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:8bb52f9d": "satisfied",
+    "salary:67bb14ca": "satisfied"
+   },
+   "reason": "The job is for a DevOps Engineer, is fully remote, and offers a base salary of $192k.",
+   "relevance": 2,
+   "source": "silver"
+  }
+ },
+ "d08": {
+  "greenhouse:6757302": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses on ML evaluation and data infrastructure rather than LLM application development, and it is remote eligible but not based in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7380149": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses on quality engineering and infrastructure rather than LLM application development, and it is located in Brazil, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7453202": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM application development but is located in Brazil, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7655958": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses on ML-powered messaging features rather than LLM application development and is remote, not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7716341": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses on ML system development rather than LLM application development and is located in China, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7730723": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM application development but is located in Bangalore, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7744247": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses on Android software engineering and quality platform development, not LLM application development, and is located in Brazil, not New York.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:7755758": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses heavily on model training and is remote, not in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8497292002": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a Legal Vendor Program Manager at Discord, which is unrelated to LLM application development and is located in the San Francisco Bay Area, not New York.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1031": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM application development but is located in Europe, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1213": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM application development but is fully remote, not in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1333": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM application development but is located in Europe, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1433": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses on LLMOps rather than LLM application development and is located in Toronto, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1686": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM application development but is fully remote, not in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1748": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses on deep learning inference rather than LLM application development and is remote, not in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1918": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses on LLM application development but is fully remote, not in New York.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1926": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM applications but is not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1950": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job involves building AI systems rather than focusing specifically on LLM application development.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2076": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses on backend engineering and LLM inference rather than LLM application development, and it is located in Boston instead of New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:324": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an LLM application developer, but it is not located in New York.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:495": {
+   "hard": {
+    "role_focus:4801ae21": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job focuses primarily on model training and is located in Germany, not New York.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:724": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM application development but is not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:818": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM application development but is located in Los Angeles instead of New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:87": {
+   "hard": {
+    "role_focus:4801ae21": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job involves LLM application development but is not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  }
+ },
+ "h01": {
+  "greenhouse:5552530004": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job is for a C++ systems programmer and offers a remote work option within the US.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:7966411002": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job is for a Rust/C++ systems programmer but requires in-office presence one day a week, violating the remote work condition.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1036": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job is for a Rust developer and offers remote work, aligning perfectly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:11": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job posting is for a Rust or C++ systems programming role and offers remote work options.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1232": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job requires Rust programming skills, but it is not remote as requested.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1280": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job posting is for a C++ engineer, which directly aligns with the seeker's request for a Rust or C++ systems programmer, and it is also remote.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1401": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job is for a C++ engineer and is fully remote, matching the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1703": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job involves Rust or C++ programming but does not offer remote work.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2000": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job is for Rust engineers and offers remote work, aligning perfectly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:205": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job involves Rust or C++ programming but is not fully remote as requested.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:245": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job is for a Rust developer and offers remote work, aligning perfectly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:283": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job posting is for a Rust systems programming role and offers remote work.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:383": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job includes Rust and C++ roles but is not explicitly remote within the US.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:403": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:ad322963": "satisfied"
+   },
+   "reason": "The job posting is for a Rust or C++ systems programming role and offers remote work options.",
+   "relevance": 2,
+   "source": "silver"
+  }
+ },
+ "h02": {
+  "greenhouse:5753194004": {
+   "hard": {
+    "role_focus:edf92364": "violated",
+    "work_region:5e6a3918": "satisfied"
+   },
+   "reason": "The job is for a Senior Manager, Enterprise Sales, which is unrelated to the request for an Android engineer.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:5969647004": {
+   "hard": {
+    "role_focus:edf92364": "violated",
+    "work_region:5e6a3918": "satisfied"
+   },
+   "reason": "The job is for a Developer Advocate, not an Android engineer.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:6602436": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer role, but it is only remote eligible in the US, not in Tokyo or Singapore.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:7380149": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer but is remote in Brazil, not in Tokyo or Singapore.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7539152": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer role, but it is only remote eligible in the USA, not in Tokyo or Singapore.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7681159": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer role, but it is remote in the USA, not in Tokyo or Singapore.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7744247": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer role, but it is remote in Brazil, not in Tokyo or Singapore.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:7759113": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer role, but it is remote eligible only for specific states in the USA, not for Tokyo or Singapore.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7817040": {
+   "hard": {
+    "role_focus:edf92364": "violated",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for a Senior iOS Engineer position, not an Android engineer, and is located in China, not Tokyo or Singapore.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1063": {
+   "hard": {
+    "role_focus:edf92364": "violated",
+    "work_region:5e6a3918": "satisfied"
+   },
+   "reason": "The job posting is for software engineers with no mention of Android engineering.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1264": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer but is not located in the requested regions of Tokyo or Singapore.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1564": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer but is remote and does not specify Tokyo or Singapore as locations.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer but is located in Limassol, Cyprus, not Tokyo or Singapore.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2042": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer but is located in New York, not Tokyo or Singapore.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:28": {
+   "hard": {
+    "role_focus:edf92364": "satisfied",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for an Android engineer but is fully remote for U.S. citizens, not located in Tokyo or Singapore.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:922": {
+   "hard": {
+    "role_focus:edf92364": "violated",
+    "work_region:5e6a3918": "violated"
+   },
+   "reason": "The job is for a Mobile Engineer focusing on React Native/Typescript, not specifically an Android engineer, and it is located in the US, not Tokyo or Singapore.",
+   "relevance": 0,
+   "source": "silver"
+  }
+ },
+ "h03": {
+  "greenhouse:5819866004": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a Product Manager, not an Engineering Manager.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:5972046004": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a Sales Manager, not an Engineering Manager.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:7532824": {
+   "hard": {
+    "role_focus:fef02dbf": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an Engineering Manager role, but it is located in London instead of New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7712903": {
+   "hard": {
+    "role_focus:fef02dbf": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an engineering manager for a product team, but it is remote and not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7760914": {
+   "hard": {
+    "role_focus:fef02dbf": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an Engineering Manager role, but it is located in China, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8485738002": {
+   "hard": {
+    "role_focus:fef02dbf": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an Engineering Manager for a product team, but it is located in the San Francisco Bay Area, not New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8502342002": {
+   "hard": {
+    "role_focus:fef02dbf": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an Engineering Manager role, but it is located in the San Francisco Bay Area instead of New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8509325002": {
+   "hard": {
+    "role_focus:fef02dbf": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an Engineering Manager role, but it is located in the San Francisco Bay Area instead of New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1285": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a full-stack product engineer role and is remote, not an engineering manager position in New York.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1519": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for software engineers, not an engineering manager, but it is located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1555": {
+   "hard": {
+    "role_focus:fef02dbf": "unstated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is in New York but does not specify a managerial role.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1770": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a full stack product engineer, which is related but not the same as an engineering manager.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:183": {
+   "hard": {
+    "role_focus:fef02dbf": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an Engineering Manager role but is remote in Europe, not in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:208": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an Engineering Manager focused on a data platform in Cupertino, not a product team in New York.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:21": {
+   "hard": {
+    "role_focus:fef02dbf": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an Engineering Manager for a product team, but it is remote and not located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:253": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a full-stack product engineer role and is remote, not an engineering manager position in New York.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:305": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for a Product Engineer role, not an Engineering Manager, and it is remote, not based in New York.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:378": {
+   "hard": {
+    "role_focus:fef02dbf": "unstated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job posting mentions engineering roles but does not specify an engineering manager position.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:450": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a Full Stack Product Engineer, not an Engineering Manager.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:689": {
+   "hard": {
+    "role_focus:fef02dbf": "violated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job is for a Senior Software Engineer, not an Engineering Manager, but it is located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:723": {
+   "hard": {
+    "role_focus:fef02dbf": "satisfied",
+    "work_region:7c8573b7": "violated"
+   },
+   "reason": "The job is for an Engineering Manager, but it is remote and not specifically located in New York.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:754": {
+   "hard": {
+    "role_focus:fef02dbf": "unstated",
+    "work_region:7c8573b7": "satisfied"
+   },
+   "reason": "The job involves engineering roles in New York, but does not specify an engineering manager position.",
+   "relevance": 1,
+   "source": "silver"
+  }
+ },
+ "h04": {
+  "greenhouse:5839202004": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job is focused on UX writing rather than technical writing for developer documentation, but it is available for remote work.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7672092": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job focuses on content and knowledge management rather than specifically on technical writing for developer documentation, and it is not a remote position.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7793818": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job is related to content management but does not specifically focus on technical writing for developer documentation.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7797798": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job focuses on knowledge editing rather than technical writing for developer documentation and is not remote.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1160": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job involves support engineering rather than technical writing, but it is remote.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1188": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job involves engineering roles rather than a focus on technical writing for developer documentation.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1464": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job is for a Lead Edge AI Engineer, which is not related to technical writing for developer documentation.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1619": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job is for a Frontend Engineer, which does not align with the request for a Technical Writer.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1702": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:d622c806": "satisfied"
+   },
+   "reason": "The job posting includes a position for a Lead Technical Writer, which aligns directly with the seeker's request for a technical writer for developer documentation and specifies that the role is remote.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:187": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:d622c806": "satisfied"
+   },
+   "reason": "The job involves technical writing for documentation but is not remote.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1911": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job posting is for a developer role, not a technical writer, and it requires onsite work.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:2020": {
+   "hard": {
+    "remote_mode:b07a06ba": "violated",
+    "role_focus:d622c806": "satisfied"
+   },
+   "reason": "The job involves technical writing, but it requires being in Germany and does not offer remote work.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:2118": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job posting mentions a technical writer position but does not specify that it focuses on developer documentation.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:418": {
+   "hard": {
+    "remote_mode:b07a06ba": "satisfied",
+    "role_focus:d622c806": "violated"
+   },
+   "reason": "The job involves engineering roles rather than a focus on technical writing for developer documentation.",
+   "relevance": 1,
+   "source": "silver"
+  }
+ },
+ "h05": {
+  "greenhouse:7640881": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "violated",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for a Senior Data Engineer, not an Analytics Engineer, and does not mention SQL and dbt specifically.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:7733495": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "satisfied",
+    "salary:8030e9d9": "satisfied",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for an Analytics Engineer and requires SQL, but does not mention dbt or a hybrid work model.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7832067": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "violated",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is related to analytics but focuses on a senior analyst role rather than an analytics engineer, and it does not mention dbt or the specified salary.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8299493002": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "violated",
+    "salary:8030e9d9": "satisfied",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is related to data engineering but does not focus on analytics engineering or specifically mention dbt.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8371252002": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "satisfied",
+    "salary:8030e9d9": "satisfied",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for an Analytics Engineer and meets the salary requirement, but it does not mention dbt and the remote mode is not specified.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:8373431002": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "satisfied",
+    "salary:8030e9d9": "satisfied",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for an Analytics Engineer and meets the salary requirement, but it does not mention dbt and the remote mode is not specified.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1043": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "violated",
+    "salary:8030e9d9": "violated",
+    "skill:38dfe2cc": "satisfied"
+   },
+   "reason": "The job involves analytics work with SQL but does not specify the role as an analytics engineer or offer a hybrid remote mode, and the salary is below the seeker's requirement.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1177": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "satisfied",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for an Analytics Engineer, but it does not specify the use of dbt or the salary range.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1192": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "violated",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for a Senior Software Engineer, which does not align with the request for an Analytics Engineer role.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1456": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "violated",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "satisfied"
+   },
+   "reason": "The job is related to data engineering and involves SQL and dbt, but it is not focused on an analytics engineer role.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1489": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "satisfied",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for an Analytics Engineer, but it does not specify the use of dbt and does not mention the salary.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1855": {
+   "hard": {
+    "remote_mode:e949af9b": "violated",
+    "role_focus:b20990bb": "violated",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for a Senior Software Engineer focused on software development, not analytics engineering, and does not mention SQL, dbt, or hybrid remote work.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1880": {
+   "hard": {
+    "remote_mode:e949af9b": "satisfied",
+    "role_focus:b20990bb": "satisfied",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for an Analytics Engineer and offers a hybrid work mode, but it does not specify the use of dbt or the salary range.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:725": {
+   "hard": {
+    "remote_mode:e949af9b": "unstated",
+    "role_focus:b20990bb": "violated",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "violated"
+   },
+   "reason": "The job is for a Senior Software Engineer, which does not align with the request for an Analytics Engineer role.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:874": {
+   "hard": {
+    "remote_mode:e949af9b": "satisfied",
+    "role_focus:b20990bb": "satisfied",
+    "salary:8030e9d9": "unstated",
+    "skill:38dfe2cc": "unstated"
+   },
+   "reason": "The job posting includes an Analytics Engineer role and offers a hybrid work mode, but does not specify the use of dbt or the salary range.",
+   "relevance": 1,
+   "source": "silver"
+  }
+ },
+ "h06": {
+  "greenhouse:5811082004": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job is for a legal counsel position but is located in the United States, not Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:5829275004": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job is for a legal counsel position but is located in London, not Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:5834913004": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job is for a legal counsel position, but it is located in Brazil, not Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:7735274": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job is for a legal counsel position but is located in the United States, not Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:7789554": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "satisfied"
+   },
+   "reason": "The job posting is for a legal counsel position based in Japan, which is in Asia.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:7795869": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "satisfied"
+   },
+   "reason": "The job is for a legal counsel position based in Korea, which is in Asia.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:8434162002": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job is for a legal counsel position but is located in the San Francisco Bay Area, not in Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:8462980002": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job is for a legal counsel position but is located in the San Francisco Bay Area, not Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:8463028002": {
+   "hard": {
+    "role_focus:beb6b35c": "violated",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job posting is for a Senior Paralegal position in the San Francisco Bay Area, not a legal counsel position in Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:8468739002": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job is for a legal counsel position but is located in the San Francisco Bay Area, not Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:8482186002": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job is for a legal counsel position but is located in the San Francisco Bay Area, not Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:8490430002": {
+   "hard": {
+    "role_focus:beb6b35c": "satisfied",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job is for a legal counsel position but is located in New York City, not Asia.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:8497292002": {
+   "hard": {
+    "role_focus:beb6b35c": "violated",
+    "work_region:9301878b": "violated"
+   },
+   "reason": "The job posting is for a Legal Vendor Program Manager role in the San Francisco Bay Area, which does not align with the request for legal counsel positions in Asia.",
+   "relevance": 0,
+   "source": "silver"
+  }
+ },
+ "h07": {
+  "hackernews:1203": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting is for an Embedded Systems Engineer, which directly aligns with the seeker's request for an embedded or firmware engineer for hardware products.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1317": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting explicitly seeks a software engineer with firmware experience for hardware-enabled offerings.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1594": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting explicitly seeks a software engineer with firmware experience for hardware-enabled offerings.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1839": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting explicitly seeks a hardware/firmware engineer, which aligns directly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:19": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting is for a Staff Embedded Systems Engineer, which directly aligns with the request for an embedded or firmware engineer for hardware products.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:2055": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting explicitly seeks an embedded software engineer, which aligns directly with the request for an embedded or firmware engineer for hardware products.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:221": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting explicitly mentions opportunities for embedded C/C++ work, aligning closely with the seeker's request for an embedded or firmware engineer role.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:362": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting is for an Embedded/Firmware Engineer role focused on hardware products.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:407": {
+   "hard": {
+    "role_focus:7deee04b": "violated"
+   },
+   "reason": "The job posting is focused on software engineering for hardware design rather than embedded or firmware engineering.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:431": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting explicitly mentions opportunities for embedded C/C++ work, aligning closely with the seeker's request for an embedded or firmware engineer role.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:638": {
+   "hard": {
+    "role_focus:7deee04b": "violated"
+   },
+   "reason": "The job posting is for a platform engineer role focused on web applications, not embedded or firmware engineering for hardware products.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:759": {
+   "hard": {
+    "role_focus:7deee04b": "satisfied"
+   },
+   "reason": "The job posting explicitly seeks a Senior Software Engineer with a focus on embedded systems, which aligns directly with the seeker's request.",
+   "relevance": 2,
+   "source": "silver"
+  }
+ },
+ "h08": {
+  "greenhouse:7343909": {
+   "hard": {
+    "role_focus:6c9d0ed0": "violated",
+    "salary:60964ad9": "unstated",
+    "seniority:28764291": "violated",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for an engineering manager role, which involves people management, and is not focused on a staff-level infrastructure engineer position.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:7600470": {
+   "hard": {
+    "role_focus:6c9d0ed0": "violated",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a senior staff role but involves people management and is remote, not in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7609100": {
+   "hard": {
+    "role_focus:6c9d0ed0": "violated",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a staff-level engineer but focuses on backend services rather than infrastructure, is remote rather than in San Francisco, and offers a salary range that meets the minimum requirement.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7739337": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a staff-level infrastructure engineer with a salary above $200k, but it is remote and not based in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:7782308": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is a staff-level infrastructure engineering role with a salary above $200k, but it is remote and not based in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "greenhouse:8177912002": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a Staff Software Engineer focused on infrastructure security, but it is not located in San Francisco as required.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "greenhouse:8397385002": {
+   "hard": {
+    "role_focus:6c9d0ed0": "violated",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "violated",
+    "work_region:56b60796": "satisfied"
+   },
+   "reason": "The job is for an Engineering Manager role, which involves people management, not a staff-level infrastructure engineer position.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:8490814002": {
+   "hard": {
+    "role_focus:6c9d0ed0": "violated",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "violated",
+    "work_region:56b60796": "satisfied"
+   },
+   "reason": "The job is for a Director role, which involves people management, not a staff-level engineering position.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "greenhouse:8498984002": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "satisfied"
+   },
+   "reason": "The job posting is for a Staff Software Engineer focused on data infrastructure in San Francisco with a salary range starting above $200k.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:12": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "unstated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a staff-level role focused on infrastructure security, but it is not located in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:1235": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "satisfied"
+   },
+   "reason": "The job posting matches all the seeker's conditions for a staff-level infrastructure engineer role in San Francisco with a salary above $200k.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:13": {
+   "hard": {
+    "role_focus:6c9d0ed0": "violated",
+    "salary:60964ad9": "violated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job posting is for engineering roles that do not match the requested focus on infrastructure engineering and are not located in San Francisco.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1412": {
+   "hard": {
+    "role_focus:6c9d0ed0": "violated",
+    "salary:60964ad9": "violated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a staff engineer role but focuses on marketing technology rather than infrastructure engineering, and it is remote or in Miami, not San Francisco.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:1470": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "satisfied",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "satisfied"
+   },
+   "reason": "The job posting is for a Staff-level Infrastructure Engineer in San Francisco with a salary range that meets the request.",
+   "relevance": 2,
+   "source": "silver"
+  },
+  "hackernews:1558": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "unstated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a staff-level infrastructure engineer, but it is located in New York City instead of San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:359": {
+   "hard": {
+    "role_focus:6c9d0ed0": "violated",
+    "salary:60964ad9": "unstated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a product and design engineering role, not an infrastructure engineer position.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:402": {
+   "hard": {
+    "role_focus:6c9d0ed0": "violated",
+    "salary:60964ad9": "unstated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is focused on a technical lead role rather than a staff-level infrastructure engineer, and it is not located in San Francisco.",
+   "relevance": 0,
+   "source": "silver"
+  },
+  "hackernews:559": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "unstated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a staff-level infrastructure engineer but is remote or in CT, not San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:571": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "unstated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a staff-level infrastructure engineer, but it is not located in San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:622": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "unstated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job is for a staff-level infrastructure engineer but is located in New York City instead of San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  },
+  "hackernews:926": {
+   "hard": {
+    "role_focus:6c9d0ed0": "satisfied",
+    "salary:60964ad9": "unstated",
+    "seniority:28764291": "satisfied",
+    "work_region:56b60796": "violated"
+   },
+   "reason": "The job includes a staff-level infrastructure engineering role, but it is located in Austin, not San Francisco.",
+   "relevance": 1,
+   "source": "silver"
+  }
+ }
+}

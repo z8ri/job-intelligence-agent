@@ -34,6 +34,7 @@ from typing import Callable
 from src.agent.conditions import ConditionParseError, parse_conditions
 from src.agent.evidence import JUDGE_PROMPT_VERSION, MAX_JOB_CHARS, describe_condition
 from src.agent.models import ConditionSet
+from src.agent.planning import plan_verification
 from src.agent.rerank import Scorer, rerank
 from src.agent.retrieval import Candidate, JobIndex
 from src.agent.verification import Budget, JudgmentCache, Verifier
@@ -282,6 +283,26 @@ def _keys(cands: list[Candidate], k: int) -> list[str]:
     return [c.job_key for c in cands[:k]]
 
 
+def add_planned_systems(systems: dict, cs: ConditionSet, index: JobIndex, base: list[Candidate], judge_llm: FrozenLLM,
+                        judge_live: Callable[[str, str], str] | None, *, k: int, max_candidates: int) -> None:
+    """verify_planned: on-demand verification over the planned order.
+    verify_full_confirmed_first: every candidate verified, kept jobs with no unconfirmed hard condition shown first."""
+    quiet = dict(deadline_s=3600.0, max_workers=4, max_consecutive_failures=5)
+    planned, plan_trace = plan_verification(base, index.snapshot, cs)
+    view = judge_llm.view("verify_planned", judge_live)
+    res = Verifier(JudgmentCache(), complete=view, model=judge_llm.model).verify(
+        planned, index.snapshot, cs, Budget(target_kept=k, max_candidates=max_candidates, max_llm_calls=max_candidates, **quiet))
+    systems["verify_planned"] = {"shown": [v.candidate.job_key for v in res.kept][:k], "excluded": [v.candidate.job_key for v in res.excluded],
+                                 "status": res.status, "reasons": res.reasons, "usage": view.usage(), "plan": plan_trace}
+    view = judge_llm.view("verify_full_confirmed_first", judge_live)
+    res = Verifier(JudgmentCache(), complete=view, model=judge_llm.model).verify(
+        base, index.snapshot, cs, Budget(target_kept=max_candidates, max_candidates=max_candidates, max_llm_calls=max_candidates, **quiet))
+    ordered = sorted(res.kept, key=lambda v: bool(v.unconfirmed_hard))  # stable: rank order kept inside each group
+    systems["verify_full_confirmed_first"] = {"shown": [v.candidate.job_key for v in ordered][:k],
+                                              "excluded": [v.candidate.job_key for v in res.excluded], "status": res.status,
+                                              "reasons": res.reasons, "usage": view.usage()}
+
+
 def run_systems(
     cs: ConditionSet,
     index: JobIndex,
@@ -325,6 +346,7 @@ def run_systems(
     verify("verify_fixed", Budget(target_kept=k, max_candidates=k, max_llm_calls=k, **quiet), k)
     verify("verify_ondemand", Budget(target_kept=k, max_candidates=max_candidates, max_llm_calls=max_candidates, **quiet), k)
     verify("verify_full", Budget(target_kept=max_candidates, max_candidates=max_candidates, max_llm_calls=max_candidates, **quiet), k)
+    add_planned_systems(systems, cs, index, base, judge_llm, judge_live, k=k, max_candidates=max_candidates)
 
     pool: list[str] = []
     for lst in pool_lists + [s["shown"] for s in systems.values()]:
@@ -403,12 +425,14 @@ def run_eval(
 
 # ---- aggregation and report -----------------------------------------------------
 
-SYSTEM_ORDER = ["retrieval_raw", "retrieval", "rerank", "verify_fixed", "verify_ondemand", "verify_full"]
+SYSTEM_ORDER = ["retrieval_raw", "retrieval", "rerank", "verify_fixed", "verify_ondemand", "verify_planned", "verify_full", "verify_full_confirmed_first"]
 COMPARISONS = [
     ("retrieval", "retrieval_raw", "input organisation: role/skill text vs raw request"),
     ("rerank", "retrieval", "cross-encoder rerank vs retrieval order"),
     ("verify_ondemand", "verify_fixed", "on-demand verification (backfill) vs fixed top-k"),
     ("verify_ondemand", "verify_full", "on-demand verification vs verify-everything"),
+    ("verify_planned", "verify_ondemand", "planned order (hint-contradicted candidates last) vs plain rank order, both on-demand"),
+    ("verify_full_confirmed_first", "verify_full", "confirmed-hard jobs ranked before needs-confirmation jobs vs plain order"),
 ]
 
 

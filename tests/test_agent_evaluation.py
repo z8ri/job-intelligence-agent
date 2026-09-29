@@ -182,7 +182,7 @@ def test_run_eval_produces_all_systems_and_labels(tmp_path):
     llm, out = eval_run(tmp_path, live)
     assert out["stopped"] is None
     run = out["runs"]["d1"]
-    assert set(run["systems"]) == {"retrieval_raw", "retrieval", "verify_fixed", "verify_ondemand", "verify_full"}
+    assert set(run["systems"]) == {"retrieval_raw", "retrieval", "verify_fixed", "verify_ondemand", "verify_planned", "verify_full", "verify_full_confirmed_first"}
     u = {n: run["systems"][n]["usage"]["llm_calls"] for n in ("verify_fixed", "verify_ondemand", "verify_full")}
     assert u["verify_fixed"] <= u["verify_ondemand"] <= u["verify_full"] and u["verify_fixed"] == 3
     assert set(out["qrels"]["d1"]) == set(run["pool"])

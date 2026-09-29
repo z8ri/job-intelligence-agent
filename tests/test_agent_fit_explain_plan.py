@@ -57,7 +57,10 @@ def test_region_fit_handles_state_suffix_multi_location_and_country_wide():
     ny = RegionsValue(regions=["New York"])
     assert region_fit(ny, "New York, NY").score == 1.0
     assert region_fit(ny, "San Francisco, CA • New York, NY • United States").score == 1.0
-    assert region_fit(ny, "Remote").score == 0.9
+    assert region_fit(ny, "Remote") is None                      # "Remote" does not say where the job is
+    assert region_fit(ny, "Remote or New York City").score == 1.0
+    assert region_fit(ny, "Remote - USA").score < 0.2            # US-remote is not New York
+    assert region_fit(RegionsValue(regions=["United States"]), "Remote - USA").score == 1.0
     assert region_fit(ny, "San Francisco").score < 0.2
     assert region_fit(ny, "Unknown") is None and region_fit(ny, "") is None
     assert region_fit(RegionsValue(regions=["United States"]), "Austin, TX").score == 1.0

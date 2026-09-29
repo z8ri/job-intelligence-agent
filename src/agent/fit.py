@@ -24,6 +24,8 @@ HOURS_PER_YEAR = 2080
 US_WIDE = {"united states", "usa", "us", "u.s.", "america"}
 _LOCATION_SPLIT = re.compile(r"\s*(?:•|;|\||\bor\b|/)\s*", re.IGNORECASE)
 _STATE_SUFFIX = re.compile(r",\s*[A-Za-z]{2}\b.*$")
+_REMOTE_WORDS = re.compile(r"\b(?:fully|100%|hybrid|remote(?:ly)?|anywhere|worldwide|distributed|wfh|work from home)\b", re.IGNORECASE)
+_EDGE_PUNCT = " ,-–—:()|/•;\t"
 
 
 @dataclass(frozen=True)
@@ -71,6 +73,13 @@ def region_fit(value: RegionsValue, location: str) -> Fit | None:
     location = (location or "").strip()
     if not location or location.lower() == "unknown":
         return None
+    # the legacy scorer rates any "Remote" posting as a near-match for every place; for a stated region
+    # that says nothing about where the job is, so only the place words left after removing it are graded
+    if _REMOTE_WORDS.search(location):
+        stripped = re.sub(r"\s+", " ", _REMOTE_WORDS.sub(" ", location)).strip(_EDGE_PUNCT)
+        if not stripped or stripped.lower() in {"or", "and"}:
+            return None
+        location = re.sub(r"^(?:or|and)\s+|\s+(?:or|and)$", "", stripped, flags=re.I).strip(_EDGE_PUNCT)
     engine = _engine()
     best, basis = 0.0, ""
     for region in value.regions:
