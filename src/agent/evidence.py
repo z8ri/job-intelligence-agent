@@ -197,7 +197,7 @@ def judge_job(
     judgments = {
         c.id: _judgment_from_raw(snap, c.id, raw_by_id[c.id])
         if c.id in raw_by_id
-        else Judgment(condition_id=c.id, verdict="unknown", reason="no judgement returned")
+        else Judgment(condition_id=c.id, verdict="unknown", reason="no judgement returned", downgraded=True)
         for c in wanted
     }
     return JobJudgment(
