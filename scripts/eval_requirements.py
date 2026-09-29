@@ -52,6 +52,8 @@ def _value_ok(gold: dict, pred: dict) -> bool:
     if f == "employment_type":
         return set(gv) == set(pv["types"])
     if f == "seniority":
+        if "max_years_required" in gold and pv.get("max_years_required") != gold["max_years_required"]:
+            return False
         return pv.get("level") == str(gv).split()[0]
     if f == "salary":
         # compared as a yearly amount so "$30k per month" and "$360k per year" are the same requirement;
@@ -86,6 +88,12 @@ def score_request(req: dict, parsed: dict, mode: str) -> dict:
     tp = miss = 0
     missing = []
     for g in req["conditions"]:
+        if g.get("unscored"):
+            # the schema cannot represent it: a prediction on the same field and span is set aside, neither hit nor extra
+            same = next((i for i, p in enumerate(preds) if i not in used and p["field"] == g["field"] and _overlap(q, g["quote"], p["quote"])), None)
+            if same is not None:
+                used.add(same)
+            continue
         hit = next((i for i, p in enumerate(preds) if i not in used and matches(g, p, q, mode)), None)
         if g.get("optional"):
             # acceptable-only statement: may be absent; if given it must be soft with exactly this value

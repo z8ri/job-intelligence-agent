@@ -1,5 +1,5 @@
 {
- "status": "DRAFT held-out set — proposed by Claude, NOT yet reviewed by the user. The parser prompt must not be tuned on these.",
+ "status": "REVIEWED held-out set (draft by Claude, reviewed by the user 2026-09-29 and changes applied). The parser prompt must not be tuned on these. 'unscored' conditions cannot be represented by the current schema.",
  "guide": {
   "strength 'either'": "hard or soft both accepted (intent ambiguous)",
   "expects_clarification": "a correct parse raises a clarification for this request",
@@ -38,7 +38,8 @@
       "min_amount": 140000
      }
     }
-   ]
+   ],
+   "note": "salary period 'year' is a normalisation assumption; the request does not say it"
   },
   {
    "id": "h02",
@@ -165,11 +166,11 @@
      "field": "other",
      "strength": "hard",
      "quote": "no travel",
-     "value": "no travel required"
+     "value": "job does not require business travel"
     },
     {
      "field": "other",
-     "strength": "either",
+     "strength": "hard",
      "quote": "B2B SaaS company",
      "value": "B2B SaaS employer"
     }
@@ -198,14 +199,13 @@
      "value": "Vue"
     },
     {
-     "field": "remote_mode",
+     "field": "other",
      "strength": "soft",
      "quote": "work from home most days",
-     "value": [
-      "remote"
-     ]
+     "value": "mostly works from home (fully remote or home-based hybrid)"
     }
-   ]
+   ],
+   "note": "remote_mode enum cannot say 'most days'; a soft remote_mode is a near miss, not scored as a match"
   },
   {
    "id": "h07",
@@ -309,10 +309,16 @@
      "strength": "hard",
      "quote": "robotics software",
      "value": "robotics software"
+    },
+    {
+     "field": "other",
+     "strength": "hard",
+     "quote": "not the west coast",
+     "value": "job is not located on the west coast"
     }
    ],
    "expects_clarification": true,
-   "schema_gap": "'not the west coast' is an exclusion the region schema cannot express"
+   "schema_gap": "region schema has no exclusion; carried as an 'other' hard condition. Which regions 'west coast' covers is for the clarification"
   },
   {
    "id": "h11",
@@ -342,7 +348,7 @@
      "field": "other",
      "strength": "soft",
      "quote": "prefer companies that publish their salary",
-     "value": "posting states a salary range"
+     "value": "posting/company publishes salary information"
     }
    ]
   },
@@ -379,8 +385,9 @@
     {
      "field": "seniority",
      "strength": "hard",
-     "quote": "entry level",
-     "value": "entry"
+     "quote": "entry level, no more than 2 years experience required",
+     "value": "entry",
+     "max_years_required": 2
     }
    ]
   },
@@ -439,7 +446,7 @@
     },
     {
      "field": "other",
-     "strength": "either",
+     "strength": "hard",
      "quote": "healthcare industry",
      "value": "healthcare industry"
     },
@@ -497,7 +504,8 @@
       "min_amount": 70000
      }
     }
-   ]
+   ],
+   "note": "salary period 'year' is a normalisation assumption; the request does not say it"
   },
   {
    "id": "h16",
@@ -533,7 +541,7 @@
     },
     {
      "field": "other",
-     "strength": "hard",
+     "strength": "soft",
      "quote": "not interested in consulting firms",
      "value": "not a consulting firm (employer type)"
     }
@@ -550,7 +558,7 @@
     "work_region",
     "seniority"
    ],
-   "schema_gap": "vague request: no role, place or pay"
+   "schema_gap": "vague request, zero conditions expected; parse_conditions() currently fails on zero conditions (implementation gap, not fixed here)"
   },
   {
    "id": "h18",
@@ -578,10 +586,13 @@
       "currency": "USD",
       "period": "year",
       "basis": "unspecified",
-      "min_amount": 110000
-     }
+      "min_amount": 110000,
+      "max_amount": 130000
+     },
+     "unscored": true
     }
-   ]
+   ],
+   "schema_gap": "SalaryValue has no max_amount; 110k-130k range cannot be represented. Not scored (a min-only condition is a partial capture)"
   },
   {
    "id": "h19",
@@ -600,8 +611,15 @@
      "value": [
       "Mountain View"
      ]
+    },
+    {
+     "field": "other",
+     "strength": "hard",
+     "quote": "Google-scale infra",
+     "value": "large-scale infrastructure work"
     }
-   ]
+   ],
+   "note": "Toronto is where the candidate relocates from, not a work location; no relocation package implied"
   },
   {
    "id": "h20",
@@ -623,11 +641,12 @@
     },
     {
      "field": "other",
-     "strength": "either",
-     "quote": "English and Spanish",
-     "value": "English and Spanish language use"
+     "strength": "hard",
+     "quote": "only speak English and Spanish",
+     "value": "job does not require languages other than English and Spanish"
     }
-   ]
+   ],
+   "note": "posting that mentions no language requirement is 'unknown', not violated"
   },
   {
    "id": "h21",
@@ -649,7 +668,8 @@
      "field": "seniority",
      "strength": "hard",
      "quote": "mid or senior level",
-     "value": "mid or senior"
+     "value": "mid or senior",
+     "unscored": true
     },
     {
      "field": "remote_mode",
@@ -670,7 +690,8 @@
       "min_amount": 170000
      }
     }
-   ]
+   ],
+   "schema_gap": "ExperienceValue.level takes one value; 'mid or senior' cannot be represented. Not scored"
   },
   {
    "id": "h22",
@@ -688,7 +709,7 @@
     "salary",
     "work_region"
    ],
-   "schema_gap": "two region/salary alternatives that pair up; cannot be independent hard conditions"
+   "schema_gap": "two region/salary alternatives that pair up; cannot be independent hard conditions; clarify Zurich currency, comparison direction and pay period"
   },
   {
    "id": "h23",
@@ -716,9 +737,10 @@
     },
     {
      "field": "seniority",
-     "strength": "either",
+     "strength": "hard",
      "quote": "3+ years",
-     "value": "3+ years of experience"
+     "value": "3+ years of experience",
+     "unscored": true
     },
     {
      "field": "employment_type",
@@ -728,7 +750,9 @@
       "contract"
      ]
     }
-   ]
+   ],
+   "expects_clarification": true,
+   "schema_gap": "'3+ years' may be the candidate's experience or a job requirement; not mapped to max_years_required, not scored"
   },
   {
    "id": "h24",
@@ -759,6 +783,12 @@
      "strength": "soft",
      "quote": "wants equity",
      "value": "equity offered"
+    },
+    {
+     "field": "other",
+     "strength": "hard",
+     "quote": "Startup",
+     "value": "employer is a startup"
     }
    ]
   }
