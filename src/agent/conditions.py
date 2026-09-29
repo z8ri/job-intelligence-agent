@@ -29,7 +29,7 @@ You extract structured job-search conditions from a user's request.
 Return ONE JSON object: {"conditions": [...], "clarifications": [...]}.
 
 Each condition:
-{"field": <field>, "strength": "hard"|"soft", "value": {...}, "quote": "<exact words copied from the request>"}
+{"field": <field>, "strength": "hard"|"soft", "value": {...}, "quote": "<exact words copied from the request>", "weight": number|null}
 
 fields and their value shapes (value.kind must match):
 - role_focus / role_avoid / skill / other -> {"kind":"text","text":"<English phrase>"}
@@ -42,6 +42,7 @@ fields and their value shapes (value.kind must match):
 Rules:
 - "quote" MUST be copied character-for-character from the request (same language). Never translate or paraphrase it.
 - strength is "hard" only for a stated must / deal-breaker; wishes, "prefer", "can accept" are "soft".
+- weight (0.1-1.0) only for soft conditions, reflecting how strongly the user stressed them ("最好", "particularly" -> 0.8-1.0; "if possible", "少量" -> 0.2-0.4); null when no emphasis was expressed. Hard conditions use null.
 - work_region (where the user can work) and remote_mode (how the job is worked) are different conditions.
 - Do not invent conditions the user did not state. Do not fill salary.min_amount unless a number was given.
 - "avoid" wishes ("do not want mainly X") are role_avoid. "Accepts a little X" is a soft role_focus.
@@ -66,9 +67,9 @@ EXAMPLE_ASSISTANT = json.dumps(
             {"field": "remote_mode", "strength": "soft", "quote": "可以混合办公",
              "value": {"kind": "modes", "modes": ["hybrid", "onsite", "remote"]}},
             {"field": "role_focus", "strength": "soft", "quote": "接受少量微调",
-             "value": {"kind": "text", "text": "some model fine-tuning"}},
+             "value": {"kind": "text", "text": "some model fine-tuning"}, "weight": 0.3},
             {"field": "role_avoid", "strength": "soft", "quote": "不希望主要做模型训练",
-             "value": {"kind": "text", "text": "primarily model training"}},
+             "value": {"kind": "text", "text": "primarily model training"}, "weight": 0.8},
         ],
         "clarifications": [],
     },

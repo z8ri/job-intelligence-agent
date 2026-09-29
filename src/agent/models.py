@@ -98,6 +98,8 @@ Value = Annotated[
     Field(discriminator="kind"),
 ]
 
+DEFAULT_SOFT_WEIGHT = 0.5
+
 _FIELD_KIND: dict[str, str] = {
     "role_focus": "text",
     "role_avoid": "text",
@@ -118,6 +120,14 @@ class Condition(BaseModel):
     strength: Strength
     value: Value
     quote: str = Field(min_length=1)
+    weight: float | None = Field(default=None, ge=0.05, le=1.0)  # emphasis of a soft condition; None = default
+
+    @property
+    def effective_weight(self) -> float:
+        """Hard conditions filter (weight 1); soft ones default to 0.5 unless the user stressed them."""
+        if self.strength == "hard":
+            return 1.0
+        return self.weight if self.weight is not None else DEFAULT_SOFT_WEIGHT
 
     @model_validator(mode="after")
     def _kind_matches_field(self):
@@ -151,7 +161,7 @@ class Clarification(BaseModel):
 class ConditionChanges(BaseModel):
     added: list[str] = Field(default_factory=list)
     removed: list[str] = Field(default_factory=list)
-    modified: list[str] = Field(default_factory=list)  # same id, different strength
+    modified: list[str] = Field(default_factory=list)  # same id, different strength or weight
 
     @property
     def is_empty(self) -> bool:
@@ -201,7 +211,7 @@ class ConditionSet(BaseModel):
         return " ; ".join(parts) if parts else self.raw_query
 
     def fingerprint(self) -> str:
-        sigs = sorted(c.signature() for c in self.conditions)
+        sigs = sorted(f"{c.signature()}:{c.effective_weight}" for c in self.conditions)
         return hashlib.sha1(json.dumps(sigs).encode()).hexdigest()[:12]
 
     def revise(
@@ -211,14 +221,17 @@ class ConditionSet(BaseModel):
         clarifications: list[Clarification] | None = None,
     ) -> tuple["ConditionSet", ConditionChanges]:
         """Return the next version. The version only advances when a condition was
-        added, removed or changed strength; rewording alone keeps it, so cached
+        added, removed or changed strength/weight; rewording alone keeps it, so cached
         judgements stay valid."""
         old = {c.id: c for c in self.conditions}
         new = {c.id: c for c in conditions}
         changes = ConditionChanges(
             added=sorted(set(new) - set(old)),
             removed=sorted(set(old) - set(new)),
-            modified=sorted(i for i in set(old) & set(new) if old[i].strength != new[i].strength),
+            modified=sorted(
+                i for i in set(old) & set(new)
+                if old[i].strength != new[i].strength or old[i].effective_weight != new[i].effective_weight
+            ),
         )
         version = self.version if changes.is_empty else self.version + 1
         revised = ConditionSet(

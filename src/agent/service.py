@@ -15,9 +15,11 @@ import time
 from typing import Callable
 
 from src.agent.conditions import ConditionParseError, parse_conditions
+from src.agent.graph import build_search_graph
 from src.agent.models import ConditionSet
-from src.agent.rerank import Scorer, rerank
+from src.agent.rerank import Scorer
 from src.agent.retrieval import JobIndex
+from src.agent.scoring import soft_breakdown, soft_score
 from src.agent.tasks import TaskStore
 from src.agent.verification import Budget, SingleFlight, VerifiedJob, Verifier
 
@@ -54,6 +56,7 @@ class SearchService:
         budget: Budget | None = None,
         retrieve_top_n: int = 50,
         rerank_depth: int = 30,
+        max_retries: int = 1,
     ):
         self.index = index
         self.scorer = scorer
@@ -63,7 +66,9 @@ class SearchService:
         self.budget = budget or Budget()
         self.retrieve_top_n = retrieve_top_n
         self.rerank_depth = rerank_depth
+        self.max_retries = max_retries
         self._flight = SingleFlight()
+        self._graph = build_search_graph(index, scorer, verifier, retrieve_top_n=retrieve_top_n, rerank_depth=rerank_depth)
 
     # ---- public operations -------------------------------------------------
 
@@ -174,17 +179,12 @@ class SearchService:
         if len(self.index) == 0:
             return {"status": "failed", "reasons": ["job index is empty"], "kept": [], "excluded": [],
                     "unverified": [], "stats": {}, "trace": {}}
-        query = conditions.retrieval_text()
-        retrieval = self.index.search(query, top_n=self.retrieve_top_n)
-        t1 = time.monotonic()
-        candidates = retrieval.candidates
-        rerank_trace = {"status": "skipped: no scorer"}
-        if self.scorer is not None:
-            rr = rerank(query, self.index, candidates, self.scorer, depth=self.rerank_depth)
-            candidates, rerank_trace = rr.candidates, rr.trace
-        t2 = time.monotonic()
-        verification = self.verifier.verify(candidates, self.index.snapshot, conditions, self.budget)
-        t3 = time.monotonic()
+        final = self._graph.invoke({
+            "conditions": conditions, "budget": self.budget, "query": conditions.retrieval_text(),
+            "retries": 0, "max_retries": self.max_retries, "llm_calls_used": 0, "started": t0, "timings": {},
+        })
+        retrieval, rerank_trace, verification = final["retrieval"], final["rerank_trace"], final["verification"]
+        timings = final["timings"]
 
         reasons = list(verification.reasons)
         for name, info in retrieval.trace.get("channels", {}).items():
@@ -192,23 +192,34 @@ class SearchService:
                 reasons.append(f"retrieval channel unavailable: {name}")
         if str(rerank_trace.get("status", "")).startswith("failed"):
             reasons.append("reranker unavailable, kept retrieval order")
+        failed = sum(1 for u in verification.unverified if u.note.startswith("judge failed"))
+        if failed:
+            reasons.append(f"{failed} judgement(s) failed after retries")
 
         return {
             "status": "partial" if reasons else "complete",
             "reasons": reasons,
-            "kept": [self._view(v) for v in verification.kept],
+            "kept": self._rank_kept([self._view(v, conditions=conditions) for v in verification.kept]),
             "excluded": [self._view(v) for v in verification.excluded],
             "unverified": [self._view(v, brief=True) for v in verification.unverified],
-            "stats": verification.stats,
+            "stats": {**verification.stats, "llm_calls_total": final.get("llm_calls_used", 0)},
             "trace": {
                 "retrieval": retrieval.trace,
                 "rerank": rerank_trace,
-                "timings_s": {"retrieval": round(t1 - t0, 3), "rerank": round(t2 - t1, 3),
-                              "verification": round(t3 - t2, 3), "total": round(t3 - t0, 3)},
+                "retries": final.get("retry_log", []),
+                "timings_s": {**{k: round(v, 3) for k, v in timings.items()}, "total": round(time.monotonic() - t0, 3)},
             },
         }
 
-    def _view(self, v: VerifiedJob, *, brief: bool = False) -> dict:
+    @staticmethod
+    def _rank_kept(kept: list[dict]) -> list[dict]:
+        """Soft preferences order the survivors (stable: pipeline order breaks ties)."""
+        kept = sorted(kept, key=lambda j: -(j["soft_score"] if j.get("soft_score") is not None else 0.0))
+        for i, j in enumerate(kept, 1):
+            j["rank"] = i
+        return kept
+
+    def _view(self, v: VerifiedJob, *, brief: bool = False, conditions: ConditionSet | None = None) -> dict:
         snap = self.index.snapshot(v.candidate.job_key)
         out = {
             "job_key": snap.job_key, "title": snap.title, "company": snap.company, "location": snap.location,
@@ -220,6 +231,9 @@ class SearchService:
             return out
         out["judgments"] = {cid: _judgment_view(j) for cid, j in v.judgment.judgments.items()}
         out["unconfirmed_hard"] = v.unconfirmed_hard
+        if conditions is not None:
+            out["soft_breakdown"] = soft_breakdown(conditions, v.judgment)
+            out["soft_score"] = soft_score(out["soft_breakdown"])
         if v.status == "excluded":
             out["evidence"] = [{"condition_id": j.condition_id, **_judgment_view(j)} for j in v.conflicts]
         return out
