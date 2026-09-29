@@ -369,9 +369,12 @@ def run_eval(
     k: int = 5,
     max_candidates: int = 20,
     pool_depth: int = 10,
+    frozen_conditions: dict[str, dict] | None = None,
     log: Callable[[str], None] = lambda _: None,
 ) -> dict:
-    """Idempotent: queries already present in runs.json / qrels.json are skipped, so a run
+    """`frozen_conditions` (query id -> ConditionSet dump) replaces parsing, so a later run can
+    re-measure the same conditions after a change to verification or ranking.
+    Idempotent: queries already present in runs.json / qrels.json are skipped, so a run
     stopped by the budget guard continues where it stopped."""
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -389,7 +392,10 @@ def run_eval(
             if q.id not in runs:
                 parse_view = llm.view("parse", parse_live)
                 try:
-                    cs = parse_conditions(q.query, complete=parse_view)
+                    if frozen_conditions and q.id in frozen_conditions:
+                        cs = ConditionSet.model_validate(frozen_conditions[q.id])
+                    else:
+                        cs = parse_conditions(q.query, complete=parse_view)
                 except ConditionParseError as e:
                     runs[q.id] = {"split": q.split, "group": q.group, "query": q.query, "error": f"parse failed: {e}"}
                     log(f"{q.id}: parse failed ({e})")

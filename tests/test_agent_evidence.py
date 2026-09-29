@@ -82,6 +82,19 @@ def test_unverifiable_quote_is_downgraded_to_unknown():
     assert jj.hard_conflicts(CS) == []  # an unverified conflict can never exclude a job
 
 
+def test_location_field_quote_is_accepted_as_evidence_without_a_text_span():
+    for quote in ("Location field: London, UK", "london,  uk"):
+        jj = judge_job(JOB, CS, only=[REGION.id], complete=Scripted(payload(item(REGION, "conflict", quote))))
+        j = jj.judgments[REGION.id]
+        assert j.verdict == "conflict" and not j.downgraded and j.span is None and j.quote == "Location field: London, UK"
+        assert [c.condition_id for c in jj.hard_conflicts(CS)] == [REGION.id]
+
+
+def test_location_quote_must_match_the_field_exactly():
+    jj = judge_job(JOB, CS, only=[REGION.id], complete=Scripted(payload(item(REGION, "conflict", "Location field: Berlin"))))
+    assert jj.judgments[REGION.id].verdict == "unknown" and jj.judgments[REGION.id].downgraded
+
+
 def test_support_or_conflict_without_quote_is_downgraded():
     jj = judge_job(JOB, CS, only=[FOCUS.id], complete=Scripted(payload(item(FOCUS, "support", None))))
     assert jj.judgments[FOCUS.id].verdict == "unknown" and jj.judgments[FOCUS.id].downgraded

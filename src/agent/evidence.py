@@ -136,6 +136,16 @@ def locate_quote(text: str, quote: str) -> tuple[int, int] | None:
     return (m.start(), m.end()) if m else None
 
 
+def _is_location_header_quote(snap: Snapshot, quote: str) -> bool:
+    """The location field is shown to the judge in the header, outside `snap.text`; quoting it is legitimate evidence."""
+    loc = " ".join((snap.location or "").split())
+    if not loc or loc.lower() == "unknown":
+        return False
+    q = " ".join(quote.split())
+    q = re.sub(r"^location field:\s*", "", q, flags=re.IGNORECASE)
+    return q.lower() == loc.lower()
+
+
 def _judgment_from_raw(snap: Snapshot, condition_id: str, raw: dict) -> Judgment:
     verdict = raw.get("verdict")
     reason = str(raw.get("reason") or "")
@@ -145,6 +155,8 @@ def _judgment_from_raw(snap: Snapshot, condition_id: str, raw: dict) -> Judgment
         return Judgment(condition_id=condition_id, verdict="unknown", reason=reason)
     quote = raw.get("quote")
     span = locate_quote(snap.text, quote) if isinstance(quote, str) and quote.strip() else None
+    if span is None and isinstance(quote, str) and _is_location_header_quote(snap, quote):
+        return Judgment(condition_id=condition_id, verdict=verdict, quote=f"Location field: {snap.location}", reason=reason)
     if span is None:
         return Judgment(
             condition_id=condition_id, verdict="unknown", reason=f"unverified {verdict}: {reason}".strip(), downgraded=True

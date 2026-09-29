@@ -58,6 +58,7 @@ def main() -> int:
     p.add_argument("--k", type=int, default=5)
     p.add_argument("--max-candidates", type=int, default=20)
     p.add_argument("--file", type=Path)
+    p.add_argument("--conditions-from", type=Path, help="reuse the parsed conditions of another run's runs.json instead of parsing")
     args = p.parse_args()
 
     args.out.mkdir(parents=True, exist_ok=True)
@@ -107,7 +108,12 @@ def main() -> int:
 
         lives = dict(parse_live=conditions._openai_complete, judge_live=evidence._openai_complete, annotate_live=annotate_live)
     llm = FrozenLLM(args.out.parent / "llm_log.db", mode=args.mode, max_usd=args.max_usd)
-    result = run_eval(queries, index, scorer, llm, args.out, k=args.k, max_candidates=args.max_candidates, log=print, **lives)
+    frozen = None
+    if args.conditions_from:
+        src = json.loads((args.conditions_from / "runs.json").read_text())
+        frozen = {qid: r["conditions"] for qid, r in src.items() if "conditions" in r}
+    result = run_eval(queries, index, scorer, llm, args.out, k=args.k, max_candidates=args.max_candidates,
+                      frozen_conditions=frozen, log=print, **lives)
     manifest = build_manifest(index, queries, k=args.k, max_candidates=args.max_candidates, scorer=scorer, embed_model=embed_model)
     manifest["live_llm_spend_usd_estimated"] = round(llm.live_spent_usd(), 4)
     (args.out / "manifest.json").write_text(json.dumps(manifest, indent=1))

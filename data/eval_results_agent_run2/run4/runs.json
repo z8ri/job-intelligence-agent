@@ -1,0 +1,5376 @@
+{
+ "d01": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:b51ee4b5",
+     "quote": "Machine learning engineer roles",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Machine learning engineer"
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:7c8573b7",
+     "quote": "in New York",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "New York"
+      ]
+     },
+     "weight": null
+    },
+    {
+     "field": "salary",
+     "id": "salary:477ba811",
+     "quote": "paying at least $150k a year",
+     "strength": "hard",
+     "value": {
+      "basis": "base",
+      "currency": "USD",
+      "kind": "salary",
+      "min_amount": 150000.0,
+      "period": "year",
+      "region": null
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Machine learning engineer roles in New York, paying at least $150k a year",
+   "version": 1
+  },
+  "group": "ml-ny-salary",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "greenhouse:7005605",
+   "greenhouse:7454348",
+   "greenhouse:7116975",
+   "greenhouse:7669906",
+   "greenhouse:5551532004",
+   "hackernews:1237",
+   "hackernews:511",
+   "greenhouse:7747259",
+   "hackernews:74",
+   "hackernews:742",
+   "hackernews:1427",
+   "hackernews:1630",
+   "hackernews:2001",
+   "hackernews:157",
+   "hackernews:451",
+   "hackernews:526",
+   "hackernews:809",
+   "hackernews:2031"
+  ],
+  "query": "Machine learning engineer roles in New York, paying at least $150k a year",
+  "split": "dev",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:2001",
+     "hackernews:1237",
+     "hackernews:511",
+     "hackernews:74",
+     "hackernews:742"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "greenhouse:7747259",
+     "hackernews:1427",
+     "hackernews:1630",
+     "hackernews:2001",
+     "hackernews:157"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "greenhouse:7005605",
+     "greenhouse:7454348",
+     "greenhouse:7116975",
+     "greenhouse:7669906",
+     "greenhouse:5551532004"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:2001"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [
+     "hackernews:1237",
+     "hackernews:511",
+     "hackernews:74",
+     "hackernews:742"
+    ],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 375,
+     "est_cost_usd": 0.000571,
+     "llm_calls": 2,
+     "prompt_tokens": 2306
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:2001",
+     "hackernews:1427",
+     "hackernews:157",
+     "hackernews:451",
+     "hackernews:809",
+     "hackernews:2031",
+     "greenhouse:7747259",
+     "greenhouse:7454348",
+     "hackernews:1630",
+     "hackernews:526",
+     "greenhouse:7672101",
+     "greenhouse:7592146",
+     "greenhouse:7693033",
+     "greenhouse:7116975",
+     "greenhouse:7716341",
+     "greenhouse:7669906"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:1237",
+     "hackernews:511",
+     "hackernews:74",
+     "hackernews:742"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3115,
+     "est_cost_usd": 0.006111,
+     "llm_calls": 14,
+     "prompt_tokens": 28282
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:2001",
+     "hackernews:1427",
+     "hackernews:157",
+     "hackernews:451",
+     "hackernews:809",
+     "hackernews:2031",
+     "greenhouse:7747259",
+     "greenhouse:7454348",
+     "hackernews:1630",
+     "hackernews:526",
+     "greenhouse:7672101",
+     "greenhouse:7592146",
+     "greenhouse:7693033",
+     "greenhouse:7116975",
+     "greenhouse:7716341",
+     "greenhouse:7669906"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:1237",
+     "hackernews:511",
+     "hackernews:74",
+     "hackernews:742"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3115,
+     "est_cost_usd": 0.006111,
+     "llm_calls": 14,
+     "prompt_tokens": 28282
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:2001",
+     "hackernews:1427",
+     "hackernews:157",
+     "hackernews:451",
+     "hackernews:809",
+     "hackernews:2031",
+     "greenhouse:7747259",
+     "greenhouse:7454348",
+     "hackernews:1630",
+     "hackernews:526",
+     "greenhouse:7672101",
+     "greenhouse:7592146",
+     "greenhouse:7693033",
+     "greenhouse:7116975",
+     "greenhouse:7716341",
+     "greenhouse:7669906"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:1237",
+     "hackernews:511",
+     "hackernews:74",
+     "hackernews:742"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3115,
+     "est_cost_usd": 0.006111,
+     "llm_calls": 14,
+     "prompt_tokens": 28282
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:1427",
+     "hackernews:157",
+     "hackernews:451",
+     "hackernews:809",
+     "hackernews:2031",
+     "hackernews:1630",
+     "hackernews:526",
+     "hackernews:2001",
+     "greenhouse:7747259",
+     "greenhouse:7454348",
+     "greenhouse:7672101",
+     "greenhouse:7592146",
+     "greenhouse:7693033",
+     "greenhouse:7116975",
+     "greenhouse:7716341",
+     "greenhouse:7669906"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Seattle' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:2001"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7747259"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7454348"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'China' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7672101"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7592146"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'China' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7693033"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7116975"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'China' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7716341"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'United States' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7669906"
+      }
+     ],
+     "deferred_count": 9
+    },
+    "reasons": [],
+    "shown": [
+     "hackernews:1237",
+     "hackernews:511",
+     "hackernews:74",
+     "hackernews:742"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3115,
+     "est_cost_usd": 0.006111,
+     "llm_calls": 14,
+     "prompt_tokens": 28282
+    }
+   }
+  }
+ },
+ "d02": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:a6b78c60",
+     "quote": "Frontend React developer",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Frontend React developer"
+     },
+     "weight": null
+    },
+    {
+     "field": "remote_mode",
+     "id": "remote_mode:b07a06ba",
+     "quote": "must be fully remote",
+     "strength": "hard",
+     "value": {
+      "kind": "modes",
+      "modes": [
+       "remote"
+      ]
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:24e2375f",
+     "quote": "based in the US",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "US"
+      ]
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Frontend React developer, must be fully remote and based in the US",
+   "version": 1
+  },
+  "group": "frontend-remote",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "hackernews:574",
+   "greenhouse:7546721",
+   "hackernews:1661",
+   "hackernews:397",
+   "hackernews:1967",
+   "hackernews:896",
+   "hackernews:1931",
+   "hackernews:516",
+   "hackernews:1496",
+   "hackernews:1666",
+   "hackernews:204",
+   "hackernews:485",
+   "hackernews:1913",
+   "hackernews:1623",
+   "hackernews:401",
+   "hackernews:1248",
+   "hackernews:1356",
+   "hackernews:1370",
+   "greenhouse:8399456002"
+  ],
+  "query": "Frontend React developer, must be fully remote and based in the US",
+  "split": "dev",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:896",
+     "hackernews:485",
+     "hackernews:1913",
+     "hackernews:574",
+     "hackernews:1248"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:896",
+     "hackernews:1661",
+     "hackernews:397",
+     "hackernews:204",
+     "hackernews:485"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "hackernews:574",
+     "greenhouse:7546721",
+     "hackernews:1661",
+     "hackernews:397",
+     "hackernews:1967"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:896",
+     "hackernews:485",
+     "hackernews:1913",
+     "hackernews:574",
+     "hackernews:1248"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 1080,
+     "est_cost_usd": 0.001498,
+     "llm_calls": 5,
+     "prompt_tokens": 5665
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:896",
+     "hackernews:485",
+     "hackernews:1913",
+     "hackernews:574",
+     "hackernews:1248",
+     "hackernews:1370",
+     "hackernews:204",
+     "hackernews:1623",
+     "greenhouse:8399456002",
+     "hackernews:857",
+     "greenhouse:7546721",
+     "hackernews:2037",
+     "greenhouse:7551863",
+     "hackernews:1661",
+     "greenhouse:7378231",
+     "hackernews:719",
+     "hackernews:586",
+     "hackernews:401"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:1356",
+     "hackernews:397"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4112,
+     "est_cost_usd": 0.006432,
+     "llm_calls": 20,
+     "prompt_tokens": 26433
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:896",
+     "hackernews:485",
+     "hackernews:1913",
+     "hackernews:574",
+     "hackernews:1248",
+     "hackernews:1370",
+     "hackernews:204",
+     "hackernews:1623",
+     "greenhouse:8399456002",
+     "hackernews:857",
+     "greenhouse:7546721",
+     "hackernews:2037",
+     "greenhouse:7551863",
+     "hackernews:1661",
+     "greenhouse:7378231",
+     "hackernews:719",
+     "hackernews:586",
+     "hackernews:401"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:397",
+     "hackernews:1356"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4112,
+     "est_cost_usd": 0.006432,
+     "llm_calls": 20,
+     "prompt_tokens": 26433
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:896",
+     "hackernews:485",
+     "hackernews:1913",
+     "hackernews:574",
+     "hackernews:1248",
+     "hackernews:1370",
+     "hackernews:204",
+     "hackernews:1623",
+     "greenhouse:8399456002",
+     "hackernews:857",
+     "greenhouse:7546721",
+     "hackernews:2037",
+     "greenhouse:7551863",
+     "hackernews:1661",
+     "greenhouse:7378231",
+     "hackernews:719",
+     "hackernews:586",
+     "hackernews:401"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:1356",
+     "hackernews:397"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4112,
+     "est_cost_usd": 0.006432,
+     "llm_calls": 20,
+     "prompt_tokens": 26433
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:485",
+     "hackernews:1913",
+     "hackernews:574",
+     "hackernews:1370",
+     "hackernews:2037",
+     "hackernews:1661",
+     "hackernews:586",
+     "hackernews:401",
+     "hackernews:896",
+     "hackernews:1248",
+     "hackernews:204",
+     "hackernews:1623",
+     "greenhouse:8399456002",
+     "hackernews:857",
+     "greenhouse:7546721",
+     "greenhouse:7551863",
+     "greenhouse:7378231",
+     "hackernews:719"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Onsite' vs 'US'",
+         "condition_id": "work_region:24e2375f",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:896"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1248"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:204"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1623"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        },
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'US'",
+         "condition_id": "work_region:24e2375f",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8399456002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:857"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'China' vs 'US'",
+         "condition_id": "work_region:24e2375f",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7546721"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'China' vs 'US'",
+         "condition_id": "work_region:24e2375f",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7551863"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Brazil' vs 'US'",
+         "condition_id": "work_region:24e2375f",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7378231"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:719"
+      }
+     ],
+     "deferred_count": 10
+    },
+    "reasons": [],
+    "shown": [
+     "hackernews:1356",
+     "hackernews:397"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4112,
+     "est_cost_usd": 0.006432,
+     "llm_calls": 20,
+     "prompt_tokens": 26433
+    }
+   }
+  }
+ },
+ "d03": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:05fa3a72",
+     "quote": "Backend engineer working on payments infrastructure",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Backend engineer working on payments infrastructure"
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:56b60796",
+     "quote": "San Francisco",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "San Francisco"
+      ]
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Backend engineer working on payments infrastructure in San Francisco",
+   "version": 1
+  },
+  "group": "payments-sf",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "greenhouse:7581839",
+   "greenhouse:7613550",
+   "greenhouse:7546721",
+   "greenhouse:7525479",
+   "greenhouse:8452933002",
+   "greenhouse:7668022",
+   "hackernews:1417",
+   "hackernews:1762",
+   "hackernews:547",
+   "greenhouse:7755758",
+   "hackernews:358",
+   "hackernews:1595",
+   "hackernews:1586",
+   "hackernews:1626",
+   "hackernews:595",
+   "hackernews:335",
+   "hackernews:1813"
+  ],
+  "query": "Backend engineer working on payments infrastructure in San Francisco",
+  "split": "dev",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "greenhouse:7546721",
+     "hackernews:547",
+     "hackernews:1417",
+     "hackernews:1762",
+     "hackernews:1595"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "greenhouse:7613550",
+     "greenhouse:8452933002",
+     "greenhouse:7546721",
+     "hackernews:547",
+     "hackernews:1762"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "greenhouse:7581839",
+     "greenhouse:7613550",
+     "greenhouse:7546721",
+     "greenhouse:7525479",
+     "greenhouse:8452933002"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "greenhouse:7546721",
+     "hackernews:547",
+     "hackernews:1417",
+     "hackernews:1762",
+     "hackernews:1595"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 718,
+     "est_cost_usd": 0.001372,
+     "llm_calls": 5,
+     "prompt_tokens": 6277
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "greenhouse:7546721",
+     "hackernews:547",
+     "hackernews:1417",
+     "hackernews:1762",
+     "hackernews:1595",
+     "hackernews:1586",
+     "hackernews:1626",
+     "hackernews:595",
+     "hackernews:335",
+     "hackernews:1813",
+     "greenhouse:7613550",
+     "greenhouse:7581839",
+     "greenhouse:7755758",
+     "greenhouse:7668022",
+     "hackernews:358",
+     "hackernews:545",
+     "greenhouse:7256787",
+     "greenhouse:7525479",
+     "greenhouse:7688467"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:8452933002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3033,
+     "est_cost_usd": 0.006845,
+     "llm_calls": 20,
+     "prompt_tokens": 33504
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "greenhouse:7546721",
+     "hackernews:547",
+     "hackernews:1417",
+     "hackernews:1762",
+     "hackernews:1595",
+     "hackernews:1586",
+     "hackernews:1626",
+     "hackernews:595",
+     "hackernews:335",
+     "hackernews:1813",
+     "greenhouse:7613550",
+     "greenhouse:7581839",
+     "greenhouse:7755758",
+     "greenhouse:7668022",
+     "hackernews:358",
+     "hackernews:545",
+     "greenhouse:7256787",
+     "greenhouse:7525479",
+     "greenhouse:7688467"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:8452933002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3033,
+     "est_cost_usd": 0.006845,
+     "llm_calls": 20,
+     "prompt_tokens": 33504
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "greenhouse:7546721",
+     "hackernews:547",
+     "hackernews:1417",
+     "hackernews:1762",
+     "hackernews:1595",
+     "hackernews:1586",
+     "hackernews:1626",
+     "hackernews:595",
+     "hackernews:335",
+     "hackernews:1813",
+     "greenhouse:7613550",
+     "greenhouse:7581839",
+     "greenhouse:7755758",
+     "greenhouse:7668022",
+     "hackernews:358",
+     "hackernews:545",
+     "greenhouse:7256787",
+     "greenhouse:7525479",
+     "greenhouse:7688467"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:8452933002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3033,
+     "est_cost_usd": 0.006845,
+     "llm_calls": 20,
+     "prompt_tokens": 33504
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:547",
+     "hackernews:1595",
+     "hackernews:1586",
+     "hackernews:1626",
+     "hackernews:595",
+     "hackernews:335",
+     "hackernews:1813",
+     "hackernews:358",
+     "greenhouse:7546721",
+     "hackernews:1417",
+     "hackernews:1762",
+     "greenhouse:7613550",
+     "greenhouse:7581839",
+     "greenhouse:7755758",
+     "greenhouse:7668022",
+     "hackernews:545",
+     "greenhouse:7256787",
+     "greenhouse:7525479",
+     "greenhouse:7688467"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'China' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7546721"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1417"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1762"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Bangalore, India' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7613550"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Bangalore, India' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7581839"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7755758"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Bangalore, India' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7668022"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:545"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8452933002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Bangalore, India' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7256787"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Bangalore, India' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7525479"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7688467"
+      }
+     ],
+     "deferred_count": 12
+    },
+    "reasons": [],
+    "shown": [
+     "greenhouse:8452933002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3033,
+     "est_cost_usd": 0.006845,
+     "llm_calls": 20,
+     "prompt_tokens": 33504
+    }
+   }
+  }
+ },
+ "d04": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:06a8b6ad",
+     "quote": "Senior data engineer building data pipelines",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Senior data engineer building data pipelines"
+     },
+     "weight": null
+    },
+    {
+     "field": "seniority",
+     "id": "seniority:e5969f95",
+     "quote": "Senior",
+     "strength": "hard",
+     "value": {
+      "kind": "experience",
+      "level": "senior",
+      "max_years_required": null
+     },
+     "weight": null
+    },
+    {
+     "field": "remote_mode",
+     "id": "remote_mode:cf37858d",
+     "quote": "remote is fine",
+     "strength": "soft",
+     "value": {
+      "kind": "modes",
+      "modes": [
+       "remote",
+       "hybrid",
+       "onsite"
+      ]
+     },
+     "weight": 0.4
+    }
+   ],
+   "raw_query": "Senior data engineer building data pipelines, remote is fine",
+   "version": 1
+  },
+  "group": "data-eng-senior",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "hackernews:154",
+   "hackernews:1610",
+   "hackernews:1487",
+   "greenhouse:7095225",
+   "hackernews:328",
+   "hackernews:1456",
+   "hackernews:63",
+   "hackernews:504",
+   "hackernews:513",
+   "hackernews:543",
+   "hackernews:1446",
+   "hackernews:1043",
+   "hackernews:1400",
+   "hackernews:476",
+   "hackernews:1761",
+   "hackernews:871",
+   "hackernews:1247",
+   "hackernews:650",
+   "hackernews:1208",
+   "hackernews:852",
+   "greenhouse:8299493002",
+   "hackernews:414"
+  ],
+  "query": "Senior data engineer building data pipelines, remote is fine",
+  "split": "dev",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:328",
+     "hackernews:1446",
+     "hackernews:1247",
+     "hackernews:1400",
+     "hackernews:650"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:154",
+     "hackernews:1446",
+     "hackernews:1043",
+     "hackernews:1400",
+     "hackernews:1456"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "hackernews:154",
+     "hackernews:1610",
+     "hackernews:1487",
+     "greenhouse:7095225",
+     "hackernews:328"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:1446",
+     "hackernews:1247",
+     "hackernews:1400",
+     "hackernews:650"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [
+     "hackernews:328"
+    ],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 1013,
+     "est_cost_usd": 0.001588,
+     "llm_calls": 5,
+     "prompt_tokens": 6532
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:1446",
+     "hackernews:1247",
+     "hackernews:1400",
+     "hackernews:650",
+     "hackernews:1487",
+     "hackernews:1208",
+     "hackernews:513",
+     "hackernews:852",
+     "hackernews:63",
+     "hackernews:1443",
+     "hackernews:154",
+     "hackernews:476",
+     "hackernews:728",
+     "hackernews:871",
+     "hackernews:1043"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:328",
+     "hackernews:1456",
+     "hackernews:1761",
+     "greenhouse:8299493002",
+     "hackernews:414"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4129,
+     "est_cost_usd": 0.006622,
+     "llm_calls": 20,
+     "prompt_tokens": 27632
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:1446",
+     "hackernews:1247",
+     "hackernews:1400",
+     "hackernews:650",
+     "hackernews:1487",
+     "hackernews:1208",
+     "hackernews:513",
+     "hackernews:852",
+     "hackernews:63",
+     "hackernews:1443",
+     "hackernews:154",
+     "hackernews:476",
+     "hackernews:728",
+     "hackernews:871",
+     "hackernews:1043"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:328",
+     "hackernews:1456",
+     "hackernews:1761",
+     "greenhouse:8299493002",
+     "hackernews:414"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4129,
+     "est_cost_usd": 0.006622,
+     "llm_calls": 20,
+     "prompt_tokens": 27632
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:1446",
+     "hackernews:1247",
+     "hackernews:1400",
+     "hackernews:650",
+     "hackernews:1487",
+     "hackernews:1208",
+     "hackernews:513",
+     "hackernews:852",
+     "hackernews:63",
+     "hackernews:1443",
+     "hackernews:154",
+     "hackernews:476",
+     "hackernews:728",
+     "hackernews:871"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:328",
+     "hackernews:1456",
+     "hackernews:1761",
+     "greenhouse:8299493002",
+     "hackernews:414"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3917,
+     "est_cost_usd": 0.006244,
+     "llm_calls": 19,
+     "prompt_tokens": 25959
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:1446",
+     "hackernews:1247",
+     "hackernews:1400",
+     "hackernews:650",
+     "hackernews:1487",
+     "hackernews:1208",
+     "hackernews:513",
+     "hackernews:852",
+     "hackernews:63",
+     "hackernews:1443",
+     "hackernews:154",
+     "hackernews:476",
+     "hackernews:728",
+     "hackernews:871"
+    ],
+    "plan": {
+     "deferred": [],
+     "deferred_count": 0
+    },
+    "reasons": [],
+    "shown": [
+     "hackernews:328",
+     "hackernews:1456",
+     "hackernews:1761",
+     "greenhouse:8299493002",
+     "hackernews:414"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3917,
+     "est_cost_usd": 0.006244,
+     "llm_calls": 19,
+     "prompt_tokens": 25959
+    }
+   }
+  }
+ },
+ "d05": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:d7be3af0",
+     "quote": "Security engineer",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Security engineer"
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:cb186c73",
+     "quote": "in London",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "London"
+      ]
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Security engineer in London",
+   "version": 1
+  },
+  "group": "security-london",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "hackernews:216",
+   "hackernews:276",
+   "hackernews:1727",
+   "hackernews:1698",
+   "hackernews:1303",
+   "hackernews:578",
+   "hackernews:377",
+   "hackernews:277",
+   "greenhouse:5813865004",
+   "hackernews:820",
+   "hackernews:100",
+   "hackernews:1707",
+   "hackernews:2100",
+   "hackernews:418",
+   "hackernews:234",
+   "hackernews:1225",
+   "hackernews:1288",
+   "greenhouse:8440430002",
+   "hackernews:45",
+   "hackernews:12",
+   "greenhouse:8447477002",
+   "hackernews:1045",
+   "hackernews:1334",
+   "hackernews:1687",
+   "hackernews:2089"
+  ],
+  "query": "Security engineer in London",
+  "split": "dev",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:377",
+     "hackernews:418",
+     "hackernews:100",
+     "greenhouse:8440430002",
+     "hackernews:12"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:100",
+     "hackernews:377",
+     "hackernews:1707",
+     "hackernews:2100",
+     "hackernews:418"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "hackernews:216",
+     "hackernews:276",
+     "hackernews:1727",
+     "hackernews:1698",
+     "hackernews:1303"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:377",
+     "hackernews:418",
+     "hackernews:100",
+     "greenhouse:8440430002",
+     "hackernews:12"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 791,
+     "est_cost_usd": 0.001524,
+     "llm_calls": 5,
+     "prompt_tokens": 6993
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:377",
+     "hackernews:418",
+     "hackernews:100",
+     "greenhouse:8440430002",
+     "hackernews:12",
+     "greenhouse:8447477002",
+     "hackernews:1045",
+     "hackernews:1334",
+     "hackernews:1687",
+     "hackernews:2089",
+     "hackernews:282",
+     "hackernews:234",
+     "hackernews:1288",
+     "greenhouse:7743899",
+     "hackernews:1883",
+     "hackernews:1225",
+     "hackernews:45",
+     "hackernews:887",
+     "hackernews:1707",
+     "hackernews:2100"
+    ],
+    "reasons": [],
+    "shown": [],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2553,
+     "est_cost_usd": 0.005097,
+     "llm_calls": 16,
+     "prompt_tokens": 23770
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:377",
+     "hackernews:418",
+     "hackernews:100",
+     "greenhouse:8440430002",
+     "hackernews:12",
+     "greenhouse:8447477002",
+     "hackernews:1045",
+     "hackernews:1334",
+     "hackernews:1687",
+     "hackernews:2089",
+     "hackernews:282",
+     "hackernews:234",
+     "hackernews:1288",
+     "greenhouse:7743899",
+     "hackernews:1883",
+     "hackernews:1225",
+     "hackernews:45",
+     "hackernews:887",
+     "hackernews:1707",
+     "hackernews:2100"
+    ],
+    "reasons": [],
+    "shown": [],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2553,
+     "est_cost_usd": 0.005097,
+     "llm_calls": 16,
+     "prompt_tokens": 23770
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:377",
+     "hackernews:418",
+     "hackernews:100",
+     "greenhouse:8440430002",
+     "hackernews:12",
+     "greenhouse:8447477002",
+     "hackernews:1045",
+     "hackernews:1334",
+     "hackernews:1687",
+     "hackernews:2089",
+     "hackernews:282",
+     "hackernews:234",
+     "hackernews:1288",
+     "greenhouse:7743899",
+     "hackernews:1883",
+     "hackernews:1225",
+     "hackernews:45",
+     "hackernews:887",
+     "hackernews:1707",
+     "hackernews:2100"
+    ],
+    "reasons": [],
+    "shown": [],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2553,
+     "est_cost_usd": 0.005097,
+     "llm_calls": 16,
+     "prompt_tokens": 23770
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:377",
+     "hackernews:418",
+     "hackernews:100",
+     "hackernews:1045",
+     "hackernews:1334",
+     "hackernews:1687",
+     "hackernews:2089",
+     "hackernews:282",
+     "hackernews:1883",
+     "hackernews:1225",
+     "hackernews:1707",
+     "hackernews:2100",
+     "greenhouse:8440430002",
+     "hackernews:12",
+     "greenhouse:8447477002",
+     "hackernews:234",
+     "hackernews:1288",
+     "greenhouse:7743899",
+     "hackernews:45",
+     "hackernews:887"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'London'",
+         "condition_id": "work_region:cb186c73",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8440430002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'London'",
+         "condition_id": "work_region:cb186c73",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:12"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'London'",
+         "condition_id": "work_region:cb186c73",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8447477002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco' vs 'London'",
+         "condition_id": "work_region:cb186c73",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:234"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco' vs 'London'",
+         "condition_id": "work_region:cb186c73",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1288"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'London'",
+         "condition_id": "work_region:cb186c73",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7743899"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'London'",
+         "condition_id": "work_region:cb186c73",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:45"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco' vs 'London'",
+         "condition_id": "work_region:cb186c73",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:887"
+      }
+     ],
+     "deferred_count": 8
+    },
+    "reasons": [],
+    "shown": [],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2553,
+     "est_cost_usd": 0.005097,
+     "llm_calls": 16,
+     "prompt_tokens": 23770
+    }
+   }
+  }
+ },
+ "d06": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:975f00b0",
+     "quote": "Software engineering internship",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Software engineering internship"
+     },
+     "weight": null
+    },
+    {
+     "field": "employment_type",
+     "id": "employment_type:0a0eba08",
+     "quote": "internship",
+     "strength": "hard",
+     "value": {
+      "kind": "employment",
+      "types": [
+       "internship"
+      ]
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:e39aa428",
+     "quote": "in the United States",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "United States"
+      ]
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Software engineering internship in the United States",
+   "version": 1
+  },
+  "group": "intern-swe",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "greenhouse:7669906",
+   "greenhouse:7839237",
+   "greenhouse:7707299",
+   "hackernews:974",
+   "hackernews:2063",
+   "greenhouse:7707077",
+   "hackernews:993",
+   "hackernews:894",
+   "hackernews:1242",
+   "hackernews:1954",
+   "hackernews:431",
+   "hackernews:221",
+   "hackernews:1202",
+   "hackernews:115",
+   "hackernews:1838",
+   "hackernews:287",
+   "hackernews:303"
+  ],
+  "query": "Software engineering internship in the United States",
+  "split": "dev",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:2063",
+     "hackernews:115",
+     "greenhouse:7669906",
+     "hackernews:1954",
+     "hackernews:974"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:2063",
+     "greenhouse:7669906",
+     "hackernews:1954",
+     "hackernews:974",
+     "greenhouse:7839237"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "greenhouse:7669906",
+     "greenhouse:7839237",
+     "greenhouse:7707299",
+     "hackernews:974",
+     "hackernews:2063"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:2063",
+     "hackernews:115",
+     "hackernews:1954",
+     "hackernews:974"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [
+     "greenhouse:7669906"
+    ],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 1133,
+     "est_cost_usd": 0.001837,
+     "llm_calls": 5,
+     "prompt_tokens": 7714
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:2063",
+     "hackernews:115",
+     "hackernews:1954",
+     "hackernews:974",
+     "hackernews:431",
+     "hackernews:221",
+     "hackernews:1838",
+     "hackernews:287",
+     "hackernews:303",
+     "greenhouse:7707299",
+     "greenhouse:7839237",
+     "hackernews:40",
+     "hackernews:637",
+     "hackernews:894",
+     "hackernews:1202",
+     "hackernews:1682",
+     "hackernews:1863",
+     "hackernews:822",
+     "greenhouse:7573845"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:7669906"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3394,
+     "est_cost_usd": 0.005824,
+     "llm_calls": 16,
+     "prompt_tokens": 25250
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:2063",
+     "hackernews:115",
+     "hackernews:1954",
+     "hackernews:974",
+     "hackernews:431",
+     "hackernews:221",
+     "hackernews:1838",
+     "hackernews:287",
+     "hackernews:303",
+     "greenhouse:7707299",
+     "greenhouse:7839237",
+     "hackernews:40",
+     "hackernews:637",
+     "hackernews:894",
+     "hackernews:1202",
+     "hackernews:1682",
+     "hackernews:1863",
+     "hackernews:822",
+     "greenhouse:7573845"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:7669906"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3394,
+     "est_cost_usd": 0.005824,
+     "llm_calls": 16,
+     "prompt_tokens": 25250
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:2063",
+     "hackernews:115",
+     "hackernews:1954",
+     "hackernews:974",
+     "hackernews:431",
+     "hackernews:221",
+     "hackernews:1838",
+     "hackernews:287",
+     "hackernews:303",
+     "greenhouse:7707299",
+     "greenhouse:7839237",
+     "hackernews:40",
+     "hackernews:637",
+     "hackernews:894",
+     "hackernews:1202",
+     "hackernews:1682",
+     "hackernews:1863",
+     "hackernews:822",
+     "greenhouse:7573845"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:7669906"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3394,
+     "est_cost_usd": 0.005824,
+     "llm_calls": 16,
+     "prompt_tokens": 25250
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:2063",
+     "hackernews:115",
+     "hackernews:1954",
+     "hackernews:974",
+     "hackernews:431",
+     "hackernews:221",
+     "hackernews:1838",
+     "hackernews:287",
+     "hackernews:303",
+     "greenhouse:7707299",
+     "greenhouse:7839237",
+     "hackernews:40",
+     "hackernews:637",
+     "hackernews:894",
+     "hackernews:1202",
+     "hackernews:1682",
+     "hackernews:1863",
+     "hackernews:822",
+     "greenhouse:7573845"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Paris, France' vs 'United States'",
+         "condition_id": "work_region:e39aa428",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7573845"
+      }
+     ],
+     "deferred_count": 1
+    },
+    "reasons": [],
+    "shown": [
+     "greenhouse:7669906"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3394,
+     "est_cost_usd": 0.005824,
+     "llm_calls": 16,
+     "prompt_tokens": 25250
+    }
+   }
+  }
+ },
+ "d07": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:8bb52f9d",
+     "quote": "Site reliability or DevOps engineer",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Site reliability or DevOps engineer"
+     },
+     "weight": null
+    },
+    {
+     "field": "remote_mode",
+     "id": "remote_mode:b07a06ba",
+     "quote": "remote",
+     "strength": "hard",
+     "value": {
+      "kind": "modes",
+      "modes": [
+       "remote"
+      ]
+     },
+     "weight": null
+    },
+    {
+     "field": "salary",
+     "id": "salary:67bb14ca",
+     "quote": "base salary of at least $140k",
+     "strength": "hard",
+     "value": {
+      "basis": "base",
+      "currency": "USD",
+      "kind": "salary",
+      "min_amount": 140000.0,
+      "period": "year",
+      "region": null
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Site reliability or DevOps engineer, remote, with a base salary of at least $140k",
+   "version": 1
+  },
+  "group": "sre-salary",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "hackernews:987",
+   "hackernews:1851",
+   "hackernews:459",
+   "hackernews:376",
+   "hackernews:1043",
+   "hackernews:1492",
+   "greenhouse:7565550",
+   "hackernews:2038",
+   "hackernews:4",
+   "hackernews:56",
+   "hackernews:2002",
+   "hackernews:1641",
+   "hackernews:247",
+   "hackernews:1992",
+   "hackernews:905",
+   "hackernews:388",
+   "hackernews:2061",
+   "hackernews:935",
+   "hackernews:1986",
+   "hackernews:1290"
+  ],
+  "query": "Site reliability or DevOps engineer, remote, with a base salary of at least $140k",
+  "split": "dev",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:987",
+     "hackernews:935",
+     "hackernews:1986",
+     "hackernews:388",
+     "hackernews:2038"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:2002",
+     "greenhouse:7565550",
+     "hackernews:2038",
+     "hackernews:1641",
+     "hackernews:247"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "hackernews:987",
+     "hackernews:1851",
+     "hackernews:459",
+     "hackernews:376",
+     "hackernews:1043"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:935",
+     "hackernews:1986",
+     "hackernews:388"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [
+     "hackernews:987",
+     "hackernews:2038"
+    ],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 965,
+     "est_cost_usd": 0.001511,
+     "llm_calls": 5,
+     "prompt_tokens": 6212
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:935",
+     "hackernews:1986",
+     "hackernews:388",
+     "hackernews:150",
+     "greenhouse:7565550",
+     "hackernews:905",
+     "hackernews:789",
+     "hackernews:247",
+     "greenhouse:7756712"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:987",
+     "hackernews:2038",
+     "hackernews:2002",
+     "hackernews:4",
+     "hackernews:1290"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3534,
+     "est_cost_usd": 0.005968,
+     "llm_calls": 19,
+     "prompt_tokens": 25650
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:935",
+     "hackernews:1986",
+     "hackernews:388",
+     "hackernews:150",
+     "greenhouse:7565550",
+     "hackernews:905",
+     "hackernews:789",
+     "hackernews:247",
+     "greenhouse:7756712"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:987",
+     "hackernews:2038",
+     "hackernews:2002",
+     "hackernews:4",
+     "hackernews:1290"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3534,
+     "est_cost_usd": 0.005968,
+     "llm_calls": 19,
+     "prompt_tokens": 25650
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:935",
+     "hackernews:1986",
+     "hackernews:388"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:987",
+     "hackernews:2038",
+     "hackernews:2002",
+     "hackernews:4",
+     "hackernews:1290"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 1496,
+     "est_cost_usd": 0.002355,
+     "llm_calls": 8,
+     "prompt_tokens": 9713
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:1986",
+     "hackernews:388"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:935"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7565550"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:789"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:247"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7756712"
+      }
+     ],
+     "deferred_count": 5
+    },
+    "reasons": [],
+    "shown": [
+     "hackernews:987",
+     "hackernews:2038",
+     "hackernews:2002",
+     "hackernews:4",
+     "hackernews:1290"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 1253,
+     "est_cost_usd": 0.002002,
+     "llm_calls": 7,
+     "prompt_tokens": 8338
+    }
+   }
+  }
+ },
+ "d08": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:4801ae21",
+     "quote": "LLM application developer",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "LLM application developer"
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:7c8573b7",
+     "quote": "in New York",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "New York"
+      ]
+     },
+     "weight": null
+    },
+    {
+     "field": "remote_mode",
+     "id": "remote_mode:cf37858d",
+     "quote": "hybrid is fine",
+     "strength": "soft",
+     "value": {
+      "kind": "modes",
+      "modes": [
+       "hybrid",
+       "onsite",
+       "remote"
+      ]
+     },
+     "weight": 0.5
+    },
+    {
+     "field": "role_avoid",
+     "id": "role_avoid:3ad0b57e",
+     "quote": "do not want mainly model training work",
+     "strength": "soft",
+     "value": {
+      "kind": "text",
+      "text": "primarily model training"
+     },
+     "weight": 0.8
+    }
+   ],
+   "raw_query": "LLM application developer in New York, hybrid is fine, but I do not want mainly model training work",
+   "version": 1
+  },
+  "group": "llm-ny-avoid",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "greenhouse:7730723",
+   "greenhouse:6757302",
+   "greenhouse:7755758",
+   "hackernews:1950",
+   "hackernews:2076",
+   "greenhouse:7655958",
+   "hackernews:495",
+   "hackernews:1433",
+   "greenhouse:7716341",
+   "hackernews:87",
+   "hackernews:818",
+   "hackernews:324",
+   "hackernews:1918",
+   "hackernews:1213",
+   "hackernews:1686",
+   "greenhouse:7744247",
+   "hackernews:1926",
+   "greenhouse:7380149",
+   "greenhouse:8497292002",
+   "hackernews:724",
+   "greenhouse:7453202",
+   "hackernews:1748",
+   "hackernews:1031",
+   "hackernews:1333"
+  ],
+  "query": "LLM application developer in New York, hybrid is fine, but I do not want mainly model training work",
+  "split": "dev",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:1918",
+     "hackernews:1686",
+     "hackernews:1213",
+     "greenhouse:7744247",
+     "greenhouse:7453202"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:818",
+     "hackernews:324",
+     "hackernews:1918",
+     "hackernews:1213",
+     "hackernews:1686"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "greenhouse:7730723",
+     "greenhouse:6757302",
+     "greenhouse:7755758",
+     "hackernews:1950",
+     "hackernews:2076"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:1918",
+     "hackernews:1686",
+     "hackernews:1213",
+     "greenhouse:7744247",
+     "greenhouse:7453202"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 1308,
+     "est_cost_usd": 0.002204,
+     "llm_calls": 5,
+     "prompt_tokens": 9464
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:1918",
+     "hackernews:1686",
+     "hackernews:1213",
+     "greenhouse:7744247",
+     "greenhouse:7453202",
+     "greenhouse:7380149",
+     "hackernews:818",
+     "hackernews:1031",
+     "hackernews:1333",
+     "hackernews:1679",
+     "hackernews:122",
+     "hackernews:732",
+     "hackernews:1926",
+     "greenhouse:7730723",
+     "hackernews:724",
+     "hackernews:324",
+     "hackernews:1433",
+     "hackernews:554",
+     "greenhouse:8497292002"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:1748"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4480,
+     "est_cost_usd": 0.00738,
+     "llm_calls": 18,
+     "prompt_tokens": 31279
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:1918",
+     "hackernews:1686",
+     "hackernews:1213",
+     "greenhouse:7744247",
+     "greenhouse:7453202",
+     "greenhouse:7380149",
+     "hackernews:818",
+     "hackernews:1031",
+     "hackernews:1333",
+     "hackernews:1679",
+     "hackernews:122",
+     "hackernews:732",
+     "hackernews:1926",
+     "greenhouse:7730723",
+     "hackernews:724",
+     "hackernews:324",
+     "hackernews:1433",
+     "hackernews:554",
+     "greenhouse:8497292002"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:1748"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4480,
+     "est_cost_usd": 0.00738,
+     "llm_calls": 18,
+     "prompt_tokens": 31279
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:1918",
+     "hackernews:1686",
+     "hackernews:1213",
+     "greenhouse:7744247",
+     "greenhouse:7453202",
+     "greenhouse:7380149",
+     "hackernews:818",
+     "hackernews:1031",
+     "hackernews:1333",
+     "hackernews:1679",
+     "hackernews:122",
+     "hackernews:732",
+     "hackernews:1926",
+     "greenhouse:7730723",
+     "hackernews:724",
+     "hackernews:324",
+     "hackernews:1433",
+     "hackernews:554",
+     "greenhouse:8497292002"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:1748"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4480,
+     "est_cost_usd": 0.00738,
+     "llm_calls": 18,
+     "prompt_tokens": 31279
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:1918",
+     "hackernews:1686",
+     "hackernews:1213",
+     "hackernews:1031",
+     "hackernews:1333",
+     "hackernews:1679",
+     "hackernews:122",
+     "hackernews:732",
+     "hackernews:1926",
+     "hackernews:724",
+     "hackernews:1433",
+     "hackernews:554",
+     "greenhouse:7744247",
+     "greenhouse:7453202",
+     "greenhouse:7380149",
+     "hackernews:818",
+     "greenhouse:7730723",
+     "hackernews:324",
+     "greenhouse:8497292002"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Brazil' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7744247"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Brazil' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7453202"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Brazil' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7380149"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Los Angeles' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:818"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Bangalore, India' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7730723"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:324"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8497292002"
+      }
+     ],
+     "deferred_count": 7
+    },
+    "reasons": [],
+    "shown": [
+     "hackernews:1748"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4480,
+     "est_cost_usd": 0.00738,
+     "llm_calls": 18,
+     "prompt_tokens": 31279
+    }
+   }
+  }
+ },
+ "h01": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:ad322963",
+     "quote": "Rust or C++ systems programmer",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Rust or C++ systems programmer"
+     },
+     "weight": null
+    },
+    {
+     "field": "remote_mode",
+     "id": "remote_mode:b07a06ba",
+     "quote": "remote within the US",
+     "strength": "hard",
+     "value": {
+      "kind": "modes",
+      "modes": [
+       "remote"
+      ]
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Rust or C++ systems programmer, remote within the US",
+   "version": 1
+  },
+  "group": "rust-cpp-remote",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "greenhouse:7966411002",
+   "hackernews:1401",
+   "hackernews:1703",
+   "hackernews:205",
+   "hackernews:283",
+   "hackernews:2000",
+   "hackernews:1280",
+   "hackernews:1036",
+   "hackernews:245",
+   "greenhouse:5552530004",
+   "hackernews:383",
+   "hackernews:11",
+   "hackernews:1232",
+   "hackernews:403"
+  ],
+  "query": "Rust or C++ systems programmer, remote within the US",
+  "split": "holdout",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:11",
+     "hackernews:403",
+     "greenhouse:7966411002",
+     "hackernews:1703",
+     "hackernews:205"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "greenhouse:7966411002",
+     "hackernews:1703",
+     "hackernews:205",
+     "hackernews:1401",
+     "hackernews:383"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "greenhouse:7966411002",
+     "hackernews:1401",
+     "hackernews:1703",
+     "hackernews:205",
+     "hackernews:283"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "greenhouse:7966411002",
+     "hackernews:1703",
+     "hackernews:205"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [
+     "hackernews:11",
+     "hackernews:403"
+    ],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 731,
+     "est_cost_usd": 0.001599,
+     "llm_calls": 5,
+     "prompt_tokens": 7738
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "greenhouse:7966411002",
+     "hackernews:1703",
+     "hackernews:205",
+     "hackernews:1232",
+     "hackernews:171"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:11",
+     "hackernews:403",
+     "hackernews:383",
+     "hackernews:283",
+     "hackernews:1036"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2408,
+     "est_cost_usd": 0.005254,
+     "llm_calls": 18,
+     "prompt_tokens": 25393
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "greenhouse:7966411002",
+     "hackernews:1703",
+     "hackernews:205",
+     "hackernews:1232",
+     "hackernews:171"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:11",
+     "hackernews:403",
+     "hackernews:383",
+     "hackernews:283",
+     "hackernews:1036"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2408,
+     "est_cost_usd": 0.005254,
+     "llm_calls": 18,
+     "prompt_tokens": 25393
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "greenhouse:7966411002",
+     "hackernews:1703",
+     "hackernews:205",
+     "hackernews:1232"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:11",
+     "hackernews:403",
+     "hackernews:383",
+     "hackernews:283",
+     "hackernews:1036"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 1291,
+     "est_cost_usd": 0.002625,
+     "llm_calls": 9,
+     "prompt_tokens": 12334
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:205"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7966411002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1703"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1232"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1720"
+      }
+     ],
+     "deferred_count": 4
+    },
+    "reasons": [],
+    "shown": [
+     "hackernews:11",
+     "hackernews:403",
+     "hackernews:383",
+     "hackernews:283",
+     "hackernews:1036"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 792,
+     "est_cost_usd": 0.001582,
+     "llm_calls": 6,
+     "prompt_tokens": 7378
+    }
+   }
+  }
+ },
+ "h02": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:edf92364",
+     "quote": "Android engineer",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Android engineer"
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:5e6a3918",
+     "quote": "Tokyo or Singapore",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "Tokyo",
+       "Singapore"
+      ]
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Android engineer in Tokyo or Singapore",
+   "version": 1
+  },
+  "group": "android-asia",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "greenhouse:5969647004",
+   "hackernews:1264",
+   "hackernews:1063",
+   "greenhouse:7759113",
+   "hackernews:2",
+   "hackernews:2042",
+   "greenhouse:7744247",
+   "greenhouse:7817040",
+   "greenhouse:7681159",
+   "greenhouse:5753194004",
+   "greenhouse:7539152",
+   "hackernews:1564",
+   "greenhouse:7380149",
+   "hackernews:28",
+   "greenhouse:6602436",
+   "hackernews:922",
+   "hackernews:974"
+  ],
+  "query": "Android engineer in Tokyo or Singapore",
+  "split": "holdout",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:1264",
+     "greenhouse:7744247",
+     "greenhouse:6602436",
+     "greenhouse:7539152",
+     "greenhouse:7681159"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "greenhouse:7744247",
+     "greenhouse:7759113",
+     "greenhouse:7539152",
+     "hackernews:1264",
+     "hackernews:1564"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "greenhouse:5969647004",
+     "hackernews:1264",
+     "hackernews:1063",
+     "greenhouse:7759113",
+     "hackernews:2"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:1264",
+     "greenhouse:7744247",
+     "greenhouse:6602436",
+     "greenhouse:7539152",
+     "greenhouse:7681159"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 870,
+     "est_cost_usd": 0.002208,
+     "llm_calls": 5,
+     "prompt_tokens": 11240
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:1264",
+     "greenhouse:7744247",
+     "greenhouse:6602436",
+     "greenhouse:7539152",
+     "greenhouse:7681159",
+     "greenhouse:7380149",
+     "hackernews:1564",
+     "hackernews:2",
+     "hackernews:922",
+     "hackernews:2042",
+     "hackernews:1262",
+     "hackernews:1047",
+     "greenhouse:7380262",
+     "hackernews:28",
+     "greenhouse:7759113",
+     "hackernews:415",
+     "hackernews:768",
+     "hackernews:1593",
+     "greenhouse:8245153002"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:974"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3065,
+     "est_cost_usd": 0.006834,
+     "llm_calls": 20,
+     "prompt_tokens": 33301
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:1264",
+     "greenhouse:7744247",
+     "greenhouse:6602436",
+     "greenhouse:7539152",
+     "greenhouse:7681159",
+     "greenhouse:7380149",
+     "hackernews:1564",
+     "hackernews:2",
+     "hackernews:922",
+     "hackernews:2042",
+     "hackernews:1262",
+     "hackernews:1047",
+     "greenhouse:7380262",
+     "hackernews:28",
+     "greenhouse:7759113",
+     "hackernews:415",
+     "hackernews:768",
+     "hackernews:1593",
+     "greenhouse:8245153002"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:974"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3065,
+     "est_cost_usd": 0.006834,
+     "llm_calls": 20,
+     "prompt_tokens": 33301
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:1264",
+     "greenhouse:7744247",
+     "greenhouse:6602436",
+     "greenhouse:7539152",
+     "greenhouse:7681159",
+     "greenhouse:7380149",
+     "hackernews:1564",
+     "hackernews:2",
+     "hackernews:922",
+     "hackernews:2042",
+     "hackernews:1262",
+     "hackernews:1047",
+     "greenhouse:7380262",
+     "hackernews:28",
+     "greenhouse:7759113",
+     "hackernews:415",
+     "hackernews:768",
+     "hackernews:1593",
+     "greenhouse:8245153002"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:974"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3065,
+     "est_cost_usd": 0.006834,
+     "llm_calls": 20,
+     "prompt_tokens": 33301
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:1564",
+     "hackernews:2",
+     "hackernews:1262",
+     "hackernews:1047",
+     "hackernews:28",
+     "hackernews:415",
+     "hackernews:768",
+     "hackernews:1593",
+     "hackernews:1264",
+     "greenhouse:7744247",
+     "greenhouse:6602436",
+     "greenhouse:7539152",
+     "greenhouse:7681159",
+     "greenhouse:7380149",
+     "hackernews:922",
+     "hackernews:2042",
+     "greenhouse:7380262",
+     "greenhouse:7759113",
+     "greenhouse:8245153002"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1264"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Brazil' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7744247"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'US' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:6602436"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7539152"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7681159"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Brazil' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7380149"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Milwaukee' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:922"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:2042"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Brazil' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7380262"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Cleveland' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:974"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7759113"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'Tokyo'",
+         "condition_id": "work_region:5e6a3918",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8245153002"
+      }
+     ],
+     "deferred_count": 12
+    },
+    "reasons": [],
+    "shown": [
+     "hackernews:974"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3065,
+     "est_cost_usd": 0.006834,
+     "llm_calls": 20,
+     "prompt_tokens": 33301
+    }
+   }
+  }
+ },
+ "h03": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:fef02dbf",
+     "quote": "Engineering manager for a product team",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Engineering manager for a product team"
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:7c8573b7",
+     "quote": "in New York",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "New York"
+      ]
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Engineering manager for a product team in New York",
+   "version": 1
+  },
+  "group": "eng-manager-ny",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "hackernews:1519",
+   "hackernews:378",
+   "hackernews:450",
+   "greenhouse:7532824",
+   "hackernews:1770",
+   "hackernews:754",
+   "hackernews:1555",
+   "greenhouse:5972046004",
+   "greenhouse:5819866004",
+   "hackernews:689",
+   "hackernews:21",
+   "greenhouse:8485738002",
+   "greenhouse:7712903",
+   "greenhouse:7760914",
+   "hackernews:1285",
+   "hackernews:305",
+   "greenhouse:8509325002",
+   "hackernews:253",
+   "hackernews:723",
+   "greenhouse:8502342002",
+   "hackernews:183",
+   "hackernews:208"
+  ],
+  "query": "Engineering manager for a product team in New York",
+  "split": "holdout",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "greenhouse:7712903",
+     "greenhouse:8502342002",
+     "hackernews:183",
+     "greenhouse:7532824",
+     "hackernews:21"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:21",
+     "greenhouse:7532824",
+     "greenhouse:8485738002",
+     "greenhouse:7712903",
+     "greenhouse:7760914"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "hackernews:1519",
+     "hackernews:378",
+     "hackernews:450",
+     "greenhouse:7532824",
+     "hackernews:1770"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "greenhouse:7712903",
+     "greenhouse:8502342002",
+     "hackernews:183",
+     "greenhouse:7532824",
+     "hackernews:21"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 898,
+     "est_cost_usd": 0.002021,
+     "llm_calls": 5,
+     "prompt_tokens": 9884
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "greenhouse:7712903",
+     "greenhouse:8502342002",
+     "hackernews:183",
+     "greenhouse:7532824",
+     "hackernews:21",
+     "greenhouse:7760914",
+     "greenhouse:8485738002",
+     "hackernews:723",
+     "hackernews:208",
+     "greenhouse:8509325002",
+     "greenhouse:7707946",
+     "greenhouse:7778757",
+     "hackernews:1419",
+     "hackernews:305",
+     "greenhouse:7528577",
+     "hackernews:465",
+     "hackernews:253",
+     "hackernews:567",
+     "hackernews:951",
+     "hackernews:1285"
+    ],
+    "reasons": [],
+    "shown": [],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2966,
+     "est_cost_usd": 0.006844,
+     "llm_calls": 18,
+     "prompt_tokens": 33766
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "greenhouse:7712903",
+     "greenhouse:8502342002",
+     "hackernews:183",
+     "greenhouse:7532824",
+     "hackernews:21",
+     "greenhouse:7760914",
+     "greenhouse:8485738002",
+     "hackernews:723",
+     "hackernews:208",
+     "greenhouse:8509325002",
+     "greenhouse:7707946",
+     "greenhouse:7778757",
+     "hackernews:1419",
+     "hackernews:305",
+     "greenhouse:7528577",
+     "hackernews:465",
+     "hackernews:253",
+     "hackernews:567",
+     "hackernews:951",
+     "hackernews:1285"
+    ],
+    "reasons": [],
+    "shown": [],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2966,
+     "est_cost_usd": 0.006844,
+     "llm_calls": 18,
+     "prompt_tokens": 33766
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "greenhouse:7712903",
+     "greenhouse:8502342002",
+     "hackernews:183",
+     "greenhouse:7532824",
+     "hackernews:21",
+     "greenhouse:7760914",
+     "greenhouse:8485738002",
+     "hackernews:723",
+     "hackernews:208",
+     "greenhouse:8509325002",
+     "greenhouse:7707946",
+     "greenhouse:7778757",
+     "hackernews:1419",
+     "hackernews:305",
+     "greenhouse:7528577",
+     "hackernews:465",
+     "hackernews:253",
+     "hackernews:567",
+     "hackernews:951",
+     "hackernews:1285"
+    ],
+    "reasons": [],
+    "shown": [],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2966,
+     "est_cost_usd": 0.006844,
+     "llm_calls": 18,
+     "prompt_tokens": 33766
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:183",
+     "hackernews:21",
+     "hackernews:723",
+     "hackernews:1419",
+     "hackernews:305",
+     "hackernews:465",
+     "hackernews:253",
+     "hackernews:567",
+     "hackernews:951",
+     "hackernews:1285",
+     "greenhouse:7712903",
+     "greenhouse:8502342002",
+     "greenhouse:7532824",
+     "greenhouse:7760914",
+     "greenhouse:8485738002",
+     "hackernews:208",
+     "greenhouse:8509325002",
+     "greenhouse:7707946",
+     "greenhouse:7778757",
+     "greenhouse:7528577"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7712903"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8502342002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'London, United Kingdom' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7532824"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'China' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7760914"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8485738002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:208"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8509325002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'United States' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7707946"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'United States' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7778757"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'United States' vs 'New York'",
+         "condition_id": "work_region:7c8573b7",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7528577"
+      }
+     ],
+     "deferred_count": 10
+    },
+    "reasons": [],
+    "shown": [],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2966,
+     "est_cost_usd": 0.006844,
+     "llm_calls": 18,
+     "prompt_tokens": 33766
+    }
+   }
+  }
+ },
+ "h04": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:d622c806",
+     "quote": "Technical writer for developer documentation",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Technical writer for developer documentation"
+     },
+     "weight": null
+    },
+    {
+     "field": "remote_mode",
+     "id": "remote_mode:b07a06ba",
+     "quote": "remote",
+     "strength": "hard",
+     "value": {
+      "kind": "modes",
+      "modes": [
+       "remote"
+      ]
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Technical writer for developer documentation, remote",
+   "version": 1
+  },
+  "group": "tech-writer",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "hackernews:1464",
+   "hackernews:1702",
+   "hackernews:2118",
+   "greenhouse:5839202004",
+   "hackernews:1911",
+   "hackernews:2020",
+   "hackernews:1160",
+   "greenhouse:7797798",
+   "hackernews:1188",
+   "hackernews:1619",
+   "hackernews:418",
+   "hackernews:187",
+   "greenhouse:7672092",
+   "greenhouse:7793818"
+  ],
+  "query": "Technical writer for developer documentation, remote",
+  "split": "holdout",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:1702",
+     "hackernews:2118",
+     "hackernews:1464",
+     "greenhouse:7672092",
+     "hackernews:187"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:1464",
+     "hackernews:418",
+     "hackernews:1702",
+     "hackernews:1911",
+     "hackernews:2118"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "hackernews:1464",
+     "hackernews:1702",
+     "hackernews:2118",
+     "greenhouse:5839202004",
+     "hackernews:1911"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:1702",
+     "hackernews:1464",
+     "greenhouse:7672092",
+     "hackernews:187"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [
+     "hackernews:2118"
+    ],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 722,
+     "est_cost_usd": 0.001564,
+     "llm_calls": 5,
+     "prompt_tokens": 7536
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:1702",
+     "hackernews:1464",
+     "greenhouse:7672092",
+     "hackernews:187",
+     "hackernews:418",
+     "greenhouse:7793818",
+     "hackernews:1911",
+     "greenhouse:7797798",
+     "hackernews:1160",
+     "greenhouse:7639355",
+     "greenhouse:8431671002",
+     "hackernews:14",
+     "hackernews:2020",
+     "hackernews:2037",
+     "greenhouse:6448191",
+     "greenhouse:5839202004",
+     "hackernews:868",
+     "hackernews:831",
+     "greenhouse:6717690"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:2118"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2775,
+     "est_cost_usd": 0.006648,
+     "llm_calls": 20,
+     "prompt_tokens": 33223
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:1702",
+     "hackernews:1464",
+     "greenhouse:7672092",
+     "hackernews:187",
+     "hackernews:418",
+     "greenhouse:7793818",
+     "hackernews:1911",
+     "greenhouse:7797798",
+     "hackernews:1160",
+     "greenhouse:7639355",
+     "greenhouse:8431671002",
+     "hackernews:14",
+     "hackernews:2020",
+     "hackernews:2037",
+     "greenhouse:6448191",
+     "greenhouse:5839202004",
+     "hackernews:868",
+     "hackernews:831",
+     "greenhouse:6717690"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:2118"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2775,
+     "est_cost_usd": 0.006648,
+     "llm_calls": 20,
+     "prompt_tokens": 33223
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:1702",
+     "hackernews:1464",
+     "greenhouse:7672092",
+     "hackernews:187",
+     "hackernews:418",
+     "greenhouse:7793818",
+     "hackernews:1911",
+     "greenhouse:7797798",
+     "hackernews:1160",
+     "greenhouse:7639355",
+     "greenhouse:8431671002",
+     "hackernews:14",
+     "hackernews:2020",
+     "hackernews:2037",
+     "greenhouse:6448191",
+     "greenhouse:5839202004",
+     "hackernews:868",
+     "hackernews:831",
+     "greenhouse:6717690"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:2118"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2775,
+     "est_cost_usd": 0.006648,
+     "llm_calls": 20,
+     "prompt_tokens": 33223
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:1702",
+     "hackernews:1464",
+     "hackernews:418",
+     "greenhouse:7793818",
+     "hackernews:1160",
+     "greenhouse:7639355",
+     "hackernews:14",
+     "hackernews:2037",
+     "greenhouse:6448191",
+     "greenhouse:5839202004",
+     "hackernews:831",
+     "greenhouse:7672092",
+     "hackernews:187",
+     "hackernews:1911",
+     "greenhouse:7797798",
+     "greenhouse:8431671002",
+     "hackernews:2020",
+     "hackernews:868",
+     "greenhouse:6717690"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7672092"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:187"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1911"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7797798"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8431671002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:2020"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:868"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job work mode 'onsite' vs accepted 'remote'",
+         "condition_id": "remote_mode:b07a06ba",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:6717690"
+      }
+     ],
+     "deferred_count": 8
+    },
+    "reasons": [],
+    "shown": [
+     "hackernews:2118"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 2775,
+     "est_cost_usd": 0.006648,
+     "llm_calls": 20,
+     "prompt_tokens": 33223
+    }
+   }
+  }
+ },
+ "h05": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:b20990bb",
+     "quote": "Analytics engineer",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Analytics engineer"
+     },
+     "weight": null
+    },
+    {
+     "field": "skill",
+     "id": "skill:38dfe2cc",
+     "quote": "using SQL and dbt",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "SQL and dbt"
+     },
+     "weight": null
+    },
+    {
+     "field": "remote_mode",
+     "id": "remote_mode:e949af9b",
+     "quote": "hybrid",
+     "strength": "hard",
+     "value": {
+      "kind": "modes",
+      "modes": [
+       "hybrid"
+      ]
+     },
+     "weight": null
+    },
+    {
+     "field": "salary",
+     "id": "salary:8030e9d9",
+     "quote": "at least $130k",
+     "strength": "hard",
+     "value": {
+      "basis": "base",
+      "currency": "USD",
+      "kind": "salary",
+      "min_amount": 130000.0,
+      "period": "year",
+      "region": null
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Analytics engineer using SQL and dbt, hybrid, at least $130k",
+   "version": 1
+  },
+  "group": "analytics-sql",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "greenhouse:8371252002",
+   "greenhouse:8373431002",
+   "hackernews:1043",
+   "hackernews:1489",
+   "hackernews:874",
+   "greenhouse:8299493002",
+   "hackernews:1880",
+   "hackernews:1855",
+   "hackernews:1177",
+   "hackernews:1192",
+   "greenhouse:7733495",
+   "hackernews:1456",
+   "greenhouse:7832067",
+   "greenhouse:7640881",
+   "hackernews:725"
+  ],
+  "query": "Analytics engineer using SQL and dbt, hybrid, at least $130k",
+  "split": "holdout",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:874",
+     "hackernews:1177",
+     "hackernews:1880",
+     "hackernews:1456",
+     "greenhouse:8371252002"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "greenhouse:8371252002",
+     "greenhouse:8373431002",
+     "greenhouse:8299493002",
+     "hackernews:1855",
+     "greenhouse:7733495"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "greenhouse:8371252002",
+     "greenhouse:8373431002",
+     "hackernews:1043",
+     "hackernews:1489",
+     "hackernews:874"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:874",
+     "hackernews:1177",
+     "hackernews:1880",
+     "hackernews:1456",
+     "greenhouse:8371252002"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 1243,
+     "est_cost_usd": 0.001896,
+     "llm_calls": 5,
+     "prompt_tokens": 7668
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:874",
+     "hackernews:1177",
+     "hackernews:1880",
+     "hackernews:1456",
+     "greenhouse:8371252002",
+     "greenhouse:8299493002",
+     "hackernews:1855",
+     "hackernews:1192",
+     "hackernews:725",
+     "greenhouse:7733495",
+     "greenhouse:8468440002",
+     "greenhouse:8447216002",
+     "greenhouse:5220003004",
+     "greenhouse:5551686004",
+     "hackernews:95",
+     "greenhouse:7640881",
+     "greenhouse:7832067",
+     "greenhouse:7683174",
+     "hackernews:1243"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:8373431002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4934,
+     "est_cost_usd": 0.009196,
+     "llm_calls": 19,
+     "prompt_tokens": 41571
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:874",
+     "hackernews:1177",
+     "hackernews:1880",
+     "hackernews:1456",
+     "greenhouse:8371252002",
+     "greenhouse:8299493002",
+     "hackernews:1855",
+     "hackernews:1192",
+     "hackernews:725",
+     "greenhouse:7733495",
+     "greenhouse:8468440002",
+     "greenhouse:8447216002",
+     "greenhouse:5220003004",
+     "greenhouse:5551686004",
+     "hackernews:95",
+     "greenhouse:7640881",
+     "greenhouse:7832067",
+     "greenhouse:7683174",
+     "hackernews:1243"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:8373431002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4934,
+     "est_cost_usd": 0.009196,
+     "llm_calls": 19,
+     "prompt_tokens": 41571
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:874",
+     "hackernews:1177",
+     "hackernews:1880",
+     "hackernews:1456",
+     "greenhouse:8371252002",
+     "greenhouse:8299493002",
+     "hackernews:1855",
+     "hackernews:1192",
+     "hackernews:725",
+     "greenhouse:7733495",
+     "greenhouse:8468440002",
+     "greenhouse:8447216002",
+     "greenhouse:5220003004",
+     "greenhouse:5551686004",
+     "hackernews:95",
+     "greenhouse:7640881",
+     "greenhouse:7832067",
+     "greenhouse:7683174",
+     "hackernews:1243"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:8373431002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4934,
+     "est_cost_usd": 0.009196,
+     "llm_calls": 19,
+     "prompt_tokens": 41571
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:874",
+     "hackernews:1177",
+     "hackernews:1880",
+     "hackernews:1456",
+     "greenhouse:8371252002",
+     "greenhouse:8299493002",
+     "hackernews:1855",
+     "hackernews:1192",
+     "hackernews:725",
+     "greenhouse:7733495",
+     "greenhouse:8468440002",
+     "greenhouse:8447216002",
+     "greenhouse:5220003004",
+     "greenhouse:5551686004",
+     "hackernews:95",
+     "greenhouse:7640881",
+     "greenhouse:7832067",
+     "greenhouse:7683174",
+     "hackernews:1243"
+    ],
+    "plan": {
+     "deferred": [],
+     "deferred_count": 0
+    },
+    "reasons": [],
+    "shown": [
+     "greenhouse:8373431002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 4934,
+     "est_cost_usd": 0.009196,
+     "llm_calls": 19,
+     "prompt_tokens": 41571
+    }
+   }
+  }
+ },
+ "h06": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:beb6b35c",
+     "quote": "Legal counsel positions",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Legal counsel positions"
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:9301878b",
+     "quote": "in Asia",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "Asia"
+      ]
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Legal counsel positions in Asia",
+   "version": 1
+  },
+  "group": "legal-asia",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "greenhouse:7795869",
+   "greenhouse:7789554",
+   "greenhouse:5829275004",
+   "greenhouse:8490430002",
+   "greenhouse:5834913004",
+   "greenhouse:8482186002",
+   "greenhouse:5811082004",
+   "greenhouse:8497292002",
+   "greenhouse:7735274",
+   "greenhouse:8463028002",
+   "greenhouse:8434162002",
+   "greenhouse:8468739002"
+  ],
+  "query": "Legal counsel positions in Asia",
+  "split": "holdout",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "greenhouse:7795869",
+     "greenhouse:7789554",
+     "greenhouse:5829275004",
+     "greenhouse:5834913004",
+     "greenhouse:5811082004"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "greenhouse:5829275004",
+     "greenhouse:8497292002",
+     "greenhouse:7795869",
+     "greenhouse:8490430002",
+     "greenhouse:8482186002"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "greenhouse:7795869",
+     "greenhouse:7789554",
+     "greenhouse:5829275004",
+     "greenhouse:8490430002",
+     "greenhouse:5834913004"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "greenhouse:5829275004",
+     "greenhouse:5834913004",
+     "greenhouse:5811082004"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [
+     "greenhouse:7795869",
+     "greenhouse:7789554"
+    ],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 767,
+     "est_cost_usd": 0.00225,
+     "llm_calls": 5,
+     "prompt_tokens": 11934
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "greenhouse:5829275004",
+     "greenhouse:5834913004",
+     "greenhouse:5811082004",
+     "greenhouse:8463028002",
+     "greenhouse:8497292002",
+     "greenhouse:8434162002",
+     "greenhouse:7735274",
+     "greenhouse:8468739002",
+     "hackernews:194",
+     "hackernews:436",
+     "greenhouse:8462980002",
+     "greenhouse:8490430002",
+     "greenhouse:8482186002",
+     "greenhouse:8465229002",
+     "greenhouse:6298781",
+     "greenhouse:5737291004",
+     "hackernews:1261",
+     "hackernews:475"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:7795869",
+     "greenhouse:7789554"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3187,
+     "est_cost_usd": 0.009125,
+     "llm_calls": 20,
+     "prompt_tokens": 48087
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "greenhouse:5829275004",
+     "greenhouse:5834913004",
+     "greenhouse:5811082004",
+     "greenhouse:8463028002",
+     "greenhouse:8497292002",
+     "greenhouse:8434162002",
+     "greenhouse:7735274",
+     "greenhouse:8468739002",
+     "hackernews:194",
+     "hackernews:436",
+     "greenhouse:8462980002",
+     "greenhouse:8490430002",
+     "greenhouse:8482186002",
+     "greenhouse:8465229002",
+     "greenhouse:6298781",
+     "greenhouse:5737291004",
+     "hackernews:1261",
+     "hackernews:475"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:7795869",
+     "greenhouse:7789554"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3187,
+     "est_cost_usd": 0.009125,
+     "llm_calls": 20,
+     "prompt_tokens": 48087
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "greenhouse:5829275004",
+     "greenhouse:5834913004",
+     "greenhouse:5811082004",
+     "greenhouse:8463028002",
+     "greenhouse:8497292002",
+     "greenhouse:8434162002",
+     "greenhouse:7735274",
+     "greenhouse:8468739002",
+     "hackernews:194",
+     "hackernews:436",
+     "greenhouse:8462980002",
+     "greenhouse:8490430002",
+     "greenhouse:8482186002",
+     "greenhouse:8465229002",
+     "greenhouse:6298781",
+     "greenhouse:5737291004",
+     "hackernews:1261",
+     "hackernews:475"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:7795869",
+     "greenhouse:7789554"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3187,
+     "est_cost_usd": 0.009125,
+     "llm_calls": 20,
+     "prompt_tokens": 48087
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:1261",
+     "greenhouse:5829275004",
+     "greenhouse:5834913004",
+     "greenhouse:5811082004",
+     "greenhouse:8463028002",
+     "greenhouse:8497292002",
+     "greenhouse:8434162002",
+     "greenhouse:7735274",
+     "greenhouse:8468739002",
+     "hackernews:194",
+     "hackernews:436",
+     "greenhouse:8462980002",
+     "greenhouse:8490430002",
+     "greenhouse:8482186002",
+     "greenhouse:8465229002",
+     "greenhouse:6298781",
+     "greenhouse:5737291004",
+     "hackernews:475"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Seoul, Korea' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7795869"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Tokyo, Japan' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7789554"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'London, England' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:5829275004"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'São Paulo, Brazil' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:5834913004"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco, CA • New York, NY • United States' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:5811082004"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8463028002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8497292002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8434162002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'United States' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7735274"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8468739002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:194"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:436"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8462980002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8490430002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8482186002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8465229002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'United States' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:6298781"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco, CA • New York, NY • United States' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:5737291004"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'Asia'",
+         "condition_id": "work_region:9301878b",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:475"
+      }
+     ],
+     "deferred_count": 19
+    },
+    "reasons": [],
+    "shown": [
+     "greenhouse:7795869",
+     "greenhouse:7789554"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 3187,
+     "est_cost_usd": 0.009125,
+     "llm_calls": 20,
+     "prompt_tokens": 48087
+    }
+   }
+  }
+ },
+ "h07": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:7deee04b",
+     "quote": "Embedded or firmware engineer for hardware products",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Embedded or firmware engineer for hardware products"
+     },
+     "weight": null
+    }
+   ],
+   "raw_query": "Embedded or firmware engineer for hardware products",
+   "version": 1
+  },
+  "group": "embedded",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "hackernews:19",
+   "hackernews:221",
+   "hackernews:431",
+   "hackernews:362",
+   "hackernews:1839",
+   "hackernews:759",
+   "hackernews:1594",
+   "hackernews:638",
+   "hackernews:1317",
+   "hackernews:407",
+   "hackernews:1203",
+   "hackernews:2055"
+  ],
+  "query": "Embedded or firmware engineer for hardware products",
+  "split": "holdout",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:362",
+     "hackernews:221",
+     "hackernews:431",
+     "hackernews:1839",
+     "hackernews:19"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:19",
+     "hackernews:221",
+     "hackernews:431",
+     "hackernews:362",
+     "hackernews:1839"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "hackernews:19",
+     "hackernews:221",
+     "hackernews:431",
+     "hackernews:362",
+     "hackernews:1839"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [],
+    "reasons": [],
+    "shown": [
+     "hackernews:362",
+     "hackernews:221",
+     "hackernews:431",
+     "hackernews:1839",
+     "hackernews:19"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 393,
+     "est_cost_usd": 0.001099,
+     "llm_calls": 5,
+     "prompt_tokens": 5753
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:638",
+     "hackernews:759",
+     "hackernews:1529",
+     "hackernews:407",
+     "hackernews:287",
+     "hackernews:995",
+     "hackernews:1989",
+     "greenhouse:7826679"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:362",
+     "hackernews:221",
+     "hackernews:431",
+     "hackernews:1839",
+     "hackernews:19"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 1686,
+     "est_cost_usd": 0.004648,
+     "llm_calls": 20,
+     "prompt_tokens": 24245
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:638",
+     "hackernews:759",
+     "hackernews:1529",
+     "hackernews:407",
+     "hackernews:287",
+     "hackernews:995",
+     "hackernews:1989",
+     "greenhouse:7826679"
+    ],
+    "reasons": [],
+    "shown": [
+     "hackernews:362",
+     "hackernews:1839",
+     "hackernews:19",
+     "hackernews:1203",
+     "hackernews:1317"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 1686,
+     "est_cost_usd": 0.004648,
+     "llm_calls": 20,
+     "prompt_tokens": 24245
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [],
+    "reasons": [],
+    "shown": [
+     "hackernews:362",
+     "hackernews:221",
+     "hackernews:431",
+     "hackernews:1839",
+     "hackernews:19"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 393,
+     "est_cost_usd": 0.001099,
+     "llm_calls": 5,
+     "prompt_tokens": 5753
+    }
+   },
+   "verify_planned": {
+    "excluded": [],
+    "plan": {
+     "deferred": [],
+     "deferred_count": 0
+    },
+    "reasons": [],
+    "shown": [
+     "hackernews:362",
+     "hackernews:221",
+     "hackernews:431",
+     "hackernews:1839",
+     "hackernews:19"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 393,
+     "est_cost_usd": 0.001099,
+     "llm_calls": 5,
+     "prompt_tokens": 5753
+    }
+   }
+  }
+ },
+ "h08": {
+  "base": "rerank",
+  "conditions": {
+   "clarifications": [],
+   "conditions": [
+    {
+     "field": "role_focus",
+     "id": "role_focus:6c9d0ed0",
+     "quote": "Staff-level infrastructure engineer",
+     "strength": "hard",
+     "value": {
+      "kind": "text",
+      "text": "Staff-level infrastructure engineer"
+     },
+     "weight": null
+    },
+    {
+     "field": "seniority",
+     "id": "seniority:28764291",
+     "quote": "Staff-level",
+     "strength": "hard",
+     "value": {
+      "kind": "experience",
+      "level": "staff",
+      "max_years_required": null
+     },
+     "weight": null
+    },
+    {
+     "field": "work_region",
+     "id": "work_region:56b60796",
+     "quote": "in San Francisco",
+     "strength": "hard",
+     "value": {
+      "kind": "regions",
+      "regions": [
+       "San Francisco"
+      ]
+     },
+     "weight": null
+    },
+    {
+     "field": "salary",
+     "id": "salary:60964ad9",
+     "quote": "salary at least $200k",
+     "strength": "hard",
+     "value": {
+      "basis": "base",
+      "currency": "USD",
+      "kind": "salary",
+      "min_amount": 200000.0,
+      "period": "year",
+      "region": "San Francisco"
+     },
+     "weight": null
+    },
+    {
+     "field": "role_avoid",
+     "id": "role_avoid:f19e72d7",
+     "quote": "not a people-management role",
+     "strength": "soft",
+     "value": {
+      "kind": "text",
+      "text": "not a people-management role"
+     },
+     "weight": 0.8
+    }
+   ],
+   "raw_query": "Staff-level infrastructure engineer in San Francisco, salary at least $200k, not a people-management role",
+   "version": 1
+  },
+  "group": "staff-infra-sf",
+  "parse_usage": {
+   "completion_tokens": 0,
+   "est_cost_usd": 0.0,
+   "llm_calls": 0,
+   "prompt_tokens": 0
+  },
+  "pool": [
+   "greenhouse:8498984002",
+   "greenhouse:8397385002",
+   "greenhouse:7609100",
+   "greenhouse:8177912002",
+   "greenhouse:7343909",
+   "hackernews:1235",
+   "greenhouse:7600470",
+   "greenhouse:8490814002",
+   "hackernews:13",
+   "greenhouse:7782308",
+   "hackernews:1558",
+   "hackernews:559",
+   "hackernews:571",
+   "hackernews:1470",
+   "hackernews:359",
+   "greenhouse:7739337",
+   "hackernews:1412",
+   "hackernews:926",
+   "hackernews:622",
+   "hackernews:12",
+   "hackernews:402"
+  ],
+  "query": "Staff-level infrastructure engineer in San Francisco, salary at least $200k, not a people-management role",
+  "split": "holdout",
+  "systems": {
+   "rerank": {
+    "shown": [
+     "hackernews:1558",
+     "hackernews:1235",
+     "greenhouse:7782308",
+     "hackernews:571",
+     "hackernews:1470"
+    ],
+    "trace": {
+     "reranked": 20,
+     "scorer": "CrossEncoderScorer",
+     "status": "ok"
+    },
+    "usage": null
+   },
+   "retrieval": {
+    "shown": [
+     "hackernews:1558",
+     "hackernews:559",
+     "hackernews:571",
+     "hackernews:1470",
+     "hackernews:1235"
+    ],
+    "usage": null
+   },
+   "retrieval_raw": {
+    "shown": [
+     "greenhouse:8498984002",
+     "greenhouse:8397385002",
+     "greenhouse:7609100",
+     "greenhouse:8177912002",
+     "greenhouse:7343909"
+    ],
+    "usage": null
+   },
+   "verify_fixed": {
+    "excluded": [
+     "hackernews:1558",
+     "hackernews:1235",
+     "greenhouse:7782308",
+     "hackernews:571",
+     "hackernews:1470"
+    ],
+    "reasons": [
+     "max_candidates reached"
+    ],
+    "shown": [],
+    "status": "partial",
+    "usage": {
+     "completion_tokens": 1497,
+     "est_cost_usd": 0.002088,
+     "llm_calls": 5,
+     "prompt_tokens": 7930
+    }
+   },
+   "verify_full": {
+    "excluded": [
+     "hackernews:1558",
+     "hackernews:1235",
+     "greenhouse:7782308",
+     "hackernews:571",
+     "hackernews:1470",
+     "hackernews:559",
+     "hackernews:1412",
+     "greenhouse:7739337",
+     "hackernews:12",
+     "hackernews:402",
+     "hackernews:2023",
+     "hackernews:190",
+     "hackernews:926",
+     "hackernews:947",
+     "hackernews:1892",
+     "hackernews:59",
+     "hackernews:622",
+     "hackernews:359",
+     "hackernews:771"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:8177912002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 6035,
+     "est_cost_usd": 0.008218,
+     "llm_calls": 20,
+     "prompt_tokens": 30648
+    }
+   },
+   "verify_full_confirmed_first": {
+    "excluded": [
+     "hackernews:1558",
+     "hackernews:1235",
+     "greenhouse:7782308",
+     "hackernews:571",
+     "hackernews:1470",
+     "hackernews:559",
+     "hackernews:1412",
+     "greenhouse:7739337",
+     "hackernews:12",
+     "hackernews:402",
+     "hackernews:2023",
+     "hackernews:190",
+     "hackernews:926",
+     "hackernews:947",
+     "hackernews:1892",
+     "hackernews:59",
+     "hackernews:622",
+     "hackernews:359",
+     "hackernews:771"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:8177912002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 6035,
+     "est_cost_usd": 0.008218,
+     "llm_calls": 20,
+     "prompt_tokens": 30648
+    }
+   },
+   "verify_ondemand": {
+    "excluded": [
+     "hackernews:1558",
+     "hackernews:1235",
+     "greenhouse:7782308",
+     "hackernews:571",
+     "hackernews:1470",
+     "hackernews:559",
+     "hackernews:1412",
+     "greenhouse:7739337",
+     "hackernews:12",
+     "hackernews:402",
+     "hackernews:2023",
+     "hackernews:190",
+     "hackernews:926",
+     "hackernews:947",
+     "hackernews:1892",
+     "hackernews:59",
+     "hackernews:622",
+     "hackernews:359",
+     "hackernews:771"
+    ],
+    "reasons": [],
+    "shown": [
+     "greenhouse:8177912002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 6035,
+     "est_cost_usd": 0.008218,
+     "llm_calls": 20,
+     "prompt_tokens": 30648
+    }
+   },
+   "verify_planned": {
+    "excluded": [
+     "hackernews:1235",
+     "hackernews:571",
+     "hackernews:1470",
+     "hackernews:2023",
+     "hackernews:190",
+     "hackernews:947",
+     "hackernews:59",
+     "hackernews:359",
+     "hackernews:1558",
+     "greenhouse:7782308",
+     "hackernews:559",
+     "hackernews:1412",
+     "greenhouse:7739337",
+     "hackernews:12",
+     "hackernews:402",
+     "hackernews:926",
+     "hackernews:1892",
+     "hackernews:622",
+     "hackernews:771"
+    ],
+    "plan": {
+     "deferred": [
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1558"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7782308"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'CT' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        },
+        {
+         "basis": "listed pay 20,000+ vs target 200,000",
+         "condition_id": "salary:60964ad9",
+         "fit": 0.0
+        }
+       ],
+       "job_key": "hackernews:559"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Miami' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1412"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'USA' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:7739337"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:12"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Boston' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:402"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'San Francisco Bay Area' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "greenhouse:8177912002"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'Austin' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:926"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:1892"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        }
+       ],
+       "job_key": "hackernews:622"
+      },
+      {
+       "conflicting_hints": [
+        {
+         "basis": "job location 'New York City' vs 'San Francisco'",
+         "condition_id": "work_region:56b60796",
+         "fit": 0.1
+        },
+        {
+         "basis": "listed pay 160,000+ vs target 200,000",
+         "condition_id": "salary:60964ad9",
+         "fit": 0.0183
+        }
+       ],
+       "job_key": "hackernews:771"
+      }
+     ],
+     "deferred_count": 12
+    },
+    "reasons": [],
+    "shown": [
+     "greenhouse:8177912002"
+    ],
+    "status": "complete",
+    "usage": {
+     "completion_tokens": 6035,
+     "est_cost_usd": 0.008218,
+     "llm_calls": 20,
+     "prompt_tokens": 30648
+    }
+   }
+  }
+ }
+}
