@@ -1,0 +1,766 @@
+{
+ "status": "DRAFT held-out set — proposed by Claude, NOT yet reviewed by the user. The parser prompt must not be tuned on these.",
+ "guide": {
+  "strength 'either'": "hard or soft both accepted (intent ambiguous)",
+  "expects_clarification": "a correct parse raises a clarification for this request",
+  "must_not_be_hard": "fields that must not appear as hard conditions",
+  "value_compare": "only these value keys are compared",
+  "schema_gap": "this request needs something the condition schema cannot express faithfully",
+  "optional": "an 'is fine / acceptable' statement: may be omitted, or given as a soft condition with exactly this value; extra values are wrong"
+ },
+ "requests": [
+  {
+   "id": "h01",
+   "query": "Data scientist working on fraud detection, Chicago, at least $140k",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Data scientist working on fraud detection",
+     "value": "fraud detection data science"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Chicago",
+     "value": [
+      "Chicago"
+     ]
+    },
+    {
+     "field": "salary",
+     "strength": "hard",
+     "quote": "at least $140k",
+     "value": {
+      "currency": "USD",
+      "period": "year",
+      "basis": "unspecified",
+      "min_amount": 140000
+     }
+    }
+   ]
+  },
+  {
+   "id": "h02",
+   "query": "Looking for a remote DevOps role with Terraform and AWS, contract or full-time is fine",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "DevOps",
+     "value": "DevOps"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "hard",
+     "quote": "remote",
+     "value": [
+      "remote"
+     ]
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "Terraform",
+     "value": "Terraform"
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "AWS",
+     "value": "AWS"
+    },
+    {
+     "field": "employment_type",
+     "strength": "soft",
+     "quote": "contract or full-time is fine",
+     "value": [
+      "contract",
+      "full_time"
+     ],
+     "optional": true
+    }
+   ]
+  },
+  {
+   "id": "h03",
+   "query": "我想找北京的算法工程师，做推荐系统，年薪 50 万人民币以上",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "算法工程师，做推荐系统",
+     "value": "recommender-system algorithm engineering"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "北京",
+     "value": [
+      "Beijing"
+     ]
+    },
+    {
+     "field": "salary",
+     "strength": "hard",
+     "quote": "年薪 50 万人民币以上",
+     "value": {
+      "currency": "CNY",
+      "period": "year",
+      "basis": "unspecified",
+      "min_amount": 500000
+     }
+    }
+   ]
+  },
+  {
+   "id": "h04",
+   "query": "Senior iOS engineer, Swift, Austin or fully remote",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "iOS engineer",
+     "value": "iOS engineering"
+    },
+    {
+     "field": "seniority",
+     "strength": "hard",
+     "quote": "Senior",
+     "value": "senior"
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "Swift",
+     "value": "Swift"
+    }
+   ],
+   "expects_clarification": true,
+   "must_not_be_hard": [
+    "work_region",
+    "remote_mode"
+   ],
+   "schema_gap": "cross-field OR: 'Austin or fully remote' cannot be two independent hard conditions"
+  },
+  {
+   "id": "h05",
+   "query": "Product manager for a B2B SaaS company, no travel, Seattle",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Product manager",
+     "value": "product management"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Seattle",
+     "value": [
+      "Seattle"
+     ]
+    },
+    {
+     "field": "other",
+     "strength": "hard",
+     "quote": "no travel",
+     "value": "no travel required"
+    },
+    {
+     "field": "other",
+     "strength": "either",
+     "quote": "B2B SaaS company",
+     "value": "B2B SaaS employer"
+    }
+   ]
+  },
+  {
+   "id": "h06",
+   "query": "Junior frontend developer, Vue, I would like to work from home most days",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "frontend developer",
+     "value": "frontend development"
+    },
+    {
+     "field": "seniority",
+     "strength": "hard",
+     "quote": "Junior",
+     "value": "junior"
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "Vue",
+     "value": "Vue"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "soft",
+     "quote": "work from home most days",
+     "value": [
+      "remote"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "h07",
+   "query": "Machine learning researcher, reinforcement learning, Zurich or London, PhD preferred",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Machine learning researcher, reinforcement learning",
+     "value": "reinforcement learning research"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Zurich or London",
+     "value": [
+      "Zurich",
+      "London"
+     ]
+    },
+    {
+     "field": "other",
+     "strength": "soft",
+     "quote": "PhD preferred",
+     "value": "PhD preferred (degree level)"
+    }
+   ]
+  },
+  {
+   "id": "h08",
+   "query": "Part-time or freelance technical recruiter, remote, $50/hour or more",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "technical recruiter",
+     "value": "technical recruiting"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "hard",
+     "quote": "remote",
+     "value": [
+      "remote"
+     ]
+    },
+    {
+     "field": "employment_type",
+     "strength": "hard",
+     "quote": "Part-time or freelance",
+     "value": [
+      "part_time",
+      "contract"
+     ]
+    },
+    {
+     "field": "salary",
+     "strength": "hard",
+     "quote": "$50/hour or more",
+     "value": {
+      "currency": "USD",
+      "period": "hour",
+      "basis": "unspecified",
+      "min_amount": 50
+     }
+    }
+   ]
+  },
+  {
+   "id": "h09",
+   "query": "Cloud security architect, Washington DC, active security clearance required",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Cloud security architect",
+     "value": "cloud security architecture"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Washington DC",
+     "value": [
+      "Washington DC"
+     ]
+    },
+    {
+     "field": "other",
+     "strength": "hard",
+     "quote": "active security clearance required",
+     "value": "active security clearance required"
+    }
+   ]
+  },
+  {
+   "id": "h10",
+   "query": "Anything in robotics software, I am flexible on location but not the west coast",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "robotics software",
+     "value": "robotics software"
+    }
+   ],
+   "expects_clarification": true,
+   "schema_gap": "'not the west coast' is an exclusion the region schema cannot express"
+  },
+  {
+   "id": "h11",
+   "query": "Backend engineer with Rust, remote, prefer companies that publish their salary",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Backend engineer",
+     "value": "backend engineering"
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "Rust",
+     "value": "Rust"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "hard",
+     "quote": "remote",
+     "value": [
+      "remote"
+     ]
+    },
+    {
+     "field": "other",
+     "strength": "soft",
+     "quote": "prefer companies that publish their salary",
+     "value": "posting states a salary range"
+    }
+   ]
+  },
+  {
+   "id": "h12",
+   "query": "Data analyst, SQL and Tableau, Denver, entry level, no more than 2 years experience required",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Data analyst",
+     "value": "data analysis"
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "SQL",
+     "value": "SQL"
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "Tableau",
+     "value": "Tableau"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Denver",
+     "value": [
+      "Denver"
+     ]
+    },
+    {
+     "field": "seniority",
+     "strength": "hard",
+     "quote": "entry level",
+     "value": "entry"
+    }
+   ]
+  },
+  {
+   "id": "h13",
+   "query": "找一份深圳的前端开发工作，React，不要 996，月薪 2 万人民币起",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "前端开发",
+     "value": "frontend development"
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "React",
+     "value": "React"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "深圳",
+     "value": [
+      "Shenzhen"
+     ]
+    },
+    {
+     "field": "other",
+     "strength": "hard",
+     "quote": "不要 996",
+     "value": "no 996 overtime culture"
+    },
+    {
+     "field": "salary",
+     "strength": "hard",
+     "quote": "月薪 2 万人民币起",
+     "value": {
+      "currency": "CNY",
+      "period": "month",
+      "basis": "unspecified",
+      "min_amount": 20000
+     }
+    }
+   ]
+  },
+  {
+   "id": "h14",
+   "query": "Solutions architect, pre-sales, healthcare industry, Boston or New York",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Solutions architect, pre-sales",
+     "value": "pre-sales solutions architecture"
+    },
+    {
+     "field": "other",
+     "strength": "either",
+     "quote": "healthcare industry",
+     "value": "healthcare industry"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Boston or New York",
+     "value": [
+      "Boston",
+      "New York"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "h15",
+   "query": "Embedded firmware engineer, C, hybrid in Munich, at least 70k euros",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Embedded firmware engineer",
+     "value": "embedded firmware engineering"
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "C",
+     "value": "C"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "hard",
+     "quote": "hybrid",
+     "value": [
+      "hybrid"
+     ]
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Munich",
+     "value": [
+      "Munich"
+     ]
+    },
+    {
+     "field": "salary",
+     "strength": "hard",
+     "quote": "at least 70k euros",
+     "value": {
+      "currency": "EUR",
+      "period": "year",
+      "basis": "unspecified",
+      "min_amount": 70000
+     }
+    }
+   ]
+  },
+  {
+   "id": "h16",
+   "query": "Staff data engineer, remote in the US, not interested in consulting firms",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "data engineer",
+     "value": "data engineering"
+    },
+    {
+     "field": "seniority",
+     "strength": "hard",
+     "quote": "Staff",
+     "value": "staff"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "hard",
+     "quote": "remote",
+     "value": [
+      "remote"
+     ]
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "in the US",
+     "value": [
+      "United States"
+     ]
+    },
+    {
+     "field": "other",
+     "strength": "hard",
+     "quote": "not interested in consulting firms",
+     "value": "not a consulting firm (employer type)"
+    }
+   ]
+  },
+  {
+   "id": "h17",
+   "query": "A good job",
+   "conditions": [],
+   "expects_clarification": true,
+   "must_not_be_hard": [
+    "salary",
+    "role_focus",
+    "work_region",
+    "seniority"
+   ],
+   "schema_gap": "vague request: no role, place or pay"
+  },
+  {
+   "id": "h18",
+   "query": "Growth marketing manager, Los Angeles, $110k to $130k",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Growth marketing manager",
+     "value": "growth marketing management"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Los Angeles",
+     "value": [
+      "Los Angeles"
+     ]
+    },
+    {
+     "field": "salary",
+     "strength": "hard",
+     "quote": "$110k to $130k",
+     "value": {
+      "currency": "USD",
+      "period": "year",
+      "basis": "unspecified",
+      "min_amount": 110000
+     }
+    }
+   ]
+  },
+  {
+   "id": "h19",
+   "query": "Technical program manager, Google-scale infra, Mountain View, willing to relocate from Toronto",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Technical program manager",
+     "value": "technical program management"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Mountain View",
+     "value": [
+      "Mountain View"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "h20",
+   "query": "I only speak English and Spanish, looking for customer success roles in Miami",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "customer success roles",
+     "value": "customer success"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "Miami",
+     "value": [
+      "Miami"
+     ]
+    },
+    {
+     "field": "other",
+     "strength": "either",
+     "quote": "English and Spanish",
+     "value": "English and Spanish language use"
+    }
+   ]
+  },
+  {
+   "id": "h21",
+   "query": "Kubernetes platform engineer, mid or senior level, remote, at least $170k total compensation",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "platform engineer",
+     "value": "platform engineering"
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "Kubernetes",
+     "value": "Kubernetes"
+    },
+    {
+     "field": "seniority",
+     "strength": "hard",
+     "quote": "mid or senior level",
+     "value": "mid or senior"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "hard",
+     "quote": "remote",
+     "value": [
+      "remote"
+     ]
+    },
+    {
+     "field": "salary",
+     "strength": "hard",
+     "quote": "at least $170k total compensation",
+     "value": {
+      "currency": "USD",
+      "period": "year",
+      "basis": "total",
+      "min_amount": 170000
+     }
+    }
+   ]
+  },
+  {
+   "id": "h22",
+   "query": "Research engineer at an AI lab, London, anything above $200k, or Zurich at 250k",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "Research engineer at an AI lab",
+     "value": "AI research engineering"
+    }
+   ],
+   "expects_clarification": true,
+   "must_not_be_hard": [
+    "salary",
+    "work_region"
+   ],
+   "schema_gap": "two region/salary alternatives that pair up; cannot be independent hard conditions"
+  },
+  {
+   "id": "h23",
+   "query": "Remote QA automation engineer, Selenium or Cypress, 3+ years, contract preferred",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "QA automation engineer",
+     "value": "QA automation"
+    },
+    {
+     "field": "remote_mode",
+     "strength": "hard",
+     "quote": "Remote",
+     "value": [
+      "remote"
+     ]
+    },
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "Selenium or Cypress",
+     "value": "Selenium or Cypress"
+    },
+    {
+     "field": "seniority",
+     "strength": "either",
+     "quote": "3+ years",
+     "value": "3+ years of experience"
+    },
+    {
+     "field": "employment_type",
+     "strength": "soft",
+     "quote": "contract preferred",
+     "value": [
+      "contract"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "h24",
+   "query": "Startup engineer who wants equity, San Francisco, generalist full-stack, not big tech",
+   "conditions": [
+    {
+     "field": "role_focus",
+     "strength": "hard",
+     "quote": "generalist full-stack",
+     "value": "generalist full-stack engineering"
+    },
+    {
+     "field": "work_region",
+     "strength": "hard",
+     "quote": "San Francisco",
+     "value": [
+      "San Francisco"
+     ]
+    },
+    {
+     "field": "other",
+     "strength": "hard",
+     "quote": "not big tech",
+     "value": "not a big-tech employer"
+    },
+    {
+     "field": "other",
+     "strength": "soft",
+     "quote": "wants equity",
+     "value": "equity offered"
+    }
+   ]
+  }
+ ]
+}
