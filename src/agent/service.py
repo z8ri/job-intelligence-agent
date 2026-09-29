@@ -15,11 +15,12 @@ import time
 from typing import Callable
 
 from src.agent.conditions import ConditionParseError, parse_conditions
+from src.agent.explain import explain_rank_changes
 from src.agent.graph import build_search_graph
 from src.agent.models import ConditionSet
 from src.agent.rerank import Scorer
 from src.agent.retrieval import JobIndex
-from src.agent.scoring import soft_breakdown, soft_score
+from src.agent.scoring import soft_breakdown, soft_score, to_confirm
 from src.agent.tasks import TaskStore
 from src.agent.verification import Budget, SingleFlight, VerifiedJob, Verifier
 
@@ -106,27 +107,37 @@ class SearchService:
         *,
         strengths: dict[str, str] | None = None,
         remove: list[str] | None = None,
+        weights: dict[str, float] | None = None,
     ) -> dict:
         current = self._current(task_id, expected_version)
         if current["conditions"] is None:
             raise InvalidRevision("this task has no parsed conditions to revise")
         cs = ConditionSet.model_validate(current["conditions"])
-        strengths, remove = strengths or {}, remove or []
-        unknown = [i for i in [*strengths, *remove] if cs.get(i) is None]
+        strengths, remove, weights = strengths or {}, remove or [], weights or {}
+        unknown = [i for i in [*strengths, *remove, *weights] if cs.get(i) is None]
         if unknown:
             raise InvalidRevision(f"unknown condition ids: {unknown}")
         if any(s not in ("hard", "soft") for s in strengths.values()):
             raise InvalidRevision("strength must be 'hard' or 'soft'")
-        conditions = [
-            c.model_copy(update={"strength": strengths.get(c.id, c.strength)}) for c in cs.conditions if c.id not in remove
-        ]
+        if any(not isinstance(w, (int, float)) or not 0.05 <= w <= 1.0 for w in weights.values()):
+            raise InvalidRevision("weight must be a number between 0.05 and 1.0")
+        conditions = []
+        for c in cs.conditions:
+            if c.id in remove:
+                continue
+            update = {"strength": strengths.get(c.id, c.strength)}
+            if c.id in weights:
+                if update["strength"] != "soft":
+                    raise InvalidRevision(f"only soft conditions take a weight: {c.id}")
+                update["weight"] = float(weights[c.id])
+            conditions.append(c.model_copy(update=update))
         if not conditions:
             raise InvalidRevision("a request needs at least one condition")
         revised, changes = cs.revise(cs.raw_query, conditions, cs.clarifications)
         if changes.is_empty and current["status"] != "clarify":
             return self.get(task_id, expected_version)
         return self._run(task_id, revised, changes={"added": changes.added, "removed": changes.removed,
-                                                    "modified": changes.modified})
+                                                    "modified": changes.modified}, previous=current)
 
     # ---- internals ----------------------------------------------------------
 
@@ -159,7 +170,7 @@ class SearchService:
             **extra,
         }
 
-    def _run(self, task_id: str, conditions: ConditionSet, *, changes: dict | None = None) -> dict:
+    def _run(self, task_id: str, conditions: ConditionSet, *, changes: dict | None = None, previous: dict | None = None) -> dict:
         # Concurrent tasks with identical conditions share one computation; the result is
         # then bound to each task's own version below.
         key = ("run", conditions.fingerprint(), conditions.retrieval_text())
@@ -172,6 +183,8 @@ class SearchService:
                                   stats=body["stats"], trace=body["trace"])
         if changes:
             envelope["changes"] = changes
+        if previous and previous.get("status") in ("complete", "partial") and envelope["status"] in ("complete", "partial"):
+            envelope["rank_changes"] = explain_rank_changes(previous, envelope)
         return self._store(task_id, conditions.version, envelope)
 
     def _compute(self, conditions: ConditionSet) -> dict:
@@ -206,6 +219,7 @@ class SearchService:
             "trace": {
                 "retrieval": retrieval.trace,
                 "rerank": rerank_trace,
+                "verification_plan": final.get("plan_trace", {}),
                 "retries": final.get("retry_log", []),
                 "timings_s": {**{k: round(v, 3) for k, v in timings.items()}, "total": round(time.monotonic() - t0, 3)},
             },
@@ -214,7 +228,7 @@ class SearchService:
     @staticmethod
     def _rank_kept(kept: list[dict]) -> list[dict]:
         """Soft preferences order the survivors (stable: pipeline order breaks ties)."""
-        kept = sorted(kept, key=lambda j: -(j["soft_score"] if j.get("soft_score") is not None else 0.0))
+        kept = sorted(kept, key=lambda j: (bool(j.get("to_confirm")), -(j["soft_score"] if j.get("soft_score") is not None else 0.0)))
         for i, j in enumerate(kept, 1):
             j["rank"] = i
         return kept
@@ -232,8 +246,10 @@ class SearchService:
         out["judgments"] = {cid: _judgment_view(j) for cid, j in v.judgment.judgments.items()}
         out["unconfirmed_hard"] = v.unconfirmed_hard
         if conditions is not None:
-            out["soft_breakdown"] = soft_breakdown(conditions, v.judgment)
+            out["soft_breakdown"] = soft_breakdown(conditions, v.judgment, snap)
             out["soft_score"] = soft_score(out["soft_breakdown"])
+            out["to_confirm"] = to_confirm(conditions, v.judgment, snap)
+            out["confirmation"] = "needs_confirmation" if out["to_confirm"] else "confirmed"
         if v.status == "excluded":
             out["evidence"] = [{"condition_id": j.condition_id, **_judgment_view(j)} for j in v.conflicts]
         return out

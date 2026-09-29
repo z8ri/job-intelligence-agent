@@ -1,6 +1,6 @@
 """LangGraph orchestration of one search run.
 
-    retrieve -> rerank -> verify -> (retry_verify)* -> assemble
+    retrieve -> rerank -> plan -> verify -> (retry_verify)* -> assemble
 
 State is shared between nodes (conditions, candidates, verification result, retry count,
 budget left). After `verify` the program, not the model, decides whether to go again:
@@ -19,6 +19,7 @@ from typing import TypedDict
 from langgraph.graph import END, StateGraph
 
 from src.agent.models import ConditionSet
+from src.agent.planning import DEFERRED_NOTE, plan_verification
 from src.agent.rerank import Scorer, rerank
 from src.agent.retrieval import JobIndex
 from src.agent.verification import Budget, VerificationResult, Verifier
@@ -33,6 +34,7 @@ class SearchState(TypedDict, total=False):
     retrieval: object
     candidates: list
     rerank_trace: dict
+    plan_trace: dict
     verification: VerificationResult
     retries: int
     max_retries: int
@@ -66,6 +68,10 @@ def build_search_graph(index: JobIndex, scorer: Scorer | None, verifier: Verifie
             out = {"candidates": rr.candidates, "rerank_trace": rr.trace}
         return {**out, "timings": {**state["timings"], "rerank": time.monotonic() - t}}
 
+    def plan(state: SearchState) -> dict:
+        ordered, trace = plan_verification(state["candidates"], index.snapshot, state["conditions"])
+        return {"candidates": ordered, "plan_trace": trace}
+
     def verify(state: SearchState) -> dict:
         t = time.monotonic()
         budget: Budget = state["budget"]
@@ -75,6 +81,10 @@ def build_search_graph(index: JobIndex, scorer: Scorer | None, verifier: Verifie
             deadline_s=max(0.0, budget.deadline_s - (t - state["started"])),
         ) if state.get("retries", 0) else budget
         res = verifier.verify(state["candidates"], index.snapshot, state["conditions"], remaining)
+        deferred = {d["job_key"] for d in state.get("plan_trace", {}).get("deferred", [])}
+        for u in res.unverified:
+            if u.note == "not checked" and u.candidate.job_key in deferred:
+                u.note = DEFERRED_NOTE
         spent = res.stats.get("llm_calls", 0) + res.stats.get("failures", 0)
         timings = dict(state["timings"])
         timings["verification"] = timings.get("verification", 0.0) + (time.monotonic() - t)
@@ -91,11 +101,13 @@ def build_search_graph(index: JobIndex, scorer: Scorer | None, verifier: Verifie
     g = StateGraph(SearchState)
     g.add_node("retrieve", retrieve)
     g.add_node("rerank", do_rerank)
+    g.add_node("plan", plan)
     g.add_node("verify", verify)
     g.add_node("note_retry", note_retry)
     g.set_entry_point("retrieve")
     g.add_edge("retrieve", "rerank")
-    g.add_edge("rerank", "verify")
+    g.add_edge("rerank", "plan")
+    g.add_edge("plan", "verify")
     g.add_conditional_edges("verify", route, {"retry": "note_retry", "done": END})
     g.add_edge("note_retry", "verify")
     return g.compile()

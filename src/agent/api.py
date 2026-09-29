@@ -32,6 +32,7 @@ class ReviseRequest(BaseModel):
     expected_version: int
     strengths: dict[str, str] = Field(default_factory=dict)  # condition_id -> "hard" | "soft"
     remove: list[str] = Field(default_factory=list)
+    weights: dict[str, float] = Field(default_factory=dict)  # condition_id -> 0.05..1.0, soft conditions only
 
 
 def _respond(body: dict) -> JSONResponse:
@@ -74,7 +75,7 @@ def create_app(service: SearchService) -> FastAPI:
 
     @app.post("/tasks/{task_id}/revise")
     def revise_task(task_id: str, req: ReviseRequest):
-        return _respond(service.revise(task_id, req.expected_version, strengths=req.strengths, remove=req.remove))
+        return _respond(service.revise(task_id, req.expected_version, strengths=req.strengths, remove=req.remove, weights=req.weights))
 
     @app.get("/jobs/{job_key:path}")
     def get_job(job_key: str):
