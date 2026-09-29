@@ -1,12 +1,12 @@
 {
- "status": "FINAL - reviewed by the user (review file requirements_annotation_review.md); decisions applied by Claude",
+ "status": "FINAL - reviewed by the user (review file requirements_annotation_review.md); decisions applied by Claude ; r21 work_region changed to hard by the user on 2026-09-29",
  "guide": {
   "strength 'either'": "hard or soft both accepted (intent ambiguous)",
-  "optional": "an 'is fine / acceptable' statement: may be omitted, or given as a soft condition with exactly this value; extra values are wrong",
   "expects_clarification": "a correct parse raises a clarification for this request",
   "must_not_be_hard": "fields that must not appear as hard conditions",
   "value_compare": "only these value keys are compared",
-  "schema_gap": "this request needs something the condition schema cannot express faithfully"
+  "schema_gap": "this request needs something the condition schema cannot express faithfully",
+  "optional": "an 'is fine / acceptable' statement: may be omitted, or given as a soft condition with exactly this value; extra values are wrong"
  },
  "requests": [
   {
@@ -712,19 +712,14 @@
     },
     {
      "field": "work_region",
-     "strength": "either",
+     "strength": "hard",
      "quote": "UK or EU",
      "value": [
       "United Kingdom",
       "European Union"
-     ],
-     "optional": true
+     ]
     }
-   ],
-   "must_not_be_hard": [
-    "work_region"
-   ],
-   "schema_gap": "convention conflict: the schema defines work_region as 'where the user can work', the reviewer says it must not be a hard filter"
+   ]
   },
   {
    "id": "r22",

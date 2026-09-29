@@ -179,5 +179,7 @@ def score_all() -> None:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("command", choices=["parse", "score"])
+    ap.add_argument("--out", type=Path, default=OUT)
     a = ap.parse_args()
+    OUT = a.out
     parse_all() if a.command == "parse" else score_all()

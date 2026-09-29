@@ -1,11 +1,11 @@
 # 需求理解准确率（30 条新需求，用户确认标注，gpt-4o-mini 解析）
 
-- 严格：字段+硬软+值：条件 P/R/F1 = 0.696/0.741/0.717；整条完全正确 3/30；排除 7 条模式受限请求后 F1 0.765，完全正确 3/23
-- 忽略硬软：条件 P/R/F1 = 0.73/0.778/0.753；整条完全正确 3/30；排除 7 条模式受限请求后 F1 0.787，完全正确 3/23
-- 忽略字段（文本条件按引文位置匹配）：条件 P/R/F1 = 0.783/0.833/0.807；整条完全正确 7/30；排除 7 条模式受限请求后 F1 0.831，完全正确 7/23
+- 严格：字段+硬软+值：条件 P/R/F1 = 0.704/0.743/0.723；整条完全正确 3/30；排除 6 条模式受限请求后 F1 0.755，完全正确 3/24
+- 忽略硬软：条件 P/R/F1 = 0.739/0.78/0.759；整条完全正确 3/30；排除 6 条模式受限请求后 F1 0.787，完全正确 3/24
+- 忽略字段（文本条件按引文位置匹配）：条件 P/R/F1 = 0.791/0.835/0.812；整条完全正确 7/30；排除 6 条模式受限请求后 F1 0.83，完全正确 7/24
 
 - 澄清：应澄清的 5 条中触发 0；不该澄清的 25 条中多问 0
-- 出现了不该有的硬条件的请求数：4
+- 出现了不该有的硬条件的请求数：3
 
 ## 逐条（严格）
 
@@ -29,7 +29,7 @@
 - r18 X 漏：['Machine learning ops'] 多：[('skill', 'hard', 'Machine learning ops'), ('work_region', 'soft', 'Denver or remote')] 应澄清未澄清
 - r19 X 漏：['no crunch culture'] 多：[('role_avoid', 'hard', 'no crunch culture')]
 - r20 OK 漏：[] 多：[]
-- r21 X 漏：['AI safety'] 多：[('role_focus', 'soft', 'Anything in AI safety'), ('work_region', 'hard', 'I can work in the UK or EU'), ('salary', 'soft', 'salary is not important')] 禁止的硬条件：['work_region']
+- r21 X 漏：['AI safety'] 多：[('role_focus', 'soft', 'Anything in AI safety'), ('salary', 'soft', 'salary is not important')]
 - r22 X 漏：['no on-call rotations'] 多：[('remote_mode', 'soft', 'no on-call rotations')]
 - r23 X 漏：['AI 产品或者数据科学方向', '最好能远程一部分'] 多：[('role_focus', 'soft', 'AI 产品或者数据科学方向'), ('work_region', 'hard', '我在纽约'), ('remote_mode', 'soft', '最好能远程一部分')] 禁止的硬条件：['work_region']
 - r24 X 漏：['Boston'] 多：[]

@@ -45,8 +45,15 @@ Rules:
 - weight (0.1-1.0) only for soft conditions, reflecting how strongly the user stressed them ("最好", "particularly" -> 0.8-1.0; "if possible", "少量" -> 0.2-0.4); null when no emphasis was expressed. Hard conditions use null.
 - work_region (where the user can work) and remote_mode (how the job is worked) are different conditions.
 - Do not invent conditions the user did not state. Do not fill salary.min_amount unless a number was given.
-- "avoid" wishes ("do not want mainly X") are role_avoid. "Accepts a little X" is a soft role_focus.
-- Add a clarification ONLY if the ambiguity would change which jobs qualify (e.g. "remote" meaning fully remote vs hybrid OK). Otherwise return [].
+- "avoid" wishes about the KIND OF WORK ("do not want mainly X") are role_avoid. "Accepts a little X" is a soft role_focus.
+- Constraints about the employer, team or working conditions are `other`, never role_avoid: employer type ("no agencies", "not an outsourcing company", "a startup", "developer-tools company"), culture or on-call/crunch expectations, working hours or time zone ("evenings", "Pacific time zone", "Europe-friendly hours"), timing ("summer"), and "the posting states a salary range". "Only/must/no ..." makes them hard; "prefer/ideally" makes them soft.
+- Statements that place no requirement produce NO condition: "X is not needed / not a problem / not important / doesn't matter", "whatever X", "travel is fine", "clearance is fine". An acceptance statement ("hybrid is fine", "contract is fine", "entry level is OK") is at most one soft condition holding ONLY the accepted value; never add the other values yourself.
+- "X or Y" inside one field is ONE condition (regions: ["New York","Boston"]; modes: ["remote","hybrid"]; role_focus text "AI product or data science"; skill text "Go or Python"). Separate skills joined by "and"/commas are separate skill conditions. Put every named technology in its own skill condition, not inside role_focus.
+- A level word next to a role ("Senior backend engineer") gives BOTH the role_focus and a seniority condition.
+- salary: keep the period the user used (per hour -> "hour", per month -> "month", per year -> "year"); basis is "unspecified" unless the user says base or total/OTC; never invent one. Only create a salary condition when a number is given; a vague "pays well" gives no number, so make no salary condition and ask.
+- work_region is where the user can/wants to work. A statement of where the user currently lives ("I am in New York") is not a region requirement. "I can work in the UK or EU" is a hard region condition.
+- When one alternative crosses two fields ("Denver or remote", "Bay Area or remote"), do NOT emit an independent hard condition for each side; emit the other conditions and ask a clarification instead (affects the region/mode fields). Do the same when a number the request depends on is unclear ("at least 8 years of experience": the user's own or required by the job?; "not too far from X": how far?) and when the request is too vague to name a role.
+- Add a clarification ONLY if the ambiguity would change which jobs qualify. Otherwise return [].
   clarification: {"question": str, "reason": str, "options": [str], "affects": [<field>]}
 Output JSON only."""
 
@@ -65,7 +72,7 @@ EXAMPLE_ASSISTANT = json.dumps(
             {"field": "work_region", "strength": "hard", "quote": "纽约可以工作",
              "value": {"kind": "regions", "regions": ["New York"]}},
             {"field": "remote_mode", "strength": "soft", "quote": "可以混合办公",
-             "value": {"kind": "modes", "modes": ["hybrid", "onsite", "remote"]}},
+             "value": {"kind": "modes", "modes": ["hybrid"]}},
             {"field": "role_focus", "strength": "soft", "quote": "接受少量微调",
              "value": {"kind": "text", "text": "some model fine-tuning"}, "weight": 0.3},
             {"field": "role_avoid", "strength": "soft", "quote": "不希望主要做模型训练",

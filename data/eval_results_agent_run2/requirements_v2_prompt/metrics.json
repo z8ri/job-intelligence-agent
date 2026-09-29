@@ -3,84 +3,84 @@
   "strict": {
    "all": {
     "requests": 30,
-    "tp": 80,
-    "fp": 35,
-    "fn": 28,
-    "precision": 0.696,
-    "recall": 0.741,
-    "f1": 0.717,
-    "exact_correct": 3,
-    "exact_rate": 0.1
+    "tp": 91,
+    "fp": 22,
+    "fn": 18,
+    "precision": 0.805,
+    "recall": 0.835,
+    "f1": 0.82,
+    "exact_correct": 11,
+    "exact_rate": 0.367
    },
    "without_schema_gap_requests": {
-    "requests": 23,
-    "tp": 70,
-    "fp": 21,
-    "fn": 22,
-    "precision": 0.769,
-    "recall": 0.761,
-    "f1": 0.765,
-    "exact_correct": 3,
-    "exact_rate": 0.13
+    "requests": 24,
+    "tp": 81,
+    "fp": 13,
+    "fn": 13,
+    "precision": 0.862,
+    "recall": 0.862,
+    "f1": 0.862,
+    "exact_correct": 11,
+    "exact_rate": 0.458
    }
   },
   "nostrength": {
    "all": {
     "requests": 30,
-    "tp": 84,
-    "fp": 31,
-    "fn": 24,
-    "precision": 0.73,
-    "recall": 0.778,
-    "f1": 0.753,
-    "exact_correct": 3,
-    "exact_rate": 0.1
+    "tp": 97,
+    "fp": 16,
+    "fn": 12,
+    "precision": 0.858,
+    "recall": 0.89,
+    "f1": 0.874,
+    "exact_correct": 16,
+    "exact_rate": 0.533
    },
    "without_schema_gap_requests": {
-    "requests": 23,
-    "tp": 72,
-    "fp": 19,
-    "fn": 20,
-    "precision": 0.791,
-    "recall": 0.783,
-    "f1": 0.787,
-    "exact_correct": 3,
-    "exact_rate": 0.13
+    "requests": 24,
+    "tp": 86,
+    "fp": 8,
+    "fn": 8,
+    "precision": 0.915,
+    "recall": 0.915,
+    "f1": 0.915,
+    "exact_correct": 15,
+    "exact_rate": 0.625
    }
   },
   "nofield": {
    "all": {
     "requests": 30,
-    "tp": 90,
-    "fp": 25,
-    "fn": 18,
-    "precision": 0.783,
-    "recall": 0.833,
-    "f1": 0.807,
-    "exact_correct": 7,
-    "exact_rate": 0.233
+    "tp": 100,
+    "fp": 13,
+    "fn": 9,
+    "precision": 0.885,
+    "recall": 0.917,
+    "f1": 0.901,
+    "exact_correct": 16,
+    "exact_rate": 0.533
    },
    "without_schema_gap_requests": {
-    "requests": 23,
-    "tp": 76,
-    "fp": 15,
-    "fn": 16,
-    "precision": 0.835,
-    "recall": 0.826,
-    "f1": 0.831,
-    "exact_correct": 7,
-    "exact_rate": 0.304
+    "requests": 24,
+    "tp": 87,
+    "fp": 7,
+    "fn": 7,
+    "precision": 0.926,
+    "recall": 0.926,
+    "f1": 0.926,
+    "exact_correct": 15,
+    "exact_rate": 0.625
    }
   },
   "clarification": {
    "expected": 5,
-   "raised_when_expected": 0,
+   "raised_when_expected": 2,
    "raised_when_not_expected": 0,
    "not_expected_total": 25
   },
   "salary_basis_invented": {
-   "matched_salary_conditions_without_stated_basis": 5,
-   "parser_added_a_basis": 5
+   "matched_salary_conditions_without_stated_basis": 6,
+   "parser_added_a_basis": 0
   },
   "forbidden_hard_violations": 4
  },
@@ -96,38 +96,24 @@
    "exact": true
   },
   "r02": {
-   "tp": 3,
-   "fn": 1,
-   "fp": 1,
-   "missing": [
-    "no agencies"
-   ],
-   "extras": [
-    {
-     "field": "role_avoid",
-     "strength": "hard",
-     "quote": "no agencies please"
-    }
-   ],
+   "tp": 4,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": true,
-   "exact": false
+   "exact": true
   },
   "r03": {
    "tp": 3,
    "fn": 0,
-   "fp": 1,
+   "fp": 0,
    "missing": [],
-   "extras": [
-    {
-     "field": "remote_mode",
-     "strength": "soft",
-     "quote": "hybrid is fine"
-    }
-   ],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": true,
-   "exact": false
+   "exact": true
   },
   "r04": {
    "tp": 3,
@@ -140,7 +126,7 @@
     {
      "field": "seniority",
      "strength": "hard",
-     "quote": "summer internship"
+     "quote": "internship"
     }
    ],
    "forbidden_hard": [],
@@ -148,35 +134,29 @@
    "exact": false
   },
   "r05": {
-   "tp": 4,
-   "fn": 2,
-   "fp": 1,
+   "tp": 5,
+   "fn": 1,
+   "fp": 0,
    "missing": [
-    "Senior",
-    "ideally remote"
+    "Senior"
    ],
-   "extras": [
-    {
-     "field": "remote_mode",
-     "strength": "soft",
-     "quote": "ideally remote"
-    }
-   ],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": true,
    "exact": false
   },
   "r06": {
-   "tp": 3,
-   "fn": 1,
+   "tp": 2,
+   "fn": 2,
    "fp": 1,
    "missing": [
+    "产品经理",
     "不要外包公司"
    ],
    "extras": [
     {
      "field": "role_avoid",
-     "strength": "soft",
+     "strength": "hard",
      "quote": "不要外包公司"
     }
    ],
@@ -185,22 +165,14 @@
    "exact": false
   },
   "r07": {
-   "tp": 3,
-   "fn": 1,
-   "fp": 1,
-   "missing": [
-    "Pacific time zone"
-   ],
-   "extras": [
-    {
-     "field": "work_region",
-     "strength": "hard",
-     "quote": "Pacific time zone"
-    }
-   ],
+   "tp": 4,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": true,
-   "exact": false
+   "exact": true
   },
   "r08": {
    "tp": 4,
@@ -237,46 +209,30 @@
    "exact": false
   },
   "r10": {
-   "tp": 2,
-   "fn": 1,
-   "fp": 1,
-   "missing": [
-    "$70 per hour minimum"
-   ],
-   "extras": [
-    {
-     "field": "salary",
-     "strength": "hard",
-     "quote": "$70 per hour minimum"
-    }
-   ],
+   "tp": 3,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": true,
-   "exact": false
+   "exact": true
   },
   "r11": {
    "tp": 2,
    "fn": 0,
-   "fp": 1,
+   "fp": 0,
    "missing": [],
-   "extras": [
-    {
-     "field": "role_avoid",
-     "strength": "soft",
-     "quote": "clearance not a problem"
-    }
-   ],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": true,
-   "exact": false
+   "exact": true
   },
   "r12": {
-   "tp": 2,
-   "fn": 3,
+   "tp": 4,
+   "fn": 1,
    "fp": 1,
    "missing": [
-    "Android",
-    "Kotlin",
     "remote or hybrid"
    ],
    "extras": [
@@ -320,29 +276,24 @@
     },
     {
      "field": "remote_mode",
-     "strength": "soft",
-     "quote": "remote"
+     "strength": "hard",
+     "quote": "Bay Area or remote"
     }
    ],
    "forbidden_hard": [
     "seniority",
-    "work_region"
+    "work_region",
+    "remote_mode"
    ],
-   "clarification_ok": false,
+   "clarification_ok": true,
    "exact": false
   },
   "r15": {
    "tp": 0,
    "fn": 0,
-   "fp": 1,
+   "fp": 0,
    "missing": [],
-   "extras": [
-    {
-     "field": "other",
-     "strength": "soft",
-     "quote": "Something in tech that pays well"
-    }
-   ],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": false,
    "exact": false
@@ -374,8 +325,8 @@
    ],
    "extras": [
     {
-     "field": "remote_mode",
-     "strength": "hard",
+     "field": "other",
+     "strength": "soft",
      "quote": "evenings"
     }
    ],
@@ -398,31 +349,25 @@
     },
     {
      "field": "work_region",
-     "strength": "soft",
+     "strength": "hard",
      "quote": "Denver or remote"
     }
    ],
-   "forbidden_hard": [],
+   "forbidden_hard": [
+    "work_region"
+   ],
    "clarification_ok": false,
    "exact": false
   },
   "r19": {
-   "tp": 4,
-   "fn": 1,
-   "fp": 1,
-   "missing": [
-    "no crunch culture"
-   ],
-   "extras": [
-    {
-     "field": "role_avoid",
-     "strength": "hard",
-     "quote": "no crunch culture"
-    }
-   ],
+   "tp": 5,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": true,
-   "exact": false
+   "exact": true
   },
   "r20": {
    "tp": 4,
@@ -435,9 +380,9 @@
    "exact": true
   },
   "r21": {
-   "tp": 0,
+   "tp": 1,
    "fn": 1,
-   "fp": 3,
+   "fp": 1,
    "missing": [
     "AI safety"
    ],
@@ -446,41 +391,21 @@
      "field": "role_focus",
      "strength": "soft",
      "quote": "Anything in AI safety"
-    },
-    {
-     "field": "work_region",
-     "strength": "hard",
-     "quote": "I can work in the UK or EU"
-    },
-    {
-     "field": "salary",
-     "strength": "soft",
-     "quote": "salary is not important"
-    }
-   ],
-   "forbidden_hard": [
-    "work_region"
-   ],
-   "clarification_ok": true,
-   "exact": false
-  },
-  "r22": {
-   "tp": 4,
-   "fn": 1,
-   "fp": 1,
-   "missing": [
-    "no on-call rotations"
-   ],
-   "extras": [
-    {
-     "field": "remote_mode",
-     "strength": "soft",
-     "quote": "no on-call rotations"
     }
    ],
    "forbidden_hard": [],
    "clarification_ok": true,
    "exact": false
+  },
+  "r22": {
+   "tp": 5,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
+   "forbidden_hard": [],
+   "clarification_ok": true,
+   "exact": true
   },
   "r23": {
    "tp": 1,
@@ -516,22 +441,26 @@
   "r24": {
    "tp": 4,
    "fn": 1,
-   "fp": 0,
+   "fp": 1,
    "missing": [
-    "Boston"
+    "on-site"
    ],
-   "extras": [],
+   "extras": [
+    {
+     "field": "skill",
+     "strength": "hard",
+     "quote": "Go or Python"
+    }
+   ],
    "forbidden_hard": [],
    "clarification_ok": true,
    "exact": false
   },
   "r25": {
-   "tp": 2,
-   "fn": 1,
+   "tp": 3,
+   "fn": 0,
    "fp": 1,
-   "missing": [
-    "for a developer-tools company"
-   ],
+   "missing": [],
    "extras": [
     {
      "field": "remote_mode",
@@ -544,22 +473,14 @@
    "exact": false
   },
   "r26": {
-   "tp": 4,
-   "fn": 1,
-   "fp": 1,
-   "missing": [
-    "ideally with training provided"
-   ],
-   "extras": [
-    {
-     "field": "role_focus",
-     "strength": "soft",
-     "quote": "ideally with training provided"
-    }
-   ],
+   "tp": 5,
+   "fn": 0,
+   "fp": 0,
+   "missing": [],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": true,
-   "exact": false
+   "exact": true
   },
   "r27": {
    "tp": 2,
@@ -588,7 +509,7 @@
   "r28": {
    "tp": 2,
    "fn": 1,
-   "fp": 2,
+   "fp": 1,
    "missing": [
     "data science"
    ],
@@ -597,15 +518,10 @@
      "field": "role_focus",
      "strength": "soft",
      "quote": "data science job"
-    },
-    {
-     "field": "seniority",
-     "strength": "soft",
-     "quote": "whatever seniority"
     }
    ],
    "forbidden_hard": [],
-   "clarification_ok": false,
+   "clarification_ok": true,
    "exact": false
   },
   "r29": {
@@ -617,7 +533,7 @@
    ],
    "extras": [
     {
-     "field": "work_region",
+     "field": "other",
      "strength": "soft",
      "quote": "Europe-friendly hours"
     }
@@ -627,20 +543,13 @@
    "exact": false
   },
   "r30": {
-   "tp": 2,
-   "fn": 2,
-   "fp": 1,
+   "tp": 3,
+   "fn": 1,
+   "fp": 0,
    "missing": [
-    "in the US",
-    "clearly state a salary range"
+    "in the US"
    ],
-   "extras": [
-    {
-     "field": "salary",
-     "strength": "hard",
-     "quote": "clearly state a salary range"
-    }
-   ],
+   "extras": [],
    "forbidden_hard": [],
    "clarification_ok": true,
    "exact": false
