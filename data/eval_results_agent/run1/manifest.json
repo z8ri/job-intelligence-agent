@@ -1,0 +1,14 @@
+{
+ "snapshots": 2613,
+ "snapshot_digest": "3d5ecec1e6187c27",
+ "queries": 16,
+ "query_set_digest": "68c3f15462f75407",
+ "llm_model": "gpt-4o-mini",
+ "judge_prompt_version": "1",
+ "annotator_version": "1",
+ "embedding_model": "text-embedding-3-small",
+ "reranker": "CrossEncoderScorer:BAAI/bge-reranker-base",
+ "k": 5,
+ "max_candidates": 20,
+ "live_llm_spend_usd_estimated": 0.1772
+}

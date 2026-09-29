@@ -31,6 +31,7 @@ def _refuse_embedding(texts):
 
 
 def build_index(args, data: Path):
+    data.mkdir(parents=True, exist_ok=True)
     snapshots = SnapshotStore(data / "snapshots.db")
     if snapshots.count() == 0:
         n = import_legacy_json(ROOT / "data" / "structured_jobs.json", snapshots, fetched_at="2026-03-01T00:00:00+00:00")
