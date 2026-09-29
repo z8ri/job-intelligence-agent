@@ -81,7 +81,7 @@ class SearchService:
             return self._store(task_id, 1, self._envelope("failed", None, reasons=[f"could not parse request: {e}"]))
         except Exception as e:
             return self._store(task_id, 1, self._envelope("failed", None, reasons=[f"condition parsing unavailable: {e}"]))
-        if conditions.clarifications and not proceed:
+        if not conditions.conditions or (conditions.clarifications and not proceed):
             return self._store(task_id, conditions.version, self._envelope("clarify", conditions))
         return self._run(task_id, conditions)
 
@@ -98,7 +98,10 @@ class SearchService:
         current = self._current(task_id, expected_version)
         if current["status"] not in ("clarify", "failed") or current["conditions"] is None:
             return self.get(task_id, expected_version)
-        return self._run(task_id, ConditionSet.model_validate(current["conditions"]))
+        cs = ConditionSet.model_validate(current["conditions"])
+        if not cs.conditions:
+            return self.get(task_id, expected_version)
+        return self._run(task_id, cs)
 
     def revise(
         self,

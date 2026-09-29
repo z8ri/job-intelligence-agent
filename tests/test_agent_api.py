@@ -102,6 +102,15 @@ def test_proceed_flag_skips_clarification():
     assert post(client, "/search", {"query": QUERY, "proceed": True}).json()["status"] == "complete"
 
 
+def test_zero_condition_request_asks_and_never_searches_even_with_proceed():
+    cs = ConditionSet(raw_query="A good job", conditions=[], clarifications=[Clarification(question="What role?")])
+    _, client, llm = build(conditions=cs)
+    body = post(client, "/search", {"query": "A good job", "proceed": True}).json()
+    assert body["status"] == "clarify" and body["kept"] == [] and llm.calls == []
+    again = post(client, f"/tasks/{body['task_id']}/run", {"expected_version": 1}).json()
+    assert again["status"] == "clarify" and llm.calls == []
+
+
 def test_unparseable_request_is_failed_with_503():
     def bad(_):
         raise ConditionParseError("no conditions extracted")

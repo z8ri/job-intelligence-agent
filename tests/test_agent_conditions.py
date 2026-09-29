@@ -112,3 +112,15 @@ def test_clarifications_are_kept_and_bad_ones_skipped():
     cs = parse_conditions(QUERY, complete=Scripted(payload))
     assert len(cs.clarifications) == 1
     assert cs.clarifications[0].affects == ["remote_mode"]
+
+
+def test_request_with_no_conditions_gets_a_clarification_instead_of_an_error():
+    fake = Scripted({"conditions": [], "clarifications": []})
+    cs = parse_conditions("A good job", complete=fake)
+    assert cs.conditions == [] and len(cs.clarifications) == 1 and len(fake.calls) == 1
+
+
+def test_no_conditions_keeps_the_model_own_clarification():
+    q = {"question": "Which role?", "reason": "vague", "options": [], "affects": ["role_focus"]}
+    cs = parse_conditions("A good job", complete=Scripted({"conditions": [], "clarifications": [q]}))
+    assert [c.question for c in cs.clarifications] == ["Which role?"]

@@ -168,8 +168,16 @@ def parse_conditions(
             last_error = "; ".join(problems)
             user = f"{query}\n\n[Fix these problems and return the full JSON again: {last_error}]"
             continue
+        if not conditions and not problems:
+            # a request too vague to name any condition is answered with a question, not an error
+            if not clarifications:
+                clarifications = [Clarification(
+                    question="What kind of job are you looking for, and what matters most to you (role, location, pay, level)?",
+                    reason="The request does not state any requirement to search for.",
+                    affects=["role_focus"])]
+            return ConditionSet(raw_query=query, conditions=[], clarifications=clarifications)
         if not conditions:
-            last_error = "; ".join(problems) or "no conditions extracted"
+            last_error = "; ".join(problems)
             continue
         return ConditionSet(raw_query=query, conditions=conditions, clarifications=clarifications)
 
