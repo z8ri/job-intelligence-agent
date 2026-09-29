@@ -47,3 +47,6 @@ Thumbs.db
 # Runtime observability traces (see src/observability.py; data/sample_pipeline_trace.jsonl
 # is a committed example, this directory is real run output)
 logs/
+
+# Agent stores (rebuildable from data/structured_jobs.json; large)
+data/agent/

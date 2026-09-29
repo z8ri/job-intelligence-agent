@@ -1,0 +1,18 @@
+[
+  {"id": "d01", "split": "dev", "group": "ml-ny-salary", "query": "Machine learning engineer roles in New York, paying at least $150k a year"},
+  {"id": "d02", "split": "dev", "group": "frontend-remote", "query": "Frontend React developer, must be fully remote and based in the US"},
+  {"id": "d03", "split": "dev", "group": "payments-sf", "query": "Backend engineer working on payments infrastructure in San Francisco"},
+  {"id": "d04", "split": "dev", "group": "data-eng-senior", "query": "Senior data engineer building data pipelines, remote is fine"},
+  {"id": "d05", "split": "dev", "group": "security-london", "query": "Security engineer in London"},
+  {"id": "d06", "split": "dev", "group": "intern-swe", "query": "Software engineering internship in the United States"},
+  {"id": "d07", "split": "dev", "group": "sre-salary", "query": "Site reliability or DevOps engineer, remote, with a base salary of at least $140k"},
+  {"id": "d08", "split": "dev", "group": "llm-ny-avoid", "query": "LLM application developer in New York, hybrid is fine, but I do not want mainly model training work"},
+  {"id": "h01", "split": "holdout", "group": "rust-cpp-remote", "query": "Rust or C++ systems programmer, remote within the US"},
+  {"id": "h02", "split": "holdout", "group": "android-asia", "query": "Android engineer in Tokyo or Singapore"},
+  {"id": "h03", "split": "holdout", "group": "eng-manager-ny", "query": "Engineering manager for a product team in New York"},
+  {"id": "h04", "split": "holdout", "group": "tech-writer", "query": "Technical writer for developer documentation, remote"},
+  {"id": "h05", "split": "holdout", "group": "analytics-sql", "query": "Analytics engineer using SQL and dbt, hybrid, at least $130k"},
+  {"id": "h06", "split": "holdout", "group": "legal-asia", "query": "Legal counsel positions in Asia"},
+  {"id": "h07", "split": "holdout", "group": "embedded", "query": "Embedded or firmware engineer for hardware products"},
+  {"id": "h08", "split": "holdout", "group": "staff-infra-sf", "query": "Staff-level infrastructure engineer in San Francisco, salary at least $200k, not a people-management role"}
+]
