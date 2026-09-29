@@ -202,3 +202,29 @@ def test_identical_concurrent_searches_share_one_computation():
     assert len({o["task_id"] for o in out}) == 3  # separate task records
     assert all(o["status"] == "complete" and len(o["kept"]) == 3 for o in out)
     assert len(llm.calls) == 3  # one judgement per job, not per request
+
+
+class CountingScorer:
+    def __init__(self):
+        self.calls = 0
+
+    def score(self, pairs):
+        self.calls += 1
+        return [float(-i) for i in range(len(pairs))]
+
+
+def test_revision_with_same_retrieval_text_reuses_retrieval_and_rerank():
+    scorer = CountingScorer()
+    _, client, _ = build(scorer=scorer)
+    tid = post(client, "/search", {"query": QUERY}).json()["task_id"]
+    assert scorer.calls == 1
+    post(client, f"/tasks/{tid}/revise", {"expected_version": 1, "strengths": {REGION.id: "soft"}})
+    assert scorer.calls == 1  # region does not change what is retrieved
+
+
+def test_revision_that_changes_retrieval_text_reranks_again():
+    scorer = CountingScorer()
+    _, client, _ = build(scorer=scorer)
+    tid = post(client, "/search", {"query": QUERY}).json()["task_id"]
+    post(client, f"/tasks/{tid}/revise", {"expected_version": 1, "remove": [FOCUS.id]})
+    assert scorer.calls == 2

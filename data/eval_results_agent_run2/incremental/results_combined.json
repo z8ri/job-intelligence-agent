@@ -1,0 +1,806 @@
+{
+ "note": "q1-4 revision rows from the first run; q5 rerun (first attempt hit the spend guard); noise_floor rows: two cold runs of the same conditions",
+ "spend_usd_estimated_first_run": 0.1701,
+ "revision_rows": [
+  {
+   "query": "Data scientist in Boston, hybrid is preferred but not required, and I would like at least $130k",
+   "revision": "weight_change",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 2,
+    "seconds": 2.38,
+    "stages": {
+     "retrieval": 0.019,
+     "rerank": 1.367,
+     "verification": 0.977,
+     "total": 2.373
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 20,
+    "seconds": 13.81,
+    "stages": {
+     "retrieval": 0.039,
+     "rerank": 1.186,
+     "verification": 12.575,
+     "total": 13.815
+    }
+   },
+   "same_ordered_kept": false,
+   "same_kept_set": false,
+   "same_excluded": false,
+   "kept_incremental": [
+    "greenhouse:8447216002"
+   ],
+   "kept_full": [
+    "hackernews:1926",
+    "greenhouse:5552580004",
+    "greenhouse:8447216002"
+   ]
+  },
+  {
+   "query": "Data scientist in Boston, hybrid is preferred but not required, and I would like at least $130k",
+   "revision": "tighten_soft_to_hard",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 2,
+    "seconds": 2.14,
+    "stages": {
+     "retrieval": 0.055,
+     "rerank": 1.16,
+     "verification": 0.891,
+     "total": 2.127
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 20,
+    "seconds": 13.15,
+    "stages": {
+     "retrieval": 0.034,
+     "rerank": 1.169,
+     "verification": 11.933,
+     "total": 13.154
+    }
+   },
+   "same_ordered_kept": false,
+   "same_kept_set": false,
+   "same_excluded": false,
+   "kept_incremental": [
+    "greenhouse:8447216002"
+   ],
+   "kept_full": [
+    "greenhouse:5552580004",
+    "greenhouse:8447216002"
+   ]
+  },
+  {
+   "query": "Data scientist in Boston, hybrid is preferred but not required, and I would like at least $130k",
+   "revision": "relax_hard_to_soft",
+   "status": "complete",
+   "incremental": {
+    "llm_calls": 2,
+    "seconds": 2.06,
+    "stages": {
+     "retrieval": 0.034,
+     "rerank": 1.085,
+     "verification": 0.928,
+     "total": 2.056
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 6,
+    "seconds": 5.89,
+    "stages": {
+     "retrieval": 0.015,
+     "rerank": 1.126,
+     "verification": 4.741,
+     "total": 5.89
+    }
+   },
+   "same_ordered_kept": false,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "greenhouse:5552580004",
+    "greenhouse:8447216002",
+    "greenhouse:7107054",
+    "greenhouse:7662244",
+    "hackernews:2105"
+   ],
+   "kept_full": [
+    "greenhouse:5552580004",
+    "greenhouse:8447216002",
+    "greenhouse:7662244",
+    "greenhouse:7107054",
+    "hackernews:2105"
+   ]
+  },
+  {
+   "query": "Data scientist in Boston, hybrid is preferred but not required, and I would like at least $130k",
+   "revision": "remove_condition",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 2,
+    "seconds": 2.7,
+    "stages": {
+     "retrieval": 0.03,
+     "rerank": 1.229,
+     "verification": 1.42,
+     "total": 2.696
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 20,
+    "seconds": 11.77,
+    "stages": {
+     "retrieval": 0.041,
+     "rerank": 1.395,
+     "verification": 10.311,
+     "total": 11.765
+    }
+   },
+   "same_ordered_kept": false,
+   "same_kept_set": false,
+   "same_excluded": false,
+   "kept_incremental": [
+    "greenhouse:8447216002"
+   ],
+   "kept_full": [
+    "greenhouse:5552580004",
+    "greenhouse:8447216002",
+    "hackernews:721"
+   ]
+  },
+  {
+   "query": "Product designer in Seattle, remote is fine, but I want to avoid agency work",
+   "revision": "weight_change",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 3,
+    "seconds": 3.61,
+    "stages": {
+     "retrieval": 0.032,
+     "rerank": 1.706,
+     "verification": 1.855,
+     "total": 3.602
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 20,
+    "seconds": 12.21,
+    "stages": {
+     "retrieval": 0.018,
+     "rerank": 1.726,
+     "verification": 10.446,
+     "total": 12.209
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "hackernews:1260",
+    "hackernews:1839"
+   ],
+   "kept_full": [
+    "hackernews:1260",
+    "hackernews:1839"
+   ]
+  },
+  {
+   "query": "Product designer in Seattle, remote is fine, but I want to avoid agency work",
+   "revision": "tighten_soft_to_hard",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 2,
+    "seconds": 3.51,
+    "stages": {
+     "retrieval": 0.032,
+     "rerank": 1.719,
+     "verification": 1.735,
+     "total": 3.498
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 20,
+    "seconds": 11.38,
+    "stages": {
+     "retrieval": 0.04,
+     "rerank": 1.802,
+     "verification": 9.515,
+     "total": 11.378
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "hackernews:1260",
+    "hackernews:1839"
+   ],
+   "kept_full": [
+    "hackernews:1260",
+    "hackernews:1839"
+   ]
+  },
+  {
+   "query": "Product designer in Seattle, remote is fine, but I want to avoid agency work",
+   "revision": "relax_hard_to_soft",
+   "status": "complete",
+   "incremental": {
+    "llm_calls": 1,
+    "seconds": 3.44,
+    "stages": {
+     "retrieval": 0.032,
+     "rerank": 1.734,
+     "verification": 1.662,
+     "total": 3.437
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 5,
+    "seconds": 5.34,
+    "stages": {
+     "retrieval": 0.033,
+     "rerank": 1.684,
+     "verification": 3.603,
+     "total": 5.336
+    }
+   },
+   "same_ordered_kept": false,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "hackernews:2049",
+    "hackernews:1531",
+    "hackernews:1912",
+    "hackernews:1846",
+    "hackernews:1183"
+   ],
+   "kept_full": [
+    "hackernews:1531",
+    "hackernews:1846",
+    "hackernews:2049",
+    "hackernews:1912",
+    "hackernews:1183"
+   ]
+  },
+  {
+   "query": "Product designer in Seattle, remote is fine, but I want to avoid agency work",
+   "revision": "remove_condition",
+   "status": "complete",
+   "incremental": {
+    "llm_calls": 1,
+    "seconds": 2.59,
+    "stages": {
+     "retrieval": 0.03,
+     "rerank": 1.731,
+     "verification": 0.807,
+     "total": 2.581
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 5,
+    "seconds": 4.74,
+    "stages": {
+     "retrieval": 0.013,
+     "rerank": 1.464,
+     "verification": 3.255,
+     "total": 4.738
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "hackernews:1531",
+    "hackernews:1912",
+    "hackernews:2049",
+    "hackernews:1846",
+    "hackernews:1183"
+   ],
+   "kept_full": [
+    "hackernews:1531",
+    "hackernews:1912",
+    "hackernews:2049",
+    "hackernews:1846",
+    "hackernews:1183"
+   ]
+  },
+  {
+   "query": "Backend engineer using Go or Java, based in Austin, ideally at a startup",
+   "revision": "weight_change",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 1,
+    "seconds": 2.85,
+    "stages": {
+     "retrieval": 0.039,
+     "rerank": 2.037,
+     "verification": 0.76,
+     "total": 2.849
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 16,
+    "seconds": 14.65,
+    "stages": {
+     "retrieval": 0.056,
+     "rerank": 1.9,
+     "verification": 12.676,
+     "total": 14.65
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [],
+   "kept_full": []
+  },
+  {
+   "query": "Backend engineer using Go or Java, based in Austin, ideally at a startup",
+   "revision": "tighten_soft_to_hard",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 1,
+    "seconds": 3.01,
+    "stages": {
+     "retrieval": 0.055,
+     "rerank": 2.061,
+     "verification": 0.868,
+     "total": 2.999
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 16,
+    "seconds": 13.15,
+    "stages": {
+     "retrieval": 0.048,
+     "rerank": 1.922,
+     "verification": 11.163,
+     "total": 13.145
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [],
+   "kept_full": []
+  },
+  {
+   "query": "Backend engineer using Go or Java, based in Austin, ideally at a startup",
+   "revision": "relax_hard_to_soft",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 1,
+    "seconds": 3.09,
+    "stages": {
+     "retrieval": 0.056,
+     "rerank": 1.909,
+     "verification": 1.099,
+     "total": 3.078
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 16,
+    "seconds": 13.94,
+    "stages": {
+     "retrieval": 0.045,
+     "rerank": 2.018,
+     "verification": 11.85,
+     "total": 13.941
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [],
+   "kept_full": []
+  },
+  {
+   "query": "Backend engineer using Go or Java, based in Austin, ideally at a startup",
+   "revision": "remove_condition",
+   "status": "complete",
+   "incremental": {
+    "llm_calls": 10,
+    "seconds": 14.09,
+    "stages": {
+     "retrieval": 0.054,
+     "rerank": 2.031,
+     "verification": 11.991,
+     "total": 14.086
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 16,
+    "seconds": 24.59,
+    "stages": {
+     "retrieval": 0.031,
+     "rerank": 2.531,
+     "verification": 22.011,
+     "total": 24.587
+    }
+   },
+   "same_ordered_kept": false,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "hackernews:1367",
+    "hackernews:1535",
+    "hackernews:832",
+    "hackernews:497",
+    "hackernews:1394"
+   ],
+   "kept_full": [
+    "hackernews:832",
+    "hackernews:497",
+    "hackernews:1535",
+    "hackernews:1367",
+    "hackernews:1394"
+   ]
+  },
+  {
+   "query": "iOS engineer in Los Angeles, senior level, prefer hybrid",
+   "revision": "weight_change",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 4,
+    "seconds": 4.04,
+    "stages": {
+     "retrieval": 0.033,
+     "rerank": 2.085,
+     "verification": 1.9,
+     "total": 4.026
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 19,
+    "seconds": 16.27,
+    "stages": {
+     "retrieval": 0.089,
+     "rerank": 1.949,
+     "verification": 14.217,
+     "total": 16.271
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [],
+   "kept_full": []
+  },
+  {
+   "query": "iOS engineer in Los Angeles, senior level, prefer hybrid",
+   "revision": "tighten_soft_to_hard",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 4,
+    "seconds": 4.25,
+    "stages": {
+     "retrieval": 0.072,
+     "rerank": 1.96,
+     "verification": 2.195,
+     "total": 4.241
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 19,
+    "seconds": 13.45,
+    "stages": {
+     "retrieval": 0.03,
+     "rerank": 2.247,
+     "verification": 11.149,
+     "total": 13.447
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [],
+   "kept_full": []
+  },
+  {
+   "query": "iOS engineer in Los Angeles, senior level, prefer hybrid",
+   "revision": "relax_hard_to_soft",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 4,
+    "seconds": 4.69,
+    "stages": {
+     "retrieval": 0.033,
+     "rerank": 2.166,
+     "verification": 2.461,
+     "total": 4.678
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 19,
+    "seconds": 14.29,
+    "stages": {
+     "retrieval": 0.035,
+     "rerank": 2.207,
+     "verification": 12.036,
+     "total": 14.293
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [],
+   "kept_full": []
+  },
+  {
+   "query": "iOS engineer in Los Angeles, senior level, prefer hybrid",
+   "revision": "remove_condition",
+   "status": "complete",
+   "incremental": {
+    "llm_calls": 3,
+    "seconds": 7.96,
+    "stages": {
+     "retrieval": 0.051,
+     "rerank": 3.0,
+     "verification": 4.869,
+     "total": 7.941
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 7,
+    "seconds": 8.9,
+    "stages": {
+     "retrieval": 0.033,
+     "rerank": 2.495,
+     "verification": 6.355,
+     "total": 8.897
+    }
+   },
+   "same_ordered_kept": false,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "greenhouse:7817040",
+    "greenhouse:7453190",
+    "hackernews:108",
+    "hackernews:864",
+    "hackernews:1564"
+   ],
+   "kept_full": [
+    "greenhouse:7817040",
+    "hackernews:864",
+    "hackernews:1564",
+    "greenhouse:7453190",
+    "hackernews:108"
+   ]
+  },
+  {
+   "query": "DevOps engineer in Chicago, must pay at least $120k, remote is a nice to have",
+   "revision": "weight_change",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 5,
+    "seconds": 7.02,
+    "stages": {
+     "retrieval": 0.034,
+     "rerank": 2.103,
+     "verification": 4.857,
+     "total": 7.008
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 19,
+    "seconds": 22.88,
+    "stages": {
+     "retrieval": 0.027,
+     "rerank": 2.414,
+     "verification": 20.417,
+     "total": 22.878
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "hackernews:4",
+    "hackernews:1740",
+    "hackernews:2061",
+    "hackernews:774"
+   ],
+   "kept_full": [
+    "hackernews:4",
+    "hackernews:1740",
+    "hackernews:2061",
+    "hackernews:774"
+   ]
+  },
+  {
+   "query": "DevOps engineer in Chicago, must pay at least $120k, remote is a nice to have",
+   "revision": "tighten_soft_to_hard",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 7,
+    "seconds": 9.86,
+    "stages": {
+     "retrieval": 0.041,
+     "rerank": 2.633,
+     "verification": 7.164,
+     "total": 9.856
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 19,
+    "seconds": 24.65,
+    "stages": {
+     "retrieval": 0.026,
+     "rerank": 2.5,
+     "verification": 22.103,
+     "total": 24.647
+    }
+   },
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "hackernews:4",
+    "hackernews:1740",
+    "hackernews:2061",
+    "hackernews:774"
+   ],
+   "kept_full": [
+    "hackernews:4",
+    "hackernews:1740",
+    "hackernews:2061",
+    "hackernews:774"
+   ]
+  },
+  {
+   "query": "DevOps engineer in Chicago, must pay at least $120k, remote is a nice to have",
+   "revision": "relax_hard_to_soft",
+   "status": "complete",
+   "incremental": {
+    "llm_calls": 1,
+    "seconds": 3.82,
+    "stages": {
+     "retrieval": 0.034,
+     "rerank": 2.521,
+     "verification": 1.244,
+     "total": 3.813
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 4,
+    "seconds": 7.64,
+    "stages": {
+     "retrieval": 0.03,
+     "rerank": 2.109,
+     "verification": 5.487,
+     "total": 7.644
+    }
+   },
+   "same_ordered_kept": false,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_incremental": [
+    "hackernews:4",
+    "hackernews:987",
+    "hackernews:1290",
+    "hackernews:1641",
+    "hackernews:1992"
+   ],
+   "kept_full": [
+    "hackernews:4",
+    "hackernews:987",
+    "hackernews:1641",
+    "hackernews:1992",
+    "hackernews:1290"
+   ]
+  },
+  {
+   "query": "DevOps engineer in Chicago, must pay at least $120k, remote is a nice to have",
+   "revision": "remove_condition",
+   "status": "partial",
+   "incremental": {
+    "llm_calls": 5,
+    "seconds": 5.99,
+    "stages": {
+     "retrieval": 0.035,
+     "rerank": 2.505,
+     "verification": 3.427,
+     "total": 5.987
+    }
+   },
+   "full_recompute": {
+    "llm_calls": 8,
+    "seconds": 7.77,
+    "stages": {
+     "retrieval": 0.035,
+     "rerank": 2.641,
+     "verification": 5.084,
+     "total": 7.771
+    }
+   },
+   "same_ordered_kept": false,
+   "same_kept_set": false,
+   "same_excluded": false,
+   "kept_incremental": [
+    "hackernews:4",
+    "hackernews:1740",
+    "hackernews:2061",
+    "hackernews:774"
+   ],
+   "kept_full": [
+    "hackernews:1641",
+    "hackernews:1992",
+    "hackernews:4",
+    "hackernews:1740",
+    "hackernews:2061"
+   ]
+  }
+ ],
+ "noise_floor_rows": [
+  {
+   "query": "Data scientist in Boston, hybrid is preferred but not required, and I would like at least $130k",
+   "revision": "noise_floor",
+   "run_a_calls": 20,
+   "run_b_calls": 20,
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_a": [
+    "hackernews:1926",
+    "greenhouse:5552580004",
+    "greenhouse:8447216002"
+   ],
+   "kept_b": [
+    "hackernews:1926",
+    "greenhouse:5552580004",
+    "greenhouse:8447216002"
+   ],
+   "excluded_a": 17,
+   "excluded_b": 17
+  },
+  {
+   "query": "Product designer in Seattle, remote is fine, but I want to avoid agency work",
+   "revision": "noise_floor",
+   "run_a_calls": 20,
+   "run_b_calls": 20,
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_a": [
+    "hackernews:1260",
+    "hackernews:1839"
+   ],
+   "kept_b": [
+    "hackernews:1260",
+    "hackernews:1839"
+   ],
+   "excluded_a": 18,
+   "excluded_b": 18
+  },
+  {
+   "query": "Backend engineer using Go or Java, based in Austin, ideally at a startup",
+   "revision": "noise_floor",
+   "run_a_calls": 16,
+   "run_b_calls": 16,
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_a": [],
+   "kept_b": [],
+   "excluded_a": 20,
+   "excluded_b": 20
+  },
+  {
+   "query": "iOS engineer in Los Angeles, senior level, prefer hybrid",
+   "revision": "noise_floor",
+   "run_a_calls": 19,
+   "run_b_calls": 19,
+   "same_ordered_kept": true,
+   "same_kept_set": true,
+   "same_excluded": true,
+   "kept_a": [],
+   "kept_b": [],
+   "excluded_a": 20,
+   "excluded_b": 20
+  }
+ ]
+}

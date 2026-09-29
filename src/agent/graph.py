@@ -24,6 +24,7 @@ from src.agent.rerank import Scorer, rerank
 from src.agent.retrieval import JobIndex
 from src.agent.verification import Budget, VerificationResult, Verifier
 
+MEMO_LIMIT = 64
 STOP_REASONS = ("llm call budget exhausted", "deadline reached", "too many consecutive failures")
 
 
@@ -54,9 +55,18 @@ def _should_retry(state: SearchState) -> bool:
 
 
 def build_search_graph(index: JobIndex, scorer: Scorer | None, verifier: Verifier, *, retrieve_top_n: int, rerank_depth: int):
+    # the index and scorer are fixed for the service's life, so a revision that leaves the retrieval
+    # text unchanged (weights, strengths, dropping a non-role condition) reuses the earlier ranking
+    retrieved: dict[str, object] = {}
+    reranked: dict[str, object] = {}
+
     def retrieve(state: SearchState) -> dict:
         t = time.monotonic()
-        res = index.search(state["query"], top_n=retrieve_top_n)
+        res = retrieved.get(state["query"])
+        if res is None:
+            res = index.search(state["query"], top_n=retrieve_top_n)
+            if len(retrieved) < MEMO_LIMIT and not any(str(i.get("status", "")).startswith("failed") for i in res.trace.get("channels", {}).values()):
+                retrieved[state["query"]] = res
         return {"retrieval": res, "candidates": res.candidates, "rerank_trace": {"status": "skipped: no scorer"},
                 "timings": {**state.get("timings", {}), "retrieval": time.monotonic() - t}}
 
@@ -64,7 +74,11 @@ def build_search_graph(index: JobIndex, scorer: Scorer | None, verifier: Verifie
         t = time.monotonic()
         out: dict = {}
         if scorer is not None:
-            rr = rerank(state["query"], index, state["candidates"], scorer, depth=rerank_depth)
+            rr = reranked.get(state["query"])
+            if rr is None:
+                rr = rerank(state["query"], index, state["candidates"], scorer, depth=rerank_depth)
+                if len(reranked) < MEMO_LIMIT and not str(rr.trace.get("status", "")).startswith("failed"):
+                    reranked[state["query"]] = rr
             out = {"candidates": rr.candidates, "rerank_trace": rr.trace}
         return {**out, "timings": {**state["timings"], "rerank": time.monotonic() - t}}
 
