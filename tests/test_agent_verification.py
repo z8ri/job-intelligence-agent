@@ -213,7 +213,7 @@ def test_cache_is_scoped_by_model_and_prompt_version():
     snaps, cands, llm, cache, v = setup(["New York"])
     v.verify(cands, snaps.__getitem__, cs(REGION), Budget())
     Verifier(cache, complete=llm, model="other").verify(cands, snaps.__getitem__, cs(REGION), Budget())
-    Verifier(cache, complete=llm, model="m", prompt_version="2").verify(cands, snaps.__getitem__, cs(REGION), Budget())
+    Verifier(cache, complete=llm, model="m", prompt_version="other").verify(cands, snaps.__getitem__, cs(REGION), Budget())
     assert len(llm.calls) == 3
 
 

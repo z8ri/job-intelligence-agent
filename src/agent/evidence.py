@@ -29,7 +29,7 @@ CompleteFn = Callable[[str, str], str]
 Verdict = Literal["support", "conflict", "unknown"]
 
 MAX_JOB_CHARS = 10_000
-JUDGE_PROMPT_VERSION = "1"
+JUDGE_PROMPT_VERSION = "2"
 
 
 class JudgeError(RuntimeError):
@@ -82,6 +82,7 @@ Rules:
 - For support and conflict, "quote" MUST be copied character-for-character from the posting (a short span, at most ~2 sentences). If you cannot quote it, the verdict is unknown and quote is null.
 - Judge only what the text states. Do not use outside knowledge about the company. Do not infer a location, salary or work mode that is not written.
 - role_focus / skill: support if the job's actual duties involve it; a skill that is only listed in requirements or a bare keyword mention is not enough for a role_focus.
+- role_focus conflict: only when the posting's main work is clearly a different kind of job. A job whose duties include the described work alongside other duties, or that carries a different title for the same work, is support (or unknown if the duties are unclear), never conflict. Do not judge conflict just because the job is broader, or "not solely" about it.
 - role_avoid: conflict only if the avoided kind of work is the MAIN content of the job; a passing mention is not a conflict. Otherwise unknown.
 - work_region: the user can work in the listed regions. conflict if the job is tied to a place outside them or states eligibility that excludes them; support if it is in one of them or open to them.
 - remote_mode: compare what the posting says about on-site/hybrid/remote with the acceptable modes.
